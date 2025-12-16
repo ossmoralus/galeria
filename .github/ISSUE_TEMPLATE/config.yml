@@ -1,0 +1,14 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 💬 Discord Community
+    url: https://discord.gg/RpqNZpVn
+    about: Junte-se à nossa comunidade no Discord para suporte rápido e discussões
+  - name: 📱 WhatsApp Support
+    url: https://wa.me/5537999022401
+    about: Entre em contato direto via WhatsApp para suporte urgente
+  - name: 📚 Documentation
+    url: https://github.com/morallus-software/galeria/tree/main/docs
+    about: Consulte nossa documentação completa antes de abrir uma issue
+  - name: 🌐 Website
+    url: https://galeria-morallus.vercel.app
+    about: Visite nosso site para ver a galeria completa e gerador de badges

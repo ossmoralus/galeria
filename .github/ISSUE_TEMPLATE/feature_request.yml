@@ -1,0 +1,134 @@
+name: ✨ Feature Request
+description: Sugerir uma nova funcionalidade ou melhoria
+title: '[FEATURE] '
+labels: ['enhancement', 'needs-discussion']
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 💡 Obrigado pela sugestão!
+
+        Descreva sua ideia com o máximo de detalhes possível.
+        Isso nos ajudará a entender melhor sua proposta.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: 🎯 Problema ou Motivação
+      description: Qual problema esta feature resolveria? Por que ela é necessária?
+      placeholder: |
+        Ex: Seria muito útil ter um botão para compartilhar SVGs diretamente no Twitter,
+        pois atualmente preciso fazer download e depois postar manualmente...
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: 💡 Solução Proposta
+      description: Como você imagina que esta feature funcionaria?
+      placeholder: |
+        Ex: Adicionar um botão "Compartilhar" em cada SVG da galeria que abre um modal
+        com opções de compartilhamento (Twitter, LinkedIn, Facebook)...
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: 🔄 Alternativas Consideradas
+      description: Você considerou alguma alternativa? Por que esta solução é melhor?
+      placeholder: |
+        Ex: Pensei em adicionar links diretos de compartilhamento, mas um modal
+        ofereceria mais opções e seria mais elegante...
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: ⚡ Prioridade (Sua Opinião)
+      description: Quão importante você considera esta feature?
+      options:
+        - 🔴 Alta - Essencial para o uso do projeto
+        - 🟡 Média - Muito útil, mas não crítica
+        - 🟢 Baixa - Nice to have, pode esperar
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: 📦 Categoria
+      description: A qual área do projeto esta feature pertence?
+      options:
+        - 🖼️ Galeria de SVGs
+        - 🎨 Gerador de Badges
+        - ✍️ Blog/MDX
+        - 🔌 API
+        - 🎯 UI/UX
+        - 🚀 Performance
+        - 🔒 Segurança
+        - 📱 Mobile/Responsivo
+        - 📚 Documentação
+        - 🛠️ DevOps/CI/CD
+        - 🌐 Outro
+    validations:
+      required: true
+
+  - type: textarea
+    id: mockup
+    attributes:
+      label: 🎨 Mockup/Wireframe (Opcional)
+      description: Se tiver, adicione um mockup ou wireframe da sua ideia
+      placeholder: 'Cole URLs de imagens ou arraste arquivos aqui'
+
+  - type: textarea
+    id: examples
+    attributes:
+      label: 🔗 Exemplos de Referência
+      description: Conhece algum site/projeto que implementa algo similar?
+      placeholder: |
+        Ex: O GitHub tem uma funcionalidade parecida em https://...
+        O Dribbble implementa isso de forma interessante...
+
+  - type: dropdown
+    id: willing-to-contribute
+    attributes:
+      label: 🤝 Disposição para Contribuir
+      description: Você gostaria de implementar esta feature?
+      options:
+        - ✅ Sim, posso implementar e fazer um PR
+        - 🤔 Talvez, com orientação da equipe
+        - ❌ Não, apenas sugerindo
+    validations:
+      required: true
+
+  - type: textarea
+    id: technical-notes
+    attributes:
+      label: 🔧 Notas Técnicas (Opcional)
+      description: Se tiver conhecimento técnico, compartilhe ideias de implementação
+      placeholder: |
+        Ex: Poderia usar a API do Twitter para compartilhamento,
+        ou implementar com Web Share API nativa...
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: ℹ️ Contexto Adicional
+      description: Qualquer outra informação relevante
+      placeholder: 'Ex: Esta feature seria especialmente útil para...'
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: ✅ Checklist
+      description: Confirme os itens abaixo antes de enviar
+      options:
+        - label: Verifiquei que não existe uma feature request similar já aberta
+          required: true
+        - label: Esta feature é compatível com a licença MIT do projeto
+          required: true
+        - label: Li a documentação e esta feature não existe atualmente
+          required: false

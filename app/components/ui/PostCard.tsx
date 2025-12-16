@@ -1,0 +1,60 @@
+'use client';
+
+import React from 'react';
+import Card from './Card';
+import Badge from './Badge';
+import Tag from './Tag';
+import type { PostMetadata } from '@/lib/posts';
+
+interface PostCardProps {
+  post: PostMetadata;
+  className?: string;
+}
+
+export default function PostCard({ post, className = '' }: PostCardProps): React.ReactElement {
+  const handleCardClick = (): void => {
+    window.location.href = `/blog/${post.slug}`;
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent): void => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      handleCardClick();
+    }
+  };
+
+  const handleTagsClick = (e: React.MouseEvent): void => {
+    e.stopPropagation();
+  };
+
+  return (
+    <Card
+      className={`relative flex cursor-pointer flex-col gap-4 overflow-hidden transition-all hover:-translate-y-2 hover:shadow-[0_20px_40px_rgb(45_125_110_/_30%)] ${className}`}
+      onClick={handleCardClick}
+      role="button"
+      tabIndex={0}
+      onKeyDown={handleKeyDown}
+    >
+      <div className="flex flex-wrap items-center justify-between gap-3 text-[0.85rem]">
+        <Badge tone="info">
+          <i className="fas fa-folder mr-1" /> {post.category}
+        </Badge>
+        <span className="inline-flex items-center gap-1.5 text-[var(--text-secondary)]">
+          <i className="fas fa-calendar" /> {new Date(post.date).toLocaleDateString('pt-BR')}
+        </span>
+      </div>
+      <h2 className="m-0 break-words">{post.title}</h2>
+      <p className="m-0 break-words">{post.description}</p>
+
+      <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[var(--vscode-border)] pt-4">
+        <span className="inline-flex items-center gap-1.5 text-[0.85rem] text-[var(--text-secondary)]">
+          <i className="fas fa-clock" /> {post.readingTime}
+        </span>
+        <span className="flex flex-wrap gap-2" onClick={handleTagsClick}>
+          {post.tags.slice(0, 3).map((tag) => (
+            <Tag key={tag} label={tag} href={`/blog/tag/${tag}`} />
+          ))}
+        </span>
+      </div>
+    </Card>
+  );
+}

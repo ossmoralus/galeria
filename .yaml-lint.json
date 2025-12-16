@@ -1,0 +1,16 @@
+{
+  "schema": "default",
+  "rules": {
+    "indentation": {
+      "level": "warning",
+      "spaces": 2
+    },
+    "key-duplicates": "error",
+    "trailing-spaces": "warning",
+    "line-length": {
+      "level": "off",
+      "limit": 140
+    },
+    "new-line-at-end-of-file": "warning"
+  }
+}

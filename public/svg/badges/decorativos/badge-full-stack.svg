@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="60">
+  <defs>
+    <linearGradient id="badge-fullstack-grad" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#ff0000ff"/>
+      <stop offset="100%" stop-color="#610000ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="220" height="60" fill="url(#badge-fullstack-grad)" rx="30"/>
+  <text x="40" y="37" fill="#fff" font-family="Arial, sans-serif" font-size="20" font-weight="bold">
+    Full Stack Dev
+  </text>
+</svg>

@@ -1,0 +1,220 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* === PALETA BASE: Preto Profundo + Verde Escuro === */
+
+  /* Tons de Preto Profundo */
+  --black-50: #fafafa;
+  --black-100: #f5f5f5;
+  --black-200: #e5e5e5;
+  --black-300: #d4d4d4;
+  --black-400: #a3a3a3;
+  --black-500: #737373;
+  --black-600: #525252;
+  --black-700: #404040;
+  --black-800: #262626;
+  --black-900: #171717;
+  --black-950: #0a0a0a;
+
+  /* Tons de Verde Escuro Profundo */
+  --green-50: #f0fdf4;
+  --green-100: #dcfce7;
+  --green-200: #bbf7d0;
+  --green-300: #86efac;
+  --green-400: #4ade80;
+  --green-500: #22c55e;
+  --green-600: #16a34a;
+  --green-700: #15803d;
+  --green-800: #166534;
+  --green-900: #145231;
+  --green-950: #052e16;
+
+  /* Verde Profundo Customizado (mais saturado e escuro) */
+  --green-deep: #0a3d2c;
+  --green-deeper: #062c23;
+  --green-darkest: #031810;
+
+  /* Tons Complementares (Teals & Cyans) */
+  --teal-600: #0d9488;
+  --teal-700: #0f766e;
+  --teal-800: #115e59;
+  --cyan-600: #06b6d4;
+  --cyan-700: #0891b2;
+
+  /* Tons de Destaque */
+  --gold: #f5d06b;
+  --amber-600: #d97706;
+  --orange-600: #ea580c;
+
+  /* === TEXT COLORS === */
+  --text-primary: #e5e5e5;
+  --text-secondary: #a3a3a3;
+  --text-tertiary: #737373;
+  --text-bright: #fff;
+
+  /* === BACKGROUND & SURFACES === */
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #171717;
+  --bg-tertiary: #262626;
+  --bg-surface-1: #1a1a1a;
+  --bg-surface-2: #222;
+  --border-default: #333;
+  --border-light: #404040;
+
+  /* === ACCENT COLORS === */
+  --accent-primary: #0a3d2c;
+  --accent-secondary: #062c23;
+  --accent-tertiary: #0d9488;
+  --accent-light: #14b8a6;
+  --accent-bright: #06d6d6;
+
+  /* === GRADIENTS === */
+  --gradient-hero: linear-gradient(135deg, #0a3d2c 0%, #062c23 50%, #0d9488 100%);
+  --gradient-button: linear-gradient(135deg, #0d9488 0%, #0f766e 55%, #14b8a6 100%);
+  --gradient-secondary: linear-gradient(135deg, rgb(13 148 136 / 16%), rgb(13 148 136 / 8%));
+  --gradient-card-overlay: linear-gradient(135deg, rgb(10 61 44 / 12%), rgb(13 148 136 / 6%));
+  --gradient-text: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+
+  /* === SHADOWS === */
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 50%);
+  --shadow-md: 0 4px 6px rgb(0 0 0 / 60%);
+  --shadow-lg: 0 10px 15px rgb(0 0 0 / 70%);
+  --shadow-button: 0 6px 18px rgb(13 148 136 / 40%);
+  --shadow-button-hover: 0 12px 30px rgb(20 184 166 / 30%);
+  --shadow-card-hover: 0 0 20px rgb(13 148 136 / 30%), 0 20px 40px rgb(0 0 0 / 60%);
+  --shadow-glow: 0 0 40px rgb(13 148 136 / 20%);
+
+  /* === TRANSITIONS === */
+  --transition-soft: all 0.25s ease;
+  --transition-smooth: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* === SEMANTIC COLORS === */
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --info: #0d9488;
+}
+
+html {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  width: 100%;
+}
+
+body {
+  background: radial-gradient(ellipse at top, #080808 0%, #010203 100%);
+  background-attachment: fixed;
+  background-color: #0a0a0a;
+  color: var(--text-primary);
+  font-family:
+    Consolas,
+    'Courier New',
+    monospace,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: clip;
+  overscroll-behavior-y: contain;
+  position: relative;
+  width: 100%;
+}
+
+/* Efeito de profundidade - vazio imensurável mas aconchegante */
+body::before {
+  background:
+    radial-gradient(circle at 20% 50%, rgb(13 148 136 / 3%) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgb(13 148 136 / 2%) 0%, transparent 50%),
+    radial-gradient(circle at 40% 20%, rgb(13 148 136 / 1%) 0%, transparent 50%);
+  content: '';
+  height: 100vh;
+  height: 100dvh;
+  left: 0;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 0;
+}
+
+body::after {
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgb(255 255 255 / 0.5%) 0,
+    transparent 1px,
+    transparent 2px,
+    rgb(255 255 255 / 0.5%) 3px
+  );
+  content: '';
+  height: 100vh;
+  height: 100dvh;
+  left: 0;
+  opacity: 20%;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+a {
+  color: var(--accent-tertiary);
+  position: relative;
+  text-decoration: none;
+  transition: var(--transition-soft);
+}
+
+a:hover {
+  color: var(--accent-light);
+  text-shadow: 0 0 8px rgb(13 148 136 / 40%);
+}
+
+/* Scrollbar personalizada - tema verde/preto */
+::-webkit-scrollbar {
+  height: 14px;
+  width: 14px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-secondary);
+  border: 3px solid var(--bg-primary);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-tertiary);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--bg-primary);
+}
+
+/* Seleção de texto */
+::selection {
+  background: var(--accent-tertiary);
+  color: var(--text-bright);
+}
+
+/* Garantir que conteúdo fique acima dos efeitos de fundo */
+main,
+header,
+footer,
+nav {
+  position: relative;
+  z-index: 2;
+}

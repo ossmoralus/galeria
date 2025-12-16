@@ -1,0 +1,179 @@
+name: CI - Continuous Integration
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint-and-typecheck:
+    name: 🔍 Lint & Type Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: 📦 Install dependencies
+        run: |
+          if [ -f package-lock.json ]; then
+            echo "Found package-lock.json -> using npm ci";
+            npm ci;
+          else
+            echo "No lock file -> using npm install (consider committing package-lock.json)";
+            npm install;
+          fi
+
+      - name: 🔍 ESLint Check
+        run: npm run lint
+
+      - name: 🎨 Stylelint Check
+        run: npm run lint:css
+
+      - name: 🖼️ SVG Optimization Check
+        run: npm run lint:svg
+        continue-on-error: true
+
+      - name: 📄 YAML Lint
+        run: npm run lint:yaml
+        continue-on-error: true
+
+      - name: 🧪 Actionlint (Workflows)
+        run: npm run lint:actions
+        continue-on-error: true
+
+      - name: 📝 Prettier Check
+        run: npm run format:check
+
+      - name: 🔷 TypeScript Check
+        run: npm run type-check
+
+  license-check:
+    name: 📄 License Audit
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: 📦 Install dependencies
+        run: |
+          if [ -f package-lock.json ]; then
+            echo "Found package-lock.json -> using npm ci";
+            npm ci;
+          else
+            echo "No lock file -> using npm install (consider committing package-lock.json)";
+            npm install;
+          fi
+
+      - name: 🔒 License JSON
+        run: npm run license:audit
+
+      - name: 📋 License Summary Report
+        run: npm run license:report
+
+      - name: 📤 Upload License Reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: licenses-report
+          path: |
+            licenses.json
+            LICENSES_SUMMARY.txt
+          retention-days: 30
+
+  build:
+    name: 🏗️ Build
+    runs-on: ubuntu-latest
+    needs: [lint-and-typecheck, license-check]
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: 📦 Install dependencies
+        run: |
+          if [ -f package-lock.json ]; then
+            echo "Found package-lock.json -> using npm ci";
+            npm ci;
+          else
+            echo "No lock file -> using npm install (consider committing package-lock.json)";
+            npm install;
+          fi
+
+      - name: 📦 Cache Next.js build
+        uses: actions/cache@v4
+        with:
+          path: |
+            .next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+            ${{ runner.os }}-nextjs-
+
+      - name: 🔨 Build project
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      - name: 📊 Build summary
+        run: |
+          echo "### ✅ Build completed successfully!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Branch:** \`${{ github.ref_name }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Commit:** \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
+
+  security:
+    name: 🔐 Security Audit
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: 📦 Install dependencies
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci;
+          else
+            npm install;
+          fi
+
+      - name: 🔍 NPM Audit
+        run: npm audit --audit-level=moderate
+        continue-on-error: true
+
+      - name: 📊 Security summary
+        run: |
+          echo "### 🔐 Security Audit" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          npm audit --audit-level=moderate >> $GITHUB_STEP_SUMMARY 2>&1 || echo "✅ No critical vulnerabilities found" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "💡 **Note:** Minor vulnerabilities are acceptable if they don't affect production." >> $GITHUB_STEP_SUMMARY

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="60">
+  <defs>
+    <linearGradient id="badge-analyst-grad" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#002fffff"/>
+      <stop offset="100%" stop-color="#3f1aa3ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="220" height="60" fill="url(#badge-analyst-grad)" rx="30"/>
+  <text x="45" y="37" fill="#fff" font-family="Arial, sans-serif" font-size="20" font-weight="bold">
+    Data Analyst
+  </text>
+</svg>

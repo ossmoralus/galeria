@@ -1,0 +1,144 @@
+name: ❓ Question
+description: Tirar dúvidas sobre o projeto ou pedir ajuda
+title: '[QUESTION] '
+labels: ['question', 'needs-answer']
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 👋 Olá! Como podemos ajudar?
+
+        Faça sua pergunta abaixo. Tentaremos responder o mais rápido possível!
+
+        **💡 Dica:** Antes de perguntar, verifique se sua dúvida já foi respondida:
+        - 📚 [Documentação](https://github.com/morallus-software/galeria/tree/main/docs)
+        - 💬 [Issues fechadas](https://github.com/morallus-software/galeria/issues?q=is%3Aissue+is%3Aclosed)
+        - 🎮 [Discord](https://discord.gg/RpqNZpVn)
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: 📂 Categoria da Dúvida
+      description: Sobre qual área do projeto é sua pergunta?
+      options:
+        - 🖼️ Usar SVGs da galeria
+        - 🎨 Gerador de badges
+        - ✍️ Criar posts no blog
+        - 🔌 Usar a API de SVGs
+        - 🚀 Deploy e hospedagem
+        - 💻 Desenvolvimento local
+        - 🛠️ Contribuir com o projeto
+        - 📄 Licenças e uso comercial
+        - 🌐 Outro
+    validations:
+      required: true
+
+  - type: textarea
+    id: question
+    attributes:
+      label: ❓ Sua Pergunta
+      description: Descreva sua dúvida com o máximo de detalhes possível
+      placeholder: |
+        Ex: Como posso usar os SVGs da galeria no meu README do GitHub?
+        Preciso fazer algo especial ou posso apenas copiar o link?
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: 📋 Contexto
+      description: Contexto adicional que pode ajudar a responder sua pergunta
+      placeholder: |
+        Ex: Estou tentando adicionar badges no meu perfil do GitHub,
+        mas não sei se os links funcionarão permanentemente...
+
+  - type: textarea
+    id: what-tried
+    attributes:
+      label: 🔍 O que você já tentou?
+      description: Você já tentou alguma solução? O que aconteceu?
+      placeholder: |
+        Ex: Tentei copiar o código Markdown da galeria, mas...
+        Li a documentação em docs/GALERIA-SVG.md mas ainda não entendi...
+
+  - type: textarea
+    id: expected-answer
+    attributes:
+      label: 🎯 O que você espera saber?
+      description: Qual tipo de resposta você está procurando?
+      placeholder: |
+        Ex: Gostaria de saber se posso modificar os SVGs,
+        ou se existe uma forma de criar SVGs personalizados...
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: ⏱️ Urgência
+      description: Quão urgente é sua dúvida?
+      options:
+        - 🔴 Urgente - Bloqueando meu trabalho
+        - 🟡 Normal - Preciso saber em breve
+        - 🟢 Baixa - Apenas curiosidade
+    validations:
+      required: true
+
+  - type: dropdown
+    id: experience
+    attributes:
+      label: 💼 Nível de Experiência
+      description: Qual seu nível de experiência com desenvolvimento web?
+      options:
+        - 👶 Iniciante - Aprendendo o básico
+        - 👨‍💻 Intermediário - Conheço o essencial
+        - 🧙‍♂️ Avançado - Experiência profissional
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: 📸 Screenshots (Opcional)
+      description: Se aplicável, adicione screenshots que ajudem a explicar sua dúvida
+      placeholder: Cole URLs de imagens ou arraste arquivos aqui
+
+  - type: textarea
+    id: code
+    attributes:
+      label: 💻 Código Relevante (Opcional)
+      description: Se sua dúvida envolve código, cole aqui
+      render: markdown
+      placeholder: |
+        ```markdown
+        ![Badge](https://galeria-morallus.vercel.app/api/svg/badge-build-passing.svg)
+        ```
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: ✅ Checklist
+      description: Confirme os itens abaixo antes de enviar
+      options:
+        - label: Li a documentação disponível
+          required: false
+        - label: Pesquisei por issues similares
+          required: false
+        - label: Minha pergunta não é sobre um bug (use Bug Report para isso)
+          required: true
+        - label: Minha pergunta não é uma solicitação de feature (use Feature Request para isso)
+          required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+
+        ### 💬 Outras formas de obter ajuda:
+
+        - 🎮 **Discord:** [discord.gg/RpqNZpVn](https://discord.gg/RpqNZpVn) - Resposta mais rápida!
+        - 📱 **WhatsApp:** [wa.me/5537999022401](https://wa.me/5537999022401) - Suporte direto
+        - 📧 **GitHub Discussions:** Para perguntas gerais sobre a comunidade
+
+        **Obrigado por usar a Galeria Morallus Software! 🎨**

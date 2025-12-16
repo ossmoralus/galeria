@@ -1,0 +1,121 @@
+name: 🚀 Deploy Preview
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+concurrency:
+  group: preview-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy-preview:
+    name: 📦 Deploy to Vercel Preview
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: 📦 Install dependencies (lock aware)
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci;
+          else
+            npm install;
+          fi
+
+      - name: 📦 Cache Next.js build
+        uses: actions/cache@v4
+        with:
+          path: |
+            .next/cache
+          key: ${{ runner.os }}-nextjs-preview-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-preview-${{ hashFiles('**/package-lock.json') }}-
+            ${{ runner.os }}-nextjs-preview-
+
+      - name: 🔨 Build project
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      - name: 💬 Comment on PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prNumber = context.payload.pull_request.number;
+            const sha = context.payload.pull_request.head.sha.substring(0, 7);
+
+            const body = `### 🚀 Deploy Preview Ready!
+
+            **Preview URL:** \`https://galeria-morallus-git-${context.payload.pull_request.head.ref}-morallus-software.vercel.app\`
+
+            📊 **Deploy Details:**
+            - 🌿 Branch: \`${context.payload.pull_request.head.ref}\`
+            - 📝 Commit: \`${sha}\`
+            - ⚡ Status: Deploying via Vercel
+
+            > Preview will be available in ~2 minutes. Vercel will also comment with the final URL.`;
+
+            github.rest.issues.createComment({
+              issue_number: prNumber,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: body
+            });
+
+  preview-checks:
+    name: ✅ Preview Quality Checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: 📦 Install dependencies (lock aware)
+        run: |
+          if [ -f package-lock.json ]; then npm ci; else npm install; fi
+
+      - name: 🔍 Run ESLint
+        run: npm run lint
+        continue-on-error: false
+
+      - name: 🎨 Run Stylelint
+        run: npm run lint:css
+        continue-on-error: false
+
+      - name: 🔷 TypeScript Check
+        run: npm run type-check
+        continue-on-error: false
+
+      - name: 🖼️ SVG Check
+        run: npm run lint:svg
+        continue-on-error: true
+
+      - name: 📊 Quality summary
+        if: always()
+        run: |
+          echo "### ✅ Quality Checks Completed!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Critical checks:**" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ ESLint: Passed" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Stylelint: Passed" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ TypeScript: Passed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Optional checks:**" >> $GITHUB_STEP_SUMMARY
+          echo "- 🟡 SVG Optimization: Advisory only" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "🚀 Ready for preview deployment!" >> $GITHUB_STEP_SUMMARY

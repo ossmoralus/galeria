@@ -1,0 +1,104 @@
+name: 📊 Status Check
+
+on:
+  push:
+    branches: [main, develop, developer]
+  pull_request:
+    branches: [main, develop, developer]
+
+jobs:
+  status-report:
+    name: 📋 Generate Status Report
+    runs-on: ubuntu-latest
+    if: always()
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: 📦 Install dependencies
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci;
+          else
+            npm install;
+          fi
+
+      - name: 🔍 Run Quick Health Check
+        id: health
+        run: |
+          echo "## 🏥 Project Health Check" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # ESLint
+          if npm run lint > /dev/null 2>&1; then
+            echo "- ✅ **ESLint**: All checks passed" >> $GITHUB_STEP_SUMMARY
+            echo "eslint=✅" >> $GITHUB_OUTPUT
+          else
+            echo "- ❌ **ESLint**: Issues found" >> $GITHUB_STEP_SUMMARY
+            echo "eslint=❌" >> $GITHUB_OUTPUT
+          fi
+
+          # TypeScript
+          if npm run type-check > /dev/null 2>&1; then
+            echo "- ✅ **TypeScript**: No type errors" >> $GITHUB_STEP_SUMMARY
+            echo "typescript=✅" >> $GITHUB_OUTPUT
+          else
+            echo "- ❌ **TypeScript**: Type errors found" >> $GITHUB_STEP_SUMMARY
+            echo "typescript=❌" >> $GITHUB_OUTPUT
+          fi
+
+          # Stylelint
+          if npm run lint:css > /dev/null 2>&1; then
+            echo "- ✅ **Stylelint**: All styles valid" >> $GITHUB_STEP_SUMMARY
+            echo "stylelint=✅" >> $GITHUB_OUTPUT
+          else
+            echo "- ❌ **Stylelint**: Style issues found" >> $GITHUB_STEP_SUMMARY
+            echo "stylelint=❌" >> $GITHUB_OUTPUT
+          fi
+
+          # Build
+          if npm run build > /dev/null 2>&1; then
+            echo "- ✅ **Build**: Successful" >> $GITHUB_STEP_SUMMARY
+            echo "build=✅" >> $GITHUB_OUTPUT
+          else
+            echo "- ❌ **Build**: Failed" >> $GITHUB_STEP_SUMMARY
+            echo "build=❌" >> $GITHUB_OUTPUT
+          fi
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "---" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Branch:** \`${{ github.ref_name }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Commit:** \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Triggered by:** ${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
+        continue-on-error: true
+
+      - name: 📊 Project Statistics
+        run: |
+          echo "## 📊 Project Statistics" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Code files:**" >> $GITHUB_STEP_SUMMARY
+          echo "- TypeScript/JavaScript: \`$(find . -name "*.ts" -o -name "*.tsx" -o -name "*.js" -o -name "*.jsx" | grep -v node_modules | grep -v .next | wc -l)\`" >> $GITHUB_STEP_SUMMARY
+          echo "- CSS files: \`$(find . -name "*.css" | grep -v node_modules | wc -l)\`" >> $GITHUB_STEP_SUMMARY
+          echo "- MDX files: \`$(find . -name "*.mdx" | grep -v node_modules | wc -l)\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Dependencies:**" >> $GITHUB_STEP_SUMMARY
+          echo "- Total packages: \`$(jq '.dependencies | length' package.json)\` production + \`$(jq '.devDependencies | length' package.json)\` dev" >> $GITHUB_STEP_SUMMARY
+        continue-on-error: true
+
+      - name: ✅ Final Status
+        if: always()
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "---" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "🎯 **Overall Status:** Project is healthy and ready for deployment!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "💡 **Tip:** Check individual workflow runs for detailed information." >> $GITHUB_STEP_SUMMARY

@@ -1,0 +1,117 @@
+---
+title: 'Como usar SVGs no GitHub README'
+description: 'Guia completo para adicionar SVGs personalizados no seu perfil do GitHub'
+date: '2025-12-01'
+author: 'Morallus Software'
+category: 'Tutorial'
+tags: ['github', 'svg', 'readme', 'design']
+image: '/images/blog/github-svg.jpg'
+published: true
+---
+
+# Como usar SVGs no GitHub README
+
+Aprenda a deixar seu perfil do GitHub mais profissional usando SVGs personalizados.
+
+## Por que usar SVGs?
+
+SVGs (Scalable Vector Graphics) têm várias vantagens:
+
+- 📐 **Escaláveis**: Mantêm qualidade em qualquer tamanho
+- 🎨 **Customizáveis**: Cores, tamanhos e animações via URL
+- ⚡ **Leves**: Arquivos pequenos que carregam rápido
+- 🔧 **Dinâmicos**: Podem ser gerados dinamicamente via API
+
+## Passo a passo
+
+### 1. Escolha seu SVG
+
+Visite nossa [galeria](/galeria) e escolha um banner ou badge:
+
+```markdown
+![Banner](https://galeria-morallus.vercel.app/api/svg/capa-5.svg)
+```
+
+### 2. Customize o tamanho
+
+Use parâmetros de URL para ajustar. Os SVGs agora mantêm a proporção corretamente:
+
+```markdown
+<!-- Largura fixa (altura calculada automaticamente) -->
+![Banner](https://galeria-morallus.vercel.app/api/svg/capa-5.svg?width=800)
+
+<!-- Largura 100% (responsivo) -->
+![Banner](https://galeria-morallus.vercel.app/api/svg/capa-5.svg?width=100%)
+
+<!-- Dimensões personalizadas (força tamanho específico) -->
+![Banner](https://galeria-morallus.vercel.app/api/svg/capa-5.svg?width=800&height=300)
+
+<!-- Tamanhos menores mantêm proporção -->
+![Badge](https://galeria-morallus.vercel.app/api/svg/badge-devops.svg?width=200)
+![Badge](https://galeria-morallus.vercel.app/api/svg/badge-full-stack.svg?width=150)
+```
+
+### 3. Organize seus badges
+
+Coloque vários badges lado a lado. Use valores em pixels para controle preciso:
+
+```markdown
+<!-- Com porcentagem (responsivo) -->
+![Badge 1](https://galeria-morallus.vercel.app/api/svg/badge-devops.svg?width=24%)
+![Badge 2](https://galeria-morallus.vercel.app/api/svg/badge-full-stack.svg?width=24%)
+![Badge 3](https://galeria-morallus.vercel.app/api/svg/badge-ui-ux.svg?width=24%)
+
+<!-- Com pixels (tamanho fixo, ideal para GitHub) -->
+![Badge 1](https://galeria-morallus.vercel.app/api/svg/badge-devops.svg?width=180)
+![Badge 2](https://galeria-morallus.vercel.app/api/svg/badge-full-stack.svg?width=180)
+![Badge 3](https://galeria-morallus.vercel.app/api/svg/badge-ui-ux.svg?width=180)
+```
+
+## Parâmetros disponíveis
+
+| Parâmetro       | Descrição                              | Exemplo       |
+| --------------- | -------------------------------------- | ------------- |
+| `width` ou `w`  | Define largura (altura automática)    | `?width=500`  |
+| `height` ou `h` | Define altura (largura automática)    | `?height=200` |
+| `width=100%`    | Largura responsiva                    | `?width=100%` |
+| `width&height`  | Dimensões personalizadas (força ambos)| `?width=800&height=300` |
+
+## Dicas Pro
+
+1. **Use apenas width** para manter proporção automática
+2. **Use valores em pixels** para GitHub (ex: `?width=180`)
+3. **Use 24%** para 4 badges em linha (sites responsivos)
+4. **Use 16%** para 6 badges em linha (sites responsivos)
+5. **Evite valores muito pequenos** que podem causar corte (mínimo recomendado: 150px para badges)
+
+## Exemplo completo
+
+```markdown
+# Meu Perfil
+
+<!-- Banner responsivo (100% mantém proporção) -->
+![Capa](https://galeria-morallus.vercel.app/api/svg/capa-morallus.svg?width=100%)
+
+## Skills
+
+<!-- Badges em tamanho fixo (ideal para GitHub) -->
+<p align="center">
+  <img src="https://galeria-morallus.vercel.app/api/svg/badge-devops.svg?width=180" alt="DevOps" />
+  <img src="https://galeria-morallus.vercel.app/api/svg/badge-full-stack.svg?width=180" alt="Full Stack" />
+  <img src="https://galeria-morallus.vercel.app/api/svg/badge-cloud-architect.svg?width=180" alt="Cloud" />
+  <img src="https://galeria-morallus.vercel.app/api/svg/badge-security.svg?width=180" alt="Security" />
+</p>
+```
+
+## Resolvendo problemas de corte
+
+Se suas imagens estão sendo cortadas:
+
+1. ✅ **Use apenas o parâmetro `width`** - a altura será calculada automaticamente
+2. ✅ **Use valores maiores** - mínimo 150px para badges, 600px para banners
+3. ✅ **Para GitHub, prefira pixels** ao invés de porcentagem
+4. ✅ **Use tags `<img>`** para mais controle sobre o layout
+
+---
+
+Agora você está pronto para criar um README profissional! 🎨

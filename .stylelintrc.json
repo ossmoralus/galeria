@@ -1,0 +1,71 @@
+{
+  "extends": "stylelint-config-standard",
+  "plugins": ["stylelint-order"],
+  "rules": {
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": ["tailwind", "apply", "variants", "responsive", "screen"]
+      }
+    ],
+    "selector-class-pattern": "^[a-z][a-zA-Z0-9]*$",
+    "custom-property-pattern": "^[a-z][a-zA-Z0-9-]*$",
+    "keyframes-name-pattern": "^[a-z][a-zA-Z0-9-]*$",
+    "color-function-notation": "modern",
+    "alpha-value-notation": "percentage",
+    "font-family-name-quotes": "always-where-recommended",
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": ["global"]
+      }
+    ],
+    "declaration-block-no-duplicate-properties": [
+      true,
+      {
+        "ignore": ["consecutive-duplicates-with-different-values"]
+      }
+    ],
+    "no-descending-specificity": true,
+    "no-duplicate-selectors": true,
+    "color-no-invalid-hex": true,
+    "declaration-block-single-line-max-declarations": 1,
+    "max-nesting-depth": [
+      3,
+      {
+        "ignore": ["pseudo-classes"]
+      }
+    ],
+    "selector-max-id": 0,
+    "selector-max-type": [
+      2,
+      {
+        "ignore": ["child", "descendant"]
+      }
+    ],
+    "selector-max-universal": 1,
+    "selector-no-vendor-prefix": true,
+    "property-no-vendor-prefix": [
+      true,
+      {
+        "ignoreProperties": ["background-clip", "text-fill-color"]
+      }
+    ],
+    "value-no-vendor-prefix": true,
+    "order/properties-alphabetical-order": true,
+    "declaration-empty-line-before": [
+      "always",
+      {
+        "except": ["after-declaration", "first-nested"],
+        "ignore": ["after-comment", "inside-single-line-block"]
+      }
+    ],
+    "rule-empty-line-before": [
+      "always",
+      {
+        "except": ["first-nested"],
+        "ignore": ["after-comment"]
+      }
+    ]
+  }
+}
