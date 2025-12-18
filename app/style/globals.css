@@ -9,7 +9,7 @@
 }
 
 :root {
-  /* === PALETA BASE: Preto Profundo + Verde Escuro === */
+  /* === PALETA BASE: Preto Profundo + Azul-Petróleo/Verde-Água === */
 
   /* Tons de Preto Profundo */
   --black-50: #fafafa;
@@ -24,35 +24,37 @@
   --black-900: #171717;
   --black-950: #0a0a0a;
 
-  /* Tons de Verde Escuro Profundo */
-  --green-50: #f0fdf4;
-  --green-100: #dcfce7;
-  --green-200: #bbf7d0;
-  --green-300: #86efac;
-  --green-400: #4ade80;
-  --green-500: #22c55e;
-  --green-600: #16a34a;
-  --green-700: #15803d;
-  --green-800: #166534;
-  --green-900: #145231;
-  --green-950: #052e16;
+  /* Paleta Azul-Petróleo / Verde-Água - Escala Harmoniosa */
+  --petrol-50: #e6f2f4;
+  --petrol-100: #cce5e9;
+  --petrol-200: #99ccd4;
+  --petrol-300: #66b2be;
+  --petrol-400: #4ea89a;
+  --petrol-500: #3a8a7f;
+  --petrol-600: #2d7d6e;
+  --petrol-700: #1f5f5a;
+  --petrol-800: #1a4d5c;
+  --petrol-900: #143d4a;
+  --petrol-950: #0d2a33;
 
-  /* Verde Profundo Customizado (mais saturado e escuro) */
-  --green-deep: #0a3d2c;
-  --green-deeper: #062c23;
-  --green-darkest: #031810;
+  /* Verde-Água Profundo (escala escura principal) */
+  --teal-deep: #1f5f5a;
+  --teal-deeper: #1a4d5c;
+  --teal-darkest: #0d2a33;
 
-  /* Tons Complementares (Teals & Cyans) */
-  --teal-600: #0d9488;
-  --teal-700: #0f766e;
-  --teal-800: #115e59;
-  --cyan-600: #06b6d4;
-  --cyan-700: #0891b2;
+  /* Tons de Accent (para destaques) */
+  --accent-blue: #1a4d5c;
+  --accent-green: #2d7d6e;
+  --accent-teal: #1f5f5a;
+  --accent-light: #4ea89a;
 
   /* Tons de Destaque */
   --gold: #f5d06b;
   --amber-600: #d97706;
   --orange-600: #ea580c;
+
+  /* Accent adicional */
+  --accent-purple: #a78bfa;
 
   /* === TEXT COLORS === */
   --text-primary: #e5e5e5;
@@ -69,38 +71,46 @@
   --border-default: #333;
   --border-light: #404040;
 
-  /* === ACCENT COLORS === */
-  --accent-primary: #0a3d2c;
-  --accent-secondary: #062c23;
-  --accent-tertiary: #0d9488;
-  --accent-light: #14b8a6;
-  --accent-bright: #06d6d6;
+  /* === ACCENT COLORS (Azul-Petróleo/Verde-Água) === */
+  --accent-primary: #1a4d5c;
+  --accent-secondary: #1f5f5a;
+  --accent-tertiary: #2d7d6e;
+  --accent-bright: #4ea89a;
 
   /* === GRADIENTS === */
-  --gradient-hero: linear-gradient(135deg, #0a3d2c 0%, #062c23 50%, #0d9488 100%);
-  --gradient-button: linear-gradient(135deg, #0d9488 0%, #0f766e 55%, #14b8a6 100%);
-  --gradient-secondary: linear-gradient(135deg, rgb(13 148 136 / 16%), rgb(13 148 136 / 8%));
-  --gradient-card-overlay: linear-gradient(135deg, rgb(10 61 44 / 12%), rgb(13 148 136 / 6%));
-  --gradient-text: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+  --gradient-hero: linear-gradient(135deg, #1a4d5c 0%, #1f5f5a 50%, #2d7d6e 100%);
+  --gradient-button: linear-gradient(135deg, #2d7d6e 0%, #1f5f5a 55%, #4ea89a 100%);
+  --gradient-secondary: linear-gradient(135deg, rgb(45 125 110 / 16%), rgb(45 125 110 / 8%));
+  --gradient-card-overlay: linear-gradient(135deg, rgb(26 77 92 / 12%), rgb(45 125 110 / 6%));
+  --gradient-text: linear-gradient(135deg, #4ea89a 0%, #2d7d6e 100%);
 
   /* === SHADOWS === */
   --shadow-sm: 0 1px 2px rgb(0 0 0 / 50%);
   --shadow-md: 0 4px 6px rgb(0 0 0 / 60%);
   --shadow-lg: 0 10px 15px rgb(0 0 0 / 70%);
-  --shadow-button: 0 6px 18px rgb(13 148 136 / 40%);
-  --shadow-button-hover: 0 12px 30px rgb(20 184 166 / 30%);
-  --shadow-card-hover: 0 0 20px rgb(13 148 136 / 30%), 0 20px 40px rgb(0 0 0 / 60%);
-  --shadow-glow: 0 0 40px rgb(13 148 136 / 20%);
+  --shadow-button: 0 6px 18px rgb(45 125 110 / 40%);
+  --shadow-button-hover: 0 12px 30px rgb(78 168 154 / 30%);
+  --shadow-card-hover: 0 0 20px rgb(45 125 110 / 30%), 0 20px 40px rgb(0 0 0 / 60%);
+  --shadow-card-hover-teal: 0 20px 40px rgb(45 125 110 / 30%);
+  --shadow-card-hover-svg: 0 0 20px rgb(78 168 154 / 40%), 0 20px 40px rgb(0 0 0 / 50%);
+  --shadow-glow: 0 0 40px rgb(45 125 110 / 20%);
+  --shadow-badge: 0 2px 8px rgb(0 0 0 / 40%);
 
   /* === TRANSITIONS === */
   --transition-soft: all 0.25s ease;
   --transition-smooth: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 
   /* === SEMANTIC COLORS === */
-  --success: #10b981;
+  --success: #2d7d6e;
   --warning: #f59e0b;
   --error: #ef4444;
-  --info: #0d9488;
+  --info: #1a4d5c;
+
+  /* === BADGE COLORS === */
+  --badge-purple-bg: rgb(167 139 250 / 15%);
+  --badge-purple-border: rgb(167 139 250 / 35%);
+  --badge-teal-bg: rgb(45 125 110 / 15%);
+  --badge-teal-border: rgb(45 125 110 / 35%);
 }
 
 html {
@@ -131,12 +141,12 @@ body {
   width: 100%;
 }
 
-/* Efeito de profundidade - vazio imensurável mas aconchegante */
+/* Efeito de profundidade */
 body::before {
   background:
-    radial-gradient(circle at 20% 50%, rgb(13 148 136 / 3%) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgb(13 148 136 / 2%) 0%, transparent 50%),
-    radial-gradient(circle at 40% 20%, rgb(13 148 136 / 1%) 0%, transparent 50%);
+    radial-gradient(circle at 20% 50%, rgb(45 125 110 / 3%) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgb(26 77 92 / 2%) 0%, transparent 50%),
+    radial-gradient(circle at 40% 20%, rgb(31 95 90 / 1%) 0%, transparent 50%);
   content: '';
   height: 100vh;
   height: 100dvh;
@@ -177,7 +187,7 @@ a {
 
 a:hover {
   color: var(--accent-light);
-  text-shadow: 0 0 8px rgb(13 148 136 / 40%);
+  text-shadow: 0 0 8px rgb(78 168 154 / 40%);
 }
 
 /* Scrollbar personalizada - tema verde/preto */

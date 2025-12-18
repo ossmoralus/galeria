@@ -14,8 +14,8 @@ export default function Error({
   return (
     <div className="flex min-h-screen items-center justify-center p-5">
       <Container max="sm">
-        <Card className="px-6 py-8 text-center shadow-[0_8px_32px_rgb(0_0_0_/_50%)]">
-          <i className="fas fa-exclamation-triangle text-[4rem] text-[var(--error)]" />
+        <Card className="shadowCardLg px-6 py-8 text-center">
+          <i className="fas fa-exclamation-triangle icon2xl text-[var(--error)]" />
           <h1 className="my-5 font-mono text-2xl text-[var(--text-bright)]">Algo deu errado!</h1>
           <p className="mb-7 text-base leading-relaxed text-[var(--text-secondary)]">
             {error.message !== '' ? error.message : 'Ocorreu um erro inesperado.'}

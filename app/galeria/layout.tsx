@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Container from '../components/ui/Container';
 
 export const metadata: Metadata = {
-  title: 'Galeria SVG - Morallus Software',
+  title: 'Galeria SVG - Moralus OSS',
   description: 'SVGs animados gratuitos para seus projetos no GitHub'
 };
 

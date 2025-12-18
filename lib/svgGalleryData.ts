@@ -229,16 +229,9 @@ export const svgItems: SVGItem[] = [
     filename: 'badges/info/badge-license-mit.svg',
     alt: 'License MIT Badge',
     category: 'badge-status'
-  },
+  }
 
   // ===== PERSONAL =====
-  {
-    id: 'morallus',
-    title: 'Morallus Software',
-    filename: 'mim/morallus.svg',
-    alt: 'Logo Morallus Software',
-    category: 'personal'
-  }
 ];
 
 // Funções auxiliares para filtrar por categoria

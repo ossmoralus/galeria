@@ -73,10 +73,23 @@ npm run license:report
 
 ### `npm run license:full`
 
-Executa auditoria completa (JSON + resumo):
+Executa auditoria completa (JSON + resumo + THIRD-PARTY-NOTICES):
 
 ```bash
 npm run license:full
+```
+
+### `npm run license:notices`
+
+Gera arquivo `THIRD-PARTY-NOTICES.txt` com:
+
+- Resumo completo de todas as licenças
+- Notas especiais sobre licenças weak copyleft (LGPL, MPL)
+- Textos completos das licenças por tipo
+- Declaração de conformidade
+
+```bash
+npm run license:notices
 ```
 
 ## Diferenças em Relação ao `license-checker`
@@ -229,13 +242,13 @@ Aceitar LGPL ou MPL **somente se:**
 
 Para questões sobre licenças:
 
-- Abrir issue: https://github.com/morallus-software/galeria/issues
+- Abrir issue: https://github.com/ossmoralus/galeria/issues
 - Discord: https://discord.gg/RpqNZpVn
 - WhatsApp: +55 37 99902-2401
 
 ---
 
 **Última auditoria:** 2 de dezembro de 2025  
-**Responsável:** Morallus Software  
+**Responsável:** Moralus OSS  
 **Ferramenta:** Script interno `scripts/license-audit.mjs`  
 **Status:** ✅ Todas as licenças compatíveis com MIT

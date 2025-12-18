@@ -30,10 +30,10 @@ interface PostContentProps {
 export default function PostContent({ post, mdxContent }: PostContentProps): React.ReactElement {
   return (
     <Container max="md" className="px-0 py-10">
-      <article className="postArticle mx-auto max-w-[72ch] rounded-none border-0 border-[var(--vscode-border)] bg-[var(--vscode-editor)] py-8 shadow-none">
+      <article className="postArticle maxW72ch mx-auto rounded-none border-0 border-[var(--vscode-border)] bg-[var(--vscode-editor)] py-8 shadow-none">
         <div className="postHeader px-4">
           <div className="postMetaContainer mb-8 border-b-2 border-[var(--vscode-border)] pb-6">
-            <div className="postMeta mb-4 flex flex-wrap gap-3 text-[0.85rem]">
+            <div className="postMeta textSm mb-4 flex flex-wrap gap-3">
               <Link href={`/blog/category/${post.category}`} className="no-underline">
                 <Badge tone="info" className="inline-flex items-center gap-1.5">
                   <i className="fas fa-folder" /> {post.category}
@@ -71,12 +71,12 @@ export default function PostContent({ post, mdxContent }: PostContentProps): Rea
 
           <div className="postFooter flex flex-col gap-6 border-t-2 border-[var(--vscode-border)] pt-6">
             <div className="postAuthorInfo flex items-center gap-3">
-              <i className="fas fa-user-circle text-[2rem] text-[var(--accent-blue)]" />
+              <i className="fas fa-user-circle iconXl text-[var(--accent-blue)]" />
               <div>
                 <div className="postAuthorName text-base font-semibold text-[var(--text-bright)]">
                   {post.author}
                 </div>
-                <div className="postAuthorRole text-[0.85rem] text-[var(--text-secondary)]">
+                <div className="postAuthorRole textSm text-[var(--text-secondary)]">
                   Desenvolvedor
                 </div>
               </div>

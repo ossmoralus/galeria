@@ -92,7 +92,7 @@ O workflow de Integração Contínua (`.github/workflows/ci.yml`) inclui um pass
 
 **Problemas com otimização?**
 
-- 🐛 [Abrir Issue](https://github.com/morallus-software/galeria/issues/new?template=bug_report.yml)
+- 🐛 [Abrir Issue](https://github.com/ossmoralus/galeria/issues/new?template=bug_report.yml)
 - 💬 [Discord](https://discord.gg/RpqNZpVn)
 - 📱 [WhatsApp](https://wa.me/5537999022401)
 

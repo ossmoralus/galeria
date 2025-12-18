@@ -65,6 +65,7 @@ export async function GET(
     const { searchParams } = new URL(request.url);
     const widthParam = searchParams.get('width') ?? searchParams.get('w');
     const heightParam = searchParams.get('height') ?? searchParams.get('h');
+    const fitParam = searchParams.get('fit');
 
     const widthInfo = isValidDimension(widthParam);
     const heightInfo = isValidDimension(heightParam);
@@ -85,7 +86,7 @@ export async function GET(
     }
 
     let svgContent = baseContent;
-    svgContent = manipulateSvgDimensions(svgContent, widthParam, heightParam);
+    svgContent = manipulateSvgDimensions(svgContent, widthParam, heightParam, fitParam);
     return new NextResponse(svgContent, {
       headers: {
         'Content-Type': 'image/svg+xml',

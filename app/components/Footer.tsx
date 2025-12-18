@@ -14,21 +14,21 @@ export default function Footer(): React.ReactElement {
           <Logo size={48} showText />
         </div>
 
-        <p className="mb-5 text-[0.95rem] leading-relaxed text-[var(--text-secondary)]">
+        <p className="textBase mb-5 leading-relaxed text-[var(--text-secondary)]">
           Feito por{' '}
           <Link
-            href="https://github.com/morallus-software"
+            href="https://github.com/ossmoralus"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-accent-light hover:text-accent-cyan transition-colors"
+            className="linkAccent"
           >
-            <i className="fab fa-github" /> Morallus Software
+            <i className="fab fa-github" /> Moralus OSS
           </Link>
         </p>
 
         <div className="mb-6 flex flex-wrap items-center justify-center gap-2.5">
           <Button
-            href="https://github.com/morallus-software"
+            href="https://github.com/ossmoralus"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Repositório GitHub"
@@ -67,16 +67,16 @@ export default function Footer(): React.ReactElement {
         {/* Mobile: collapsible extras */}
         <MobileExtras />
 
-        <p className="m-0 text-[0.8rem] leading-relaxed tracking-wide text-[var(--text-secondary)]">
-          <i className="fas fa-graduation-cap mr-1 text-[var(--accent-cyan)]" /> Educativo •{' '}
-          <i className="fas fa-code-branch mr-1 text-[var(--accent-cyan)]" /> Open Source •{' '}
-          <i className="fas fa-balance-scale mr-1 text-[var(--accent-cyan)]" />
+        <p className="textXs m-0 leading-relaxed tracking-wide text-[var(--text-secondary)]">
+          <i className="fas fa-graduation-cap mr-1 text-[var(--accent-light)]" /> Educativo •{' '}
+          <i className="fas fa-code-branch mr-1 text-[var(--accent-light)]" /> Open Source •{' '}
+          <i className="fas fa-balance-scale mr-1 text-[var(--accent-light)]" />
           <a
             href="/LICENSE.txt"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Ver licença MIT"
-            className="text-accent-light hover:text-accent-cyan underline-offset-2 transition-colors hover:underline"
+            className="linkAccent underline-offset-2 hover:underline"
           >
             MIT License
           </a>
@@ -108,7 +108,7 @@ function MobileExtras(): React.ReactElement | null {
             href="/LICENSE.txt"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-accent-light hover:text-accent-cyan underline-offset-2 transition-colors hover:underline"
+            className="text-accent-light hover:text-accent-bright underline-offset-2 transition-colors hover:underline"
           >
             Ver licença MIT
           </a>

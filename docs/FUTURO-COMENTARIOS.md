@@ -46,7 +46,7 @@ Este documento registra o planejamento para implementação futura de comentári
 
 **Implementação:**
 
-1. Habilitar GitHub Discussions no repositório `morallus-software/galeria`
+1. Habilitar GitHub Discussions no repositório `ossmoralus/galeria`
 2. Instalar script no `app/blog/[slug]/page.tsx`
 3. Mapear `data-term` com slug do post
 4. Configurar tema dark (consistente com site)
@@ -56,7 +56,7 @@ Este documento registra o planejamento para implementação futura de comentári
 ```tsx
 <script
   src="https://giscus.app/client.js"
-  data-repo="morallus-software/galeria"
+  data-repo="ossmoralus/galeria"
   data-repo-id="[ID]"
   data-category="Blog Comments"
   data-category-id="[ID]"
@@ -278,5 +278,5 @@ model PostComment {
 ---
 
 **Última atualização:** 2 de dezembro de 2025  
-**Responsável:** Morallus Software  
+**Responsável:** Moralus OSS  
 **Status:** Planejamento - Não implementado

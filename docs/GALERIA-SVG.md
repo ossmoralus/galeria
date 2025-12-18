@@ -233,28 +233,11 @@ A API suporta parâmetros de largura (`width` ou `w`) e altura (`height` ou `h`)
 
 ## 🎯 Logo Morallus
 
-![Morallus Software](https://galeria-morallus.vercel.app/api/svg/morallus.svg)
+![Moralus OSS](https://galeria-morallus.vercel.app/api/svg/morallus.svg)
 
 ```markdown
-![Morallus Software](https://galeria-morallus.vercel.app/api/svg/morallus.svg)
+![Moralus OSS](https://galeria-morallus.vercel.app/api/svg/morallus.svg)
 ```
-
----
-
-## 🎨 Criar Seu Próprio Badge
-
-Acesse o gerador interativo em:
-
-👉 **[https://galeria-morallus.vercel.app/galeria/criar](https://galeria-morallus.vercel.app/galeria/criar)**
-
-Recursos do gerador:
-
-- 🎨 Seletor de cores
-- 📏 Controle de dimensões
-- 🌈 Gradientes personalizados
-- 💾 Download direto
-- 📋 Copiar código SVG
-- ⚡ Preview em tempo real
 
 ---
 
@@ -267,4 +250,4 @@ Recursos do gerador:
 
 ---
 
-**Desenvolvido por [Morallus Software](https://github.com/morallus-software)**
+**Desenvolvido por [Moralus OSS](https://github.com/ossmoralus)**

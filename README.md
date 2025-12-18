@@ -1,9 +1,9 @@
 <div align="center">
 
-# 🎨 Galeria Morallus Softwar
+# 🎨 Galeria Moralus OSS
 
-[![CI](https://github.com/morallus-software/galeria/actions/workflows/ci.yml/badge.svg)](https://github.com/morallus-software/galeria/actions/workflows/ci.yml)
-[![CodeQL](https://github.com/morallus-software/galeria/actions/workflows/codeql.yml/badge.svg)](https://github.com/morallus-software/galeria/actions/workflows/codeql.yml)
+[![CI](https://github.com/ossmoralus/galeria/actions/workflows/ci.yml/badge.svg)](https://github.com/ossmoralus/galeria/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/ossmoralus/galeria/actions/workflows/codeql.yml/badge.svg)](https://github.com/ossmoralus/galeria/actions/workflows/codeql.yml)
 [![Deploy on Vercel](https://img.shields.io/badge/deploy-vercel-black?style=for-the-badge&logo=vercel)](https://galeria-morallus.vercel.app)
 [![License MIT](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge)](./LICENSE)
 
@@ -15,7 +15,7 @@
 
 **Com gerador interativo de badges, blog MDX integrado e API dinâmica de SVGs**
 
-[🌐 Visitar Site](https://galeria-morallus.vercel.app) • [🖼️ Ver Galeria](https://galeria-morallus.vercel.app/galeria) • [🎨 Gerador](https://galeria-morallus.vercel.app/galeria/criar) • [✍️ Blog](https://galeria-morallus.vercel.app/blog) • [📚 Documentação](./docs/)
+[🌐 Visitar Site](https://galeria-morallus.vercel.app) • [🖼️ Ver Galeria](https://galeria-morallus.vercel.app/galeria) • [✍️ Blog](https://galeria-morallus.vercel.app/blog) • [📚 Documentação](./docs/)
 
 ![Banner](https://galeria-morallus.vercel.app/api/svg/morallus.svg)
 
@@ -25,7 +25,6 @@
 
 - 🌐 **Site**: [galeria-morallus.vercel.app](https://galeria-morallus.vercel.app)
 - 🖼️ **Galeria**: [/galeria](https://galeria-morallus.vercel.app/galeria)
-- 🎨 **Gerador de Badges**: [/galeria/criar](https://galeria-morallus.vercel.app/galeria/criar)
 - ✍️ **Blog**: [/blog](https://galeria-morallus.vercel.app/blog)
 
 ## ✨ Recursos
@@ -39,17 +38,7 @@
 - ⬇️ Download individual de cada SVG
 - 🎨 Suporte a parâmetros de dimensão (`?width=`, `?height=`)
 
-### 🛠️ Gerador Interativo
-
-- 🎨 Seletor de cores para esquerda/direita
-- 📏 Controle de dimensões (largura, altura, tamanho de fonte)
-- 🌈 Toggle para gradientes
-- ⚡ Preview em tempo real
-- 💾 Download direto do SVG gerado
-- 📋 Copiar código para clipboard
-- 🎁 5 presets prontos
-
-### 📝 Blog MDX
+### Blog MDX
 
 - ✍️ Sistema completo de blog com MDX
 - 🏷️ Suporte a categorias e tags
@@ -112,7 +101,6 @@ galeria/
 │   │   ├── Logo.tsx
 │   │   └── MDXContent.tsx
 │   ├── galeria/                       # Galeria de SVGs
-│   │   ├── criar/                     # Gerador interativo
 │   │   └── page.tsx
 │   ├── style/
 │   │   ├── globals.css               # Estilos globais + paleta
@@ -159,7 +147,7 @@ Sincronizada com o logo da empresa:
 
 ```bash
 # Clone o repositório
-git clone https://github.com/morallus-software/galeria.git
+git clone https://github.com/ossmoralus/galeria.git
 cd galeria
 
 # Instale as dependências
@@ -319,7 +307,7 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](./LICENSE) para 
 
 ## 🎓 Projeto Educativo
 
-Este é um projeto educativo desenvolvido pela **Morallus Software** para ajudar desenvolvedores a:
+Este é um projeto educativo desenvolvido pela **Moralus OSS** para ajudar desenvolvedores a:
 
 - ✅ Personalizar perfis do GitHub
 - ✅ Criar badges customizadas
@@ -356,7 +344,7 @@ Veja [docs/AUDITORIA-LICENCAS.md](./docs/AUDITORIA-LICENCAS.md) para detalhes co
 
 [![Discord](https://img.shields.io/badge/Discord-Junte--se-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/RpqNZpVn)
 [![WhatsApp](https://img.shields.io/badge/WhatsApp-Contato-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/5537999022401)
-[![GitHub](https://img.shields.io/badge/GitHub-Seguir-181717?style=for-the-badge&logo=github)](https://github.com/morallus-software)
+[![GitHub](https://img.shields.io/badge/GitHub-Seguir-181717?style=for-the-badge&logo=github)](https://github.com/ossmoralus)
 
 **Comunidade ativa • Suporte rápido • Código aberto**
 
@@ -376,7 +364,7 @@ Se este projeto te ajudou, considere:
 
 <div align="center">
 
-**Feito com 💚 pela equipe Morallus Software**
+**Feito com 💚 pela equipe Moralus OSS**
 
 [![Morallus](https://galeria-morallus.vercel.app/api/svg/morallus.svg?width=200)](https://galeria-morallus.vercel.app)
 

@@ -7,7 +7,7 @@ contact_links:
     url: https://wa.me/5537999022401
     about: Entre em contato direto via WhatsApp para suporte urgente
   - name: 📚 Documentation
-    url: https://github.com/morallus-software/galeria/tree/main/docs
+    url: https://github.com/ossmoralus/galeria/tree/main/docs
     about: Consulte nossa documentação completa antes de abrir uma issue
   - name: 🌐 Website
     url: https://galeria-morallus.vercel.app

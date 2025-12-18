@@ -3,8 +3,8 @@ import Panel from './Panel';
 
 export default function SVGGalleryInstructions(): React.ReactElement {
   return (
-    <section className="svgInstructions mx-auto mt-14 max-w-[900px] rounded-lg border border-l-[3px] border-[var(--vscode-border)] border-l-[var(--accent-blue)] bg-[var(--vscode-editor)] p-10 shadow-[0_4px_16px_rgb(0_0_0_/_30%)]">
-      <h2 className="svgInstructionsTitle mb-8 flex items-center justify-center gap-3 text-center font-mono text-[1.8rem] text-[var(--text-bright)]">
+    <section className="svgInstructions maxW900 shadowInstructions mx-auto mt-14 rounded-lg border border-l-[3px] border-[var(--vscode-border)] border-l-[var(--accent-blue)] bg-[var(--vscode-editor)] p-10">
+      <h2 className="svgInstructionsTitle text4xl mb-8 flex items-center justify-center gap-3 text-center font-mono text-[var(--text-bright)]">
         <i className="fas fa-rocket" /> Como usar no GitHub?
       </h2>
       <ul className="flex list-none flex-col gap-5 p-0">

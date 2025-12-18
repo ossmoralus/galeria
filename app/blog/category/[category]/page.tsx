@@ -13,7 +13,7 @@ export function generateStaticParams(): Array<{ category: string }> {
 
 export async function generateMetadata({ params }: PageProps): Promise<{ title: string }> {
   const { category } = await params;
-  return { title: `${category} | Blog Morallus` };
+  return { title: `${category} | Blog Moralus` };
 }
 
 export default async function CategoryPage({ params }: PageProps): Promise<React.ReactElement> {

@@ -40,7 +40,7 @@ function parsePostFile(filename: string): Post {
     title: (data['title'] as string) ?? '',
     description: (data['description'] as string) ?? '',
     date: (data['date'] as string) ?? '',
-    author: (data['author'] as string) ?? 'Morallus Software',
+    author: (data['author'] as string) ?? 'Moralus OSS',
     category: (data['category'] as string) ?? 'Geral',
     tags: (data['tags'] as string[]) ?? [],
     image: data['image'] as string | undefined,

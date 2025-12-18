@@ -25,20 +25,20 @@ export default function SVGCard({
   return (
     <Card
       key={id}
-      className="svgCard [animation:fadeInUp_0.6s_ease-out_backwards] before:absolute before:left-0 before:top-0 before:h-[3px] before:w-full before:origin-left before:scale-x-0 before:transform before:bg-gradient-to-r before:from-[var(--accent-tertiary)] before:to-[var(--accent-light)] before:transition-transform before:content-[''] hover:-translate-y-2 hover:border-[var(--accent-light)] hover:shadow-[0_0_20px_rgb(20_184_166_/_40%),_0_20px_40px_rgb(0_0_0_/_50%)] hover:before:scale-x-100"
+      className="svgCard cardSvg animateFadeInUp"
       style={{ animationDelay: `${index * 0.1}s` }}
     >
-      <div className="svgCardTitle mb-4 font-mono text-[1.4em] font-semibold text-[var(--text-bright)]">
+      <div className="svgCardTitle text3xl mb-4 font-mono font-semibold text-[var(--text-bright)]">
         {title}
       </div>
 
-      <div className="bg-black mb-3 max-h-[300px] overflow-hidden rounded-md border border-[var(--border-default)]">
+      <div className="bg-black maxH300 mb-3 overflow-hidden rounded-md border border-[var(--border-default)]">
         <img className="size-full object-cover" src={`/api/svg/${filename}`} alt={alt} />
       </div>
 
       <div className="svgCardActions flex flex-wrap gap-2">
         <Button
-          className="svgCardButton font-mono text-[13px]"
+          className="svgCardButton iconSm font-mono"
           variant="primary"
           onClick={() => void onCopy(filename)}
           type="button"
@@ -47,7 +47,7 @@ export default function SVGCard({
         </Button>
 
         <Button
-          className="svgCardButton font-mono text-[13px]"
+          className="svgCardButton iconSm font-mono"
           variant="secondary"
           onClick={() => onDownload(filename)}
           type="button"
@@ -56,7 +56,7 @@ export default function SVGCard({
         </Button>
 
         <Button
-          className="svgCardButton font-mono text-[13px]"
+          className="svgCardButton iconSm font-mono"
           variant="secondary"
           onClick={() => onViewCode(filename)}
           type="button"

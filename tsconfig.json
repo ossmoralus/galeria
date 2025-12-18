@@ -52,7 +52,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts"
+    ".next/dev/types/**/*.ts",
+    ".deprecated/SvgGerador.tsx"
   ],
   "exclude": ["node_modules", "dist", "build", ".next"]
 }

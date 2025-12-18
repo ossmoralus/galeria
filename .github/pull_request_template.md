@@ -145,7 +145,7 @@ Closes #(issue)
 
 <!-- Mencione revisores específicos se necessário -->
 
-@morallus-software/team
+@ossmoralus/team
 
 ---
 
@@ -161,4 +161,4 @@ Ao revisar este PR, por favor verifique:
 - ✅ Não há problemas de segurança óbvios
 - ✅ O PR resolve o problema proposto
 
-**Obrigado por contribuir com a Galeria Morallus Software! 🎨**
+**Obrigado por contribuir com a Galeria Moralus OSS! 🎨**

@@ -1,7 +1,6 @@
 /**
- * =====================================================
  * RESPONSIVE.CSS
- * =====================================================
+ * 
  * Centralização de toda lógica de responsividade
  * e layout do projeto
  * 
@@ -9,18 +8,17 @@
  * - Mobile:  < 640px (padrão)
  * - Tablet:  640px - 1023px (sm:, md:)
  * - Desktop: >= 1024px (lg:, xl:, 2xl:)
- * =====================================================
  */
 
-/* ===================================================
+/*
    BREAKPOINTS BASE (Tailwind)
-   =================================================== */
+*/
 
 /* Mobile First: estilos padrão já aplicados */
 
-/* ===================================================
+/*
    TABLET: 640px - 1023px (sm: e md:)
-   =================================================== */
+*/
 
 @media (width >= 640px) {
   /* Layouts de Grid Responsivos */
@@ -247,9 +245,9 @@
   }
 }
 
-/* ===================================================
+/*
    DESKTOP: >= 1024px (lg:)
-   =================================================== */
+*/
 
 @media (width >= 1024px) {
   /* Layouts de Grid */
@@ -322,9 +320,9 @@
   }
 }
 
-/* ===================================================
+/*
    DESKTOP EXTRA LARGE: >= 1280px (xl:)
-   =================================================== */
+*/
 
 @media (width >= 1280px) {
   /* Container max-widths já definidos em Container.tsx */
@@ -332,17 +330,17 @@
   /* Ajustes adicionais se necessário */
 }
 
-/* ===================================================
+/*
    DESKTOP 2XL: >= 1536px (2xl:)
-   =================================================== */
+*/
 
 @media (width >= 1536px) {
   /* Ajustes para telas muito grandes se necessário */
 }
 
-/* ===================================================
+/*
    CLASSES UTILITÁRIAS RESPONSIVAS
-   =================================================== */
+*/
 
 /* Hidden/Show em diferentes breakpoints */
 @media (width <= 639px) {

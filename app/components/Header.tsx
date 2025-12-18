@@ -4,20 +4,6 @@ import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import Logo from './Logo';
 import Container from './ui/Container';
-const NAV_PRIMARY_DESKTOP =
-  'inline-flex items-center justify-center gap-2 rounded-md border border-[var(--accent-tertiary)] bg-[var(--gradient-button)] px-5 py-2.5 text-base text-white shadow-[var(--shadow-button)] transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-[var(--shadow-button-hover)] focus:outline-none focus:ring-2 focus:ring-[var(--accent-light)] font-medium';
-
-const NAV_PRIMARY_MOBILE =
-  'inline-flex items-center justify-center gap-2 rounded-md border border-[var(--accent-tertiary)] bg-[var(--gradient-button)] px-4 py-2 text-sm text-white shadow-[var(--shadow-button)] transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-[var(--shadow-button-hover)] focus:outline-none focus:ring-2 focus:ring-[var(--accent-light)] font-medium';
-
-const NAV_SECONDARY_DESKTOP =
-  'inline-flex items-center justify-center gap-2 rounded-md border border-[var(--border-default)] bg-[var(--bg-secondary)] px-5 py-2.5 text-base text-[var(--text-primary)] transition-[transform,box-shadow,border-color,color,background-color] duration-200 hover:border-[var(--accent-light)] hover:bg-[var(--bg-tertiary)] hover:text-[var(--accent-light)] hover:shadow-[var(--shadow-button)] focus:outline-none focus:ring-2 focus:ring-[var(--accent-light)] font-medium';
-
-const NAV_SECONDARY_MOBILE =
-  'inline-flex items-center justify-center gap-2 rounded-md border border-[var(--border-default)] bg-[var(--bg-secondary)] px-4 py-2 text-sm text-[var(--text-primary)] transition-[transform,box-shadow,border-color,color,background-color] duration-200 hover:border-[var(--accent-light)] hover:bg-[var(--bg-tertiary)] hover:text-[var(--accent-light)] hover:shadow-[var(--shadow-button)] focus:outline-none focus:ring-2 focus:ring-[var(--accent-light)] font-medium';
-
-const NAV_GHOST_CLASS =
-  'inline-flex items-center justify-center gap-2 rounded-md p-2 text-[var(--text-primary)] transition-colors duration-150 hover:text-[var(--accent-light)] focus:outline-none focus:ring-2 focus:ring-[var(--accent-light)] font-medium';
 
 export default function Header(): React.ReactElement {
   const [open, setOpen] = useState(false);
@@ -43,16 +29,10 @@ export default function Header(): React.ReactElement {
 
         {/* Desktop nav */}
         <nav className="headerNavDesktop hidden">
-          <Link href="/galeria/criar" className={NAV_PRIMARY_DESKTOP}>
-            {' '}
-            <i className="fas fa-magic" /> Criar Badge
-          </Link>
-          <Link href="/galeria" className={NAV_SECONDARY_DESKTOP}>
-            {' '}
+          <Link href="/galeria" className="navSecondaryDesktop">
             <i className="fas fa-images" /> Galeria
           </Link>
-          <Link href="/blog" className={NAV_SECONDARY_DESKTOP}>
-            {' '}
+          <Link href="/blog" className="navSecondaryDesktop">
             <i className="fas fa-book" /> Blog
           </Link>
         </nav>
@@ -65,7 +45,7 @@ export default function Header(): React.ReactElement {
             aria-label={open ? 'Fechar menu' : 'Abrir menu'}
             onClick={() => setOpen((s) => !s)}
             type="button"
-            className={NAV_GHOST_CLASS}
+            className="navGhost"
           >
             <i className={`fas ${open ? 'fa-times' : 'fa-bars'} text-lg`} />
           </button>
@@ -78,18 +58,12 @@ export default function Header(): React.ReactElement {
           }`}
           aria-hidden={!open}
         >
-          <div className="mx-auto max-w-[1100px] p-4">
+          <div className="maxW1100 mx-auto p-4">
             <div className="flex flex-col gap-2">
-              <Link href="/galeria/criar" className={NAV_PRIMARY_MOBILE}>
-                {' '}
-                <i className="fas fa-magic" /> Criar Badge
-              </Link>
-              <Link href="/galeria" className={NAV_SECONDARY_MOBILE}>
-                {' '}
+              <Link href="/galeria" className="navSecondaryMobile">
                 <i className="fas fa-images" /> Galeria
               </Link>
-              <Link href="/blog" className={NAV_SECONDARY_MOBILE}>
-                {' '}
+              <Link href="/blog" className="navSecondaryMobile">
                 <i className="fas fa-book" /> Blog
               </Link>
             </div>

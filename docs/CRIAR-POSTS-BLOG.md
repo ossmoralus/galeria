@@ -1,6 +1,6 @@
 # 📝 Como Criar Posts para o Blog
 
-Este guia explica como criar e gerenciar posts no blog da Galeria Morallus Software.
+Este guia explica como criar e gerenciar posts no blog da Galeria Moralus OSS.
 
 ## 📁 Estrutura de Arquivos
 

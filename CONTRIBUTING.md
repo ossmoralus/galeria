@@ -1,6 +1,6 @@
 # 🤝 Guia de Contribuição
 
-Obrigado por considerar contribuir com a **Galeria Morallus Software**! Este documento fornece diretrizes para contribuir com o projeto.
+Obrigado por considerar contribuir com a **Galeria Moralus OSS**! Este documento fornece diretrizes para contribuir com o projeto.
 
 ## 📋 Índice
 
@@ -86,7 +86,7 @@ git clone https://github.com/SEU-USUARIO/galeria.git
 cd galeria
 
 # Adicione o repositório original como upstream
-git remote add upstream https://github.com/morallus-software/galeria.git
+git remote add upstream https://github.com/ossmoralus/galeria.git
 
 # Instale dependências
 npm install
@@ -392,9 +392,9 @@ Se encontrar vulnerabilidades de segurança:
 
 ### Onde Pedir Ajuda
 
-- 🐛 **Bugs**: [Abrir Issue](https://github.com/morallus-software/galeria/issues/new/choose)
-- 💡 **Features**: [Feature Request](https://github.com/morallus-software/galeria/issues/new/choose)
-- ❓ **Dúvidas**: [Question Issue](https://github.com/morallus-software/galeria/issues/new/choose)
+- 🐛 **Bugs**: [Abrir Issue](https://github.com/ossmoralus/galeria/issues/new/choose)
+- 💡 **Features**: [Feature Request](https://github.com/ossmoralus/galeria/issues/new/choose)
+- ❓ **Dúvidas**: [Question Issue](https://github.com/ossmoralus/galeria/issues/new/choose)
 - 💬 **Chat**: [Discord](https://discord.gg/RpqNZpVn)
 - 📱 **Suporte**: [WhatsApp](https://wa.me/5537999022401)
 
@@ -418,7 +418,7 @@ Todos os contribuidores serão:
 
 Novo por aqui? Comece com:
 
-1. 🔍 **Good First Issues**: [Ver issues](https://github.com/morallus-software/galeria/labels/good%20first%20issue)
+1. 🔍 **Good First Issues**: [Ver issues](https://github.com/ossmoralus/galeria/labels/good%20first%20issue)
 2. 📚 **Documentação**: Sempre precisa melhorias
 3. 🐛 **Typos**: Correções simples são bem-vindas
 4. 🎨 **SVGs**: Contribua com novos designs
@@ -433,4 +433,4 @@ Novo por aqui? Comece com:
 
 ---
 
-**Obrigado por contribuir! Juntos tornamos a Galeria Morallus Software ainda melhor! 🎨**
+**Obrigado por contribuir! Juntos tornamos a Galeria Moralus OSS ainda melhor! 🎨**

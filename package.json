@@ -1,7 +1,7 @@
 {
-  "name": "galeria-morallus-software",
+  "name": "galeria-moralus-oss",
   "version": "1.0.0",
-  "description": "Um projeto educativo desenvolvido por morallus software para pessoas que buscam recursos gratuitos pra seus perfis no GitHub",
+  "description": "Um projeto educativo desenvolvido por Moralus OSS para pessoas que buscam recursos gratuitos pra seus perfis no GitHub",
   "license": "MIT",
   "type": "module",
   "scripts": {
@@ -25,9 +25,10 @@
     "diagnosticar": "oraculo diagnosticar",
     "fix-types": "oraculo fix-types",
     "type-check": "tsc --noEmit",
-    "license:audit": "node scripts/license-audit.mjs --format json --output licenses.json",
+    "license:audit": "node scripts/license-audit.mjs --format json --output licenses-audit.json",
     "license:report": "node scripts/license-audit.mjs --format text --output LICENSES_SUMMARY.txt",
-    "license:full": "npm run license:audit && npm run license:report"
+    "license:notices": "node scripts/generate-third-party-notices.mjs",
+    "license:full": "npm run license:audit && npm run license:report && npm run license:notices"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",

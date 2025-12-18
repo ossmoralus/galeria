@@ -5,10 +5,13 @@ export function isValidDimension(input: string | null): { ok: boolean; isPercent
   return { ok: false, isPercent: false };
 }
 
+type FitMode = 'fill' | 'cover' | 'contain';
+
 export function manipulateSvgDimensions(
   svgContent: string,
   widthParam: string | null,
-  heightParam: string | null
+  heightParam: string | null,
+  fitParam: string | null = null
 ): string {
   const widthInfo = isValidDimension(widthParam);
   const heightInfo = isValidDimension(heightParam);
@@ -16,65 +19,109 @@ export function manipulateSvgDimensions(
   if (widthParam !== null && widthInfo.ok === false) return svgContent;
   if (heightParam !== null && heightInfo.ok === false) return svgContent;
 
-  let resultContent = svgContent;
-  const viewBoxMatch = resultContent.match(/viewBox=["']([^"']+)["']/);
-  let viewBoxStr = viewBoxMatch?.[1] ?? '';
+  // Encontrar a tag <svg> de abertura
+  const svgTagMatch = svgContent.match(/<svg([^>]*)>/);
+  if (svgTagMatch === null) return svgContent;
 
-  const widthMatch = resultContent.match(/width=["']([^"']+)["']/);
-  const heightMatch = resultContent.match(/height=["']([^"']+)["']/);
-  const originalWidth = widthMatch?.[1] ?? '100%';
-  const originalHeight = heightMatch?.[1] ?? '100%';
+  const [originalTag, attributesStr] = svgTagMatch;
+  if (attributesStr === undefined) return svgContent;
 
-  if (viewBoxStr === '') {
+  // Função auxiliar para extrair valor de atributo
+  const getAttr = (name: string): string | null => {
+    const match = attributesStr.match(new RegExp(`${name}=["']([^"']+)["']`));
+    return match?.[1] ?? null;
+  };
+
+  let viewBox = getAttr('viewBox');
+  const originalWidth = getAttr('width') ?? '100%';
+  const originalHeight = getAttr('height') ?? '100%';
+  const preserveAspectRatio = getAttr('preserveAspectRatio');
+
+  // Se não tem viewBox, tenta criar baseado nas dimensões originais
+  if (viewBox === null) {
     const parsedW = parseFloat(originalWidth.replace(/[^\d.]/g, ''));
     const parsedH = parseFloat(originalHeight.replace(/[^\d.]/g, ''));
     const origW = !Number.isNaN(parsedW) && parsedW !== 0 ? parsedW : 1000;
     const origH = !Number.isNaN(parsedH) && parsedH !== 0 ? parsedH : 1000;
-    viewBoxStr = `0 0 ${origW} ${origH}`;
-    resultContent = resultContent.replace(/<svg/, `<svg viewBox="${viewBoxStr}"`);
+    viewBox = `0 0 ${origW} ${origH}`;
   }
 
   let newWidth = widthParam ?? originalWidth;
   let newHeight = heightParam ?? originalHeight;
 
-  const vbValues = viewBoxStr.split(' ').map(Number);
+  // Lógica de redimensionamento proporcional se apenas uma dimensão for fornecida
+  const vbValues = viewBox.split(/[\s,]+/).map(Number);
   if (vbValues.length === 4) {
     const [, , vbWRaw, vbHRaw] = vbValues;
-    const vbW = Number.isFinite(vbWRaw) ? vbWRaw : undefined;
-    const vbH = Number.isFinite(vbHRaw) ? vbHRaw : undefined;
-    if (vbW !== undefined && vbH !== undefined && vbW !== 0 && vbH !== 0) {
+    const hasVbW = vbWRaw !== undefined && Number.isFinite(vbWRaw) && vbWRaw !== 0;
+    const hasVbH = vbHRaw !== undefined && Number.isFinite(vbHRaw) && vbHRaw !== 0;
+
+    if (hasVbW && hasVbH) {
       if (widthParam !== null && heightParam === null && !widthInfo.isPercent) {
         const widthValue = parseInt(widthParam, 10);
         if (Number.isFinite(widthValue) && widthValue > 0) {
-          const ratio = vbH / vbW;
+          const ratio = vbHRaw / vbWRaw;
           newHeight = `${Math.round(widthValue * ratio)}`;
         }
       }
       if (heightParam !== null && widthParam === null && !heightInfo.isPercent) {
         const heightValue = parseInt(heightParam, 10);
         if (Number.isFinite(heightValue) && heightValue > 0) {
-          const ratio = vbW / vbH;
+          const ratio = vbWRaw / vbHRaw;
           newWidth = `${Math.round(heightValue * ratio)}`;
         }
       }
     }
   }
 
-  if (!resultContent.includes('preserveAspectRatio')) {
-    resultContent = resultContent.replace(/<svg/, '<svg preserveAspectRatio="xMidYMid meet"');
+  // Lógica de preserveAspectRatio baseada no fitParam
+  let newPreserveAspectRatio = preserveAspectRatio;
+  let normalizedFit: FitMode | null = null;
+  if (fitParam !== null) {
+    normalizedFit = ['fill', 'cover', 'contain'].includes(fitParam) ? (fitParam as FitMode) : null;
   }
 
-  if (/width=["'][^"']+["']/.test(resultContent)) {
-    resultContent = resultContent.replace(/width=["'][^"']+["']/, `width="${newWidth}"`);
-  } else {
-    resultContent = resultContent.replace(/<svg([^>]*)>/, `<svg$1 width="${newWidth}">`);
+  if (normalizedFit !== null) {
+    switch (normalizedFit) {
+      case 'fill':
+        newPreserveAspectRatio = 'none';
+        break;
+      case 'cover':
+        newPreserveAspectRatio = 'xMidYMid slice';
+        break;
+      case 'contain':
+        newPreserveAspectRatio = 'xMidYMid meet';
+        break;
+    }
+  } else if (preserveAspectRatio === null) {
+    // Default se não existir e nenhum fitParam for passado
+    newPreserveAspectRatio = 'xMidYMid meet';
   }
 
-  if (/height=["'][^"']+["']/.test(resultContent)) {
-    resultContent = resultContent.replace(/height=["'][^"']+["']/, `height="${newHeight}"`);
-  } else {
-    resultContent = resultContent.replace(/<svg([^>]*)>/, `<svg$1 height="${newHeight}">`);
+  // Reconstruir a tag com os novos atributos
+  let newAttributes = attributesStr;
+
+  // Helper para substituir ou adicionar atributo
+  const setAttr = (name: string, value: string): void => {
+    const regex = new RegExp(`${name}=["'][^"']+["']`);
+    if (regex.test(newAttributes)) {
+      newAttributes = newAttributes.replace(regex, `${name}="${value}"`);
+    } else {
+      newAttributes += ` ${name}="${value}"`;
+    }
+  };
+
+  setAttr('width', newWidth);
+  setAttr('height', newHeight);
+  setAttr('viewBox', viewBox);
+
+  if (newPreserveAspectRatio !== null) {
+    setAttr('preserveAspectRatio', newPreserveAspectRatio);
   }
 
-  return resultContent;
+  // Limpar espaços extras que podem ter sido criados
+  newAttributes = newAttributes.replace(/\s+/g, ' ');
+
+  const newTag = `<svg${newAttributes}>`;
+  return svgContent.replace(originalTag, newTag);
 }

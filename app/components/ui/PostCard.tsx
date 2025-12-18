@@ -28,15 +28,15 @@ export default function PostCard({ post, className = '' }: PostCardProps): React
 
   return (
     <Card
-      className={`relative flex cursor-pointer flex-col gap-4 overflow-hidden transition-all hover:-translate-y-2 hover:shadow-[0_20px_40px_rgb(45_125_110_/_30%)] ${className}`}
+      className={`cardHoverLift relative flex flex-col gap-4 overflow-hidden ${className}`}
       onClick={handleCardClick}
       role="button"
       tabIndex={0}
       onKeyDown={handleKeyDown}
     >
-      <div className="flex flex-wrap items-center justify-between gap-3 text-[0.85rem]">
+      <div className="textSm flex flex-wrap items-center justify-between gap-3">
         <Badge tone="info">
-          <i className="fas fa-folder mr-1" /> {post.category}
+          <i className="fas fa-folder iconWithMarginRight" /> {post.category}
         </Badge>
         <span className="inline-flex items-center gap-1.5 text-[var(--text-secondary)]">
           <i className="fas fa-calendar" /> {new Date(post.date).toLocaleDateString('pt-BR')}
@@ -46,7 +46,7 @@ export default function PostCard({ post, className = '' }: PostCardProps): React
       <p className="m-0 break-words">{post.description}</p>
 
       <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[var(--vscode-border)] pt-4">
-        <span className="inline-flex items-center gap-1.5 text-[0.85rem] text-[var(--text-secondary)]">
+        <span className="textSm inline-flex items-center gap-1.5 text-[var(--text-secondary)]">
           <i className="fas fa-clock" /> {post.readingTime}
         </span>
         <span className="flex flex-wrap gap-2" onClick={handleTagsClick}>

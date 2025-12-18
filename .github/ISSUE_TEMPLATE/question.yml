@@ -13,8 +13,8 @@ body:
         Faça sua pergunta abaixo. Tentaremos responder o mais rápido possível!
 
         **💡 Dica:** Antes de perguntar, verifique se sua dúvida já foi respondida:
-        - 📚 [Documentação](https://github.com/morallus-software/galeria/tree/main/docs)
-        - 💬 [Issues fechadas](https://github.com/morallus-software/galeria/issues?q=is%3Aissue+is%3Aclosed)
+        - 📚 [Documentação](https://github.com/ossmoralus/galeria/tree/main/docs)
+        - 💬 [Issues fechadas](https://github.com/ossmoralus/galeria/issues?q=is%3Aissue+is%3Aclosed)
         - 🎮 [Discord](https://discord.gg/RpqNZpVn)
 
   - type: dropdown
@@ -141,4 +141,4 @@ body:
         - 📱 **WhatsApp:** [wa.me/5537999022401](https://wa.me/5537999022401) - Suporte direto
         - 📧 **GitHub Discussions:** Para perguntas gerais sobre a comunidade
 
-        **Obrigado por usar a Galeria Morallus Software! 🎨**
+        **Obrigado por usar a Galeria Moralus OSS! 🎨**

@@ -5,11 +5,12 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import './style/globals.css';
 import './style/responsive.css';
+import './style/components.css';
 
 export const metadata: Metadata = {
   title: {
-    default: 'Galeria Morallus Software',
-    template: '%s | Galeria Morallus'
+    default: 'Galeria Moralus OSS',
+    template: '%s | Galeria Moralus'
   },
   description: 'Recursos gratuitos para seus perfis no GitHub - SVGs e Blog',
   keywords: [
@@ -18,22 +19,22 @@ export const metadata: Metadata = {
     'galeria',
     'blog',
     'recursos gratuitos',
-    'morallus',
+    'moralus',
     'desenvolvimento'
   ],
-  authors: [{ name: 'Morallus Software', url: 'https://github.com/morallus-software' }],
-  creator: 'Morallus Software',
-  publisher: 'Morallus Software',
+  authors: [{ name: 'Moralus OSS', url: 'https://github.com/moralus-oss' }],
+  creator: 'Moralus OSS',
+  publisher: 'Moralus OSS',
   openGraph: {
-    title: 'Galeria Morallus Software',
+    title: 'Galeria Moralus OSS',
     description: 'Recursos gratuitos para seus perfis no GitHub',
     type: 'website',
     locale: 'pt_BR',
-    siteName: 'Galeria Morallus'
+    siteName: 'Galeria Moralus'
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Galeria Morallus Software',
+    title: 'Galeria Moralus OSS',
     description: 'Recursos gratuitos para seus perfis no GitHub'
   },
   robots: {
@@ -49,9 +50,8 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/logo.png', type: 'image/png' },
+      { url: '/icons/logo.png', type: 'image/png' },
       { url: '/icons/favicon.ico', sizes: '32x32' },
-      { url: '/icon.svg', type: 'image/svg+xml' },
       { url: '/icons/icon-192.png', sizes: '192x192', type: 'image/png' },
       { url: '/icons/icon-512.png', sizes: '512x512', type: 'image/png' }
     ],

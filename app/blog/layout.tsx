@@ -4,7 +4,7 @@ import Container from '../components/ui/Container';
 import { getButtonClasses } from '../components/ui/buttonStyles';
 
 export const metadata: Metadata = {
-  title: 'Blog - Galeria Morallus Software',
+  title: 'Blog - Galeria Moralus OSS',
   description: 'Blog com artigos e tutoriais'
 };
 
@@ -15,7 +15,7 @@ export default function BlogLayout({
 }): React.ReactElement {
   return (
     <Container max="xl" className="p-5 pb-20">
-      <header className="blogHeader mx-auto mb-10 flex max-w-[1400px] flex-wrap items-center justify-between gap-3 border-b border-[var(--vscode-border)] bg-[var(--vscode-editor)] px-4 py-6 shadow-[0_2px_8px_rgb(0_0_0_/_30%)] backdrop-blur-md">
+      <header className="blogHeader maxW1400 shadowHeader mx-auto mb-10 flex flex-wrap items-center justify-between gap-3 border-b border-[var(--vscode-border)] bg-[var(--vscode-editor)] px-4 py-6 backdrop-blur-md">
         <h1 className="blogTitle m-0 flex items-center gap-2 font-mono text-lg font-semibold text-[var(--text-bright)]">
           <i className="fas fa-blog" /> Blog
         </h1>
