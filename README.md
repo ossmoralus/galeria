@@ -4,7 +4,7 @@
 
 [![CI](https://github.com/ossmoralus/galeria/actions/workflows/ci.yml/badge.svg)](https://github.com/ossmoralus/galeria/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/ossmoralus/galeria/actions/workflows/codeql.yml/badge.svg)](https://github.com/ossmoralus/galeria/actions/workflows/codeql.yml)
-[![Deploy on Vercel](https://img.shields.io/badge/deploy-vercel-black?style=for-the-badge&logo=vercel)](https://galeria-morallus.vercel.app)
+[![Deploy on Vercel](https://img.shields.io/badge/deploy-vercel-black?style=for-the-badge&logo=vercel)](https://galeria-drab.vercel.app)
 [![License MIT](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge)](./LICENSE)
 
 [![Next.js 16](https://img.shields.io/badge/next.js-16.0.6-black?style=for-the-badge&logo=next.js)](https://nextjs.org)
@@ -15,17 +15,17 @@
 
 **Com gerador interativo de badges, blog MDX integrado e API dinâmica de SVGs**
 
-[🌐 Visitar Site](https://galeria-morallus.vercel.app) • [🖼️ Ver Galeria](https://galeria-morallus.vercel.app/galeria) • [✍️ Blog](https://galeria-morallus.vercel.app/blog) • [📚 Documentação](./docs/)
+[🌐 Visitar Site](https://galeria-drab.vercel.app) • [🖼️ Ver Galeria](https://galeria-drab.vercel.app/galeria) • [✍️ Blog](https://galeria-drab.vercel.app/blog) • [📚 Documentação](./docs/)
 
-![Banner](https://galeria-morallus.vercel.app/api/svg/morallus.svg)
+![Banner](https://galeria-drab.vercel.app/api/svg/morallus.svg)
 
 </div>
 
 ## 🚀 Acesso Rápido
 
-- 🌐 **Site**: [galeria-morallus.vercel.app](https://galeria-morallus.vercel.app)
-- 🖼️ **Galeria**: [/galeria](https://galeria-morallus.vercel.app/galeria)
-- ✍️ **Blog**: [/blog](https://galeria-morallus.vercel.app/blog)
+- 🌐 **Site**: [galeria-drab.vercel.app](https://galeria-drab.vercel.app)
+- 🖼️ **Galeria**: [/galeria](https://galeria-drab.vercel.app/galeria)
+- ✍️ **Blog**: [/blog](https://galeria-drab.vercel.app/blog)
 
 ## ✨ Recursos
 
@@ -206,7 +206,7 @@ npm run fix-types        # Corrigir problemas de tipos
 ### URL Base
 
 ```
-https://galeria-morallus.vercel.app/api/svg/[filename]
+https://galeria-drab.vercel.app/api/svg/[filename]
 ```
 
 ### Exemplos
@@ -214,19 +214,19 @@ https://galeria-morallus.vercel.app/api/svg/[filename]
 ```markdown
 # Badge básico
 
-![Build](https://galeria-morallus.vercel.app/api/svg/badge-build-passing.svg)
+![Build](https://galeria-drab.vercel.app/api/svg/badge-build-passing.svg)
 
 # Com largura customizada
 
-![Build](https://galeria-morallus.vercel.app/api/svg/badge-build-passing.svg?width=200)
+![Build](https://galeria-drab.vercel.app/api/svg/badge-build-passing.svg?width=200)
 
 # Banner responsivo
 
-![Banner](https://galeria-morallus.vercel.app/api/svg/capa-1.svg?width=100%)
+![Banner](https://galeria-drab.vercel.app/api/svg/capa-1.svg?width=100%)
 
 # Dimensões explícitas
 
-![Badge](https://galeria-morallus.vercel.app/api/svg/badge-devops.svg?width=300&height=50)
+![Badge](https://galeria-drab.vercel.app/api/svg/badge-devops.svg?width=300&height=50)
 ```
 
 ### Parâmetros Suportados
@@ -270,19 +270,19 @@ Veja todos os SVGs disponíveis em [docs/GALERIA-SVG.md](./docs/GALERIA-SVG.md)
 
 **Badges de Desenvolvimento:**
 
-- ![Build](https://galeria-morallus.vercel.app/api/svg/badge-build-passing.svg)
-- ![Tests](https://galeria-morallus.vercel.app/api/svg/badge-tests-passing.svg)
-- ![Coverage](https://galeria-morallus.vercel.app/api/svg/badge-coverage-98.svg)
+- ![Build](https://galeria-drab.vercel.app/api/svg/badge-build-passing.svg)
+- ![Tests](https://galeria-drab.vercel.app/api/svg/badge-tests-passing.svg)
+- ![Coverage](https://galeria-drab.vercel.app/api/svg/badge-coverage-98.svg)
 
 **Badges de Perfil:**
 
-- ![Full Stack](https://galeria-morallus.vercel.app/api/svg/badge-full-stack.svg)
-- ![DevOps](https://galeria-morallus.vercel.app/api/svg/badge-devops.svg)
-- ![Cloud](https://galeria-morallus.vercel.app/api/svg/badge-cloud-architect.svg)
+- ![Full Stack](https://galeria-drab.vercel.app/api/svg/badge-full-stack.svg)
+- ![DevOps](https://galeria-drab.vercel.app/api/svg/badge-devops.svg)
+- ![Cloud](https://galeria-drab.vercel.app/api/svg/badge-cloud-architect.svg)
 
 **Banners:**
 
-![Banner 1](https://galeria-morallus.vercel.app/api/svg/capa-1.svg?width=600)
+![Banner 1](https://galeria-drab.vercel.app/api/svg/capa-1.svg?width=600)
 
 ## 🤝 Contribuindo
 
@@ -366,8 +366,8 @@ Se este projeto te ajudou, considere:
 
 **Feito com 💚 pela equipe Moralus OSS**
 
-[![Morallus](https://galeria-morallus.vercel.app/api/svg/morallus.svg?width=200)](https://galeria-morallus.vercel.app)
+[![Morallus](https://galeria-drab.vercel.app/api/svg/morallus.svg?width=200)](https://galeria-drab.vercel.app)
 
-[Website](https://galeria-morallus.vercel.app) • [Galeria](https://galeria-morallus.vercel.app/galeria) • [Blog](https://galeria-morallus.vercel.app/blog) • [Documentação](./docs/)
+[Website](https://galeria-drab.vercel.app) • [Galeria](https://galeria-drab.vercel.app/galeria) • [Blog](https://galeria-drab.vercel.app/blog) • [Documentação](./docs/)
 
 </div>

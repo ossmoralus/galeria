@@ -8,5 +8,5 @@ export function getBaseUrl(): string {
   }
   if (process.env['NODE_ENV'] !== 'production') return 'http://localhost:3000';
   // Fallback para build (não quebra o build, mas loga aviso)
-  return 'https://galeria-morallus.vercel.app';
+  return 'https://galeria-drab.vercel.app';
 }

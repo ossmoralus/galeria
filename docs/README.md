@@ -4,7 +4,7 @@
 
 [![CI](https://github.com/ossmoralus/galeria/actions/workflows/ci.yml/badge.svg)](https://github.com/ossmoralus/galeria/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/ossmoralus/galeria/actions/workflows/codeql.yml/badge.svg)](https://github.com/ossmoralus/galeria/actions/workflows/codeql.yml)
-[![Deploy on Vercel](https://img.shields.io/badge/deploy-vercel-black?style=for-the-badge&logo=vercel)](https://galeria-morallus.vercel.app)
+[![Deploy on Vercel](https://img.shields.io/badge/deploy-vercel-black?style=for-the-badge&logo=vercel)](https://galeria-drab.vercel.app)
 [![License MIT](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge&logo=opensource)](./LICENSE)
 
 [![Next.js 16](https://img.shields.io/badge/next.js-16.0.6-black?style=for-the-badge&logo=next.js)](https://nextjs.org)
@@ -15,17 +15,17 @@
 
 **Com gerador interativo de badges, blog MDX integrado e API dinâmica de SVGs**
 
-[🌐 Visitar Site](https://galeria-morallus.vercel.app) • [🖼️ Ver Galeria](https://galeria-morallus.vercel.app/galeria) • [✍️ Blog](https://galeria-morallus.vercel.app/blog) • [📚 Documentação](./docs/README.md)
+[🌐 Visitar Site](https://galeria-drab.vercel.app) • [🖼️ Ver Galeria](https://galeria-drab.vercel.app/galeria) • [✍️ Blog](https://galeria-drab.vercel.app/blog) • [📚 Documentação](./docs/README.md)
 
-![Banner](https://galeria-morallus.vercel.app/api/svg/morallus.svg)
+![Banner](https://galeria-drab.vercel.app/api/svg/morallus.svg)
 
 </div>
 
 ## 🚀 Acesso Rápido
 
-- 🌐 **Site**: [galeria-morallus.vercel.app](https://galeria-morallus.vercel.app)
-- 🖼️ **Galeria**: [/galeria](https://galeria-morallus.vercel.app/galeria)
-- ✍️ **Blog**: [/blog](https://galeria-morallus.vercel.app/blog)
+- 🌐 **Site**: [galeria-drab.vercel.app](https://galeria-drab.vercel.app)
+- 🖼️ **Galeria**: [/galeria](https://galeria-drab.vercel.app/galeria)
+- ✍️ **Blog**: [/blog](https://galeria-drab.vercel.app/blog)
 
 ## ✨ Recursos Principais
 
@@ -35,10 +35,10 @@ O projeto **Galeria Moralus OSS** oferece três pilares de funcionalidade:
 
 Acesse uma coleção de **22 SVGs** (badges e banners) prontos para uso, servidos por uma API dinâmica de alta performance.
 
-- **URL Base:** `https://galeria-morallus.vercel.app/api/svg/[filename]`
+- **URL Base:** `https://galeria-drab.vercel.app/api/svg/[filename]`
 - **Exemplo de Uso:**
   ```markdown
-  ![Build Status](https://galeria-morallus.vercel.app/api/svg/badge-build-passing.svg)
+  ![Build Status](https://galeria-drab.vercel.app/api/svg/badge-build-passing.svg)
   ```
 - **Recursos:** URLs permanentes, download individual, e suporte a parâmetros de dimensão (`?width=`, `?height=`).
 
@@ -118,6 +118,6 @@ Para informações aprofundadas sobre a estrutura do projeto, scripts de desenvo
 
 **Desenvolvido pela equipe Moralus OSS**
 
-[![Morallus](https://galeria-morallus.vercel.app/api/svg/morallus.svg?width=200)](https://galeria-morallus.vercel.app)
+[![Morallus](https://galeria-drab.vercel.app/api/svg/morallus.svg?width=200)](https://galeria-drab.vercel.app)
 
 </div>

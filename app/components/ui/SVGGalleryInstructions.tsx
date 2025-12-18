@@ -26,7 +26,7 @@ export default function SVGGalleryInstructions(): React.ReactElement {
       </Panel>
       <Panel className="mt-2.5 overflow-x-auto">
         <code className="whitespace-nowrap text-sm">
-          ![Badge](https://galeria-morallus.vercel.app/api/svg/badge-entusiasta.svg)
+          ![Badge](https://galeria-drab.vercel.app/api/svg/badge-entusiasta.svg)
         </code>
       </Panel>
 
@@ -36,17 +36,17 @@ export default function SVGGalleryInstructions(): React.ReactElement {
       </div>
       <Panel className="mt-2.5 overflow-x-auto">
         <code className="whitespace-nowrap text-sm">
-          ![Badge](https://galeria-morallus.vercel.app/api/svg/badge-devops.svg?width=300)
+          ![Badge](https://galeria-drab.vercel.app/api/svg/badge-devops.svg?width=300)
         </code>
       </Panel>
       <Panel className="mt-2.5 overflow-x-auto">
         <code className="whitespace-nowrap text-sm">
-          ![Banner](https://galeria-morallus.vercel.app/api/svg/capa-4.svg?width=800)
+          ![Banner](https://galeria-drab.vercel.app/api/svg/capa-4.svg?width=800)
         </code>
       </Panel>
       <Panel className="mt-2.5 overflow-x-auto">
         <code className="whitespace-nowrap text-sm">
-          ![Banner 100%](https://galeria-morallus.vercel.app/api/svg/capa-4.svg?width=100%)
+          ![Banner 100%](https://galeria-drab.vercel.app/api/svg/capa-4.svg?width=100%)
         </code>
       </Panel>
 

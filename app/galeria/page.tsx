@@ -25,7 +25,7 @@ export default function GaleriaPage(): React.ReactElement {
     if (typeof window !== 'undefined') {
       return window.location.origin;
     }
-    return 'https://galeria-morallus.vercel.app';
+    return 'https://galeria-drab.vercel.app';
   };
 
   const generateMarkdownCode = (filename: string): string => {

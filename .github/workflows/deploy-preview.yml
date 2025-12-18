@@ -55,7 +55,7 @@ jobs:
 
             const body = `### 🚀 Deploy Preview Ready!
 
-            **Preview URL:** \`https://galeria-morallus-git-${context.payload.pull_request.head.ref}-ossmoralus.vercel.app\`
+            **Preview URL:** \`https://galeria-drab-git-${context.payload.pull_request.head.ref}-ossmoralus.vercel.app\`
 
             📊 **Deploy Details:**
             - 🌿 Branch: \`${context.payload.pull_request.head.ref}\`

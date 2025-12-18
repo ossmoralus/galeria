@@ -60,25 +60,25 @@ Agora o SVG recalcula automaticamente a dimensão complementar mantendo a propor
 **1. Redimensionar apenas a largura (altura automática):**
 
 ```
-![Badge](https://galeria-morallus.vercel.app/api/svg/badge-devops.svg?width=200)
+![Badge](https://galeria-drab.vercel.app/api/svg/badge-devops.svg?width=200)
 ```
 
 **2. Redimensionar apenas a altura (largura automática):**
 
 ```
-![Badge](https://galeria-morallus.vercel.app/api/svg/badge-devops.svg?height=100)
+![Badge](https://galeria-drab.vercel.app/api/svg/badge-devops.svg?height=100)
 ```
 
 **3. Forçar dimensões específicas (não recomendado):**
 
 ```
-![Badge](https://galeria-morallus.vercel.app/api/svg/badge-devops.svg?width=200&height=150)
+![Badge](https://galeria-drab.vercel.app/api/svg/badge-devops.svg?width=200&height=150)
 ```
 
 **4. Responsivo (100%):**
 
 ```
-![Banner](https://galeria-morallus.vercel.app/api/svg/capa-morallus.svg?width=100%)
+![Banner](https://galeria-drab.vercel.app/api/svg/capa-morallus.svg?width=100%)
 ```
 
 ## Testes Realizados

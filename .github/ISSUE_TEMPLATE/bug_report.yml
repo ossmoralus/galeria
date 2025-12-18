@@ -112,7 +112,7 @@ body:
     attributes:
       label: 🔗 URL da Página
       description: Em qual página o problema ocorreu?
-      placeholder: https://galeria-morallus.vercel.app/galeria/criar
+      placeholder: https://galeria-drab.vercel.app/galeria/criar
 
   - type: textarea
     id: additional

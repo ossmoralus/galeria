@@ -112,7 +112,7 @@ body:
       render: markdown
       placeholder: |
         ```markdown
-        ![Badge](https://galeria-morallus.vercel.app/api/svg/badge-build-passing.svg)
+        ![Badge](https://galeria-drab.vercel.app/api/svg/badge-build-passing.svg)
         ```
 
   - type: checkboxes

@@ -429,7 +429,7 @@ Novo por aqui? Comece com:
 
 - 💬 Discord: [discord.gg/RpqNZpVn](https://discord.gg/RpqNZpVn)
 - 📱 WhatsApp: +55 37 99902-2401
-- 🌐 Website: [galeria-morallus.vercel.app](https://galeria-morallus.vercel.app)
+- 🌐 Website: [galeria-drab.vercel.app](https://galeria-drab.vercel.app)
 
 ---
 
