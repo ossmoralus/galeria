@@ -1,10 +1,13 @@
 import Link from 'next/link';
-import CategoryNav from './_components/CategoryNav';
-import GalleryGrid from './_components/GalleryGrid';
-import SVGGalleryInstructions from '../components/ui/SVGGalleryInstructions';
-import { svgItems } from '@/lib/svgGalleryData';
+import CategoryNav from '../_components/CategoryNav';
+import GalleryGrid from '../_components/GalleryGrid';
+import SVGGalleryInstructions from '../../components/ui/SVGGalleryInstructions';
+import { getBannerItems, categoryLabels } from '@/lib/svgGalleryData';
 
-export default function GaleriaPage(): React.ReactElement {
+export default function BannersPage(): React.ReactElement {
+  const items = getBannerItems();
+  const { title, icon, description } = categoryLabels.banner;
+
   return (
     <>
       <div className="py-6">
@@ -28,12 +31,7 @@ export default function GaleriaPage(): React.ReactElement {
 
       <CategoryNav />
 
-      <GalleryGrid
-        items={svgItems}
-        title="Todos os Itens"
-        icon="fas fa-th-large"
-        description="Navegue por toda a coleção de SVGs disponíveis"
-      />
+      <GalleryGrid items={items} title={title} icon={icon} description={description} />
 
       <SVGGalleryInstructions />
     </>

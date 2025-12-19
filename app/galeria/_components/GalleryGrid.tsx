@@ -1,0 +1,125 @@
+'use client';
+
+import { useState } from 'react';
+import SVGCard from '../../components/ui/SVGCard';
+import CodeModal from '../../components/ui/CodeModal';
+import SVGGalleryNotification from '../../components/ui/SVGGalleryNotification';
+import type { SVGItem } from '@/lib/svgGalleryData';
+
+interface GalleryGridProps {
+  items: SVGItem[];
+  title?: string;
+  icon?: string;
+  description?: string;
+}
+
+export default function GalleryGrid({
+  items,
+  title,
+  icon,
+  description
+}: GalleryGridProps): React.ReactElement {
+  const [notification, setNotification] = useState<string>('');
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [currentCode, setCurrentCode] = useState<string>('');
+
+  const showNotificationMessage = (message: string): void => {
+    setNotification(message);
+    setTimeout(() => {
+      setNotification('');
+    }, 3000);
+  };
+
+  const getBaseUrl = (): string => {
+    if (typeof window !== 'undefined') {
+      return window.location.origin;
+    }
+    return 'https://galeria-drab.vercel.app';
+  };
+
+  const generateMarkdownCode = (filename: string): string => {
+    const baseUrl = getBaseUrl();
+    const imageUrl = `${baseUrl}/api/svg/${filename}`;
+    return `![${filename}](${imageUrl})`;
+  };
+
+  const copyCode = async (filename: string): Promise<void> => {
+    const markdownCode = generateMarkdownCode(filename);
+    await navigator.clipboard.writeText(markdownCode);
+    showNotificationMessage('✓ Código copiado com sucesso!');
+  };
+
+  const downloadSVG = (filename: string): void => {
+    const link = document.createElement('a');
+    link.href = `/api/svg/${filename}`;
+    link.download = filename;
+    link.click();
+    showNotificationMessage('✓ Download iniciado!');
+  };
+
+  const viewCode = (filename: string): void => {
+    const markdownCode = generateMarkdownCode(filename);
+    setCurrentCode(markdownCode);
+    setShowModal(true);
+  };
+
+  const closeModal = (): void => {
+    setShowModal(false);
+  };
+
+  const copyModalCode = async (): Promise<void> => {
+    await navigator.clipboard.writeText(currentCode);
+    showNotificationMessage('✓ Código copiado!');
+  };
+
+  return (
+    <>
+      {(title !== null || description !== null) && (
+        <div className="mb-8 text-center">
+          {title !== null && (
+            <h1 className="mb-2 text-3xl font-bold text-[var(--text-bright)]">
+              {icon !== undefined && <i className={`${icon} mr-2`} />}
+              {title}
+            </h1>
+          )}
+          {description !== null && <p className="text-[var(--text-muted)]">{description}</p>}
+          <p className="mt-2 text-sm text-[var(--accent-cyan)]">
+            {items.length} {items.length === 1 ? 'item' : 'itens'} disponíveis
+          </p>
+        </div>
+      )}
+
+      {items.length === 0 ? (
+        <div className="py-16 text-center">
+          <i className="fas fa-folder-open mb-4 text-4xl text-[var(--text-muted)]" />
+          <p className="text-[var(--text-muted)]">Nenhum item encontrado nesta categoria.</p>
+        </div>
+      ) : (
+        <main className="galeriaGrid mx-auto grid w-full grid-cols-1 gap-5 px-4 pb-9">
+          {items.map((item, index) => (
+            <SVGCard
+              key={item.id}
+              id={item.id}
+              title={item.title}
+              filename={item.filename}
+              alt={item.alt}
+              index={index}
+              onCopy={copyCode}
+              onDownload={downloadSVG}
+              onViewCode={viewCode}
+            />
+          ))}
+        </main>
+      )}
+
+      <CodeModal
+        code={currentCode}
+        isOpen={showModal}
+        onClose={closeModal}
+        onCopy={copyModalCode}
+      />
+
+      {notification !== '' && <SVGGalleryNotification message={notification} />}
+    </>
+  );
+}
