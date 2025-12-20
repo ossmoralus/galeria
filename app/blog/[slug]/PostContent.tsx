@@ -1,4 +1,5 @@
-﻿'use client';
+﻿/* eslint-disable no-return-await */
+'use client';
 
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
@@ -10,8 +11,7 @@ import VideoEmbed from '@/app/components/VideoEmbed';
 import type { Post } from '@/lib/posts';
 import type { MDXRemoteSerializeResult } from 'next-mdx-remote';
 
-// eslint-disable-next-line @typescript-eslint/promise-function-async
-const ContentRenderer = dynamic(() => import('./MDXRenderer'), {
+const ContentRenderer = dynamic(async () => await import('./MDXRenderer'), {
   ssr: false,
   loading: () => (
     <div className="animate-pulse space-y-4">

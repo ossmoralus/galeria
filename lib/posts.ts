@@ -58,8 +58,7 @@ export function getAllPosts(): PostMetadata[] {
     .filter((post) => post.published === true)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
-  // eslint-disable-next-line no-unused-vars
-  return posts.map(({ content: _content, ...metadata }) => metadata);
+  return posts.map(({ ...metadata }) => metadata);
 }
 
 export function getPostBySlug(slug: string): Post | null {
