@@ -6,267 +6,367 @@
 [![CodeQL](https://github.com/ossmoralus/galeria/actions/workflows/codeql.yml/badge.svg)](https://github.com/ossmoralus/galeria/actions/workflows/codeql.yml)
 [![Deploy on Vercel](https://img.shields.io/badge/deploy-vercel-black?style=for-the-badge&logo=vercel)](https://galeria-drab.vercel.app)
 [![License MIT](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge)](./LICENSE)
+[![TypeScript Strict](https://img.shields.io/badge/typescript-strict-blue?style=for-the-badge)](https://www.typescriptlang.org)
 
-[![Next.js 16](https://img.shields.io/badge/next.js-16.0.6-black?style=for-the-badge&logo=next.js)](https://nextjs.org)
-[![React 19](https://img.shields.io/badge/react-19.2.0-61dafb?style=for-the-badge&logo=react)](https://react.dev)
-[![TypeScript](https://img.shields.io/badge/typescript-5.6.0-3178c6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org)
+Uma plataforma completa para gerenciar **badges, SVGs e banners** para perfis do GitHub. Com gerador interativo, blog educativo e API dinâmica.
 
-### Uma galeria moderna de SVGs, badges e banners para perfis do GitHub
+**Construído com [Next.js 16](https://nextjs.org) • [React 19](https://react.dev) • [TypeScript](https://www.typescriptlang.org) • [TailwindCSS](https://tailwindcss.com)**
 
-**Com gerador interativo de badges, blog MDX integrado e API dinâmica de SVGs**
+<br/>
 
-[🌐 Visitar Site](https://galeria-drab.vercel.app) • [🖼️ Ver Galeria](https://galeria-drab.vercel.app/galeria) • [✍️ Blog](https://galeria-drab.vercel.app/blog) • [📚 Documentação](./docs/)
-
-![Banner](https://galeria-drab.vercel.app/api/svg/morallus.svg)
+[🌐 **Visitar Site**](https://galeria-drab.vercel.app) • [🖼️ **Galeria**](https://galeria-drab.vercel.app/galeria) • [✍️ **Blog**](https://galeria-drab.vercel.app/blog) • [📚 **Docs**](./docs/) • [💬 **Discord**](https://discord.gg/RpqNZpVn)
 
 </div>
 
-## 🚀 Acesso Rápido
+---
 
-- 🌐 **Site**: [galeria-drab.vercel.app](https://galeria-drab.vercel.app)
-- 🖼️ **Galeria**: [/galeria](https://galeria-drab.vercel.app/galeria)
-- ✍️ **Blog**: [/blog](https://galeria-drab.vercel.app/blog)
+## 🎯 Principais Funcionalidades
 
-## ✨ Recursos
+### 🖼️ Galeria Completa
 
-### 🎯 Galeria de SVGs
+- 📦 **SVGs Organizados** - Badges, banners e ícones categorizados
+- 🔗 **URLs Permanentes** - Links diretos e confiáveis para cada asset
+- 📋 **Copy-Paste** - Copiar código Markdown com um clique
+- ⬇️ **Download** - Baixar SVGs individuais facilmente
+- 📐 **Dimensões Dinâmicas** - Parâmetros `?width=` e `?height=` suportados
 
-- **22 SVGs** prontos para usar (badges + banners)
-- 📦 Organizado em categorias (desenvolvimento, perfil, banners)
-- 🔗 URLs diretas e permanentes
-- 📋 Copiar código Markdown com um clique
-- ⬇️ Download individual de cada SVG
-- 🎨 Suporte a parâmetros de dimensão (`?width=`, `?height=`)
+### ✍️ Blog Educativo
 
-### Blog MDX
+- 📝 **Posts em MDX** - Suporta React components + Markdown
+- 🏷️ **Categorias & Tags** - Sistema de filtros intuitivo
+- ⏱️ **Tempo de Leitura** - Estimativa automática
+- 🎨 **Syntax Highlighting** - Destaque de código incluído
+- 🔍 **SEO Otimizado** - Meta tags dinâmicas e sitemaps
 
-- ✍️ Sistema completo de blog com MDX
-- 🏷️ Suporte a categorias e tags
-- ⏱️ Tempo de leitura estimado
-- 🎨 Syntax highlighting para código
-- 📊 Páginas de filtro por categoria/tag
-- 🔍 SEO otimizado
+### ⚙️ API de SVGs
 
-## 🏗️ Stack Tecnológica
+- 🚀 **Dinâmica** - Servir SVGs com parâmetros na URL
+- 🔄 **Responsiva** - Suporta dimensões em pixels ou porcentagem
+- ⚡ **Otimizada** - Cache e compressão automáticos
+- 📊 **Escalável** - Route handlers Next.js modernos
 
-<div align="center">
+## 🛠️ Stack Tecnológico
 
-![Next.js](https://img.shields.io/badge/Next.js-16.0.6-black?style=flat-square&logo=next.js)
-![React](https://img.shields.io/badge/React-19.2.0-61dafb?style=flat-square&logo=react)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.6.0-3178c6?style=flat-square&logo=typescript)
-![Node.js](https://img.shields.io/badge/Node.js-24.x-339933?style=flat-square&logo=node.js)
-![ESLint](https://img.shields.io/badge/ESLint-9.39.1-4b32c3?style=flat-square&logo=eslint)
-![Prettier](https://img.shields.io/badge/Prettier-3.7.3-f7b93e?style=flat-square&logo=prettier)
+### Frontend & Framework
 
-</div>
+- **[Next.js 16.0.6](https://nextjs.org)** - App Router + Turbopack
+- **[React 19.2.0](https://react.dev)** - Biblioteca UI moderna
+- **[TypeScript 5.6.0](https://www.typescriptlang.org)** - Tipagem estática (strict mode 100%)
+- **[TailwindCSS](https://tailwindcss.com)** - Utilitários CSS
+- **[@tailwindcss/typography](https://tailwindcss.com/docs/typography-plugin)** - Plugin para tipografia
 
-### Core
+### Content & MDX
 
-- **Next.js** 16.0.6 - App Router + Turbopack
-- **React** 19.2.0 - Biblioteca UI
-- **TypeScript** 5.6.0 - Tipagem estática ultra-strict
-- **Node.js** 24.x - Runtime JavaScript
+- **[@next/mdx](https://nextjs.org/docs/app/building-your-application/configuring/mdx)** - Integração MDX nativa
+- **[next-mdx-remote](https://github.com/hashicorp/next-mdx-remote)** - Renderização segura de MDX
+- **[gray-matter](https://github.com/jonschlinkert/gray-matter)** - Parse de frontmatter YAML
+- **[reading-time](https://github.com/ngryman/reading-time)** - Cálculo de tempo de leitura
+- **[rehype-highlight](https://github.com/rehypejs/rehype-highlight)** - Syntax highlighting (código)
 
 ### Qualidade de Código
 
-- **ESLint** 9.39.1 - Linting com flat config (40+ regras)
-- **Stylelint** 16.26.1 - Linting CSS com ordenação alfabética
-- **Prettier** 3.7.3 - Formatação automática
-- **TypeScript Strict** - Todas as verificações habilitadas
-- **License Checker** - Auditoria automática de licenças
+- **[ESLint 9.39.1](https://eslint.org)** - 40+ regras customizadas
+- **[Stylelint 16.26.1](https://stylelint.io)** - Ordenação alfabética CSS
+- **[Prettier 3.7.3](https://prettier.io)** - Formatação automática
+- **[SVGO 3.x](https://github.com/svg/svgo)** - Otimização de SVGs
 
-npm run lint:yaml # YAML Lint: validar arquivos .yml/.yaml
-npm run lint:actions # Actionlint: validar workflows GitHub Actions
+### Validação & Segurança
 
-### Bibliotecas MDX
+- **TypeScript Strict** - Todas as 27 verificações habilitadas
+- **License Checker** - Auditoria de conformidade de licenças
+- **YAML Lint** - Validação de workflows e configs
+- **Actionlint** - Validação de workflows GitHub Actions
 
-- `@next/mdx` - Integração MDX com Next.js
-- `next-mdx-remote` - Renderização de MDX remoto
-- `gray-matter` - Parse de frontmatter
-- `reading-time` - Cálculo de tempo de leitura
-- `rehype-highlight` - Syntax highlighting
-- **yaml-lint** 1.7.0 - Validação de arquivos YAML
-- **actionlint** 1.7.x - Validação de workflows GitHub Actions
+### Desenvolvimento & Deployment
+
+- **[Node.js 24.x](https://nodejs.org)** - Runtime JavaScript/TypeScript
+- **[Vercel](https://vercel.com)** - Hosting & deployment automático
+- **GitHub Actions** - CI/CD pipelines
+
+## � Estrutura do Projeto
 
 ```
 galeria/
-├── app/
+├── 📱 app/                           # App Router do Next.js
 │   ├── api/
-│   │   └── svg/[filename]/route.ts    # API dinâmica de SVGs
-│   ├── blog/                          # Sistema de blog
-│   │   ├── [slug]/                    # Posts individuais
-│   │   ├── category/[category]/       # Filtro por categoria
-│   │   └── tag/[tag]/                 # Filtro por tag
-│   ├── components/                    # Componentes reutilizáveis
+│   │   └── svg/[...filename]/        # 🔗 API dinâmica de SVGs com parâmetros
+│   ├── blog/                         # 📚 Sistema de blog com MDX
+│   │   ├── layout.tsx
+│   │   ├── page.tsx                  # Índice de posts
+│   │   ├── [slug]/                   # Posts individuais
+│   │   ├── category/[category]/      # Filtrar por categoria
+│   │   └── tag/[tag]/                # Filtrar por tag
+│   ├── galeria/                      # 🖼️ Galeria de SVGs
+│   │   ├── layout.tsx
+│   │   ├── page.tsx
+│   │   └── _components/              # Componentes internos
+│   │       ├── CategoryNav.tsx
+│   │       └── GalleryGrid.tsx
+│   ├── components/                   # 🧩 Componentes reutilizáveis
+│   │   ├── Header.tsx
+│   │   ├── Footer.tsx
 │   │   ├── Logo.tsx
-│   │   └── MDXContent.tsx
-│   ├── galeria/                       # Galeria de SVGs
-│   │   └── page.tsx
-│   ├── style/
-│   │   ├── globals.css               # Estilos globais + paleta
-│   │   └── responsive.css            # Centraliza lógica de responsividade
-│   └── layout.tsx
-├── content/
-│   └── posts/                         # Posts do blog (MDX)
-├── docs/                              # Documentação
-│   ├── CRIAR-POSTS-BLOG.md           # Guia de posts
-│   └── GALERIA-SVG.md                # Galeria completa
-├── lib/
-│   └── posts.ts                       # Utilitários do blog
-├── public/
-│   ├── icons/                         # Favicons
-│   ├── images/                        # Logo
-│   └── svg/                           # SVGs organizados
-│       ├── badges/                    # Badges (15)
-│       ├── banner/                    # Banners (6)
-│       └── mim/                       # Logo animado (1)
-└── package.json
+│   │   ├── VideoEmbed.tsx
+│   │   └── ui/                       # Design system
+│   │       ├── Button.tsx
+│   │       ├── Card.tsx
+│   │       ├── Badge.tsx
+│   │       ├── CodeModal.tsx
+│   │       └── ... (10+ componentes)
+│   ├── style/                        # 🎨 Estilos centralizados
+│   │   ├── globals.css               # Reset + CSS custom properties
+│   │   ├── components.css            # Classes reutilizáveis
+│   │   └── responsive.css            # Media queries organizadas
+│   ├── layout.tsx                    # Root layout com metadata
+│   ├── page.tsx                      # Home page
+│   ├── error.tsx, not-found.tsx      # Error boundaries
+│   └── ...
+├── 📄 content/
+│   └── posts/                        # 📝 Posts do blog em MDX
+├── 📚 docs/                          # 📖 Documentação
+│   ├── CRIAR-POSTS-BLOG.md          # Guia de posts
+│   ├── GALERIA-SVG.md               # Índice de SVGs
+│   ├── AUDITORIA-LICENCAS.md        # Análise de dependências
+│   ├── OTIMIZACAO-SVG.md            # Guia de otimização
+│   ├── RECOMENDACOES.md             # Boas práticas
+│   └── BADGE_STANDARD.md            # Padrão de badges
+├── 🔧 lib/
+│   ├── posts.ts                      # Utilitários do blog
+│   ├── svgGalleryData.ts             # Dados da galeria
+│   └── getBaseUrl.ts                 # Helper de URLs
+├── 🎁 public/
+│   ├── icons/                        # Favicons e PWA
+│   ├── svg/                          # 🖼️ Assets de SVG
+│   │   ├── badges/                   # Badges customizados
+│   │   │   ├── info/                 # 15+ badges
+│   │   │   ├── decorativos/          # 8+ badges
+│   │   │   └── skills/               # 20+ badges de skills
+│   │   ├── banner/                   # Banners e covers
+│   │   └── mim/                      # Logo animado
+├── 🔧 scripts/                       # Utilitários de build
+│   ├── n-badges.cjs                  # Normalizar badges
+│   ├── license-audit.mjs             # Auditoria de licenças
+│   └── ...
+├── 📋 package.json                   # Dependências e scripts
+├── 📝 README.md                      # Este arquivo
+├── 📜 LICENSE                        # MIT
+└── 🎛️ Config files
+    ├── next.config.mjs
+    ├── tailwind.config.ts
+    ├── tsconfig.json
+    ├── eslint.config.mjs
+    └── ...
 ```
 
-## 🎨 Paleta de Cores
+## 🎨 Design System
 
-Sincronizada com o logo da empresa:
+### Paleta de Cores
+
+Sincronizada com a identidade visual da **Moralus OSS**:
 
 ```css
---accent-blue: #1a4d5c; /* azul-petróleo escuro */
---accent-green: #2d7d6e; /* verde-água profundo */
---accent-teal: #1f5f5a; /* cerceta escuro */
---accent-cyan: #3a8a7f; /* ciano intermediário */
---accent-light: #4ea89a; /* verde-água claro */
---background: #0a0a0a; /* preto profundo */
+/* Tons Primários - Petróleo/Verde-Água */
+--accent-blue: #1a4d5c; /* Azul-petróleo escuro */
+--accent-green: #2d7d6e; /* Verde-água profundo */
+--accent-teal: #1f5f5a; /* Cerceta escuro */
+--accent-cyan: #3a8a7f; /* Ciano intermediário */
+--accent-light: #4ea89a; /* Verde-água claro */
+
+/* Background */
+--bg-primary: #0a0a0a; /* Preto profundo */
+--bg-secondary: #171717;
+--bg-tertiary: #262626;
+
+/* Text */
+--text-primary: #e5e5e5;
+--text-secondary: #a3a3a3;
+--text-bright: #ffffff;
 ```
 
-## 🚀 Começando
+### Componentes UI
+
+- ✅ **Button** - Com variantes (primary, secondary, ghost)
+- ✅ **Card** - Base para todos os containers
+- ✅ **Badge** - Para tags e status
+- ✅ **Input** - Com validação automática
+- ✅ **Panel** - Container com bordas
+- ✅ **CodeModal** - Exibidor de código
+- ✅ **SVGCard** - Card especializado para SVGs
+- ✅ **Container** - Wrapper responsivo
+
+### Estilos Centralizados
+
+- 📐 **Dimensões** - Max-width e heights reutilizáveis
+- 🎬 **Animações** - Fade in, slide in, com suporte a delay dinâmico
+- 📱 **Responsividade** - Mobile-first com breakpoints claros
+- 🌗 **Modo escuro** - Dark theme nativo
+
+## � Começando Rápido
 
 ### Pré-requisitos
 
-- Node.js ≥22.0.0
-- npm ou yarn
+- **Node.js** ≥22.0.0
+- **npm** ou **yarn**
 
-### Instalação
+### Instalação & Setup
 
 ```bash
-# Clone o repositório
+# 1️⃣ Clone o repositório
 git clone https://github.com/ossmoralus/galeria.git
 cd galeria
 
-# Instale as dependências
+# 2️⃣ Instale as dependências
 npm install
 
-# Execute em desenvolvimento
+# 3️⃣ Configure o ambiente (se necessário)
+cp .env.example .env.local
+
+# 4️⃣ Inicie o servidor de desenvolvimento
 npm run dev
 ```
 
-Acesse em [http://localhost:3000](http://localhost:3000)
+Abra [http://localhost:3000](http://localhost:3000) no seu navegador. 🎉
 
-### Scripts Disponíveis
+### 📋 Scripts Disponíveis
 
-#### Desenvolvimento
-
-```bash
-npm run dev              # Servidor de desenvolvimento (localhost:3000)
-npm run build            # Build de produção otimizado
-npm start                # Servidor de produção
-```
-
-#### Qualidade de Código
+#### 🚀 Desenvolvimento & Build
 
 ```bash
-npm run lint             # ESLint: verificar erros JavaScript/TypeScript
-npm run lint:fix         # ESLint: corrigir erros automaticamente
-npm run lint:css         # Stylelint: verificar erros CSS
-npm run lint:css:fix     # Stylelint: corrigir erros CSS automaticamente
-npm run lint:svg         # SVGO: verificar otimização de SVGs
-npm run optimize:svg     # SVGO: otimizar todos os SVGs (recursivo)
-npm run lint:all         # Executar todos os lints + type-check
-- **SVGO** 3.x - Otimização e validação de SVGs
-npm run fix:all          # Formatar + corrigir todos os lints
-npm run format           # Prettier: formatar código
-npm run format:check     # Prettier: verificar formatação
-npm run type-check       # TypeScript: verificar tipos
+npm run dev              # Servidor dev com hot reload (localhost:3000)
+npm run build            # Build otimizado para produção
+npm start                # Inicia servidor de produção
+npm run preview          # Preview local do build
 ```
 
-#### Licenças
+#### 🔍 Linting & Qualidade de Código
 
 ```bash
-npm run licenses:check   # Verificar licenças permitidas
-npm run licenses:generate # Gerar LICENSES.txt
+# Verificar
+npm run lint             # ✓ ESLint (JavaScript/TypeScript)
+npm run lint:css         # ✓ Stylelint (CSS)
+npm run lint:svg         # ✓ SVGO (otimização de SVGs)
+npm run type-check       # ✓ TypeScript type checking
+
+# Corrigir automaticamente
+npm run lint:fix         # 🔧 ESLint auto-fix
+npm run lint:css:fix     # 🔧 Stylelint auto-fix
+npm run format           # 🔧 Prettier formatter
+npm run optimize:svg     # 🔧 SVGO otimizar SVGs
+npm run fix:all          # 🔧 Todos os lints + format
 ```
 
-#### Utilitários
+#### 📦 Dependências & Licenças
 
 ```bash
-npm run oraculo          # Assistente de diagnóstico
-npm run diagnosticar     # Diagnosticar problemas no projeto
-npm run fix-types        # Corrigir problemas de tipos
+npm run licenses:check      # ✓ Auditoria de licenças
+npm run licenses:generate   # 📄 Gerar THIRD-PARTY-NOTICES.txt
 ```
 
-## 📖 Uso da API de SVGs
+#### 🔧 Utilitários
 
-### URL Base
+```bash
+npm run diagnosticar     # 🔍 Diagnóstico de problemas
+npm run oraculo          # 🤖 Assistente IA interativo
+npm run fix-types        # 🛠️ Corrigir issues de tipos
+```
+
+---
+
+## 🔗 API de SVGs
+
+### Endpoint Base
 
 ```
 https://galeria-drab.vercel.app/api/svg/[filename]
 ```
 
-### Exemplos
+### Exemplos de Uso
+
+#### Badge Simples
 
 ```markdown
-# Badge básico
+![Badge](https://galeria-drab.vercel.app/api/svg/badge-typescript.svg)
+```
 
-![Build](https://galeria-drab.vercel.app/api/svg/badge-build-passing.svg)
+#### Com Largura Customizada
 
-# Com largura customizada
+```markdown
+![Badge Large](https://galeria-drab.vercel.app/api/svg/badge-nextjs.svg?width=200)
+```
 
-![Build](https://galeria-drab.vercel.app/api/svg/badge-build-passing.svg?width=200)
+#### Banner Responsivo
 
-# Banner responsivo
-
-![Banner](https://galeria-drab.vercel.app/api/svg/capa-1.svg?width=100%)
-
-# Dimensões explícitas
-
-![Badge](https://galeria-drab.vercel.app/api/svg/badge-devops.svg?width=300&height=50)
+```markdown
+![Banner](https://galeria-drab.vercel.app/api/svg/banner-hero.svg?width=100%)
 ```
 
 ### Parâmetros Suportados
 
-| Parâmetro | Alias | Descrição              | Exemplo                       |
-| --------- | ----- | ---------------------- | ----------------------------- |
-| `width`   | `w`   | Largura em pixels ou % | `?width=300` ou `?width=100%` |
-| `height`  | `h`   | Altura em pixels       | `?height=50`                  |
+| Parâmetro | Tipo   | Exemplo        | Descrição                        |
+| --------- | ------ | -------------- | -------------------------------- |
+| `width`   | string | `300` ou `80%` | Largura em pixels ou porcentagem |
+| `height`  | string | `100`          | Altura em pixels                 |
 
-**Nota**: Se apenas um parâmetro for fornecido, a proporção original é mantida.
+> 💡 **Dica**: Defina apenas largura para manter proporções automáticas!
+
+---
 
 ## 📝 Criar Posts no Blog
 
-Veja o guia completo em [docs/CRIAR-POSTS-BLOG.md](./docs/CRIAR-POSTS-BLOG.md)
+Posts são arquivos MDX dentro de `content/posts/`. Suportam Markdown, React components e frontmatter YAML.
 
-### Exemplo rápido
+### Guia Rápido
 
-```mdx
+1. **Crie um arquivo** em `content/posts/seu-titulo.mdx`
+2. **Adicione o frontmatter**:
+
+```yaml
 ---
-title: 'Meu Primeiro Post'
-description: 'Uma breve descrição'
-date: '2024-12-01'
+title: 'Seu Título'
+description: 'Descrição breve'
+date: '2024-12-20'
 author: 'Seu Nome'
-category: 'Tutorial'
-tags: ['react', 'nextjs', 'typescript']
+category: 'Categoria'
+tags: ['tag1', 'tag2']
 published: true
 ---
-
-# Conteúdo do Post
-
-Escreva seu conteúdo aqui usando Markdown ou componentes React!
 ```
 
-Salve em `content/posts/meu-primeiro-post.mdx`
+3. **Escreva o conteúdo** em Markdown ou JSX
+4. **Commit & Deploy** - O blog atualiza automaticamente!
 
-## 🖼️ Galeria Completa
+📖 [**Documentação Completa →**](./docs/CRIAR-POSTS-BLOG.md)
 
-Veja todos os SVGs disponíveis em [docs/GALERIA-SVG.md](./docs/GALERIA-SVG.md)
+---
 
-### Preview Rápido
+## 🎯 Documentação Completa
+
+| Documento                                                | Descrição                           |
+| -------------------------------------------------------- | ----------------------------------- |
+| [📚 CRIAR-POSTS-BLOG.md](./docs/CRIAR-POSTS-BLOG.md)     | Guia completo para criar posts MDX  |
+| [🖼️ GALERIA-SVG.md](./docs/GALERIA-SVG.md)               | Índice de todos os SVGs disponíveis |
+| [📋 AUDITORIA-LICENCAS.md](./docs/AUDITORIA-LICENCAS.md) | Análise de licenças de dependências |
+| [✏️ OTIMIZACAO-SVG.md](./docs/OTIMIZACAO-SVG.md)         | Guia de otimização de SVGs          |
+| [⭐ RECOMENDACOES.md](./docs/RECOMENDACOES.md)           | Boas práticas e recomendações       |
+| [🎯 BADGE_STANDARD.md](./docs/BADGE_STANDARD.md)         | Padrão de normalização de badges    |
+
+---
+
+## 🌟 Destaques
+
+### Badges Disponíveis
+
+Temos 40+ badges prontos em categorias:
+
+- **Informativo** - badges sobre status e informações
+- **Decorativos** - badges visuais para customização
+- **Skills** - badges de tecnologias (React, Next.js, TypeScript, etc)
+
+### Banners
+
+- 6+ banners customizáveis
+- Logos animados
+- Covers para repositórios
 
 **Badges de Desenvolvimento:**
 
@@ -284,37 +384,68 @@ Veja todos os SVGs disponíveis em [docs/GALERIA-SVG.md](./docs/GALERIA-SVG.md)
 
 ![Banner 1](https://galeria-drab.vercel.app/api/svg/capa-1.svg?width=600)
 
+---
+
 ## 🤝 Contribuindo
 
-Contribuições são bem-vindas! Sinta-se à vontade para:
+Contribuições são bem-vindas! O projeto segue [CONTRIBUTING.md](./CONTRIBUTING.md).
 
-1. 🐛 Reportar bugs
-2. 💡 Sugerir novos recursos
-3. 🎨 Criar novos SVGs
-4. 📝 Melhorar a documentação
+### Como Contribuir
 
-### Processo
+1. 🐛 **Reportar Bugs** - Abra uma issue com detalhes
+2. 💡 **Sugerir Features** - Discuta antes em uma issue
+3. 🎨 **Novos SVGs** - Veja [GALERIA-SVG.md](./docs/GALERIA-SVG.md)
+4. 📝 **Documentação** - Melhore nossa docs
+5. 🔧 **Código** - PRs são bem-vindas!
 
-1. Fork o projeto
-2. Crie uma branch (`git checkout -b feature/NovoRecurso`)
-3. Commit suas mudanças (`git commit -m 'Adiciona novo recurso'`)
-4. Push para a branch (`git push origin feature/NovoRecurso`)
-5. Abra um Pull Request
+### Processo de Desenvolvimento
 
-## 📄 Licença
+```bash
+# 1. Fork e clone
+git clone https://github.com/SEU-USERNAME/galeria.git
 
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](./LICENSE) para mais detalhes.
+# 2. Crie uma branch com um nome descritivo
+git checkout -b feature/minha-feature
+# ou
+git checkout -b fix/meu-bug
+
+# 3. Faça suas mudanças e commit
+git commit -m "feat: adiciona nova feature"
+
+# 4. Verifique qualidade de código
+npm run fix:all
+npm run lint:all
+
+# 5. Push e abra um Pull Request
+git push origin feature/minha-feature
+```
+
+**Padrão de commits**: Usamos [Conventional Commits](https://www.conventionalcommits.org/)
+
+---
+
+## 📜 Licença & Conformidade
+
+Este projeto está sob a **[MIT License](./LICENSE)**.
+
+### Conformidade de Dependências
+
+- ✅ **MIT** (85.4%) - 736 pacotes
+- ✅ **ISC** (5.2%) - 45 pacotes
+- ✅ **Apache-2.0** (3.4%) - 29 pacotes
+- ✅ **BSD** (3.6%) - 31 pacotes
+
+Todas as licenças são **permissivas** e compatíveis comercialmente.
+
+📄 [Auditoria Completa →](./docs/AUDITORIA-LICENCAS.md)
+
+---
 
 ## 🎓 Projeto Educativo
 
-Este é um projeto educativo desenvolvido pela **Moralus OSS** para ajudar desenvolvedores a:
+Desenvolvido pela **[Moralus OSS](https://github.com/ossmoralus)** para ajudar a comunidade de desenvolvedores.
 
-- ✅ Personalizar perfis do GitHub
-- ✅ Criar badges customizadas
-- ✅ Aprender Next.js 16 + React 19
-- ✅ Implementar blogs com MDX
-- ✅ Trabalhar com TypeScript strict mode
-- ✅ Servir assets dinâmicos via API
+### Aprenda com este projeto
 
 ## 📊 Status do Projeto
 
@@ -330,12 +461,6 @@ Este é um projeto educativo desenvolvido pela **Moralus OSS** para ajudar desen
 
 Este projeto utiliza **apenas licenças permissivas**:
 
-- ✅ **MIT** (85.4%) - 736 pacotes
-- ✅ **ISC** (5.2%) - 45 pacotes
-- ✅ **Apache-2.0** (3.4%) - 29 pacotes
-- ✅ **BSD** (3.6%) - 31 pacotes
-- ⚠️ **LGPL/MPL** (0.4%) - 4 pacotes (apenas linking, sem modificação)
-
 Veja [docs/AUDITORIA-LICENCAS.md](./docs/AUDITORIA-LICENCAS.md) para detalhes completos.
 
 ## 📞 Contato e Comunidade
@@ -346,28 +471,62 @@ Veja [docs/AUDITORIA-LICENCAS.md](./docs/AUDITORIA-LICENCAS.md) para detalhes co
 [![WhatsApp](https://img.shields.io/badge/WhatsApp-Contato-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/5537999022401)
 [![GitHub](https://img.shields.io/badge/GitHub-Seguir-181717?style=for-the-badge&logo=github)](https://github.com/ossmoralus)
 
-**Comunidade ativa • Suporte rápido • Código aberto**
+### Aprenda com este projeto
+
+- ✅ **Frontend Moderno** - Next.js 16 + React 19 + TypeScript strict
+- ✅ **Blog com MDX** - Sistema completo de posts com frontmatter
+- ✅ **API Dinâmica** - Route handlers para servir assets com parâmetros
+- ✅ **Design System** - Componentes reutilizáveis em TypeScript
+- ✅ **Qualidade de Código** - ESLint, Stylelint, Prettier, Type Checking
+- ✅ **CI/CD** - GitHub Actions + Deploy automático na Vercel
+- ✅ **Documentação** - Guias e padrões bem estruturados
+
+---
+
+## 📊 Status do Projeto
+
+| Aspecto        | Status                                                     |
+| -------------- | ---------------------------------------------------------- |
+| **Build**      | ![CI](https://img.shields.io/badge/passing-brightgreen)    |
+| **TypeScript** | ![TS](https://img.shields.io/badge/strict-100%25-blue)     |
+| **Linting**    | ![ESLint](https://img.shields.io/badge/ESLint-0-green)     |
+| **Deploy**     | ![Vercel](https://img.shields.io/badge/Vercel-Live-black)  |
+| **Licenças**   | ![Safe](https://img.shields.io/badge/All-Permissive-green) |
+
+---
+
+## 💬 Comunidade & Suporte
+
+<div align="center">
+
+**Junte-se à nossa comunidade!**
+
+[🔗 Discord](https://discord.gg/RpqNZpVn) • [💬 WhatsApp](https://wa.me/5537999022401) • [⭐ GitHub](https://github.com/ossmoralus)
 
 </div>
+
+---
 
 ## 🌟 Apoie o Projeto
 
 Se este projeto te ajudou, considere:
 
-- ⭐ Dar uma estrela no GitHub
-- 🐛 Reportar bugs ou sugerir melhorias
-- 💡 Compartilhar com outros desenvolvedores
-- 🎨 Contribuir com novos SVGs ou features
-- 💬 Participar da comunidade no Discord
+- ⭐ **Star no GitHub** - Ajuda muito a divulgar!
+- 🐛 **Reportar Bugs** - Encontrou algo? Abra uma issue!
+- 💡 **Sugerir Melhorias** - Suas ideias são valiosas
+- 🎨 **Contribuir** - Envie um PR com sua feature
+- 💬 **Participar** - Engage na comunidade Discord
 
 ---
 
 <div align="center">
 
-**Feito com 💚 pela equipe Moralus OSS**
+[![Logo](https://galeria-drab.vercel.app/api/svg/morallus.svg?width=150)](https://galeria-drab.vercel.app)
 
-[![Morallus](https://galeria-drab.vercel.app/api/svg/morallus.svg?width=200)](https://galeria-drab.vercel.app)
+[🌐 Website](https://galeria-drab.vercel.app) • [🖼️ Galeria](https://galeria-drab.vercel.app/galeria) • [✍️ Blog](https://galeria-drab.vercel.app/blog) • [📚 Docs](./docs/)
 
-[Website](https://galeria-drab.vercel.app) • [Galeria](https://galeria-drab.vercel.app/galeria) • [Blog](https://galeria-drab.vercel.app/blog) • [Documentação](./docs/)
+---
+
+<sub>De desenvolvedor para desenvolvedor</sub>
 
 </div>

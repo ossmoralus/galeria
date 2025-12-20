@@ -197,52 +197,79 @@
     max-height: 300px;
     padding: 1rem;
   }
+}
 
-  .criarActions {
-    flex-direction: column;
-  }
+/*
+   HEADER MOBILE NAVIGATION STATES
+*/
 
-  /* Componentes UI */
-  .codeModal {
-    max-width: 95vw;
-    padding: 1.25rem;
-  }
+.headerMobileNav {
+  background: var(--vscode-editor);
+  border-top: 1px solid var(--vscode-border);
+  inset-inline: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 100%;
+  transition:
+    max-height 0.3s ease,
+    opacity 0.3s ease;
+  z-index: 50;
+}
 
-  .svgCard {
-    padding: 0.75rem;
-  }
+.headerMobileNav.open {
+  max-height: 400px;
+  opacity: 100%;
+}
 
-  .svgCardTitle {
-    font-size: 1.2em;
-  }
+.headerMobileNav.closed {
+  max-height: 0;
+  opacity: 0%;
+}
 
-  .svgCardActions {
-    flex-direction: column;
-  }
+.criarActions {
+  flex-direction: column;
+}
 
-  .svgCardButton {
-    font-size: 0.9rem;
-    justify-content: center;
-    padding: 0.5rem 1rem;
-    width: 100%;
-  }
+/* Componentes UI */
+.codeModal {
+  max-width: 95vw;
+  padding: 1.25rem;
+}
 
-  .featureItem {
-    font-size: 0.95rem;
-    padding: 0.75rem;
-  }
+.svgCard {
+  padding: 0.75rem;
+}
 
-  .svgInstructions {
-    padding: 1.75rem;
-  }
+.svgCardTitle {
+  font-size: 1.2em;
+}
 
-  .svgInstructionsTitle {
-    font-size: 1.4rem;
-  }
+.svgCardActions {
+  flex-direction: column;
+}
 
-  .logoText {
-    font-size: 1rem;
-  }
+.svgCardButton {
+  font-size: 0.9rem;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  width: 100%;
+}
+
+.featureItem {
+  font-size: 0.95rem;
+  padding: 0.75rem;
+}
+
+.svgInstructions {
+  padding: 1.75rem;
+}
+
+.svgInstructionsTitle {
+  font-size: 1.4rem;
+}
+
+.logoText {
+  font-size: 1rem;
 }
 
 /*

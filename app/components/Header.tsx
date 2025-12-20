@@ -52,12 +52,7 @@ export default function Header(): React.ReactElement {
         </div>
 
         {/* Mobile nav (dropdown) */}
-        <div
-          className={`headerMobileNav absolute inset-x-0 top-full z-50 overflow-hidden border-t border-[var(--vscode-border)] bg-[var(--vscode-editor)] transition-[max-height,opacity] ${
-            open ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'
-          }`}
-          aria-hidden={!open}
-        >
+        <div className={`headerMobileNav ${open ? 'open' : 'closed'}`} aria-hidden={!open}>
           <div className="maxW1100 mx-auto p-4">
             <div className="flex flex-col gap-2">
               <Link href="/galeria" className="navSecondaryMobile">

@@ -26,7 +26,7 @@ export default function SVGCard({
     <Card
       key={id}
       className="svgCard cardSvg animateFadeInUp"
-      style={{ animationDelay: `${index * 0.1}s` }}
+      style={{ '--animation-delay': `${index * 0.1}s` } as React.CSSProperties}
     >
       <div className="svgCardTitle text3xl mb-4 font-mono font-semibold text-[var(--text-bright)]">
         {title}

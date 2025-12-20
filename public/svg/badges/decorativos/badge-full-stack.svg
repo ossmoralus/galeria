@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="240" height="64">
   <defs>
     <linearGradient id="badge-fullstack-grad" x1="0%" x2="100%" y1="0%" y2="100%">
-      <stop offset="0%" stop-color="#f97316"/>
-      <stop offset="100%" stop-color="#ef4444"/>
+      <stop offset="0%" stop-color="#5f0000ff"/>
+      <stop offset="100%" stop-color="#ff0000ff"/>
     </linearGradient>
   </defs>
   <rect width="240" height="64" fill="url(#badge-fullstack-grad)" rx="18"/>

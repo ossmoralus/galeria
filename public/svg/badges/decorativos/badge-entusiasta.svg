@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="240" height="64">
   <defs>
     <linearGradient id="badge-entusiasta-grad" x1="0%" x2="100%" y1="0%" y2="100%">
-      <stop offset="0%" stop-color="#f43f5e"/>
-      <stop offset="100%" stop-color="#fb923c"/>
+      <stop offset="0%" stop-color="#014f06ff"/>
+      <stop offset="100%" stop-color="#24b300ff"/>
     </linearGradient>
   </defs>
   <rect width="240" height="64" fill="url(#badge-entusiasta-grad)" rx="18"/>

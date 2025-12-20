@@ -16,14 +16,8 @@ export default function CodeModal({
   }
 
   return (
-    <div
-      className="bg-black/90 fixed inset-0 z-[1000] flex items-center justify-center p-5"
-      onClick={onClose}
-    >
-      <div
-        className="codeModal maxH90vh maxW800 shadowCardXl relative w-full overflow-y-auto rounded-lg border border-[var(--vscode-border)] bg-[var(--vscode-editor)] p-7"
-        onClick={(e) => e.stopPropagation()}
-      >
+    <div className="modalOverlay" onClick={onClose}>
+      <div className="modalContent codeModal" onClick={(e) => e.stopPropagation()}>
         <div className="mb-5 flex items-center justify-between">
           <h2>
             <i className="fas fa-code" /> Código Markdown
