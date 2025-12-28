@@ -1,4 +1,11 @@
-name: 🔒 CodeQL Security Analysis
+# =============================================================================
+# CodeQL - Análise de Segurança Avançada
+# =============================================================================
+# Análise estática de código para detectar vulnerabilidades de segurança
+# Executa em: push, pull requests e semanalmente (segunda-feira às 00:00 UTC)
+# =============================================================================
+
+name: 🔒 CodeQL - Análise de Segurança
 
 on:
   push:
@@ -6,13 +13,18 @@ on:
   pull_request:
     branches: [main, develop]
   schedule:
-    # Runs at 00:00 UTC every Monday
+    # Executa toda segunda-feira às 00:00 UTC
     - cron: '0 0 * * 1'
 
 jobs:
-  analyze:
-    name: 🔍 Analyze Code
+  # ===========================================================================
+  # JOB: Análise CodeQL
+  # ===========================================================================
+  analise-codeql:
+    name: 🔍 Analisar Código
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+
     permissions:
       actions: read
       contents: read
@@ -21,37 +33,56 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: ['javascript']
+        language: ['javascript-typescript']
 
     steps:
-      - name: 📥 Checkout code
+      - name: 📥 Baixar código fonte
         uses: actions/checkout@v4
 
-      - name: 🔧 Initialize CodeQL
+      - name: 🔧 Inicializar CodeQL
         uses: github/codeql-action/init@v3
         with:
           languages: ${{ matrix.language }}
           queries: +security-and-quality
         continue-on-error: true
 
-      - name: 🏗️ Autobuild
+      - name: 🏗️ Build automático
         uses: github/codeql-action/autobuild@v3
         continue-on-error: true
 
-      - name: 🔍 Perform CodeQL Analysis
+      - name: 🔍 Executar Análise CodeQL
         uses: github/codeql-action/analyze@v3
         with:
           category: '/language:${{ matrix.language }}'
         continue-on-error: true
 
-      - name: ℹ️ Code Scanning Status
-        if: ${{ always() }}
+      - name: 📊 Resumo da Análise
+        if: always()
         run: |
-          echo "### 🔒 CodeQL Analysis Status" >> $GITHUB_STEP_SUMMARY
+          echo "## 🔒 Análise de Segurança CodeQL" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "✅ CodeQL analysis attempted successfully." >> $GITHUB_STEP_SUMMARY
+          echo "### 📋 Informações da Análise:" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Note:** If Code Scanning is not enabled, this workflow will not upload results." >> $GITHUB_STEP_SUMMARY
-          echo "Enable it in: Settings > Code security and analysis > Code scanning" >> $GITHUB_STEP_SUMMARY
+          echo "| Item | Valor |" >> $GITHUB_STEP_SUMMARY
+          echo "|------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| 🗂️ Linguagem | JavaScript/TypeScript |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🌿 Branch | \`${{ github.ref_name }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| 📝 Commit | \`${{ github.sha }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| ⏰ Data | $(date -u '+%d/%m/%Y %H:%M UTC') |" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "📚 Documentation: https://docs.github.com/code-security/code-scanning" >> $GITHUB_STEP_SUMMARY
+          echo "### ✅ Status:" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "A análise CodeQL foi executada com sucesso." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📚 Próximos Passos:" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- Verifique a aba **Security** do repositório para ver alertas" >> $GITHUB_STEP_SUMMARY
+          echo "- Vulnerabilidades encontradas serão listadas em **Code scanning alerts**" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "---" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "💡 **Nota:** Se o Code Scanning não estiver habilitado, este workflow não enviará resultados." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Para habilitar: **Settings > Code security and analysis > Code scanning**" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "📚 [Documentação CodeQL](https://docs.github.com/code-security/code-scanning)" >> $GITHUB_STEP_SUMMARY

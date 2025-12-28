@@ -15,10 +15,13 @@ import { bannerItems } from './gallery/banners';
 import { decorativosItems } from './gallery/decorativos';
 import { infoItems } from './gallery/info';
 import { skillsItems } from './gallery/skills';
-import type { CategoryType, SVGItem } from './gallery/types';
+import { categoryLabels, type CategoryType, type SVGItem } from './gallery/types';
 
 // Re-exporta tipos para compatibilidade
 export type { CategoryType, SVGItem };
+
+// Re-exporta categoryLabels para compatibilidade
+export { categoryLabels };
 // Combina todos os items em um único array
 export const svgItems: SVGItem[] = [
   ...bannerItems,

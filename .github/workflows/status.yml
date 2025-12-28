@@ -1,4 +1,11 @@
-name: 📊 Status Check
+# =============================================================================
+# Status Check - Relatório de Saúde do Projeto
+# =============================================================================
+# Gera um relatório completo do status do projeto
+# Executa em: push e pull requests para main, develop e developer
+# =============================================================================
+
+name: 📊 Status do Projeto
 
 on:
   push:
@@ -6,99 +13,188 @@ on:
   pull_request:
     branches: [main, develop, developer]
 
+env:
+  NODE_VERSION: '24'
+
 jobs:
-  status-report:
-    name: 📋 Generate Status Report
+  # ===========================================================================
+  # JOB: Relatório de Status
+  # ===========================================================================
+  relatorio-status:
+    name: 📋 Gerar Relatório de Status
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     if: always()
 
     steps:
-      - name: 📥 Checkout code
+      - name: 📥 Baixar código fonte
         uses: actions/checkout@v4
 
-      - name: 🟢 Setup Node.js
+      - name: 🟢 Configurar Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v4
         with:
-          node-version: '24'
+          node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
 
-      - name: 📦 Install dependencies
+      - name: 📦 Instalar dependências
         run: |
-          if [ -f package-lock.json ]; then
-            npm ci;
-          else
-            npm install;
-          fi
+          if [ -f package-lock.json ]; then npm ci; else npm install; fi
 
-      - name: 🔍 Run Quick Health Check
+      - name: 🔍 Verificação Rápida de Saúde
         id: health
         run: |
-          echo "## 🏥 Project Health Check" >> $GITHUB_STEP_SUMMARY
+          echo "## 🏥 Verificação de Saúde do Projeto" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🔍 Verificações Automáticas:" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Verificação | Status | Descrição |" >> $GITHUB_STEP_SUMMARY
+          echo "|-------------|--------|-----------|" >> $GITHUB_STEP_SUMMARY
 
           # ESLint
           if npm run lint > /dev/null 2>&1; then
-            echo "- ✅ **ESLint**: All checks passed" >> $GITHUB_STEP_SUMMARY
-            echo "eslint=✅" >> $GITHUB_OUTPUT
+            echo "| 🔍 ESLint | ✅ Aprovado | Código JavaScript/TypeScript válido |" >> $GITHUB_STEP_SUMMARY
+            echo "eslint=success" >> $GITHUB_OUTPUT
           else
-            echo "- ❌ **ESLint**: Issues found" >> $GITHUB_STEP_SUMMARY
-            echo "eslint=❌" >> $GITHUB_OUTPUT
+            echo "| 🔍 ESLint | ❌ Falhou | Problemas encontrados no código |" >> $GITHUB_STEP_SUMMARY
+            echo "eslint=failed" >> $GITHUB_OUTPUT
           fi
 
           # TypeScript
           if npm run type-check > /dev/null 2>&1; then
-            echo "- ✅ **TypeScript**: No type errors" >> $GITHUB_STEP_SUMMARY
-            echo "typescript=✅" >> $GITHUB_OUTPUT
+            echo "| 🔷 TypeScript | ✅ Aprovado | Nenhum erro de tipo |" >> $GITHUB_STEP_SUMMARY
+            echo "typescript=success" >> $GITHUB_OUTPUT
           else
-            echo "- ❌ **TypeScript**: Type errors found" >> $GITHUB_STEP_SUMMARY
-            echo "typescript=❌" >> $GITHUB_OUTPUT
+            echo "| 🔷 TypeScript | ❌ Falhou | Erros de tipo encontrados |" >> $GITHUB_STEP_SUMMARY
+            echo "typescript=failed" >> $GITHUB_OUTPUT
           fi
 
           # Stylelint
           if npm run lint:css > /dev/null 2>&1; then
-            echo "- ✅ **Stylelint**: All styles valid" >> $GITHUB_STEP_SUMMARY
-            echo "stylelint=✅" >> $GITHUB_OUTPUT
+            echo "| 🎨 Stylelint | ✅ Aprovado | Estilos CSS válidos |" >> $GITHUB_STEP_SUMMARY
+            echo "stylelint=success" >> $GITHUB_OUTPUT
           else
-            echo "- ❌ **Stylelint**: Style issues found" >> $GITHUB_STEP_SUMMARY
-            echo "stylelint=❌" >> $GITHUB_OUTPUT
+            echo "| 🎨 Stylelint | ❌ Falhou | Problemas nos estilos CSS |" >> $GITHUB_STEP_SUMMARY
+            echo "stylelint=failed" >> $GITHUB_OUTPUT
+          fi
+
+          # Prettier
+          if npm run format:check > /dev/null 2>&1; then
+            echo "| 📝 Prettier | ✅ Aprovado | Código bem formatado |" >> $GITHUB_STEP_SUMMARY
+            echo "prettier=success" >> $GITHUB_OUTPUT
+          else
+            echo "| 📝 Prettier | ⚠️ Atenção | Formatação inconsistente |" >> $GITHUB_STEP_SUMMARY
+            echo "prettier=warning" >> $GITHUB_OUTPUT
           fi
 
           # Build
           if npm run build > /dev/null 2>&1; then
-            echo "- ✅ **Build**: Successful" >> $GITHUB_STEP_SUMMARY
-            echo "build=✅" >> $GITHUB_OUTPUT
+            echo "| 🏗️ Build | ✅ Aprovado | Compilação bem-sucedida |" >> $GITHUB_STEP_SUMMARY
+            echo "build=success" >> $GITHUB_OUTPUT
           else
-            echo "- ❌ **Build**: Failed" >> $GITHUB_STEP_SUMMARY
-            echo "build=❌" >> $GITHUB_OUTPUT
+            echo "| 🏗️ Build | ❌ Falhou | Erro na compilação |" >> $GITHUB_STEP_SUMMARY
+            echo "build=failed" >> $GITHUB_OUTPUT
+          fi
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+        continue-on-error: true
+
+      - name: 📊 Estatísticas do Projeto
+        run: |
+          echo "### 📊 Estatísticas do Projeto:" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "#### 📁 Contagem de Arquivos:" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Tipo | Quantidade |" >> $GITHUB_STEP_SUMMARY
+          echo "|------|------------|" >> $GITHUB_STEP_SUMMARY
+          echo "| 📄 TypeScript (.ts/.tsx) | \`$(find . -name '*.ts' -o -name '*.tsx' | grep -v node_modules | grep -v .next | wc -l)\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🎨 CSS | \`$(find . -name '*.css' | grep -v node_modules | wc -l)\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| 📝 MDX/Markdown | \`$(find . -name '*.mdx' -o -name '*.md' | grep -v node_modules | wc -l)\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🖼️ SVG | \`$(find . -name '*.svg' | grep -v node_modules | wc -l)\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| 📦 JSON | \`$(find . -name '*.json' | grep -v node_modules | grep -v .next | wc -l)\` |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "#### 📦 Dependências:" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Tipo | Quantidade |" >> $GITHUB_STEP_SUMMARY
+          echo "|------|------------|" >> $GITHUB_STEP_SUMMARY
+          echo "| 🚀 Produção | \`$(jq '.dependencies | length' package.json)\` pacotes |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🛠️ Desenvolvimento | \`$(jq '.devDependencies | length' package.json)\` pacotes |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+        continue-on-error: true
+
+      - name: 🔐 Verificação de Segurança
+        run: |
+          echo "### 🔐 Auditoria de Segurança:" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Capturar resultado do audit
+          AUDIT_OUTPUT=$(npm audit --json 2>/dev/null || echo '{}')
+
+          CRITICAL=$(echo $AUDIT_OUTPUT | jq -r '.metadata.vulnerabilities.critical // 0')
+          HIGH=$(echo $AUDIT_OUTPUT | jq -r '.metadata.vulnerabilities.high // 0')
+          MODERATE=$(echo $AUDIT_OUTPUT | jq -r '.metadata.vulnerabilities.moderate // 0')
+          LOW=$(echo $AUDIT_OUTPUT | jq -r '.metadata.vulnerabilities.low // 0')
+
+          echo "| Severidade | Quantidade |" >> $GITHUB_STEP_SUMMARY
+          echo "|------------|------------|" >> $GITHUB_STEP_SUMMARY
+          echo "| 🔴 Críticas | \`$CRITICAL\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🟠 Altas | \`$HIGH\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🟡 Moderadas | \`$MODERATE\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🟢 Baixas | \`$LOW\` |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          if [ "$CRITICAL" -eq 0 ] && [ "$HIGH" -eq 0 ]; then
+            echo "✅ **Nenhuma vulnerabilidade crítica ou alta encontrada!**" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "⚠️ **Atenção:** Existem vulnerabilidades que precisam de atenção." >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Execute \`npm audit\` localmente para mais detalhes." >> $GITHUB_STEP_SUMMARY
+          fi
+          echo "" >> $GITHUB_STEP_SUMMARY
+        continue-on-error: true
+
+      - name: 📋 Informações do Ambiente
+        run: |
+          echo "### 🖥️ Informações do Ambiente:" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Item | Valor |" >> $GITHUB_STEP_SUMMARY
+          echo "|------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| 🌿 Branch | \`${{ github.ref_name }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| 📝 Commit | \`${{ github.sha }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| 👤 Disparado por | ${{ github.actor }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🚀 Evento | \`${{ github.event_name }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| ⏰ Data | $(date -u '+%d/%m/%Y %H:%M UTC') |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🟢 Node.js | \`$(node --version)\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| 📦 npm | \`$(npm --version)\` |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+      - name: ✅ Status Final
+        if: always()
+        run: |
+          echo "---" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## 🎯 Resumo Final" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Verificar resultados
+          ESLINT="${{ steps.health.outputs.eslint }}"
+          TYPESCRIPT="${{ steps.health.outputs.typescript }}"
+          BUILD="${{ steps.health.outputs.build }}"
+
+          if [ "$ESLINT" == "success" ] && [ "$TYPESCRIPT" == "success" ] && [ "$BUILD" == "success" ]; then
+            echo "### ✅ Projeto Saudável!" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Todas as verificações principais passaram. O projeto está pronto para deploy!" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "### ⚠️ Atenção Necessária" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Algumas verificações falharam. Por favor, revise os detalhes acima." >> $GITHUB_STEP_SUMMARY
           fi
 
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "---" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Branch:** \`${{ github.ref_name }}\`" >> $GITHUB_STEP_SUMMARY
-          echo "**Commit:** \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
-          echo "**Triggered by:** ${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
-        continue-on-error: true
-
-      - name: 📊 Project Statistics
-        run: |
-          echo "## 📊 Project Statistics" >> $GITHUB_STEP_SUMMARY
+          echo "💡 **Dica:** Para corrigir problemas automaticamente, execute:" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Code files:**" >> $GITHUB_STEP_SUMMARY
-          echo "- TypeScript/JavaScript: \`$(find . -name "*.ts" -o -name "*.tsx" -o -name "*.js" -o -name "*.jsx" | grep -v node_modules | grep -v .next | wc -l)\`" >> $GITHUB_STEP_SUMMARY
-          echo "- CSS files: \`$(find . -name "*.css" | grep -v node_modules | wc -l)\`" >> $GITHUB_STEP_SUMMARY
-          echo "- MDX files: \`$(find . -name "*.mdx" | grep -v node_modules | wc -l)\`" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Dependencies:**" >> $GITHUB_STEP_SUMMARY
-          echo "- Total packages: \`$(jq '.dependencies | length' package.json)\` production + \`$(jq '.devDependencies | length' package.json)\` dev" >> $GITHUB_STEP_SUMMARY
-        continue-on-error: true
-
-      - name: ✅ Final Status
-        if: always()
-        run: |
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "---" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "🎯 **Overall Status:** Project is healthy and ready for deployment!" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "💡 **Tip:** Check individual workflow runs for detailed information." >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`bash" >> $GITHUB_STEP_SUMMARY
+          echo "npm run fix:all" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY

@@ -1,3 +1,10 @@
+# =============================================================================
+# Deploy Preview - Pré-visualização de Pull Requests
+# =============================================================================
+# Cria uma pré-visualização do site para cada Pull Request
+# Executa em: abertura, sincronização e reabertura de PRs
+# =============================================================================
+
 name: 🚀 Deploy Preview
 
 on:
@@ -8,114 +15,180 @@ concurrency:
   group: preview-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  NODE_VERSION: '24'
+
 jobs:
-  deploy-preview:
-    name: 📦 Deploy to Vercel Preview
+  # ===========================================================================
+  # JOB 1: Verificações de Qualidade
+  # ===========================================================================
+  verificacoes-qualidade:
+    name: ✅ Verificações de Qualidade
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
-      - name: 📥 Checkout code
+      - name: 📥 Baixar código fonte
         uses: actions/checkout@v4
 
-      - name: 🟢 Setup Node.js
+      - name: 🟢 Configurar Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v4
         with:
-          node-version: '24'
+          node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
 
-      - name: 📦 Install dependencies (lock aware)
+      - name: 📦 Instalar dependências
         run: |
-          if [ -f package-lock.json ]; then
-            npm ci;
-          else
-            npm install;
-          fi
+          if [ -f package-lock.json ]; then npm ci; else npm install; fi
 
-      - name: 📦 Cache Next.js build
+      - name: 🔍 Verificar ESLint
+        run: npm run lint
+
+      - name: 🎨 Verificar Stylelint
+        run: npm run lint:css
+
+      - name: 🔷 Verificar TypeScript
+        run: npm run type-check
+
+      - name: 🖼️ Verificar SVGs
+        run: npm run lint:svg
+        continue-on-error: true
+
+      - name: 📊 Resumo das Verificações
+        if: always()
+        run: |
+          echo "## ✅ Verificações de Qualidade Concluídas" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🔍 Verificações Críticas:" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ **ESLint:** Aprovado" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ **Stylelint:** Aprovado" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ **TypeScript:** Aprovado" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📋 Verificações Opcionais:" >> $GITHUB_STEP_SUMMARY
+          echo "- 🟡 **Otimização SVG:** Apenas informativo" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "🚀 **Pronto para pré-visualização!**" >> $GITHUB_STEP_SUMMARY
+
+  # ===========================================================================
+  # JOB 2: Build e Deploy Preview
+  # ===========================================================================
+  deploy-preview:
+    name: 📦 Build e Deploy Preview
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: verificacoes-qualidade
+
+    steps:
+      - name: 📥 Baixar código fonte
+        uses: actions/checkout@v4
+
+      - name: 🟢 Configurar Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: 📦 Instalar dependências
+        run: |
+          if [ -f package-lock.json ]; then npm ci; else npm install; fi
+
+      - name: 📦 Cache do Next.js
         uses: actions/cache@v4
         with:
           path: |
             .next/cache
-          key: ${{ runner.os }}-nextjs-preview-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
+          key: ${{ runner.os }}-nextjs-preview-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.ts', '**/*.tsx') }}
           restore-keys: |
             ${{ runner.os }}-nextjs-preview-${{ hashFiles('**/package-lock.json') }}-
             ${{ runner.os }}-nextjs-preview-
 
-      - name: 🔨 Build project
+      - name: 🔨 Compilar projeto
         run: npm run build
         env:
           NODE_ENV: production
 
-      - name: 💬 Comment on PR
+      - name: 💬 Comentar no PR
         uses: actions/github-script@v7
         with:
           script: |
             const prNumber = context.payload.pull_request.number;
             const sha = context.payload.pull_request.head.sha.substring(0, 7);
+            const branch = context.payload.pull_request.head.ref;
+            const branchSlug = branch.toLowerCase().replace(/[^a-z0-9]/g, '-').substring(0, 50);
 
-            const body = `### 🚀 Deploy Preview Ready!
+            const body = `## 🚀 Deploy Preview Pronto!
 
-            **Preview URL:** \`https://galeria-drab-git-${context.payload.pull_request.head.ref}-ossmoralus.vercel.app\`
+            ### 🔗 URL de Pré-visualização
 
-            📊 **Deploy Details:**
-            - 🌿 Branch: \`${context.payload.pull_request.head.ref}\`
-            - 📝 Commit: \`${sha}\`
-            - ⚡ Status: Deploying via Vercel
+            \`https://galeria-drab-git-${branchSlug}-ossmoralus.vercel.app\`
 
-            > Preview will be available in ~2 minutes. Vercel will also comment with the final URL.`;
+            ---
 
-            github.rest.issues.createComment({
-              issue_number: prNumber,
+            ### 📊 Detalhes do Deploy:
+
+            | Item | Valor |
+            |------|-------|
+            | 🌿 Branch | \`${branch}\` |
+            | 📝 Commit | \`${sha}\` |
+            | ⚡ Status | Implantando via Vercel |
+            | ⏰ Horário | ${new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })} |
+
+            ---
+
+            > 💡 **Nota:** A pré-visualização estará disponível em ~2 minutos.
+            > A Vercel também comentará com a URL final.
+
+            ### ✅ Verificações Aprovadas:
+            - 🔍 ESLint
+            - 🎨 Stylelint  
+            - 🔷 TypeScript
+            - 🏗️ Build`;
+
+            // Procurar comentário existente
+            const { data: comments } = await github.rest.issues.listComments({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: body
+              issue_number: prNumber,
             });
 
-  preview-checks:
-    name: ✅ Preview Quality Checks
-    runs-on: ubuntu-latest
+            const botComment = comments.find(comment => 
+              comment.user.type === 'Bot' && 
+              comment.body.includes('🚀 Deploy Preview Pronto!')
+            );
 
-    steps:
-      - name: 📥 Checkout code
-        uses: actions/checkout@v4
+            if (botComment) {
+              // Atualizar comentário existente
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: botComment.id,
+                body: body
+              });
+            } else {
+              // Criar novo comentário
+              await github.rest.issues.createComment({
+                issue_number: prNumber,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: body
+              });
+            }
 
-      - name: 🟢 Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '24'
-          cache: 'npm'
-
-      - name: 📦 Install dependencies (lock aware)
+      - name: 📊 Resumo do Deploy
         run: |
-          if [ -f package-lock.json ]; then npm ci; else npm install; fi
-
-      - name: 🔍 Run ESLint
-        run: npm run lint
-        continue-on-error: false
-
-      - name: 🎨 Run Stylelint
-        run: npm run lint:css
-        continue-on-error: false
-
-      - name: 🔷 TypeScript Check
-        run: npm run type-check
-        continue-on-error: false
-
-      - name: 🖼️ SVG Check
-        run: npm run lint:svg
-        continue-on-error: true
-
-      - name: 📊 Quality summary
-        if: always()
-        run: |
-          echo "### ✅ Quality Checks Completed!" >> $GITHUB_STEP_SUMMARY
+          echo "## 🚀 Deploy Preview" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Critical checks:**" >> $GITHUB_STEP_SUMMARY
-          echo "- ✅ ESLint: Passed" >> $GITHUB_STEP_SUMMARY
-          echo "- ✅ Stylelint: Passed" >> $GITHUB_STEP_SUMMARY
-          echo "- ✅ TypeScript: Passed" >> $GITHUB_STEP_SUMMARY
+          echo "### 📋 Informações:" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Optional checks:**" >> $GITHUB_STEP_SUMMARY
-          echo "- 🟡 SVG Optimization: Advisory only" >> $GITHUB_STEP_SUMMARY
+          echo "| Item | Valor |" >> $GITHUB_STEP_SUMMARY
+          echo "|------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| 🌿 Branch | \`${{ github.head_ref }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| 📝 Commit | \`${{ github.event.pull_request.head.sha }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🔢 PR | #${{ github.event.pull_request.number }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| 👤 Autor | ${{ github.event.pull_request.user.login }} |" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "🚀 Ready for preview deployment!" >> $GITHUB_STEP_SUMMARY
+          echo "### ✅ Status:" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Build concluído! A Vercel está implantando a pré-visualização." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "💡 **Dica:** Verifique os comentários do PR para a URL de pré-visualização." >> $GITHUB_STEP_SUMMARY

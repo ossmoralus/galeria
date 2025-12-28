@@ -1,4 +1,6 @@
-@import url('tailwindcss');
+@import url('tailwindcss/base');
+@import url('tailwindcss/components');
+@import url('tailwindcss/utilities');
 
 * {
   box-sizing: border-box;
