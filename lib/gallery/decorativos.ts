@@ -1,0 +1,149 @@
+/**
+ * Dados dos Badges Decorativos (Roles/Profissões)
+ */
+
+import type { SVGItem } from './types';
+
+export const decorativosItems: SVGItem[] = [
+  {
+    id: 'badge-entusiasta',
+    title: 'Badge Entusiasta',
+    filename: 'badges/decorativos/badge-entusiasta.svg',
+    alt: 'Badge Entusiasta',
+    category: 'decorativos'
+  },
+  {
+    id: 'badge-devops',
+    title: 'Badge DevOps Engineer',
+    filename: 'badges/decorativos/badge-devops.svg',
+    alt: 'Badge DevOps Engineer',
+    category: 'decorativos'
+  },
+  {
+    id: 'badge-data-analyst',
+    title: 'Badge Data Analyst',
+    filename: 'badges/decorativos/badge-data-analyst.svg',
+    alt: 'Badge Data Analyst',
+    category: 'decorativos'
+  },
+  {
+    id: 'badge-full-stack',
+    title: 'Badge Full Stack Developer',
+    filename: 'badges/decorativos/badge-full-stack.svg',
+    alt: 'Badge Full Stack Developer',
+    category: 'decorativos'
+  },
+  {
+    id: 'badge-cloud-architect',
+    title: 'Badge Cloud Architect',
+    filename: 'badges/decorativos/badge-cloud-architect.svg',
+    alt: 'Badge Cloud Architect',
+    category: 'decorativos'
+  },
+  {
+    id: 'badge-machine-learning',
+    title: 'Badge Machine Learning',
+    filename: 'badges/decorativos/badge-machine-learning.svg',
+    alt: 'Badge Machine Learning',
+    category: 'decorativos'
+  },
+  {
+    id: 'badge-security',
+    title: 'Badge Security Expert',
+    filename: 'badges/decorativos/badge-security.svg',
+    alt: 'Badge Security Expert',
+    category: 'decorativos'
+  },
+  {
+    id: 'badge-ui-ux',
+    title: 'Badge UI/UX Designer',
+    filename: 'badges/decorativos/badge-ui-ux.svg',
+    alt: 'Badge UI/UX Designer',
+    category: 'decorativos'
+  },
+  // ===== NOVOS BADGES DECORATIVOS =====
+  {
+    id: 'badge-frontend',
+    title: 'Badge Frontend Developer',
+    filename: 'badges/decorativos/badge-frontend.svg',
+    alt: 'Badge Frontend Developer',
+    category: 'decorativos'
+  },
+  {
+    id: 'badge-backend',
+    title: 'Badge Backend Developer',
+    filename: 'badges/decorativos/badge-backend.svg',
+    alt: 'Badge Backend Developer',
+    category: 'decorativos'
+  },
+  {
+    id: 'badge-mobile',
+    title: 'Badge Mobile Developer',
+    filename: 'badges/decorativos/badge-mobile.svg',
+    alt: 'Badge Mobile Developer',
+    category: 'decorativos'
+  },
+  {
+    id: 'badge-tech-lead',
+    title: 'Badge Tech Lead',
+    filename: 'badges/decorativos/badge-tech-lead.svg',
+    alt: 'Badge Tech Lead',
+    category: 'decorativos'
+  },
+  {
+    id: 'badge-software-architect',
+    title: 'Badge Software Architect',
+    filename: 'badges/decorativos/badge-software-architect.svg',
+    alt: 'Badge Software Architect',
+    category: 'decorativos'
+  },
+  {
+    id: 'badge-qa-engineer',
+    title: 'Badge QA Engineer',
+    filename: 'badges/decorativos/badge-qa-engineer.svg',
+    alt: 'Badge QA Engineer',
+    category: 'decorativos'
+  },
+  {
+    id: 'badge-data-engineer',
+    title: 'Badge Data Engineer',
+    filename: 'badges/decorativos/badge-data-engineer.svg',
+    alt: 'Badge Data Engineer',
+    category: 'decorativos'
+  },
+  {
+    id: 'badge-data-scientist',
+    title: 'Badge Data Scientist',
+    filename: 'badges/decorativos/badge-data-scientist.svg',
+    alt: 'Badge Data Scientist',
+    category: 'decorativos'
+  },
+  {
+    id: 'badge-sre',
+    title: 'Badge SRE',
+    filename: 'badges/decorativos/badge-sre.svg',
+    alt: 'Badge Site Reliability Engineer',
+    category: 'decorativos'
+  },
+  {
+    id: 'badge-open-source',
+    title: 'Badge Open Source',
+    filename: 'badges/decorativos/badge-open-source.svg',
+    alt: 'Badge Open Source Contributor',
+    category: 'decorativos'
+  },
+  {
+    id: 'badge-game-dev',
+    title: 'Badge Game Developer',
+    filename: 'badges/decorativos/badge-game-dev.svg',
+    alt: 'Badge Game Developer',
+    category: 'decorativos'
+  },
+  {
+    id: 'badge-blockchain',
+    title: 'Badge Blockchain Developer',
+    filename: 'badges/decorativos/badge-blockchain.svg',
+    alt: 'Badge Blockchain Developer',
+    category: 'decorativos'
+  }
+];
