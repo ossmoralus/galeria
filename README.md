@@ -22,6 +22,17 @@ Uma plataforma completa para gerenciar **badges, SVGs e banners** para perfis do
 
 ## 🎯 Principais Funcionalidades
 
+## 🏷️ Badges do projeto (para usar no seu README)
+
+Alguns exemplos prontos (servidos pela API do próprio projeto):
+
+![Build Passing](https://galeria-drab.vercel.app/api/svg/badges/info/badge-build-passing.svg)
+![License MIT](https://galeria-drab.vercel.app/api/svg/badges/info/badge-license-mit.svg)
+![TypeScript](https://galeria-drab.vercel.app/api/svg/badges/skills/langs/badge-typescript.svg)
+![React](https://galeria-drab.vercel.app/api/svg/badges/skills/tecnologias/badge-react.svg)
+
+Guia completo + catálogo: [docs/GALERIA-SVG.md](docs/GALERIA-SVG.md)
+
 ### 🖼️ Galeria Completa
 
 - 📦 **SVGs Organizados** - Badges, banners e ícones categorizados
@@ -235,7 +246,6 @@ Abra [http://localhost:3000](http://localhost:3000) no seu navegador. 🎉
 npm run dev              # Servidor dev com hot reload (localhost:3000)
 npm run build            # Build otimizado para produção
 npm start                # Inicia servidor de produção
-npm run preview          # Preview local do build
 ```
 
 #### 🔍 Linting & Qualidade de Código
@@ -251,15 +261,17 @@ npm run type-check       # ✓ TypeScript type checking
 npm run lint:fix         # 🔧 ESLint auto-fix
 npm run lint:css:fix     # 🔧 Stylelint auto-fix
 npm run format           # 🔧 Prettier formatter
-npm run optimize:svg     # 🔧 SVGO otimizar SVGs
+npm run otimize:svg      # 🔧 SVGO otimizar SVGs
 npm run fix:all          # 🔧 Todos os lints + format
 ```
 
 #### 📦 Dependências & Licenças
 
 ```bash
-npm run licenses:check      # ✓ Auditoria de licenças
-npm run licenses:generate   # 📄 Gerar THIRD-PARTY-NOTICES.txt
+npm run license:audit       # ✓ Auditoria de licenças (JSON)
+npm run license:report      # 📄 Relatório de licenças (texto)
+npm run license:notices     # 📄 Gerar THIRD-PARTY-NOTICES.txt
+npm run license:full        # 🔧 Rodar auditoria + relatórios
 ```
 
 #### 🔧 Utilitários
@@ -297,7 +309,7 @@ https://galeria-drab.vercel.app/api/svg/[filename]
 #### Banner Responsivo
 
 ```markdown
-![Banner](https://galeria-drab.vercel.app/api/svg/banner-hero.svg?width=100%)
+![Banner](https://galeria-drab.vercel.app/api/svg/capa-1.svg?width=100%)
 ```
 
 ### Parâmetros Suportados

@@ -1054,5 +1054,49 @@ export const skillsItems: SVGItem[] = [
     filename: 'badges/skills/badge-jupyter.svg',
     alt: 'Badge Jupyter',
     category: 'skills'
+  },
+
+  // ===== NOVOS BADGES (2025) =====
+  {
+    id: 'badge-julia',
+    title: 'Julia',
+    filename: 'badges/skills/langs/badge-julia.svg',
+    alt: 'Badge Julia',
+    category: 'skills'
+  },
+  {
+    id: 'badge-zig',
+    title: 'Zig',
+    filename: 'badges/skills/langs/badge-zig.svg',
+    alt: 'Badge Zig',
+    category: 'skills'
+  },
+  {
+    id: 'badge-clojure',
+    title: 'Clojure',
+    filename: 'badges/skills/langs/badge-clojure.svg',
+    alt: 'Badge Clojure',
+    category: 'skills'
+  },
+  {
+    id: 'badge-prometheus',
+    title: 'Prometheus',
+    filename: 'badges/skills/ferramentas/badge-prometheus.svg',
+    alt: 'Badge Prometheus',
+    category: 'skills'
+  },
+  {
+    id: 'badge-grafana',
+    title: 'Grafana',
+    filename: 'badges/skills/ferramentas/badge-grafana.svg',
+    alt: 'Badge Grafana',
+    category: 'skills'
+  },
+  {
+    id: 'badge-helm',
+    title: 'Helm',
+    filename: 'badges/skills/ferramentas/badge-helm.svg',
+    alt: 'Badge Helm',
+    category: 'skills'
   }
 ];

@@ -27,11 +27,11 @@ A otimização de SVGs é crucial para a performance web. O SVGO remove dados de
 
 O SVGO está configurado como `devDependency` e integrado aos scripts do `package.json`.
 
-| Script                 | Comando                                                        | Descrição                                                                         |
-| :--------------------- | :------------------------------------------------------------- | :-------------------------------------------------------------------------------- |
-| `npm run lint:svg`     | `svgo --config svgo.config.js --folder public/svg --quiet`     | **Verifica** se os SVGs estão otimizados. Falha se encontrar SVGs não otimizados. |
-| `npm run optimize:svg` | `svgo --config svgo.config.js --folder public/svg --recursive` | **Otimiza** todos os SVGs na pasta `public/svg/`.                                 |
-| `npm run fix:all`      | _Inclui `optimize:svg`_                                        | Corrige todos os problemas de qualidade (lint, format, svg).                      |
+| Script                | Comando                                                    | Descrição                                                                         |
+| :-------------------- | :--------------------------------------------------------- | :-------------------------------------------------------------------------------- |
+| `npm run lint:svg`    | `svgo --config svgo.config.js --folder public/svg --quiet` | **Verifica** se os SVGs estão otimizados. Falha se encontrar SVGs não otimizados. |
+| `npm run otimize:svg` | `svgo public/svg --recursive`                              | **Otimiza** todos os SVGs na pasta `public/svg/`.                                 |
+| `npm run fix:all`     | _Inclui `otimize:svg`_                                     | Corrige todos os problemas de qualidade (lint, format, svg).                      |
 
 ## ⚙️ Configuração do SVGO (`svgo.config.js`)
 
@@ -56,7 +56,7 @@ Siga este fluxo ao adicionar ou modificar um SVG:
 1.  **Criar/Editar SVG**: Salve o arquivo em `public/svg/badges/` ou `public/svg/banner/`.
 2.  **Otimizar**: Execute o script de otimização localmente.
     ```bash
-    npm run optimize:svg
+    npm run otimize:svg
     ```
 3.  **Verificar**: Confirme se o SVG está visualmente correto e se houve redução de tamanho.
     ```bash

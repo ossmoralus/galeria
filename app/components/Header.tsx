@@ -35,6 +35,12 @@ export default function Header(): React.ReactElement {
           <Link href="/blog" className="navSecondaryDesktop">
             <i className="fas fa-book" /> Blog
           </Link>
+          <Link href="/termos-de-uso" className="navSecondaryDesktop">
+            <i className="fas fa-file-contract" /> Termos
+          </Link>
+          <Link href="/politica-de-privacidade" className="navSecondaryDesktop">
+            <i className="fas fa-user-shield" /> Privacidade
+          </Link>
         </nav>
 
         {/* Mobile controls */}
@@ -60,6 +66,12 @@ export default function Header(): React.ReactElement {
               </Link>
               <Link href="/blog" className="navSecondaryMobile">
                 <i className="fas fa-book" /> Blog
+              </Link>
+              <Link href="/termos-de-uso" className="navSecondaryMobile">
+                <i className="fas fa-file-contract" /> Termos de Uso
+              </Link>
+              <Link href="/politica-de-privacidade" className="navSecondaryMobile">
+                <i className="fas fa-user-shield" /> Política de Privacidade
               </Link>
             </div>
           </div>

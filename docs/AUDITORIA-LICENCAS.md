@@ -111,9 +111,9 @@ Adicionar verificação automática antes de commits:
 
 ```bash
 #!/bin/sh
-npm run licenses:check || {
+npm run license:audit || {
   echo "❌ Erro: Licença não permitida detectada!"
-  echo "Execute 'npm run licenses:generate' e revise LICENSES.txt"
+   echo "Execute 'npm run license:notices' e revise THIRD-PARTY-NOTICES.txt"
   exit 1
 }
 ```
@@ -124,7 +124,7 @@ Adicionar job ao CI:
 
 ```yaml
 - name: Check Licenses
-  run: npm run licenses:check
+   run: npm run license:audit
 ```
 
 ## Processo de Aprovação
@@ -140,13 +140,13 @@ Ao adicionar nova dependência:
 2. **Verificar licença:**
 
    ```bash
-   npm run licenses:check
+   npm run license:audit
    ```
 
 3. **Se falhar, investigar:**
 
    ```bash
-   jq '.packages[] | select(.name=="<pacote>")' licenses.json
+   jq '.packages[] | select(.name=="<pacote>")' licenses-audit.json
    ```
 
 4. **Avaliar alternativas:**
@@ -155,16 +155,16 @@ Ao adicionar nova dependência:
    - Remover se não for crítico
    - Aceitar excepcionalmente (documentar motivo)
 
-5. **Atualizar LICENSES.txt:**
+5. **Atualizar THIRD-PARTY-NOTICES.txt:**
 
    ```bash
-   npm run licenses:generate
+   npm run license:notices
    ```
 
 6. **Commit com justificativa:**
 
    ```bash
-   git add package.json package-lock.json LICENSES.txt
+   git add package.json package-lock.json THIRD-PARTY-NOTICES.txt licenses-audit.json
    git commit -m "feat: adicionar <pacote> com licença <tipo>
 
    Justificativa: [explicar por que é necessário]

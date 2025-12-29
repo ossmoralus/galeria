@@ -49,14 +49,15 @@ Use o [Feature Request Template](.github/ISSUE_TEMPLATE/feature_request.yml) inc
 
 - Seguir paleta de cores do projeto (ver `app/style/globals.css`)
 
-- Otimizar SVG automaticamente: `npm run optimize:svg`
+- Otimizar SVG automaticamente: `npm run otimize:svg`
 - Adicionar `viewBox` para responsividade
-- Tamanho padrão: badges ~150x30px, banners ~1200x400px
+- Tamanho padrão: siga o guia `docs/BADGE_STANDARD.md` (badges) e mantenha banners em proporções consistentes
 
 2. **Organizar**:
-   - Badges → `public/svg/badges/`
-   - Banners → `public/svg/banner/`
-   - Logos → `public/svg/mim/`
+
+- Badges → `public/svg/badges/` (ex.: `skills/`, `info/`, `decorativos/`)
+- Banners → `public/svg/banner/`
+- Logos → `public/svg/mim/`
 
 3. **Documentar**:
    - Adicionar entrada em `docs/GALERIA-SVG.md`
@@ -293,7 +294,7 @@ Projeto usa ESLint, Stylelint e Prettier. Antes de commitar:
 # Verificar tudo
 
 # Otimizar SVGs
-npm run optimize:svg
+npm run otimize:svg
 npm run lint:all
 
 # Corrigir automaticamente
@@ -313,7 +314,7 @@ npm run fix:all
 
 - [ ] ✅ Todos os lints passam (`npm run lint:all`)
 - [ ] 🏗️ Build funciona (`npm run build`)
-- [ ] 📄 Licenças verificadas (`npm run licenses:check`)
+- [ ] 📄 Licenças verificadas (`npm run license:audit`)
 - [ ] 📱 Testado em mobile
 - [ ] 🌐 Testado em diferentes navegadores
 - [ ] 📝 Documentação atualizada
@@ -385,7 +386,7 @@ Se encontrar vulnerabilidades de segurança:
 - Projeto é MIT License
 - Contribuições serão licenciadas sob MIT
 - Use apenas dependências com licenças compatíveis
-- Verifique: `npm run licenses:check`
+- Verifique: `npm run license:audit` (ou `npm run license:full`)
 - Veja: [docs/AUDITORIA-LICENCAS.md](./docs/AUDITORIA-LICENCAS.md)
 
 ## 💬 Comunidade

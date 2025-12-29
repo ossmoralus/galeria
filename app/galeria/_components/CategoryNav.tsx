@@ -14,6 +14,9 @@ const categories: Category[] = [
   { slug: '', label: 'Todos', icon: 'fas fa-th-large' },
   { slug: 'banners', label: 'Banners', icon: 'fas fa-image' },
   { slug: 'skills', label: 'Skills', icon: 'fas fa-code' },
+  { slug: 'langs', label: 'Langs', icon: 'fas fa-language' },
+  { slug: 'ferramentas', label: 'Ferramentas', icon: 'fas fa-screwdriver-wrench' },
+  { slug: 'tecnologias', label: 'Tecnologias', icon: 'fas fa-microchip' },
   { slug: 'decorativos', label: 'Decorativos', icon: 'fas fa-star' },
   { slug: 'info', label: 'Info/Status', icon: 'fas fa-info-circle' }
 ];

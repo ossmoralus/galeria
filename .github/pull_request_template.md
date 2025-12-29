@@ -60,8 +60,8 @@ Closes #(issue)
 
 ### Licenças
 
-- [ ] 📄 Se adicionei dependências, executei `npm run licenses:check`
-- [ ] 📋 Se adicionei dependências, atualizei `LICENSES.txt` com `npm run licenses:generate`
+- [ ] 📄 Se adicionei dependências, executei `npm run license:audit`
+- [ ] 📋 Se adicionei dependências, gerei/atualizei `THIRD-PARTY-NOTICES.txt` com `npm run license:notices`
 - [ ] ✅ Todas as novas dependências têm licenças compatíveis com MIT
 
 ### Build e Testes

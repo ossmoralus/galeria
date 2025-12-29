@@ -35,6 +35,97 @@ export const getBannerItems = (): SVGItem[] => bannerItems;
 
 export const getSkillsItems = (): SVGItem[] => skillsItems;
 
+const SKILLS_LANGS_IDS = new Set<string>([
+  'badge-javascript',
+  'badge-typescript',
+  'badge-python',
+  'badge-java',
+  'badge-csharp',
+  'badge-go',
+  'badge-rust',
+  'badge-php',
+  'badge-ruby',
+  'badge-swift',
+  'badge-kotlin',
+  'badge-cpp',
+  'badge-c',
+  'badge-scala',
+  'badge-elixir',
+  'badge-haskell',
+  'badge-lua',
+  'badge-dart',
+  'badge-r',
+  'badge-perl',
+  'badge-html',
+  'badge-css',
+  'badge-julia',
+  'badge-zig',
+  'badge-clojure'
+]);
+
+const SKILLS_FERRAMENTAS_IDS = new Set<string>([
+  'badge-git',
+  'badge-github',
+  'badge-github-actions',
+  'badge-gitlab',
+  'badge-bitbucket',
+  'badge-eslint',
+  'badge-prettier',
+  'badge-jest',
+  'badge-vitest',
+  'badge-mocha',
+  'badge-cypress',
+  'badge-playwright',
+  'badge-selenium',
+  'badge-testing-library',
+  'badge-storybook',
+  'badge-webpack',
+  'badge-rollup',
+  'badge-vite',
+  'badge-turbo',
+  'badge-nx',
+  'badge-lerna',
+  'badge-esbuild',
+  'badge-npm',
+  'badge-yarn',
+  'badge-pnpm',
+  'badge-bun',
+  'badge-deno',
+  'badge-docker',
+  'badge-kubernetes',
+  'badge-terraform',
+  'badge-ansible',
+  'badge-jenkins',
+  'badge-travisci',
+  'badge-circleci',
+  'badge-sonarqube',
+  'badge-postman',
+  'badge-insomnia',
+  'badge-figma',
+  'badge-jira',
+  'badge-notion',
+  'badge-vscode',
+  'badge-neovim',
+  'badge-intellij',
+  'badge-jupyter',
+  'badge-slack',
+  'badge-discord',
+  'badge-prometheus',
+  'badge-grafana',
+  'badge-helm'
+]);
+
+export const getSkillsLangsItems = (): SVGItem[] =>
+  skillsItems.filter((item) => SKILLS_LANGS_IDS.has(item.id));
+
+export const getSkillsFerramentasItems = (): SVGItem[] =>
+  skillsItems.filter((item) => SKILLS_FERRAMENTAS_IDS.has(item.id));
+
+export const getSkillsTecnologiasItems = (): SVGItem[] =>
+  skillsItems.filter(
+    (item) => !SKILLS_LANGS_IDS.has(item.id) && !SKILLS_FERRAMENTAS_IDS.has(item.id)
+  );
+
 export const getDecorativosItems = (): SVGItem[] => decorativosItems;
 
 export const getInfoItems = (): SVGItem[] => infoItems;

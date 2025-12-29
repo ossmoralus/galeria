@@ -245,7 +245,12 @@ A API suporta parâmetros de largura (`width` ou `w`) e altura (`height` ou `h`)
 
 - 🏠 [Home](https://galeria-drab.vercel.app)
 - 🖼️ [Galeria Completa](https://galeria-drab.vercel.app/galeria)
+- 🧩 [Skills - Langs](https://galeria-drab.vercel.app/galeria/langs)
+- 🧰 [Skills - Ferramentas](https://galeria-drab.vercel.app/galeria/ferramentas)
+- 🧠 [Skills - Tecnologias](https://galeria-drab.vercel.app/galeria/tecnologias)
 - ✍️ [Blog](https://galeria-drab.vercel.app/blog)
+- 📜 [Termos de Uso](https://galeria-drab.vercel.app/termos-de-uso)
+- 🔒 [Política de Privacidade](https://galeria-drab.vercel.app/politica-de-privacidade)
 - 📝 [Como Criar Posts](./CRIAR-POSTS-BLOG.md)
 
 ---
