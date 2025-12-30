@@ -32,17 +32,19 @@ export async function GET(
       headers: {
         'Content-Type': 'image/svg+xml; charset=utf-8',
         // GitHub tende a cachear imagens; force revalidação.
-        'Cache-Control': 'no-store'
+        'Cache-Control': 'no-store',
+        'X-Visitors-Configured': '1'
       }
     });
   } catch (error) {
     console.error('Visitors badge error:', error);
     const svg = renderVisitorBadgeSvg(label, 'n/a');
     return new NextResponse(svg, {
-      status: 501,
       headers: {
         'Content-Type': 'image/svg+xml; charset=utf-8',
-        'Cache-Control': 'no-store'
+        'Cache-Control': 'no-store',
+        // GitHub pode não renderizar imagem se status != 200.
+        'X-Visitors-Configured': '0'
       }
     });
   }

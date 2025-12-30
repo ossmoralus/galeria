@@ -26,14 +26,16 @@ export async function GET(
     return NextResponse.json(
       {
         id,
-        count
+        count,
+        configured: true
       },
       {
         headers: {
           // Sem cache: o valor muda a cada request.
           'Cache-Control': 'no-store',
           // Útil caso você consuma via fetch em sites externos.
-          'Access-Control-Allow-Origin': '*'
+          'Access-Control-Allow-Origin': '*',
+          'X-Visitors-Configured': '1'
         }
       }
     );
@@ -42,13 +44,16 @@ export async function GET(
     console.error('Visitors counter error:', error);
     return NextResponse.json(
       {
+        id,
+        count: 0,
+        configured: false,
         error: 'Visitors counter not configured'
       },
       {
-        status: 501,
         headers: {
           'Cache-Control': 'no-store',
-          'Access-Control-Allow-Origin': '*'
+          'Access-Control-Allow-Origin': '*',
+          'X-Visitors-Configured': '0'
         }
       }
     );

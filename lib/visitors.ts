@@ -2,9 +2,30 @@ import { Redis } from '@upstash/redis';
 
 let redisSingleton: Redis | null = null;
 
+function readEnv(...names: string[]): string | undefined {
+  for (const name of names) {
+    const value = process.env[name];
+    if (value !== undefined && value !== null && value.trim() !== '') return value;
+  }
+  return undefined;
+}
+
 export function getVisitorsRedis(): Redis {
   if (redisSingleton !== null) return redisSingleton;
-  redisSingleton = Redis.fromEnv();
+
+  // Preferimos configurar explicitamente para:
+  // - suportar nomes alternativos
+  // - dar erro mais previsível quando faltar env
+  const url = readEnv('UPSTASH_REDIS_REST_URL', 'UPSTASH_REDIS_URL');
+  const token = readEnv('UPSTASH_REDIS_REST_TOKEN', 'UPSTASH_REDIS_TOKEN');
+
+  if (url === undefined || token === undefined) {
+    throw new Error(
+      'Upstash Redis env not configured. Expected UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN.'
+    );
+  }
+
+  redisSingleton = new Redis({ url, token });
   return redisSingleton;
 }
 

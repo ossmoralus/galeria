@@ -378,6 +378,17 @@ Configure em `.env.local` (dev) e nas variáveis do projeto (produção):
 - `UPSTASH_REDIS_REST_URL`
 - `UPSTASH_REDIS_REST_TOKEN`
 
+Também aceitamos (fallback):
+
+- `UPSTASH_REDIS_URL`
+- `UPSTASH_REDIS_TOKEN`
+
+Checklist na Vercel (quando “parece configurado” mas não funciona):
+
+1. Confirme que as variáveis estão no **mesmo projeto** do deploy
+2. Marque o ambiente correto: **Production** (e Preview/Development se precisar)
+3. Depois de alterar variáveis, faça um **Redeploy** do último deployment
+
 ### Endpoint JSON
 
 - `GET /api/visitors/:id` → incrementa e retorna `{ id, count }`
