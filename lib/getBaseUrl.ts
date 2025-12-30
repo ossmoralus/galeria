@@ -9,7 +9,9 @@ export function getBaseUrl(): string {
 
   if (envUrl !== undefined && envUrl !== null && envUrl !== '') return normalize(envUrl);
 
-  const ensureCanonical = (): string => {
+  // Em produção na Vercel, preferimos a URL canônica do projeto (alias),
+  // ao invés do deployment URL aleatório em `VERCEL_URL`.
+  if (vercelEnv === 'production') {
     if (
       canonicalProductionUrl !== undefined &&
       canonicalProductionUrl !== null &&
@@ -18,22 +20,26 @@ export function getBaseUrl(): string {
       return normalize(canonicalProductionUrl);
     }
 
+    // Falha explícita apenas no ambiente que realmente importa (produção na Vercel).
     throw new Error(
       'Base URL não configurada para produção. Defina NEXT_PUBLIC_CANONICAL_URL (ex: https://seu-dominio) '
     );
-  };
-
-  // Em produção na Vercel, preferimos a URL canônica do projeto (alias),
-  // ao invés do deployment URL aleatório em `VERCEL_URL`.
-  if (vercelEnv === 'production') return ensureCanonical();
+  }
 
   // Em preview (e outros ambientes Vercel), usar o deployment URL para manter tudo consistente.
   if (vercelUrl !== undefined && vercelUrl !== null && vercelUrl !== '') {
     return `https://${vercelUrl}`;
   }
 
-  if (process.env['NODE_ENV'] !== 'production') return 'http://localhost:3000';
+  // Fora da Vercel, mas com URL canônica configurada, usar ela como base.
+  if (
+    canonicalProductionUrl !== undefined &&
+    canonicalProductionUrl !== null &&
+    canonicalProductionUrl !== ''
+  ) {
+    return normalize(canonicalProductionUrl);
+  }
 
-  // Fora da Vercel mas em modo produção (ex: build local), exigimos a URL canônica.
-  return ensureCanonical();
+  // Último fallback (dev/build local). Evita quebrar o build estático sem env.
+  return 'http://localhost:3000';
 }
