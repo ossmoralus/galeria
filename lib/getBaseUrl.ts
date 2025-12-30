@@ -20,6 +20,15 @@ export function getBaseUrl(): string {
       return normalize(canonicalProductionUrl);
     }
 
+    // Fallback: não derruba o build/deploy se a env canônica não estiver setada.
+    // Atenção: isso pode gerar URLs com o deployment URL ao invés do domínio final.
+    if (vercelUrl !== undefined && vercelUrl !== null && vercelUrl !== '') {
+      console.warn(
+        '[getBaseUrl] NEXT_PUBLIC_CANONICAL_URL não configurada em produção; usando VERCEL_URL como fallback.'
+      );
+      return `https://${vercelUrl}`;
+    }
+
     // Falha explícita apenas no ambiente que realmente importa (produção na Vercel).
     throw new Error(
       'Base URL não configurada para produção. Defina NEXT_PUBLIC_CANONICAL_URL (ex: https://seu-dominio) '
