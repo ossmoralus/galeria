@@ -7,7 +7,7 @@ Este documento registra o planejamento para implementação futura de comentári
 ## Objetivos
 
 - Engajamento e feedback de leitores
-- Canal assíncrono de dúvidas técnicas (complementar ao Discord)
+- Canal assíncrono de dúvidas técnicas (complementar ao WhatsApp)
 - Iteração e melhoria de conteúdo educativo
 - Construção de comunidade
 
@@ -16,7 +16,7 @@ Este documento registra o planejamento para implementação futura de comentári
 ✅ **Sinais para começar:**
 
 - Tráfego consistente (>100 visitas/mês)
-- Perguntas recorrentes no Discord sobre posts específicos
+- Perguntas recorrentes no WhatsApp sobre posts específicos
 - Necessidade de feedback estruturado por artigo
 - Tempo disponível para moderação
 
@@ -147,7 +147,7 @@ model PostComment {
 3. Salvar como `pending` com hashes
 4. Revalidate cache da página
 5. Dashboard admin para aprovar/rejeitar
-6. Webhook Discord para novos comentários pending (opcional)
+6. Notificação para canal comunitário (opcional)
 
 ### 4. Headless SaaS (Escalável)
 
@@ -184,22 +184,22 @@ model PostComment {
 
 ### 6. Sem Comentários (Alternativa)
 
-**Estratégia:** CTA final dos posts → "Discuta no Discord" + link direto
+**Estratégia:** CTA final dos posts → "Fale no WhatsApp" + link direto
 
 **Prós:**
 
 - Zero manutenção adicional
-- Canal único de interação (Discord já existe)
+- Canal único de interação (WhatsApp já existe)
 - Menos superfície de ataque (spam)
 
 **Contras:**
 
 - Perde feedback público estruturado por artigo
-- Discord é mais efêmero (busca limitada)
+- WhatsApp é mais efêmero (busca limitada)
 
 ## Recomendação Final
 
-**Fase 1 (Atual):** Sem comentários. CTA para Discord.
+**Fase 1 (Atual):** Sem comentários. CTA para WhatsApp.
 
 **Fase 2 (Tráfego >50 visitas/mês):** Implementar Giscus (rápido, zero backend).
 
@@ -228,7 +228,7 @@ model PostComment {
 - [ ] Integrar em `app/blog/[slug]/page.tsx`
 - [ ] Testar com post dummy
 - [ ] Ajustar tema/cores dark
-- [ ] Adicionar fallback "Participe do Discord"
+- [ ] Adicionar fallback "Fale no WhatsApp"
 - [ ] Documentar em README
 
 ### Implementação Self-Hosted (Estimativa: 8-12h)
@@ -241,7 +241,7 @@ model PostComment {
 - [ ] Honeypot anti-spam
 - [ ] Sanitização HTML (DOMPurify ou strip-tags)
 - [ ] Status pending + painel moderação admin
-- [ ] Webhook Discord para novos comentários
+- [ ] Notificação para canal comunitário
 - [ ] Testes de carga (simular 100 comentários)
 - [ ] Deploy DB Postgres (Vercel/Supabase)
 - [ ] Backup automático semanal
@@ -252,7 +252,7 @@ model PostComment {
 - [ ] Definir regras da comunidade (tom, off-topic, spam)
 - [ ] Rotina diária: revisar pending (5-10min/dia)
 - [ ] Métricas: comentários/post, tempo resposta, spam rate
-- [ ] Revisar trimestral: vale a pena ou Discord basta?
+- [ ] Revisar trimestral: vale a pena ou WhatsApp basta?
 
 ## Recursos e Links
 
@@ -268,12 +268,12 @@ model PostComment {
 **Contexto atual:**
 
 - Site novo, sem tráfego significativo ainda
-- Discord já configurado como canal principal
+- WhatsApp já configurado como canal principal
 - Foco atual: criar conteúdo de qualidade, não infraestrutura de interação
 
 **Decisão:** Postergar comentários até haver demanda real. Evitar seção vazia que desmotiva visitantes.
 
-**Revisão:** Avaliar novamente em 3-6 meses conforme métricas de tráfego e feedback no Discord.
+**Revisão:** Avaliar novamente em 3-6 meses conforme métricas de tráfego e feedback no WhatsApp.
 
 ---
 

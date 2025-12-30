@@ -67,5 +67,47 @@ export const bannerItems: SVGItem[] = [
     filename: 'banner/capa-dark-3.svg',
     alt: 'Banner Dark com tema Orange e Amber',
     category: 'banner'
+  },
+  {
+    id: 'banner-7',
+    title: 'Banner Terminal',
+    filename: 'banner/capa-7.svg',
+    alt: 'Banner estilo terminal com grid e brilho verde',
+    category: 'banner'
+  },
+  {
+    id: 'banner-8',
+    title: 'Banner Gradient Glass',
+    filename: 'banner/capa-8.svg',
+    alt: 'Banner com gradiente vibrante e efeito glass',
+    category: 'banner'
+  },
+  {
+    id: 'banner-9',
+    title: 'Banner Blueprint',
+    filename: 'banner/capa-9.svg',
+    alt: 'Banner com grid técnico (blueprint) e linhas de destaque',
+    category: 'banner'
+  },
+  {
+    id: 'banner-10',
+    title: 'Moralus OSS Circuit',
+    filename: 'banner/capa-10.svg',
+    alt: 'Banner Moralus OSS em verde escuro com padrão de circuito e destaque Open Source',
+    category: 'banner'
+  },
+  {
+    id: 'banner-11',
+    title: 'Moralus OSS Open Source',
+    filename: 'banner/capa-11.svg',
+    alt: 'Banner Moralus OSS minimalista em verde escuro com destaque Open Source',
+    category: 'banner'
+  },
+  {
+    id: 'banner-12',
+    title: 'Moralus OSS Hex',
+    filename: 'banner/capa-12.svg',
+    alt: 'Banner Moralus OSS em verde escuro com selo hexagonal OSS e chamadas Open Source',
+    category: 'banner'
   }
 ];

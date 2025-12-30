@@ -40,14 +40,7 @@ jobs:
           cache: 'npm'
 
       - name: 📦 Instalar dependências
-        run: |
-          if [ -f package-lock.json ]; then
-            echo "✅ package-lock.json encontrado - usando npm ci"
-            npm ci
-          else
-            echo "⚠️ package-lock.json não encontrado - usando npm install"
-            npm install
-          fi
+        run: npm ci
 
       - name: 🔍 Verificar ESLint (JavaScript/TypeScript)
         run: npm run lint
@@ -110,8 +103,7 @@ jobs:
           cache: 'npm'
 
       - name: 📦 Instalar dependências
-        run: |
-          if [ -f package-lock.json ]; then npm ci; else npm install; fi
+        run: npm ci
 
       - name: 🔍 Gerar relatório de licenças (JSON)
         run: npm run license:audit
@@ -159,8 +151,7 @@ jobs:
           cache: 'npm'
 
       - name: 📦 Instalar dependências
-        run: |
-          if [ -f package-lock.json ]; then npm ci; else npm install; fi
+        run: npm ci
 
       - name: 🔍 Executar npm audit
         id: audit
@@ -209,8 +200,7 @@ jobs:
           cache: 'npm'
 
       - name: 📦 Instalar dependências
-        run: |
-          if [ -f package-lock.json ]; then npm ci; else npm install; fi
+        run: npm ci
 
       - name: 📦 Cache do Next.js
         uses: actions/cache@v4

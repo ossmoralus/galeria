@@ -4,6 +4,8 @@
 
 [![CI](https://github.com/ossmoralus/galeria/actions/workflows/ci.yml/badge.svg)](https://github.com/ossmoralus/galeria/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/ossmoralus/galeria/actions/workflows/codeql.yml/badge.svg)](https://github.com/ossmoralus/galeria/actions/workflows/codeql.yml)
+[![Deploy Preview](https://github.com/ossmoralus/galeria/actions/workflows/deploy-preview.yml/badge.svg)](https://github.com/ossmoralus/galeria/actions/workflows/deploy-preview.yml)
+[![Status](https://github.com/ossmoralus/galeria/actions/workflows/status.yml/badge.svg)](https://github.com/ossmoralus/galeria/actions/workflows/status.yml)
 [![Deploy on Vercel](https://img.shields.io/badge/deploy-vercel-black?style=for-the-badge&logo=vercel)](https://galeria-drab.vercel.app)
 [![License MIT](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge)](./LICENSE)
 [![TypeScript Strict](https://img.shields.io/badge/typescript-strict-blue?style=for-the-badge)](https://www.typescriptlang.org)
@@ -14,7 +16,7 @@ Uma plataforma completa para gerenciar **badges, SVGs e banners** para perfis do
 
 <br/>
 
-[🌐 **Visitar Site**](https://galeria-drab.vercel.app) • [🖼️ **Galeria**](https://galeria-drab.vercel.app/galeria) • [✍️ **Blog**](https://galeria-drab.vercel.app/blog) • [📚 **Docs**](./docs/) • [💬 **Discord**](https://discord.gg/RpqNZpVn)
+[🌐 **Visitar Site**](https://galeria-drab.vercel.app) • [🖼️ **Galeria**](https://galeria-drab.vercel.app/galeria) • [✍️ **Blog**](https://galeria-drab.vercel.app/blog) • [📚 **Docs**](./docs/) • [💬 **WhatsApp**](https://wa.me/5537998553430) • [⭐ **GitHub**](https://github.com/ossmoralus)
 
 </div>
 
@@ -56,6 +58,10 @@ Exemplo com contador de visitantes (badge SVG):
 ```md
 ![visitors](https://galeria-drab.vercel.app/api/visitors/seu-usuario/badge.svg)
 ```
+
+Exemplos visuais prontos + copy/paste no site:
+
+- https://galeria-drab.vercel.app/galeria/visitors
 
 Se quiser trocar o texto do lado esquerdo:
 
@@ -389,6 +395,16 @@ Checklist na Vercel (quando “parece configurado” mas não funciona):
 2. Marque o ambiente correto: **Production** (e Preview/Development se precisar)
 3. Depois de alterar variáveis, faça um **Redeploy** do último deployment
 
+### URL base do site (produção)
+
+Para gerar URLs absolutas corretas nos snippets (ex: markdown para README), defina na Vercel:
+
+- `NEXT_PUBLIC_CANONICAL_URL` (obrigatória em produção)
+
+Opcionalmente, você pode usar:
+
+- `NEXT_PUBLIC_SITE_URL` (se quiser sobrescrever a base URL em qualquer ambiente)
+
 ### Endpoint JSON
 
 - `GET /api/visitors/:id` → incrementa e retorna `{ id, count }`
@@ -550,8 +566,7 @@ Todas as licenças são **permissivas** e compatíveis comercialmente.
 
 Desenvolvido pela **[Moralus OSS](https://github.com/ossmoralus)** para ajudar a comunidade de desenvolvedores.
 
-[![Discord](https://img.shields.io/badge/Discord-Junte--se-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/RpqNZpVn)
-[![WhatsApp](https://img.shields.io/badge/WhatsApp-Contato-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/5537999022401)
+[![WhatsApp](https://img.shields.io/badge/WhatsApp-Contato-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/5537998553430)
 [![GitHub](https://img.shields.io/badge/GitHub-Seguir-181717?style=for-the-badge&logo=github)](https://github.com/ossmoralus)
 
 ### Aprenda com este projeto
@@ -584,7 +599,7 @@ Desenvolvido pela **[Moralus OSS](https://github.com/ossmoralus)** para ajudar a
 
 **Junte-se à nossa comunidade!**
 
-[🔗 Discord](https://discord.gg/RpqNZpVn) • [💬 WhatsApp](https://wa.me/5537999022401) • [⭐ GitHub](https://github.com/ossmoralus)
+[💬 WhatsApp](https://wa.me/5537998553430) • [⭐ GitHub](https://github.com/ossmoralus)
 
 </div>
 
@@ -598,7 +613,7 @@ Se este projeto te ajudou, considere:
 - 🐛 **Reportar Bugs** - Encontrou algo? Abra uma issue!
 - 💡 **Sugerir Melhorias** - Suas ideias são valiosas
 - 🎨 **Contribuir** - Envie um PR com sua feature
-- 💬 **Participar** - Engage na comunidade Discord
+- 💬 **Participar** - Fale com a gente no WhatsApp
 
 ---
 

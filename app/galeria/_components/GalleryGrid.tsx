@@ -34,7 +34,19 @@ export default function GalleryGrid({
     if (typeof window !== 'undefined') {
       return window.location.origin;
     }
-    return 'https://galeria-drab.vercel.app';
+
+    const envSiteUrl = process.env['NEXT_PUBLIC_SITE_URL'];
+    if (envSiteUrl !== undefined && envSiteUrl !== null && envSiteUrl !== '') {
+      return envSiteUrl.replace(/\/$/, '');
+    }
+
+    const envCanonicalUrl = process.env['NEXT_PUBLIC_CANONICAL_URL'];
+    if (envCanonicalUrl !== undefined && envCanonicalUrl !== null && envCanonicalUrl !== '') {
+      return envCanonicalUrl.replace(/\/$/, '');
+    }
+
+    // Último fallback: URL relativa.
+    return '';
   };
 
   const generateMarkdownCode = (filename: string): string => {

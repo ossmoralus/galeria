@@ -25,6 +25,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
+    # Evita falhas em PRs de forks (token não tem permissão para enviar security-events).
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+
     permissions:
       actions: read
       contents: read
@@ -44,17 +47,14 @@ jobs:
         with:
           languages: ${{ matrix.language }}
           queries: +security-and-quality
-        continue-on-error: true
 
       - name: 🏗️ Build automático
         uses: github/codeql-action/autobuild@v3
-        continue-on-error: true
 
       - name: 🔍 Executar Análise CodeQL
         uses: github/codeql-action/analyze@v3
         with:
           category: '/language:${{ matrix.language }}'
-        continue-on-error: true
 
       - name: 📊 Resumo da Análise
         if: always()

@@ -38,8 +38,7 @@ jobs:
           cache: 'npm'
 
       - name: 📦 Instalar dependências
-        run: |
-          if [ -f package-lock.json ]; then npm ci; else npm install; fi
+        run: npm ci
 
       - name: 🔍 Verificar ESLint
         run: npm run lint
@@ -78,6 +77,11 @@ jobs:
     timeout-minutes: 15
     needs: verificacoes-qualidade
 
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: write
+
     steps:
       - name: 📥 Baixar código fonte
         uses: actions/checkout@v4
@@ -89,8 +93,7 @@ jobs:
           cache: 'npm'
 
       - name: 📦 Instalar dependências
-        run: |
-          if [ -f package-lock.json ]; then npm ci; else npm install; fi
+        run: npm ci
 
       - name: 📦 Cache do Next.js
         uses: actions/cache@v4
@@ -108,6 +111,7 @@ jobs:
           NODE_ENV: production
 
       - name: 💬 Comentar no PR
+        if: github.event.pull_request.head.repo.full_name == github.repository
         uses: actions/github-script@v7
         with:
           script: |

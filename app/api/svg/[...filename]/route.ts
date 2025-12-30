@@ -14,6 +14,20 @@ const svgCache = new Map<string, CacheEntry>();
 const SVG_ROOT = path.join(process.cwd(), 'public', 'svg');
 const MAX_WALK = 10000;
 
+function isSafeSvgRequestPath(filename: string): boolean {
+  if (filename.trim() === '') return false;
+  // Bloqueia path traversal e paths absolutos (POSIX/Windows).
+  if (filename.includes('..')) return false;
+  if (filename.startsWith('/') || filename.startsWith('\\')) return false;
+  if (filename.includes('\\')) return false;
+  if (path.isAbsolute(filename)) return false;
+  // Apenas SVGs.
+  if (!filename.toLowerCase().endsWith('.svg')) return false;
+  // Permite somente caracteres previsíveis (evita espaços, % estranhos, etc.).
+  if (!/^[a-zA-Z0-9._\-/]+$/.test(filename)) return false;
+  return true;
+}
+
 function findSvgPath(filename: string): string | null {
   // caminho direto (permite subpastas na URL)
   const direct = path.join(SVG_ROOT, filename);
@@ -58,7 +72,7 @@ export async function GET(
     const { filename: raw } = await params;
     const filename = Array.isArray(raw) ? raw.join('/') : raw;
 
-    if (filename === '' || filename.includes('..')) {
+    if (!isSafeSvgRequestPath(filename)) {
       return new NextResponse('Invalid path', { status: 400 });
     }
 
@@ -89,7 +103,7 @@ export async function GET(
     svgContent = manipulateSvgDimensions(svgContent, widthParam, heightParam, fitParam);
     return new NextResponse(svgContent, {
       headers: {
-        'Content-Type': 'image/svg+xml',
+        'Content-Type': 'image/svg+xml; charset=utf-8',
         'Cache-Control': 'public, max-age=31536000, immutable'
       }
     });

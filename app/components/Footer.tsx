@@ -40,19 +40,7 @@ export default function Footer(): React.ReactElement {
           </Button>
 
           <Button
-            href="https://discord.gg/RpqNZpVn"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Entrar no servidor Discord"
-            variant="secondary"
-            size="sm"
-            className="inline-flex items-center gap-1.5"
-          >
-            <i className="fab fa-discord" /> Discord
-          </Button>
-
-          <Button
-            href="https://wa.me/5537999022401"
+            href="https://wa.me/5537998553430"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Conversar via WhatsApp"

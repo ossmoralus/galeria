@@ -12,13 +12,13 @@ Este diretório reúne guias técnicos e referências do projeto.
 
 ## 📦 O que existe hoje (dez/2025)
 
-- Total: **198 SVGs** em `public/svg/`
+- Total: **204 SVGs** em `public/svg/`
 - **189 badges** em `public/svg/badges/`
-- **9 banners** em `public/svg/banner/`
+- **15 banners** em `public/svg/banner/`
 
 ## 🧭 Navegação no site
 
-- Categorias principais: `/galeria`, `/galeria/banners`, `/galeria/skills`, `/galeria/decorativos`, `/galeria/info`
+- Categorias principais: `/galeria`, `/galeria/banners`, `/galeria/skills`, `/galeria/decorativos`, `/galeria/info`, `/galeria/visitors`
 - Subcategorias de skills: `/galeria/langs`, `/galeria/ferramentas`, `/galeria/tecnologias`
 
 ## 🧱 Arquitetura e organização

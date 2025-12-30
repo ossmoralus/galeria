@@ -66,7 +66,7 @@ export default function PoliticaDePrivacidadePage(): React.ReactElement {
 
         <h2 className="mt-6 text-xl font-semibold text-[var(--text-bright)]">6. Contato</h2>
         <p className="mt-2 text-[var(--text-secondary)]">
-          Para dúvidas, acesse os links do projeto (GitHub/Discord) no rodapé.
+          Para dúvidas, acesse os links do projeto (GitHub/WhatsApp) no rodapé.
         </p>
 
         <div className="mt-8 flex flex-wrap gap-3">

@@ -377,8 +377,10 @@ Se encontrar vulnerabilidades de segurança:
 
 1. **NÃO** abra issue pública
 2. Entre em contato diretamente:
-   - WhatsApp: +55 37 99902-2401
-   - Discord: [discord.gg/RpqNZpVn](https://discord.gg/RpqNZpVn)
+
+- WhatsApp: +55 37 99855-3430
+- GitHub (privado quando possível): https://github.com/ossmoralus/galeria
+
 3. Aguarde confirmação antes de disclosure
 
 ## 📄 Licenças
@@ -396,8 +398,7 @@ Se encontrar vulnerabilidades de segurança:
 - 🐛 **Bugs**: [Abrir Issue](https://github.com/ossmoralus/galeria/issues/new/choose)
 - 💡 **Features**: [Feature Request](https://github.com/ossmoralus/galeria/issues/new/choose)
 - ❓ **Dúvidas**: [Question Issue](https://github.com/ossmoralus/galeria/issues/new/choose)
-- 💬 **Chat**: [Discord](https://discord.gg/RpqNZpVn)
-- 📱 **Suporte**: [WhatsApp](https://wa.me/5537999022401)
+- 📱 **Suporte**: [WhatsApp](https://wa.me/5537998553430)
 
 ### Comunicação
 
@@ -413,7 +414,7 @@ Todos os contribuidores serão:
 - Listados nos release notes
 - Creditados no README (contribuidores frequentes)
 - Mencionados nas redes sociais (contribuições significativas)
-- Convidados para a comunidade Discord
+- Convidados para participar da comunidade Moralus OSS
 
 ## 🙏 Primeiros Passos
 
@@ -428,8 +429,7 @@ Novo por aqui? Comece com:
 
 **Dúvidas sobre contribuição?**
 
-- 💬 Discord: [discord.gg/RpqNZpVn](https://discord.gg/RpqNZpVn)
-- 📱 WhatsApp: +55 37 99902-2401
+- 📱 WhatsApp: +55 37 99855-3430
 - 🌐 Website: [galeria-drab.vercel.app](https://galeria-drab.vercel.app)
 
 ---

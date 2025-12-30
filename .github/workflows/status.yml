@@ -37,8 +37,7 @@ jobs:
           cache: 'npm'
 
       - name: 📦 Instalar dependências
-        run: |
-          if [ -f package-lock.json ]; then npm ci; else npm install; fi
+        run: npm ci
 
       - name: 🔍 Verificação Rápida de Saúde
         id: health

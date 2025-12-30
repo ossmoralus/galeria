@@ -243,8 +243,7 @@ Aceitar LGPL ou MPL **somente se:**
 Para questões sobre licenças:
 
 - Abrir issue: https://github.com/ossmoralus/galeria/issues
-- Discord: https://discord.gg/RpqNZpVn
-- WhatsApp: +55 37 99902-2401
+- WhatsApp: +55 37 99855-3430
 
 ---
 
