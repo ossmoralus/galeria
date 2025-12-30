@@ -236,6 +236,8 @@ cp .env.example .env.local
 npm run dev
 ```
 
+> Para habilitar a API de contagem de visitantes (abaixo), configure também as variáveis do Upstash em `.env.local`.
+
 Abra [http://localhost:3000](http://localhost:3000) no seu navegador. 🎉
 
 ### 📋 Scripts Disponíveis
@@ -320,6 +322,44 @@ https://galeria-drab.vercel.app/api/svg/[filename]
 | `height`  | string | `100`          | Altura em pixels                 |
 
 > 💡 **Dica**: Defina apenas largura para manter proporções automáticas!
+
+---
+
+## 👀 API de Visitantes (contador)
+
+Esta API incrementa e retorna um contador por `id` (por exemplo: seu usuário do GitHub). Ela foi feita para funcionar bem em Vercel/Edge usando Upstash Redis.
+
+### Variáveis de ambiente (Upstash)
+
+Configure em `.env.local` (dev) e nas variáveis do projeto (produção):
+
+- `UPSTASH_REDIS_REST_URL`
+- `UPSTASH_REDIS_REST_TOKEN`
+
+### Endpoint JSON
+
+- `GET /api/visitors/:id` → incrementa e retorna `{ id, count }`
+- `GET /api/visitors/:id?increment=0` → apenas lê (não incrementa)
+
+Exemplo:
+
+`https://galeria-drab.vercel.app/api/visitors/seu-usuario`
+
+### Badge SVG (para README do GitHub)
+
+- `GET /api/visitors/:id/badge.svg` → retorna um SVG com o número
+- Parâmetros:
+  - `label` (opcional): texto do lado esquerdo (default: `visitors`)
+  - `increment=0` (opcional): não incrementa
+
+Exemplos:
+
+```md
+![visitors](https://galeria-drab.vercel.app/api/visitors/seu-usuario/badge.svg)
+![views](https://galeria-drab.vercel.app/api/visitors/seu-usuario/badge.svg?label=views)
+```
+
+> Observação: o GitHub pode cachear imagens do README; então o número pode atualizar com atraso dependendo do cache.
 
 ---
 
