@@ -1,7 +1,10 @@
 import FeatureItem from './FeatureItem';
 import Panel from './Panel';
+import { getBaseUrl } from '@/lib/getBaseUrl';
 
 export default function SVGGalleryInstructions(): React.ReactElement {
+  const baseUrl = getBaseUrl();
+
   return (
     <section className="svgInstructions maxW900 shadowInstructions mx-auto mt-14 rounded-lg border border-l-[3px] border-[var(--vscode-border)] border-l-[var(--accent-blue)] bg-[var(--vscode-editor)] p-10">
       <h2 className="svgInstructionsTitle text4xl mb-8 flex items-center justify-center gap-3 text-center font-mono text-[var(--text-bright)]">
@@ -26,7 +29,7 @@ export default function SVGGalleryInstructions(): React.ReactElement {
       </Panel>
       <Panel className="mt-2.5 overflow-x-auto">
         <code className="whitespace-nowrap text-sm">
-          ![Badge](https://galeria-drab.vercel.app/api/svg/badge-entusiasta.svg)
+          {`![Badge](${baseUrl}/api/svg/badge-entusiasta.svg)`}
         </code>
       </Panel>
 
@@ -36,17 +39,17 @@ export default function SVGGalleryInstructions(): React.ReactElement {
       </div>
       <Panel className="mt-2.5 overflow-x-auto">
         <code className="whitespace-nowrap text-sm">
-          ![Badge](https://galeria-drab.vercel.app/api/svg/badge-devops.svg?width=300)
+          {`![Badge](${baseUrl}/api/svg/badge-devops.svg?width=300)`}
         </code>
       </Panel>
       <Panel className="mt-2.5 overflow-x-auto">
         <code className="whitespace-nowrap text-sm">
-          ![Banner](https://galeria-drab.vercel.app/api/svg/capa-4.svg?width=800)
+          {`![Banner](${baseUrl}/api/svg/capa-4.svg?width=800)`}
         </code>
       </Panel>
       <Panel className="mt-2.5 overflow-x-auto">
         <code className="whitespace-nowrap text-sm">
-          ![Banner 100%](https://galeria-drab.vercel.app/api/svg/capa-4.svg?width=100%)
+          {`![Banner 100%](${baseUrl}/api/svg/capa-4.svg?width=100%)`}
         </code>
       </Panel>
 
@@ -59,6 +62,48 @@ export default function SVGGalleryInstructions(): React.ReactElement {
         <code className="mb-1.5">?width=100% - Largura 100% (responsivo)</code>
         <code className="mb-1.5">?height=200 ou ?h=200 - Define altura</code>
         <code>?width=600&height=300 - Define ambos explicitamente</code>
+      </div>
+
+      <div className="mt-6 flex items-center justify-center rounded border border-[var(--vscode-border)] bg-[var(--vscode-bg)] p-5 text-center">
+        <i className="fas fa-users mr-2 text-[var(--accent-purple)]" />
+        <strong>Visitors no perfil (contador de visitas):</strong>
+      </div>
+
+      <Panel className="mt-2.5 overflow-x-auto">
+        <code className="whitespace-nowrap text-sm">
+          {`![Visitors](${baseUrl}/api/visitors/SEU_ID/badge.svg)`}
+        </code>
+      </Panel>
+
+      <Panel className="mt-2.5 overflow-x-auto">
+        <code className="whitespace-nowrap text-sm">
+          {`<img src="${baseUrl}/api/visitors/SEU_ID/badge.svg" alt="Visitors" />`}
+        </code>
+      </Panel>
+
+      <div className="mt-2.5 flex flex-col items-start justify-center rounded border border-[var(--vscode-border)] bg-[var(--vscode-bg)] p-5 text-left">
+        <div className="mb-2 text-sm text-[var(--text-muted)]">
+          Dicas rápidas (substitua <code>SEU_ID</code> por algo como seu usuário do GitHub, por
+          exemplo <code>lopos</code>):
+        </div>
+        <div className="mb-1 text-sm text-[var(--text-muted)]">
+          Você pode escolher o texto livremente via <code>label</code> (ex.: visitors, views,
+          visitantes).
+        </div>
+        <code className="mb-1.5">{`![Visitors](${baseUrl}/api/visitors/SEU_ID/badge.svg?label=visitors)`}</code>
+        <code className="mb-1.5">{`![Views](${baseUrl}/api/visitors/SEU_ID/badge.svg?label=views)`}</code>
+        <code className="mb-1.5">{`![Visitantes](${baseUrl}/api/visitors/SEU_ID/badge.svg?label=visitantes)`}</code>
+        <code>{`![Sem incrementar](${baseUrl}/api/visitors/SEU_ID/badge.svg?label=visitas&increment=0)`}</code>
+      </div>
+
+      <div className="mt-2.5 flex flex-col items-start justify-center rounded border border-[var(--vscode-border)] bg-[var(--vscode-bg)] p-5 text-left">
+        <div className="mb-2 text-sm text-[var(--text-muted)]">
+          Cores e formatos (hex com 3 ou 6 dígitos; com ou sem <code>#</code>):
+        </div>
+        <code className="mb-1.5">{`![Pill azul](${baseUrl}/api/visitors/SEU_ID/badge.svg?label=views&shape=pill&labelColor=111111&valueColor=2563eb&textColor=ffffff)`}</code>
+        <code className="mb-1.5">{`![Square verde](${baseUrl}/api/visitors/SEU_ID/badge.svg?label=visitors&shape=square&labelColor=111111&valueColor=22c55e&textColor=ffffff)`}</code>
+        <code className="mb-1.5">{`![Rounded roxo](${baseUrl}/api/visitors/SEU_ID/badge.svg?label=visitantes&shape=rounded&labelColor=0f172a&valueColor=7c3aed&textColor=ffffff)`}</code>
+        <code>{`![Sem incrementar](${baseUrl}/api/visitors/SEU_ID/badge.svg?label=views&increment=0&shape=pill&labelColor=111111&valueColor=f97316&textColor=ffffff)`}</code>
       </div>
     </section>
   );

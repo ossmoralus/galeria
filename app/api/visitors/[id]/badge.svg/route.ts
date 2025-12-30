@@ -2,6 +2,33 @@ import { NextResponse } from 'next/server';
 import { getVisitorsRedis, normalizeVisitorId, visitorKey } from '@/lib/visitors';
 import { renderVisitorBadgeSvg } from '@/lib/visitorBadgeSvg';
 
+function normalizeHexColor(value: string | null): string | undefined {
+  if (value === null) return undefined;
+  const trimmed = value.trim();
+  if (trimmed === '') return undefined;
+
+  const withHash = trimmed.startsWith('#') ? trimmed : `#${trimmed}`;
+  // Aceita apenas hex curto (3) ou completo (6) para evitar valores maliciosos.
+  if (/^#[0-9a-fA-F]{3}$/.test(withHash) || /^#[0-9a-fA-F]{6}$/.test(withHash)) {
+    return withHash;
+  }
+  return undefined;
+}
+
+function normalizeShape(value: string | null): 'rounded' | 'square' | 'pill' | undefined {
+  if (value === null) return undefined;
+  switch (value.trim().toLowerCase()) {
+    case 'rounded':
+      return 'rounded';
+    case 'square':
+      return 'square';
+    case 'pill':
+      return 'pill';
+    default:
+      return undefined;
+  }
+}
+
 export const runtime = 'edge';
 
 export async function GET(
@@ -22,12 +49,24 @@ export async function GET(
   const incrementParam = searchParams.get('increment');
   const shouldIncrement = incrementParam === null ? true : incrementParam !== '0';
 
+  const labelBg = normalizeHexColor(searchParams.get('labelColor'));
+  const valueBg = normalizeHexColor(searchParams.get('valueColor'));
+  const textColor = normalizeHexColor(searchParams.get('textColor'));
+  const shape = normalizeShape(searchParams.get('shape'));
+
+  const styleOptions = {
+    ...(labelBg !== undefined ? { labelBg } : {}),
+    ...(valueBg !== undefined ? { valueBg } : {}),
+    ...(textColor !== undefined ? { textColor } : {}),
+    ...(shape !== undefined ? { shape } : {})
+  };
+
   try {
     const redis = getVisitorsRedis();
     const key = visitorKey(id);
     const count = shouldIncrement ? await redis.incr(key) : ((await redis.get<number>(key)) ?? 0);
 
-    const svg = renderVisitorBadgeSvg(label, String(count));
+    const svg = renderVisitorBadgeSvg(label, String(count), styleOptions);
     return new NextResponse(svg, {
       headers: {
         'Content-Type': 'image/svg+xml; charset=utf-8',
@@ -38,7 +77,7 @@ export async function GET(
     });
   } catch (error) {
     console.error('Visitors badge error:', error);
-    const svg = renderVisitorBadgeSvg(label, 'n/a');
+    const svg = renderVisitorBadgeSvg(label, 'n/a', styleOptions);
     return new NextResponse(svg, {
       headers: {
         'Content-Type': 'image/svg+xml; charset=utf-8',
