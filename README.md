@@ -22,6 +22,11 @@ Uma plataforma completa para gerenciar **badges, SVGs e banners** para perfis do
 
 ## 🎯 Principais Funcionalidades
 
+- 🖼️ **Galeria completa de SVGs** (badges, banners, ícones) organizada por categorias
+- ✍️ **Blog educativo em MDX** com categorias/tags e SEO
+- ⚙️ **API de SVGs** para servir assets via URL com parâmetros de dimensão
+- 👀 **API de visitantes** para contador (JSON + badge SVG)
+
 ## 🏷️ Badges do projeto (para usar no seu README)
 
 Alguns exemplos prontos (servidos pela API do próprio projeto):
@@ -32,6 +37,41 @@ Alguns exemplos prontos (servidos pela API do próprio projeto):
 ![React](https://galeria-drab.vercel.app/api/svg/badges/skills/tecnologias/badge-react.svg)
 
 Guia completo + catálogo: [docs/GALERIA-SVG.md](docs/GALERIA-SVG.md)
+
+---
+
+## 🧩 Como adicionar no GitHub
+
+### 1) No perfil (README do usuário)
+
+O GitHub permite um README “especial” no perfil:
+
+1. Crie um repositório com o **mesmo nome do seu usuário** (ex.: `seu-usuario/seu-usuario`)
+2. Marque a opção **Public**
+3. Adicione/edite o `README.md` desse repositório
+4. Cole um badge (exemplos abaixo)
+
+Exemplo com contador de visitantes (badge SVG):
+
+```md
+![visitors](https://galeria-drab.vercel.app/api/visitors/seu-usuario/badge.svg)
+```
+
+Se quiser trocar o texto do lado esquerdo:
+
+```md
+![views](https://galeria-drab.vercel.app/api/visitors/seu-usuario/badge.svg?label=views)
+```
+
+### 2) Em qualquer repositório
+
+Basta adicionar no `README.md` do repositório:
+
+```md
+![visitors](https://galeria-drab.vercel.app/api/visitors/seu-usuario/badge.svg)
+```
+
+> Observação: o GitHub pode cachear imagens; então o número pode demorar a refletir o valor mais recente.
 
 ### 🖼️ Galeria Completa
 
@@ -60,8 +100,8 @@ Guia completo + catálogo: [docs/GALERIA-SVG.md](docs/GALERIA-SVG.md)
 
 ### Frontend & Framework
 
-- **[Next.js 16.0.6](https://nextjs.org)** - App Router + Turbopack
-- **[React 19.2.0](https://react.dev)** - Biblioteca UI moderna
+- **[Next.js 16.0.7](https://nextjs.org)** - App Router + Turbopack
+- **[React 19.2.1](https://react.dev)** - Biblioteca UI moderna
 - **[TypeScript 5.6.0](https://www.typescriptlang.org)** - Tipagem estática (strict mode 100%)
 - **[TailwindCSS](https://tailwindcss.com)** - Utilitários CSS
 - **[@tailwindcss/typography](https://tailwindcss.com/docs/typography-plugin)** - Plugin para tipografia
@@ -94,13 +134,14 @@ Guia completo + catálogo: [docs/GALERIA-SVG.md](docs/GALERIA-SVG.md)
 - **[Vercel](https://vercel.com)** - Hosting & deployment automático
 - **GitHub Actions** - CI/CD pipelines
 
-## � Estrutura do Projeto
+## 🗂️ Estrutura do Projeto
 
 ```
 galeria/
 ├── 📱 app/                           # App Router do Next.js
 │   ├── api/
-│   │   └── svg/[...filename]/        # 🔗 API dinâmica de SVGs com parâmetros
+│   │   ├── svg/[...filename]/        # 🔗 API dinâmica de SVGs com parâmetros
+│   │   └── visitors/[id]/            # 👀 API de visitantes (JSON + badge.svg)
 │   ├── blog/                         # 📚 Sistema de blog com MDX
 │   │   ├── layout.tsx
 │   │   ├── page.tsx                  # Índice de posts
@@ -145,6 +186,7 @@ galeria/
 │   ├── posts.ts                      # Utilitários do blog
 │   ├── svgGalleryData.ts             # Dados da galeria
 │   └── getBaseUrl.ts                 # Helper de URLs
+│   └── visitors.ts                    # Contador de visitantes (Upstash)
 ├── 🎁 public/
 │   ├── icons/                        # Favicons e PWA
 │   ├── svg/                          # 🖼️ Assets de SVG
@@ -212,11 +254,11 @@ Sincronizada com a identidade visual da **Moralus OSS**:
 - 📱 **Responsividade** - Mobile-first com breakpoints claros
 - 🌗 **Modo escuro** - Dark theme nativo
 
-## � Começando Rápido
+## 🚀 Começando Rápido
 
 ### Pré-requisitos
 
-- **Node.js** ≥22.0.0
+- **Node.js** 24.x
 - **npm** ou **yarn**
 
 ### Instalação & Setup
@@ -496,28 +538,6 @@ Todas as licenças são **permissivas** e compatíveis comercialmente.
 ## 🎓 Projeto Educativo
 
 Desenvolvido pela **[Moralus OSS](https://github.com/ossmoralus)** para ajudar a comunidade de desenvolvedores.
-
-### Aprenda com este projeto
-
-## 📊 Status do Projeto
-
-| Aspecto          | Status                                                                         |
-| ---------------- | ------------------------------------------------------------------------------ |
-| Build            | ![Status](https://img.shields.io/badge/build-passing-brightgreen)              |
-| Deploy           | ![Vercel](https://img.shields.io/badge/vercel-deployed-black)                  |
-| Licenças         | ![Licenses](https://img.shields.io/badge/licenses-864%20OK-green)              |
-| Vulnerabilidades | ![Vulnerabilities](https://img.shields.io/badge/vulnerabilities-0-brightgreen) |
-| TypeScript       | ![TS](https://img.shields.io/badge/typescript-100%25-blue)                     |
-
-## 🛡️ Licenças e Conformidade
-
-Este projeto utiliza **apenas licenças permissivas**:
-
-Veja [docs/AUDITORIA-LICENCAS.md](./docs/AUDITORIA-LICENCAS.md) para detalhes completos.
-
-## 📞 Contato e Comunidade
-
-<div align="center">
 
 [![Discord](https://img.shields.io/badge/Discord-Junte--se-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/RpqNZpVn)
 [![WhatsApp](https://img.shields.io/badge/WhatsApp-Contato-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/5537999022401)
