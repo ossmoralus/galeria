@@ -109,5 +109,40 @@ export const bannerItems: SVGItem[] = [
     filename: 'banner/capa-12.svg',
     alt: 'Banner Moralus OSS em verde escuro com selo hexagonal OSS e chamadas Open Source',
     category: 'banner'
+  },
+  {
+    id: 'banner-13',
+    title: 'Banner Neon Grid',
+    filename: 'banner/capa-13.svg',
+    alt: 'Banner futurista com grid neon, cartões em glass e chamada Build Ship Share',
+    category: 'banner'
+  },
+  {
+    id: 'banner-14',
+    title: 'Banner Aurora Sunset',
+    filename: 'banner/capa-14.svg',
+    alt: 'Banner degradê quente com formas fluidas e destaque para perfil criativo',
+    category: 'banner'
+  },
+  {
+    id: 'banner-15',
+    title: 'Banner Clean Focus',
+    filename: 'banner/capa-15.svg',
+    alt: 'Banner claro minimalista com cartões de metas e métricas para perfil profissional',
+    category: 'banner'
+  },
+  {
+    id: 'banner-16',
+    title: 'Banner Terminal Flow',
+    filename: 'banner/capa-16.svg',
+    alt: 'Banner dark estilo terminal com fluxo de código e badges de stack',
+    category: 'banner'
+  },
+  {
+    id: 'banner-17',
+    title: 'Banner Oceanic Wave',
+    filename: 'banner/capa-17.svg',
+    alt: 'Banner azul com ondas, glow e destaque para comunidade e projetos',
+    category: 'banner'
   }
 ];

@@ -93,7 +93,7 @@ export async function GET(
 
     const stat = fs.statSync(svgPath);
     const cached = svgCache.get(svgPath);
-    const isFresh = cached !== undefined && cached.mtimeMs === stat.mtimeMs;
+    const isFresh = cached?.mtimeMs === stat.mtimeMs;
     const baseContent = isFresh ? cached.content : fs.readFileSync(svgPath, 'utf-8');
     if (!isFresh) {
       svgCache.set(svgPath, { content: baseContent, mtimeMs: stat.mtimeMs });

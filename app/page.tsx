@@ -2,8 +2,11 @@ import Link from 'next/link';
 import Container from './components/ui/Container';
 import Card from './components/ui/Card';
 import Badge from './components/ui/Badge';
+import { svgItems } from '../lib/svgGalleryData';
 
 export default function HomePage(): React.ReactElement {
+  const totalSvgs = svgItems.length;
+
   return (
     <main className="homeMain flex min-h-screen flex-col items-center justify-center p-5 text-center">
       <div className="homeHeading mb-10">
@@ -33,7 +36,7 @@ export default function HomePage(): React.ReactElement {
               do GitHub!
             </p>
             <Badge>
-              <i className="fas fa-check-circle iconWithMarginRight" /> 25 SVGs disponíveis
+              <i className="fas fa-check-circle iconWithMarginRight" /> {totalSvgs} SVGs disponíveis
             </Badge>
           </Card>
         </Link>

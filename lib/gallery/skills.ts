@@ -147,6 +147,112 @@ export const skillsItems: SVGItem[] = [
     alt: 'Badge Perl',
     category: 'skills'
   },
+  // ===== LINGUAGENS ADICIONAIS =====
+  {
+    id: 'badge-bash',
+    title: 'Bash',
+    filename: 'badges/skills/langs/badge-bash.svg',
+    alt: 'Badge Bash',
+    category: 'skills'
+  },
+  {
+    id: 'badge-cobol',
+    title: 'COBOL',
+    filename: 'badges/skills/langs/badge-cobol.svg',
+    alt: 'Badge COBOL',
+    category: 'skills'
+  },
+  {
+    id: 'badge-crystal',
+    title: 'Crystal',
+    filename: 'badges/skills/langs/badge-crystal.svg',
+    alt: 'Badge Crystal',
+    category: 'skills'
+  },
+  {
+    id: 'badge-delphi',
+    title: 'Delphi',
+    filename: 'badges/skills/langs/badge-delphi.svg',
+    alt: 'Badge Delphi',
+    category: 'skills'
+  },
+  {
+    id: 'badge-erlang',
+    title: 'Erlang',
+    filename: 'badges/skills/langs/badge-erlang.svg',
+    alt: 'Badge Erlang',
+    category: 'skills'
+  },
+  {
+    id: 'badge-fortran',
+    title: 'Fortran',
+    filename: 'badges/skills/langs/badge-fortran.svg',
+    alt: 'Badge Fortran',
+    category: 'skills'
+  },
+  {
+    id: 'badge-fsharp',
+    title: 'F#',
+    filename: 'badges/skills/langs/badge-fsharp.svg',
+    alt: 'Badge F#',
+    category: 'skills'
+  },
+  {
+    id: 'badge-groovy',
+    title: 'Groovy',
+    filename: 'badges/skills/langs/badge-groovy.svg',
+    alt: 'Badge Groovy',
+    category: 'skills'
+  },
+  {
+    id: 'badge-matlab',
+    title: 'MATLAB',
+    filename: 'badges/skills/langs/badge-matlab.svg',
+    alt: 'Badge MATLAB',
+    category: 'skills'
+  },
+  {
+    id: 'badge-nim',
+    title: 'Nim',
+    filename: 'badges/skills/langs/badge-nim.svg',
+    alt: 'Badge Nim',
+    category: 'skills'
+  },
+  {
+    id: 'badge-objective-c',
+    title: 'Objective-C',
+    filename: 'badges/skills/langs/badge-objective-c.svg',
+    alt: 'Badge Objective-C',
+    category: 'skills'
+  },
+  {
+    id: 'badge-ocaml',
+    title: 'OCaml',
+    filename: 'badges/skills/langs/badge-ocaml.svg',
+    alt: 'Badge OCaml',
+    category: 'skills'
+  },
+  {
+    id: 'badge-powershell',
+    title: 'PowerShell',
+    filename: 'badges/skills/langs/badge-powershell.svg',
+    alt: 'Badge PowerShell',
+    category: 'skills'
+  },
+  {
+    id: 'badge-racket',
+    title: 'Racket',
+    filename: 'badges/skills/langs/badge-racket.svg',
+    alt: 'Badge Racket',
+    category: 'skills'
+  },
+  {
+    id: 'badge-sql',
+    title: 'SQL',
+    filename: 'badges/skills/langs/badge-sql.svg',
+    alt: 'Badge SQL',
+    category: 'skills'
+  },
 
   // ===== FRONTEND =====
   {
@@ -1097,6 +1203,76 @@ export const skillsItems: SVGItem[] = [
     title: 'Helm',
     filename: 'badges/skills/ferramentas/badge-helm.svg',
     alt: 'Badge Helm',
+    category: 'skills'
+  },
+  {
+    id: 'badge-datadog',
+    title: 'Datadog',
+    filename: 'badges/skills/ferramentas/badge-datadog.svg',
+    alt: 'Badge Datadog',
+    category: 'skills'
+  },
+  {
+    id: 'badge-sentry',
+    title: 'Sentry',
+    filename: 'badges/skills/ferramentas/badge-sentry.svg',
+    alt: 'Badge Sentry',
+    category: 'skills'
+  },
+  {
+    id: 'badge-newrelic',
+    title: 'New Relic',
+    filename: 'badges/skills/ferramentas/badge-newrelic.svg',
+    alt: 'Badge New Relic',
+    category: 'skills'
+  },
+  {
+    id: 'badge-pagerduty',
+    title: 'PagerDuty',
+    filename: 'badges/skills/ferramentas/badge-pagerduty.svg',
+    alt: 'Badge PagerDuty',
+    category: 'skills'
+  },
+  {
+    id: 'badge-raycast',
+    title: 'Raycast',
+    filename: 'badges/skills/ferramentas/badge-raycast.svg',
+    alt: 'Badge Raycast',
+    category: 'skills'
+  },
+  {
+    id: 'badge-obsidian',
+    title: 'Obsidian',
+    filename: 'badges/skills/ferramentas/badge-obsidian.svg',
+    alt: 'Badge Obsidian',
+    category: 'skills'
+  },
+  {
+    id: 'badge-linear',
+    title: 'Linear',
+    filename: 'badges/skills/ferramentas/badge-linear.svg',
+    alt: 'Badge Linear',
+    category: 'skills'
+  },
+  {
+    id: 'badge-clickup',
+    title: 'ClickUp',
+    filename: 'badges/skills/ferramentas/badge-clickup.svg',
+    alt: 'Badge ClickUp',
+    category: 'skills'
+  },
+  {
+    id: 'badge-splunk',
+    title: 'Splunk',
+    filename: 'badges/skills/ferramentas/badge-splunk.svg',
+    alt: 'Badge Splunk',
+    category: 'skills'
+  },
+  {
+    id: 'badge-airflow',
+    title: 'Airflow',
+    filename: 'badges/skills/ferramentas/badge-airflow.svg',
+    alt: 'Badge Airflow',
     category: 'skills'
   }
 ];
