@@ -108,9 +108,21 @@ Adicionados logs detalhados em [lib/github-stats.ts](lib/github-stats.ts):
 
 ⚠️ **Observação importante:** Sem um `GITHUB_TOKEN` configurado, a GraphQL API retorna erro 403 (rate limit). O código implementa fallback automático para REST API que consegue recuperar todos os dados com sucesso.
 
+### Em Produção (Vercel/Servidor)
+
+**Problema descoberto:** A produção retorna HTTP 429 quando trata mais de ~60 requisições/hora porque:
+
+1. Sem `GITHUB_TOKEN`: Limite de **60 requisições/hora** por IP
+2. Com tráfego: Limite é atingido rapidamente
+3. GitHub bloqueia a requisição: HTTP 429
+
+**Solução:** Configurar `GITHUB_TOKEN` no Vercel
+
+👉 **[docs/SETUP-PRODUCAO.md](./SETUP-PRODUCAO.md)** - Guia completo de setup
+
 ### Recomendação
 
-Para melhor performance e evitar rate limit, configure a variável de ambiente:
+Para melhor performance, **configure obrigatoriamente em produção**:
 
 ```bash
 GITHUB_TOKEN=seu_token_aqui
@@ -120,6 +132,13 @@ Isso permite:
 
 - GraphQL: 5.000 requisições/hora (ao invés de 60 unauthenticated)
 - Dados mais precisos de commits
+- Sem HTTP 429 em produção
+
+**Rate Limits:**
+| Cenário | Limite | 
+|---------|--------|
+| Sem token (unauthenticated) | 60/hora | 
+| Com token (authenticated) | 5.000/hora |
 
 ## Arquivos Modificados
 

@@ -31,6 +31,7 @@ Plataforma para gerenciar **badges, SVGs e banners** para perfis do GitHub, com 
 
 - [Visão geral](#-visão-geral)
 - [Destaques](#-destaques)
+- [Troubleshooting](#-troubleshooting)
 - [Usando os SVGs](#-usando-os-svgs)
 - [API de visitantes](#-api-de-visitantes)
 - [Stack](#-stack)
@@ -41,6 +42,31 @@ Plataforma para gerenciar **badges, SVGs e banners** para perfis do GitHub, com 
 - [Contribuição](#-contribuição)
 - [Licença & conformidade](#-licença--conformidade)
 - [Comunidade](#-comunidade)
+
+---
+
+## 🆘 Troubleshooting
+
+### ❌ "Cards de GitHub Stats retornam HTTP 429 em produção"
+
+**Causa:** Sem `GITHUB_TOKEN`, o GitHub limita a 60 requisições/hora.
+
+**Solução rápida (5 min):**
+
+```bash
+# 1. Gere token em https://github.com/settings/tokens
+# - Crie novo token (classic)
+# - Scope: public_repo
+# - Copie o token (será mostrado uma vez)
+
+# 2. Configure no Vercel (Settings → Environment Variables)
+# GITHUB_TOKEN=ghp_seu_token
+
+# 3. Deploy novamente
+git push origin main
+```
+
+**Documentação completa:** [docs/DEBUG-429-PRODUCAO.md](./docs/DEBUG-429-PRODUCAO.md)
 
 ---
 
@@ -113,6 +139,61 @@ Variáveis necessárias (Upstash): `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST
 
 ---
 
+## 📊 GitHub Stats & Languages Cards
+
+Cards SVG que mostram estatísticas reais do seu perfil GitHub! Atualizam automaticamente a cada hora.
+
+### GitHub Stats
+
+Mostra commits, PRs, contribuições e repositórios:
+
+```md
+![GitHub Stats](https://galeria-drab.vercel.app/api/github-stats/torvalds?theme=dark&width=600)
+```
+
+**Resultado:** ![GitHub Stats](https://galeria-drab.vercel.app/api/github-stats/torvalds?theme=dark&width=600)
+
+Temas: `dark`, `light`, `neon`, `sunset`, `ocean`, `forest`
+
+### GitHub Top Languages
+
+Mostra as 5 linguagens mais usadas:
+
+```md
+![GitHub Languages](https://galeria-drab.vercel.app/api/github-langs/torvalds?theme=dark&width=600)
+```
+
+**Resultado:** ![GitHub Languages](https://galeria-drab.vercel.app/api/github-langs/torvalds?theme=dark&width=600)
+
+**Como usar no seu README:**
+
+1. Copie a URL de um dos exemplos acima
+2. Substitua `torvalds` pelo seu username do GitHub
+3. Personalize o tema e tamanho conforme desejado
+4. Cole no seu README.md
+
+**Parâmetros de customização:**
+
+| Parâmetro | Exemplo | Descrição |
+|-----------|---------|-----------|
+| theme | `dark`, `neon` | Tema visual do card |
+| width | `600` | Largura em px |
+| height | `320` | Altura em px (stats only) |
+| name | `João Silva` | Nome customizado (exibe junto ao @username) |
+
+📖 Documentação completa: [docs/cards/CUSTOMIZACAO.md](./docs/cards/CUSTOMIZACAO.md)
+
+⚠️ **Importante:** Para que os cards funcionem em produção sem rate limit, configure a variável `GITHUB_TOKEN` no seu deployment:
+
+1. Crie um Personal Access Token em [github.com/settings/tokens](https://github.com/settings/tokens) com acesso `public_repo`
+2. Configure em suas variáveis de ambiente do Vercel/seu host:
+   ```
+   GITHUB_TOKEN=ghp_seu_token_aqui
+   ```
+3. Sem o token, você atingirá o limite de 60 requisições/hora. Com token: 5.000 requisições/hora.
+
+---
+
 ## 🧰 Stack
 
 - **Next.js 16.0.7**, **React 19.2.1**, **TypeScript 5.6**
@@ -168,6 +249,8 @@ Mais em package.json.
 
 ## 📚 Documentação
 
+- [SETUP-PRODUCAO.md](./docs/SETUP-PRODUCAO.md) — **⚠️ Leia primeiro!** Variáveis de ambiente, GITHUB_TOKEN, troubleshooting
+- [RESUMO-DOCUMENTACAO.md](./docs/RESUMO-DOCUMENTACAO.md) — Índice de tudo que foi documentado
 - [GALERIA-SVG.md](./docs/GALERIA-SVG.md) — catálogo completo
 - [CRIAR-POSTS-BLOG.md](./docs/CRIAR-POSTS-BLOG.md) — guia MDX
 - [BADGE_STANDARD.md](./docs/BADGE_STANDARD.md) — padrão de badges
