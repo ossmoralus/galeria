@@ -1,22 +1,19 @@
 import Container from '../../../components/ui/Container';
 import PostCard from '../../../components/ui/PostCard';
 import { getPostsByTag, getAllTags } from '@/lib/posts';
-
-interface PageProps {
-  params: Promise<{ tag: string }>;
-}
+import type { BlogTagPageProps } from '@/types/blog';
 
 export function generateStaticParams(): Array<{ tag: string }> {
   const tags = getAllTags();
   return tags.map((tag) => ({ tag }));
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<{ title: string }> {
+export async function generateMetadata({ params }: BlogTagPageProps): Promise<{ title: string }> {
   const { tag } = await params;
   return { title: `#${tag} | Blog Moralus` };
 }
 
-export default async function TagPage({ params }: PageProps): Promise<React.ReactElement> {
+export default async function TagPage({ params }: BlogTagPageProps): Promise<React.ReactElement> {
   const { tag } = await params;
   const posts = getPostsByTag(tag);
 

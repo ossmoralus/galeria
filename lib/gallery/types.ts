@@ -2,7 +2,7 @@
  * Tipos compartilhados para a galeria de SVGs
  */
 
-import type { CategoryType, SVGItem, CategoryInfo } from '@/app/types/galeria';
+import type { CategoryType, SVGItem, CategoryInfo } from '@/types/galeria';
 
 // Re-export para manter compatibilidade
 export type { CategoryType, SVGItem, CategoryInfo };
@@ -27,5 +27,25 @@ export const categoryLabels: Record<CategoryType, CategoryInfo> = {
     title: 'Info & Status',
     icon: 'fas fa-info-circle',
     description: 'Badges de status do projeto, versão, licença, etc.'
+  },
+  langs: {
+    title: 'Langs',
+    icon: 'fas fa-language',
+    description: 'Top linguagens e badges de linguagens'
+  },
+  ferramentas: {
+    title: 'Ferramentas',
+    icon: 'fas fa-screwdriver-wrench',
+    description: 'Ferramentas e utilidades para o perfil'
+  },
+  tecnologias: {
+    title: 'Tecnologias',
+    icon: 'fas fa-microchip',
+    description: 'Stacks e tecnologias em destaque'
+  },
+  visitors: {
+    title: 'Visitors',
+    icon: 'fas fa-users',
+    description: 'Badges de contagem e variantes para visitantes'
   }
 };

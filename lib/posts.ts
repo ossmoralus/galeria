@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import type { Post, PostMetadata } from '@/app/types/blog';
+import type { Post, PostMetadata } from '@/types/blog';
 
 // Re-export para manter compatibilidade
 export type { Post, PostMetadata };

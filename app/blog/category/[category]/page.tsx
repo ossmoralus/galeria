@@ -1,22 +1,23 @@
 import Container from '../../../components/ui/Container';
 import PostCard from '../../../components/ui/PostCard';
 import { getPostsByCategory, getAllCategories } from '@/lib/posts';
-
-interface PageProps {
-  params: Promise<{ category: string }>;
-}
+import type { BlogCategoryPageProps } from '@/types/blog';
 
 export function generateStaticParams(): Array<{ category: string }> {
   const categories = getAllCategories();
   return categories.map((category) => ({ category }));
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<{ title: string }> {
+export async function generateMetadata({
+  params
+}: BlogCategoryPageProps): Promise<{ title: string }> {
   const { category } = await params;
   return { title: `${category} | Blog Moralus` };
 }
 
-export default async function CategoryPage({ params }: PageProps): Promise<React.ReactElement> {
+export default async function CategoryPage({
+  params
+}: BlogCategoryPageProps): Promise<React.ReactElement> {
   const { category } = await params;
   const posts = getPostsByCategory(category);
 

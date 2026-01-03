@@ -1,9 +1,6 @@
 import React from 'react';
 import Button from './Button';
-
-type TagProps =
-  | ({ href: string } & React.AnchorHTMLAttributes<HTMLAnchorElement> & { label: string })
-  | ({ href?: undefined } & React.HTMLAttributes<HTMLSpanElement> & { label: string });
+import type { TagProps } from '@/types/ui';
 
 export default function Tag({
   label,

@@ -1,5 +1,4 @@
-export type Variant = 'primary' | 'secondary' | 'ghost';
-export type Size = 'sm' | 'md' | 'lg';
+import type { Variant, Size } from '@/types/ui';
 
 export const BUTTON_BASE_CLASSES =
   'font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--accent-light)]';

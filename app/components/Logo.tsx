@@ -1,10 +1,5 @@
 import Image from 'next/image';
-
-interface LogoProps {
-  size?: number;
-  showText?: boolean;
-  className?: string | undefined;
-}
+import type { LogoProps } from '@/types/ui';
 
 export default function Logo({
   size = 48,

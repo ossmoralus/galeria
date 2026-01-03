@@ -5,7 +5,8 @@
 import type { NextRequest } from 'next/server';
 // eslint-disable-next-line no-duplicate-imports
 import { NextResponse } from 'next/server';
-import { generateStatusSVG, getTheme, type Theme } from '@/lib/statusBadgeSvg';
+import { generateStatusSVG, getTheme } from '@/lib/statusBadgeSvg';
+import type { StatusBadgeTheme } from '@/types/statusBadge';
 
 export function GET(request: NextRequest): NextResponse {
   const { searchParams } = request.nextUrl;
@@ -16,7 +17,7 @@ export function GET(request: NextRequest): NextResponse {
   const variantQuery = searchParams.get('variant');
   const variant = variantQuery !== null && variantQuery.trim() !== '' ? variantQuery : 'default';
 
-  const theme: Theme = getTheme(themeParam);
+  const theme: StatusBadgeTheme = getTheme(themeParam);
 
   const svg = generateStatusSVG(theme, variant);
 

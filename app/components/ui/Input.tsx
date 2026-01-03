@@ -1,6 +1,5 @@
 import React from 'react';
-
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
+import type { InputProps } from '@/types/ui';
 
 export default function Input({ className = '', ...props }: InputProps): React.ReactElement {
   const base =

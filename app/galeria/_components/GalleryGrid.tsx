@@ -4,14 +4,7 @@ import { useState } from 'react';
 import SVGCard from '../../components/ui/SVGCard';
 import CodeModal from '../../components/ui/CodeModal';
 import SVGGalleryNotification from '../../components/ui/SVGGalleryNotification';
-import type { SVGItem } from '@/lib/svgGalleryData';
-
-interface GalleryGridProps {
-  items: SVGItem[];
-  title?: string;
-  icon?: string;
-  description?: string;
-}
+import type { GalleryGridProps } from '@/types/galeria';
 
 export default function GalleryGrid({
   items,

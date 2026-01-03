@@ -2,10 +2,45 @@
  * Funções para buscar e processar estatísticas do GitHub
  */
 
-import type { GitHubStats } from '@/app/types/github';
+import type { GitHubLanguageStat, GitHubStats } from '@/types/github';
 
 // Re-export para manter compatibilidade
 export type { GitHubStats };
+
+const LANGUAGE_COLORS: Record<string, string> = {
+  JavaScript: '#f1e05a',
+  TypeScript: '#3178c6',
+  Python: '#3572A5',
+  Java: '#b07219',
+  Go: '#00ADD8',
+  Rust: '#dea584',
+  PHP: '#4F5D95',
+  Ruby: '#701516',
+  C: '#555555',
+  'C++': '#f34b7d',
+  'C#': '#178600',
+  Kotlin: '#A97BFF',
+  Swift: '#F05138',
+  Dart: '#00B4AB',
+  Scala: '#c22d40',
+  Elixir: '#6e4a7e',
+  Haskell: '#5e5086',
+  Shell: '#89e051',
+  HTML: '#e34c26',
+  CSS: '#563d7c'
+};
+
+function pickLanguageColor(name: string): string {
+  return LANGUAGE_COLORS[name] ?? '#58a6ff';
+}
+
+const FALLBACK_LANGUAGES: GitHubLanguageStat[] = [
+  { name: 'TypeScript', value: 320, percentage: 32, color: pickLanguageColor('TypeScript') },
+  { name: 'JavaScript', value: 260, percentage: 26, color: pickLanguageColor('JavaScript') },
+  { name: 'Python', value: 180, percentage: 18, color: pickLanguageColor('Python') },
+  { name: 'Go', value: 140, percentage: 14, color: pickLanguageColor('Go') },
+  { name: 'CSS', value: 100, percentage: 10, color: pickLanguageColor('CSS') }
+];
 
 /**
  * Busca estatísticas do usuário do GitHub via API REST
@@ -91,6 +126,64 @@ export async function fetchGitHubStats(username: string): Promise<GitHubStats> {
       followers: 0,
       publicRepos: 5
     };
+  }
+}
+
+export async function fetchGitHubTopLanguages(username: string): Promise<GitHubLanguageStat[]> {
+  try {
+    // eslint-disable-next-line no-undef
+    const reposResponse = await fetch(
+      `https://api.github.com/users/${username}/repos?per_page=100&type=owner&sort=updated`,
+      {
+        headers: {
+          Accept: 'application/vnd.github.v3+json'
+        },
+        next: { revalidate: 3600 }
+      }
+    );
+
+    if (!reposResponse.ok) {
+      throw new Error(`GitHub API error: ${reposResponse.status}`);
+    }
+
+    const repos = await reposResponse.json();
+
+    const languageTotals = new Map<string, number>();
+
+    for (const repo of repos.slice(0, 100)) {
+      const lang = repo.language as string | null;
+      if (lang === null || lang === undefined || lang === '') {
+        continue;
+      }
+
+      const size = Number.isFinite(repo.size) ? repo.size : 0;
+      const safeSize = Math.max(size, 1); // evita zerar percentuais
+      languageTotals.set(lang, (languageTotals.get(lang) ?? 0) + safeSize);
+    }
+
+    const total = Array.from(languageTotals.values()).reduce((acc, value) => acc + value, 0);
+
+    if (total === 0) {
+      return FALLBACK_LANGUAGES;
+    }
+
+    const top = Array.from(languageTotals.entries())
+      .sort(([, a], [, b]) => b - a)
+      .slice(0, 5)
+      .map(([name, value]) => {
+        const percentage = Math.round((value / total) * 1000) / 10; // uma casa decimal
+        return {
+          name,
+          value,
+          percentage,
+          color: pickLanguageColor(name)
+        } satisfies GitHubLanguageStat;
+      });
+
+    return top;
+  } catch (error) {
+    console.error('Erro ao buscar linguagens do GitHub:', error);
+    return FALLBACK_LANGUAGES;
   }
 }
 

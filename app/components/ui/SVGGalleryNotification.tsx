@@ -1,6 +1,4 @@
-interface SVGGalleryNotificationProps {
-  message: string;
-}
+import type { SVGGalleryNotificationProps } from '@/types/ui';
 
 export default function SVGGalleryNotification({
   message

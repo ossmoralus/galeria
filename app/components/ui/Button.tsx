@@ -1,22 +1,8 @@
 'use client';
 
 import React from 'react';
-import {
-  BUTTON_BASE_CLASSES,
-  VARIANT_CLASSES,
-  SIZE_CLASSES,
-  type Variant,
-  type Size
-} from './buttonStyles';
-
-export type ButtonProps = (
-  | React.ButtonHTMLAttributes<HTMLButtonElement>
-  | React.AnchorHTMLAttributes<HTMLAnchorElement>
-) & {
-  variant?: Variant;
-  size?: Size;
-  href?: string | undefined; // when provided render an anchor (<a>) instead of <button>
-};
+import { BUTTON_BASE_CLASSES, VARIANT_CLASSES, SIZE_CLASSES } from './buttonStyles';
+import type { ButtonProps, Variant, Size } from '@/types/ui';
 
 export default function Button({
   children,

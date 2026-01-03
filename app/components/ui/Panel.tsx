@@ -1,8 +1,5 @@
 import React from 'react';
-
-interface PanelProps extends React.HTMLAttributes<HTMLDivElement> {
-  as?: 'div' | 'section' | 'article';
-}
+import type { PanelProps } from '@/types/ui';
 
 export default function Panel({
   children,

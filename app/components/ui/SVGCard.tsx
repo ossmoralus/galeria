@@ -1,16 +1,6 @@
 import Button from './Button';
 import Card from './Card';
-
-interface SVGCardProps {
-  id: string;
-  title: string;
-  filename: string;
-  alt: string;
-  index: number;
-  onCopy: (filename: string) => Promise<void>;
-  onDownload: (filename: string) => void;
-  onViewCode: (filename: string) => void;
-}
+import type { SVGCardProps } from '@/types/ui';
 
 export default function SVGCard({
   id,

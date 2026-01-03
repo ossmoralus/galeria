@@ -4,12 +4,7 @@ import React from 'react';
 import Card from './Card';
 import Badge from './Badge';
 import Tag from './Tag';
-import type { PostMetadata } from '@/lib/posts';
-
-interface PostCardProps {
-  post: PostMetadata;
-  className?: string;
-}
+import type { PostCardProps } from '@/types/blog';
 
 export default function PostCard({ post, className = '' }: PostCardProps): React.ReactElement {
   const handleCardClick = (): void => {

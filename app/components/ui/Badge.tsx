@@ -1,10 +1,5 @@
 import React from 'react';
-
-export type BadgeTone = 'default' | 'info' | 'muted' | 'accent';
-
-interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
-  tone?: BadgeTone;
-}
+import type { BadgeProps, BadgeTone } from '@/types/ui';
 
 const TONE_CLASSES: Record<BadgeTone, string> = {
   default:

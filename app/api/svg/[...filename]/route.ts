@@ -2,11 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { type NextRequest, NextResponse } from 'next/server';
 import { isValidDimension, manipulateSvgDimensions } from '../svgManipulator';
-
-interface CacheEntry {
-  content: string;
-  mtimeMs: number;
-}
+import type { CacheEntry } from '@/types/svg';
 
 // Cache simples em memória; invalida quando o mtime do arquivo muda.
 const svgCache = new Map<string, CacheEntry>();

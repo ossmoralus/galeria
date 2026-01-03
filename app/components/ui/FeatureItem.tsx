@@ -1,8 +1,5 @@
 import React from 'react';
-
-interface FeatureItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
-  icon?: React.ReactNode;
-}
+import type { FeatureItemProps } from '@/types/ui';
 
 export default function FeatureItem({
   children,

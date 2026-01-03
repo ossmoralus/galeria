@@ -2,15 +2,9 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import type { GalleryCategory } from '@/types/galeria';
 
-interface Category {
-  slug: string;
-  label: string;
-  icon: string;
-  count?: number;
-}
-
-const categories: Category[] = [
+const categories: GalleryCategory[] = [
   { slug: '', label: 'Todos', icon: 'fas fa-th-large' },
   { slug: 'banners', label: 'Banners', icon: 'fas fa-image' },
   { slug: 'skills', label: 'Skills', icon: 'fas fa-code' },

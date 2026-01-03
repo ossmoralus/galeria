@@ -3,17 +3,12 @@
  */
 
 import { formatNumber } from './github-stats';
-import type { GitHubStats, SVGStyleConfig } from '@/app/types/github';
-
-// Re-export para manter compatibilidade
-export type { SVGStyleConfig };
-
-export interface GitHubCardConfig extends SVGStyleConfig {
-  borderRadius?: number;
-  iconStyle?: 'default' | 'outlined' | 'filled';
-  showBorder?: boolean;
-  borderWidth?: number;
-}
+import type {
+  GitHubStats,
+  GitHubCardConfig,
+  GitHubStatsThemeConfig,
+  GitHubCardTheme
+} from '@/types/github';
 
 // Ícones SVG semânticos (Font Awesome style)
 const icons = {
@@ -24,18 +19,7 @@ const icons = {
   followers: `<path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="currentColor"/>`
 };
 
-interface ThemeConfig {
-  bgGradient: [string, string];
-  cardBg: string;
-  primaryColor: string;
-  secondaryColor: string;
-  textColor: string;
-  accentGradient: [string, string];
-  borderColor: string;
-  iconColor: string;
-}
-
-const themes: Record<string, ThemeConfig> = {
+const themes: Record<GitHubCardTheme, GitHubStatsThemeConfig> = {
   dark: {
     bgGradient: ['#0d1117', '#161b22'],
     cardBg: 'rgba(22, 27, 34, 0.8)',
@@ -98,7 +82,7 @@ const themes: Record<string, ThemeConfig> = {
   }
 };
 
-const defaultTheme: ThemeConfig = {
+const defaultTheme: GitHubStatsThemeConfig = {
   bgGradient: ['#0d1117', '#161b22'],
   cardBg: 'rgba(22, 27, 34, 0.8)',
   primaryColor: '#58a6ff',
@@ -112,12 +96,9 @@ const defaultTheme: ThemeConfig = {
 /**
  * Obtém um tema de forma segura, retornando 'dark' como fallback
  */
-function getTheme(themeKey: string): ThemeConfig {
-  const selectedTheme = themes[themeKey];
-  if (selectedTheme !== undefined) {
-    return selectedTheme;
-  }
-  return defaultTheme;
+function getTheme(themeKey: string): GitHubStatsThemeConfig {
+  const selectedTheme = themes[themeKey as GitHubCardTheme];
+  return selectedTheme ?? defaultTheme;
 }
 
 export function generateGitHubStatsSVG(
@@ -126,7 +107,7 @@ export function generateGitHubStatsSVG(
   config?: GitHubCardConfig
 ): string {
   const themeKey = config?.theme ?? 'dark';
-  const theme: ThemeConfig = getTheme(themeKey);
+  const theme = getTheme(themeKey);
 
   const borderRadius: number = config?.borderRadius ?? 12;
   const showBorder: boolean = config?.showBorder ?? true;
@@ -134,6 +115,12 @@ export function generateGitHubStatsSVG(
 
   const width = 600;
   const height = 320;
+  const svgWidth =
+    Number.isFinite(config?.width) && (config?.width ?? 0) > 0 ? (config?.width ?? width) : width;
+  const svgHeight =
+    Number.isFinite(config?.height) && (config?.height ?? 0) > 0
+      ? (config?.height ?? height)
+      : height;
   const padding = 20;
   const cardPadding = 15;
 
@@ -165,7 +152,7 @@ export function generateGitHubStatsSVG(
     }
   ];
 
-  return `<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
+  return `<svg width="${svgWidth}" height="${svgHeight}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:${theme.bgGradient[0]};stop-opacity:1" />

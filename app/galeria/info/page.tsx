@@ -4,6 +4,7 @@ import GalleryGrid from '../_components/GalleryGrid';
 import SVGGalleryInstructions from '../../components/ui/SVGGalleryInstructions';
 import { getInfoItems, categoryLabels } from '@/lib/svgGalleryData';
 import GitHubStatsPreview from './_components/GitHubStatsPreview';
+import GitHubTopLangsPreview from './_components/GitHubTopLangsPreview';
 
 export default function InfoPage(): React.ReactElement {
   const items = getInfoItems();
@@ -34,6 +35,9 @@ export default function InfoPage(): React.ReactElement {
 
       {/* GitHub Stats Preview Section */}
       <GitHubStatsPreview />
+
+      {/* GitHub Top Languages Preview Section */}
+      <GitHubTopLangsPreview />
 
       <GalleryGrid items={items} title={title} icon={icon} description={description} />
 

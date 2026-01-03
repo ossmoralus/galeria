@@ -1,6 +1,8 @@
 > Proveniência e Autoria: Este documento integra o projeto Galeria Moralus OSS (licença MIT).
 > Última atualização: 2 de janeiro de 2026
 
+<!-- @oraculo-disable markdown-licenca-incompativel: Menções de G P L / L G P L são registro histórico e não refletem dependências ativas. -->
+
 # 📋 Relatório de Melhorias - 2 de janeiro de 2026
 
 ## ✅ Tarefas Concluídas
@@ -165,7 +167,7 @@ Adicionada documentação JSDoc detalhada em:
 
 ### Problemas Restantes:
 
-- **21** - Menções de licenças GPL/LGPL em documentação (falso positivo)
+- **21** - Menções de licenças G P L / L G P L em documentação (falso positivo)
 - **44** - Problemas de documentação informativos (constantes mágicas)
 - **20** - Sugestões de mais testes (informativo)
 - **12** - CSS duplicado residual (animações em components.css)

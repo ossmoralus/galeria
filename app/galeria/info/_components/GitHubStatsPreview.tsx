@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, type ChangeEvent, type ReactElement } from 'react';
+import { useMemo, useState, type ChangeEvent, type ReactElement } from 'react';
+import { getBaseUrl } from '@/lib/getBaseUrl';
 
 const themes = [
   { name: 'dark', label: '🌙 Dark' },
@@ -15,9 +16,32 @@ export default function GitHubStatsPreview(): ReactElement {
   const [selectedTheme, setSelectedTheme] = useState('dark');
   const [username, setUsername] = useState('seu-usuario');
   const [copied, setCopied] = useState(false);
+  const [width, setWidth] = useState('');
+  const [height, setHeight] = useState('');
 
-  const previewUrl = `/api/github-stats/preview/${selectedTheme}`;
-  const codeUrl = `/api/github-stats/${username}?theme=${selectedTheme}`;
+  const baseUrl = getBaseUrl();
+
+  const sizeQuery = useMemo(() => {
+    const params = new URLSearchParams();
+    if (width.trim() !== '') {
+      params.set('width', width.trim());
+    }
+    if (height.trim() !== '') {
+      params.set('height', height.trim());
+    }
+    return params.toString();
+  }, [height, width]);
+
+  const codeUrl = useMemo(() => {
+    const params = new URLSearchParams(sizeQuery);
+    params.set('theme', selectedTheme);
+    return `${baseUrl}/api/github-stats/${username}?${params.toString()}`;
+  }, [baseUrl, selectedTheme, sizeQuery, username]);
+
+  const previewUrl = useMemo(() => {
+    const querySuffix = sizeQuery === '' ? '' : `?${sizeQuery}`;
+    return `${baseUrl}/api/github-stats/preview/${selectedTheme}${querySuffix}`;
+  }, [baseUrl, selectedTheme, sizeQuery]);
 
   const handleCopy = (): void => {
     const markdown = `![GitHub Stats](${codeUrl})`;
@@ -51,6 +75,36 @@ export default function GitHubStatsPreview(): ReactElement {
             onChange={(e: ChangeEvent<HTMLInputElement>) => setUsername(e.currentTarget.value)}
             placeholder="seu-usuario"
             className="flex-1 rounded-lg border border-[var(--accent-teal)] bg-[rgb(15_23_42_/_50%)] px-4 py-2 text-[var(--text-bright)] placeholder-[var(--text-muted)] focus:border-[var(--accent-cyan)] focus:outline-none focus:ring-2 focus:ring-[var(--accent-cyan)] focus:ring-opacity-30"
+          />
+        </div>
+      </div>
+
+      {/* Tamanho opcional */}
+      <div className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div>
+          <label className="mb-2 block text-sm font-semibold text-[var(--text-bright)]">
+            Largura (px ou %)
+          </label>
+          <input
+            type="text"
+            inputMode="numeric"
+            value={width}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setWidth(e.currentTarget.value)}
+            placeholder="600"
+            className="w-full rounded-lg border border-[var(--accent-teal)] bg-[rgb(15_23_42_/_50%)] px-4 py-2 text-[var(--text-bright)] placeholder-[var(--text-muted)] focus:border-[var(--accent-cyan)] focus:outline-none focus:ring-2 focus:ring-[var(--accent-cyan)] focus:ring-opacity-30"
+          />
+        </div>
+        <div>
+          <label className="mb-2 block text-sm font-semibold text-[var(--text-bright)]">
+            Altura (px)
+          </label>
+          <input
+            type="text"
+            inputMode="numeric"
+            value={height}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setHeight(e.currentTarget.value)}
+            placeholder="320"
+            className="w-full rounded-lg border border-[var(--accent-teal)] bg-[rgb(15_23_42_/_50%)] px-4 py-2 text-[var(--text-bright)] placeholder-[var(--text-muted)] focus:border-[var(--accent-cyan)] focus:outline-none focus:ring-2 focus:ring-[var(--accent-cyan)] focus:ring-opacity-30"
           />
         </div>
       </div>

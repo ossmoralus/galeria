@@ -1,10 +1,7 @@
 'use client';
 
-import { MDXRemote, type MDXRemoteSerializeResult } from 'next-mdx-remote';
-
-interface ContentRendererProps {
-  content: MDXRemoteSerializeResult;
-}
+import { MDXRemote } from 'next-mdx-remote';
+import type { ContentRendererProps } from '@/types/blog';
 
 export default function ContentRenderer({ content }: ContentRendererProps): React.ReactElement {
   return (

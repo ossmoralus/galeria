@@ -8,8 +8,7 @@ import Button from '../../components/ui/Button';
 import Badge from '../../components/ui/Badge';
 import Tag from '../../components/ui/Tag';
 import VideoEmbed from '@/app/components/VideoEmbed';
-import type { Post } from '@/lib/posts';
-import type { MDXRemoteSerializeResult } from 'next-mdx-remote';
+import type { PostContentProps } from '@/types/blog';
 
 const ContentRenderer = dynamic(async () => await import('./MDXRenderer'), {
   ssr: false,
@@ -21,11 +20,6 @@ const ContentRenderer = dynamic(async () => await import('./MDXRenderer'), {
     </div>
   )
 });
-
-interface PostContentProps {
-  post: Post;
-  mdxContent: MDXRemoteSerializeResult;
-}
 
 export default function PostContent({ post, mdxContent }: PostContentProps): React.ReactElement {
   return (

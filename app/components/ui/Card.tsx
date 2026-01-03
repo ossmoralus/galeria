@@ -1,8 +1,5 @@
 import React from 'react';
-
-export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
-  as?: 'div' | 'article' | 'section';
-}
+import type { CardProps } from '@/types/ui';
 
 export default function Card({
   children,

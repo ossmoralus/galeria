@@ -1,5 +1,5 @@
 import { VISITOR_BADGE_SVG_BASE } from '@/lib/visitorBadgeBase';
-import type { VisitorBadgeShape, VisitorBadgeStyleOptions } from '@/app/types/visitor';
+import type { VisitorBadgeShape, VisitorBadgeStyleOptions } from '@/types/visitor';
 
 // Re-export para manter compatibilidade
 export type { VisitorBadgeShape, VisitorBadgeStyleOptions };

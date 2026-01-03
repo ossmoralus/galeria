@@ -2,17 +2,9 @@
  * Gerador de SVG para badge de status do projeto
  */
 
-export interface Theme {
-  bgGradient: [string, string];
-  cardBg: string;
-  primaryColor: string;
-  secondaryColor: string;
-  textColor: string;
-  accentGradient: [string, string];
-  borderColor: string;
-}
+import type { StatusBadgeTheme } from '@/types/statusBadge';
 
-export const themes: Record<string, Theme> = {
+export const themes: Record<string, StatusBadgeTheme> = {
   ocean: {
     bgGradient: ['#0F2027', '#203A43'],
     cardBg: 'rgba(15, 32, 39, 0.95)',
@@ -69,7 +61,7 @@ export const themes: Record<string, Theme> = {
   }
 };
 
-const defaultTheme: Theme = {
+const defaultTheme: StatusBadgeTheme = {
   bgGradient: ['#0F2027', '#203A43'],
   cardBg: 'rgba(15, 32, 39, 0.95)',
   primaryColor: '#4FC3F7',
@@ -82,7 +74,7 @@ const defaultTheme: Theme = {
 /**
  * Obtém um tema de forma segura, retornando 'ocean' como fallback
  */
-export function getTheme(themeKey: string): Theme {
+export function getTheme(themeKey: string): StatusBadgeTheme {
   const selectedTheme = themes[themeKey];
   if (selectedTheme !== undefined) {
     return selectedTheme;
@@ -102,7 +94,7 @@ export function getTheme(themeKey: string): Theme {
  * const svg = generateStatusSVG(themes.ocean, 'default');
  * ```
  */
-export function generateStatusSVG(theme: Theme, variant: string = 'default'): string {
+export function generateStatusSVG(theme: StatusBadgeTheme, variant: string = 'default'): string {
   const stats = {
     files: '380+',
     lines: '25K+',

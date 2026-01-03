@@ -1,9 +1,4 @@
-interface CodeModalProps {
-  code: string;
-  isOpen: boolean;
-  onClose: () => void;
-  onCopy: () => Promise<void>;
-}
+import type { CodeModalProps } from '@/types/ui';
 
 export default function CodeModal({
   code,

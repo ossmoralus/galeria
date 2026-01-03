@@ -1,8 +1,5 @@
 import React from 'react';
-
-export interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
-  max?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
-}
+import type { ContainerProps } from '@/types/ui';
 
 const MAX_CLASSES: Record<NonNullable<ContainerProps['max']>, string> = {
   sm: 'max-w-[640px]',

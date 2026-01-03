@@ -2,10 +2,7 @@ import { notFound } from 'next/navigation';
 import { serialize } from 'next-mdx-remote/serialize';
 import PostContent from './PostContent';
 import { getPostContent, getAllPosts } from '@/lib/posts';
-
-interface PageProps {
-  params: Promise<{ slug: string }>;
-}
+import type { BlogSlugPageProps, BlogPostMetadata } from '@/types/blog';
 
 export function generateStaticParams(): Array<{ slug: string }> {
   const posts = getAllPosts();
@@ -14,19 +11,7 @@ export function generateStaticParams(): Array<{ slug: string }> {
   }));
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<{
-  title: string;
-  description?: string;
-  keywords?: string[];
-  openGraph?: {
-    title: string;
-    description: string;
-    type: 'article';
-    publishedTime: string;
-    authors: string[];
-    tags: string[];
-  };
-}> {
+export async function generateMetadata({ params }: BlogSlugPageProps): Promise<BlogPostMetadata> {
   const { slug } = await params;
   const post = getPostContent(slug);
 
@@ -51,7 +36,7 @@ export async function generateMetadata({ params }: PageProps): Promise<{
   };
 }
 
-export default async function PostPage({ params }: PageProps): Promise<React.ReactElement> {
+export default async function PostPage({ params }: BlogSlugPageProps): Promise<React.ReactElement> {
   const { slug } = await params;
   const post = getPostContent(slug);
 
