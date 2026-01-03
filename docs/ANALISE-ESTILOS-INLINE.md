@@ -1,3 +1,6 @@
+> Proveniência e Autoria: Este documento integra o projeto Galeria Moralus OSS (licença MIT).
+> Última atualização: 2 de janeiro de 2026
+
 # 📊 Análise de Estilos Inline - Códigos que Podem ser Centralizados
 
 Data: 20 de dezembro de 2025
@@ -12,7 +15,7 @@ Foram identificados **padrões recorrentes de CSS inline** que aparecem em múlt
 
 ### 1. **Tamanhos de Ícones com Espaçamento**
 
-**Localização**: Múltiplos componentes  
+**Localização**: Múltiplos componentes
 **Status**: ⚠️ Parcialmente Centralizado
 
 ```tsx
@@ -49,7 +52,7 @@ className="fas fa-folder iconWithMarginRight"
 
 ### 2. **Dimensões Customizadas (Max-Width e Max-Height)**
 
-**Localização**: `CodeModal.tsx`, `SVGCard.tsx`, Header.tsx  
+**Localização**: `CodeModal.tsx`, `SVGCard.tsx`, Header.tsx
 **Status**: ✅ Já Centralizado
 
 ```css
@@ -72,7 +75,7 @@ className="fas fa-folder iconWithMarginRight"
 
 ### 3. **Estilos de Modal/Overlay - CANDIDATO A CENTRALIZAÇÃO**
 
-**Localização**: `CodeModal.tsx`  
+**Localização**: `CodeModal.tsx`
 **Status**: ❌ Não Centralizado
 
 ```tsx
@@ -115,7 +118,7 @@ className="fas fa-folder iconWithMarginRight"
 
 ### 4. **Botões de Ação em Cards - CANDIDATO A CENTRALIZAÇÃO**
 
-**Localização**: `SVGCard.tsx`, `CodeModal.tsx`  
+**Localização**: `SVGCard.tsx`, `CodeModal.tsx`
 **Status**: ⚠️ Parcialmente Redundante
 
 ```tsx
@@ -131,7 +134,7 @@ className = 'iconSm mt-5 inline-flex w-full items-center justify-center gap-2 ro
 
 ### 5. **Estilos de Header Mobile Navigation - CANDIDATO A CENTRALIZAÇÃO**
 
-**Localização**: `Header.tsx`  
+**Localização**: `Header.tsx`
 **Status**: ❌ Não Centralizado
 
 ```tsx
@@ -172,7 +175,7 @@ className={`headerMobileNav absolute inset-x-0 top-full z-50 overflow-hidden bor
 
 ### 6. **Estilos de Animação em Cards - CANDIDATO A CENTRALIZAÇÃO**
 
-**Localização**: `SVGCard.tsx`  
+**Localização**: `SVGCard.tsx`
 **Status**: ⚠️ Parcialmente Centralizado
 
 ```tsx
@@ -210,7 +213,7 @@ style={{ animationDelay: `${index * 0.1}s` }}
 
 ### 7. **Cores e Backgrounds Customizados**
 
-**Localização**: Vários componentes  
+**Localização**: Vários componentes
 **Status**: ✅ Maioria Centralizada
 
 Já utilizam `var(--vscode-border)`, `var(--text-bright)`, etc. ✓
@@ -340,6 +343,6 @@ app/
 
 ---
 
-**Gerado em**: 20/12/2025  
-**Versão**: 1.0  
+**Gerado em**: 20/12/2025
+**Versão**: 1.0
 **Próximo Review**: Após implementação das mudanças

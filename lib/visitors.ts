@@ -10,6 +10,22 @@ function readEnv(...names: string[]): string | undefined {
   return undefined;
 }
 
+/**
+ * Obtém instância singleton do cliente Redis do Upstash
+ *
+ * Utiliza variáveis de ambiente para configuração:
+ * - UPSTASH_REDIS_REST_URL ou UPSTASH_REDIS_URL
+ * - UPSTASH_REDIS_REST_TOKEN ou UPSTASH_REDIS_TOKEN
+ *
+ * @returns Instância do cliente Redis
+ * @throws Error se as variáveis de ambiente não estiverem configuradas
+ *
+ * @example
+ * ```ts
+ * const redis = getVisitorsRedis();
+ * await redis.incr('visitor:count');
+ * ```
+ */
 export function getVisitorsRedis(): Redis {
   if (redisSingleton !== null) return redisSingleton;
 

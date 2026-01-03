@@ -2,16 +2,30 @@
  * Funções para buscar e processar estatísticas do GitHub
  */
 
-export interface GitHubStats {
-  totalCommits: number;
-  totalPullRequests: number;
-  totalContributions: number;
-  followers: number;
-  publicRepos: number;
-}
+import type { GitHubStats } from '@/app/types/github';
+
+// Re-export para manter compatibilidade
+export type { GitHubStats };
 
 /**
- * Busca estatísticas do usuário do GitHub via API
+ * Busca estatísticas do usuário do GitHub via API REST
+ *
+ * Coleta dados do perfil público e repositórios para calcular:
+ * - Total de commits (estimado)
+ * - Pull requests (estimado)
+ * - Contribuições totais
+ * - Seguidores
+ * - Repositórios públicos
+ *
+ * @param username - Nome de usuário do GitHub
+ * @returns Promise com estatísticas do usuário
+ * @throws Error se a API retornar erro (tratado internamente)
+ *
+ * @example
+ * ```ts
+ * const stats = await fetchGitHubStats('octocat');
+ * console.log(stats.followers); // 100
+ * ```
  */
 export async function fetchGitHubStats(username: string): Promise<GitHubStats> {
   try {
@@ -81,7 +95,17 @@ export async function fetchGitHubStats(username: string): Promise<GitHubStats> {
 }
 
 /**
- * Formata números com K, M, B
+ * Formata números grandes com sufixos K (milhares), M (milhões), B (bilhões)
+ *
+ * @param num - Número a ser formatado
+ * @returns String formatada com sufixo apropriado
+ *
+ * @example
+ * ```ts
+ * formatNumber(1500);      // "1.5K"
+ * formatNumber(2500000);   // "2.5M"
+ * formatNumber(999);       // "999"
+ * ```
  */
 export function formatNumber(num: number): string {
   if (num >= 1000000) {

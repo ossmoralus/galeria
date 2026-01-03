@@ -1,3 +1,6 @@
+> Proveniência e Autoria: Este documento integra o projeto Galeria Moralus OSS (licença MIT).
+> Última atualização: 2 de janeiro de 2026
+
 # 🤝 Guia de Contribuição
 
 Obrigado por considerar contribuir com a **Galeria Moralus OSS**! Este documento fornece diretrizes para contribuir com o projeto.

@@ -1,3 +1,6 @@
+> Proveniência e Autoria: Este documento integra o projeto Galeria Moralus OSS (licença MIT).
+> Última atualização: 2 de janeiro de 2026
+
 # 📚 Documentação (Índice)
 
 Este diretório reúne guias técnicos e referências do projeto.

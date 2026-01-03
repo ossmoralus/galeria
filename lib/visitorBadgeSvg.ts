@@ -1,5 +1,14 @@
 import { VISITOR_BADGE_SVG_BASE } from '@/lib/visitorBadgeBase';
+import type { VisitorBadgeShape, VisitorBadgeStyleOptions } from '@/app/types/visitor';
 
+// Re-export para manter compatibilidade
+export type { VisitorBadgeShape, VisitorBadgeStyleOptions };
+
+/**
+ * Escapa caracteres especiais XML/HTML para uso seguro em SVG
+ * @param value - Texto a ser escapado
+ * @returns Texto com caracteres especiais escapados
+ */
 function escapeXml(value: string): string {
   return value
     .replaceAll('&', '&amp;')
@@ -7,16 +16,6 @@ function escapeXml(value: string): string {
     .replaceAll('>', '&gt;')
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&apos;');
-}
-
-export type VisitorBadgeShape = 'rounded' | 'square' | 'pill';
-
-export interface VisitorBadgeStyleOptions {
-  labelBg?: string;
-  valueBg?: string;
-  textColor?: string;
-  rx?: number;
-  shape?: VisitorBadgeShape;
 }
 
 function clampInt(value: number, min: number, max: number): number {

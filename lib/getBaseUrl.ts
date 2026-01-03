@@ -1,3 +1,21 @@
+/**
+ * Retorna a URL base do site de forma inteligente, com fallbacks apropriados
+ *
+ * Ordem de prioridade:
+ * 1. NEXT_PUBLIC_SITE_URL (se definida)
+ * 2. NEXT_PUBLIC_CANONICAL_URL (em produção Vercel)
+ * 3. VERCEL_URL (em preview/outros ambientes Vercel)
+ * 4. http://localhost:3000 (desenvolvimento local)
+ *
+ * @returns URL base sem trailing slash
+ * @throws Error se estiver em produção Vercel sem URLs configuradas
+ *
+ * @example
+ * ```ts
+ * const baseUrl = getBaseUrl(); // "https://galeria-drab.vercel.app"
+ * const apiUrl = `${baseUrl}/api/stats`;
+ * ```
+ */
 export function getBaseUrl(): string {
   const envUrl = process.env['NEXT_PUBLIC_SITE_URL'];
   const vercelEnv = process.env['VERCEL_ENV'];

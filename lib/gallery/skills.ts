@@ -5,7 +5,7 @@
 import type { SVGItem } from './types';
 
 export const skillsItems: SVGItem[] = [
-  // ===== LINGUAGENS =====
+/* -------------------------- substituir por titulo @oraculo-secao(LINGUAGENS) -------------------------- */
   {
     id: 'badge-javascript',
     title: 'JavaScript',
@@ -83,7 +83,7 @@ export const skillsItems: SVGItem[] = [
     alt: 'Badge Kotlin',
     category: 'skills'
   },
-  // ===== NOVAS LINGUAGENS =====
+/* -------------------------- substituir por titulo @oraculo-secao(NOVAS LINGUAGENS) -------------------------- */
   {
     id: 'badge-cpp',
     title: 'C++',
@@ -147,7 +147,7 @@ export const skillsItems: SVGItem[] = [
     alt: 'Badge Perl',
     category: 'skills'
   },
-  // ===== LINGUAGENS ADICIONAIS =====
+/* -------------------------- substituir por titulo @oraculo-secao(LINGUAGENS ADICIONAIS) -------------------------- */
   {
     id: 'badge-bash',
     title: 'Bash',
@@ -254,7 +254,7 @@ export const skillsItems: SVGItem[] = [
     category: 'skills'
   },
 
-  // ===== FRONTEND =====
+/* -------------------------- substituir por titulo @oraculo-secao(FRONTEND) -------------------------- */
   {
     id: 'badge-html',
     title: 'HTML5',
@@ -325,7 +325,7 @@ export const skillsItems: SVGItem[] = [
     alt: 'Badge Sass',
     category: 'skills'
   },
-  // ===== NOVOS FRONTEND =====
+/* -------------------------- substituir por titulo @oraculo-secao(NOVOS FRONTEND) -------------------------- */
   {
     id: 'badge-remix',
     title: 'Remix',
@@ -397,7 +397,7 @@ export const skillsItems: SVGItem[] = [
     category: 'skills'
   },
 
-  // ===== BACKEND =====
+/* -------------------------- substituir por titulo @oraculo-secao(BACKEND) -------------------------- */
   {
     id: 'badge-nodejs',
     title: 'Node.js',
@@ -440,7 +440,7 @@ export const skillsItems: SVGItem[] = [
     alt: 'Badge Spring',
     category: 'skills'
   },
-  // ===== NOVOS BACKEND =====
+/* -------------------------- substituir por titulo @oraculo-secao(NOVOS BACKEND) -------------------------- */
   {
     id: 'badge-fastapi',
     title: 'FastAPI',
@@ -505,7 +505,7 @@ export const skillsItems: SVGItem[] = [
     category: 'skills'
   },
 
-  // ===== BANCO DE DADOS =====
+/* -------------------------- substituir por titulo @oraculo-secao(BANCO DE DADOS) -------------------------- */
   {
     id: 'badge-mongodb',
     title: 'MongoDB',
@@ -555,7 +555,7 @@ export const skillsItems: SVGItem[] = [
     alt: 'Badge Prisma',
     category: 'skills'
   },
-  // ===== NOVOS BANCOS DE DADOS =====
+/* -------------------------- substituir por titulo @oraculo-secao(NOVOS BANCOS DE DADOS) -------------------------- */
   {
     id: 'badge-sqlite',
     title: 'SQLite',
@@ -613,7 +613,7 @@ export const skillsItems: SVGItem[] = [
     category: 'skills'
   },
 
-  // ===== DEVOPS & CLOUD =====
+/* -------------------------- substituir por titulo @oraculo-secao(DEVOPS & CLOUD) -------------------------- */
   {
     id: 'badge-docker',
     title: 'Docker',
@@ -663,7 +663,7 @@ export const skillsItems: SVGItem[] = [
     alt: 'Badge Netlify',
     category: 'skills'
   },
-  // ===== NOVOS DEVOPS & CLOUD =====
+/* -------------------------- substituir por titulo @oraculo-secao(NOVOS DEVOPS & CLOUD) -------------------------- */
   {
     id: 'badge-azure',
     title: 'Azure',
@@ -749,7 +749,7 @@ export const skillsItems: SVGItem[] = [
     category: 'skills'
   },
 
-  // ===== FERRAMENTAS =====
+/* -------------------------- substituir por titulo @oraculo-secao(FERRAMENTAS) -------------------------- */
   {
     id: 'badge-git',
     title: 'Git',
@@ -792,7 +792,7 @@ export const skillsItems: SVGItem[] = [
     alt: 'Badge Linux',
     category: 'skills'
   },
-  // ===== NOVAS FERRAMENTAS =====
+/* -------------------------- substituir por titulo @oraculo-secao(NOVAS FERRAMENTAS) -------------------------- */
   {
     id: 'badge-neovim',
     title: 'Neovim',
@@ -857,7 +857,7 @@ export const skillsItems: SVGItem[] = [
     category: 'skills'
   },
 
-  // ===== PACKAGE MANAGERS & BUILD TOOLS =====
+/* -------------------------- substituir por titulo @oraculo-secao(PACKAGE MANAGERS & BUILD TOOLS) -------------------------- */
   {
     id: 'badge-npm',
     title: 'NPM',
@@ -893,7 +893,7 @@ export const skillsItems: SVGItem[] = [
     alt: 'Badge Vite',
     category: 'skills'
   },
-  // ===== NOVOS BUILD TOOLS =====
+/* -------------------------- substituir por titulo @oraculo-secao(NOVOS BUILD TOOLS) -------------------------- */
   {
     id: 'badge-rollup',
     title: 'Rollup',
@@ -944,7 +944,7 @@ export const skillsItems: SVGItem[] = [
     category: 'skills'
   },
 
-  // ===== TESTING & QUALITY =====
+/* -------------------------- substituir por titulo @oraculo-secao(TESTING & QUALITY) -------------------------- */
   {
     id: 'badge-eslint',
     title: 'ESLint',
@@ -973,7 +973,7 @@ export const skillsItems: SVGItem[] = [
     alt: 'Badge Cypress',
     category: 'skills'
   },
-  // ===== NOVOS TESTING =====
+/* -------------------------- substituir por titulo @oraculo-secao(NOVOS TESTING) -------------------------- */
   {
     id: 'badge-vitest',
     title: 'Vitest',
@@ -1017,7 +1017,7 @@ export const skillsItems: SVGItem[] = [
     category: 'skills'
   },
 
-  // ===== APIS & OUTROS =====
+/* -------------------------- substituir por titulo @oraculo-secao(APIS & OUTROS) -------------------------- */
   {
     id: 'badge-graphql',
     title: 'GraphQL',
@@ -1032,7 +1032,7 @@ export const skillsItems: SVGItem[] = [
     alt: 'Badge Flutter',
     category: 'skills'
   },
-  // ===== NOVOS APIs & MOBILE =====
+/* -------------------------- substituir por titulo @oraculo-secao(NOVOS APIs & MOBILE) -------------------------- */
   {
     id: 'badge-react-native',
     title: 'React Native',
@@ -1104,7 +1104,7 @@ export const skillsItems: SVGItem[] = [
     category: 'skills'
   },
 
-  // ===== AI & ML =====
+/* -------------------------- substituir por titulo @oraculo-secao(AI & ML) -------------------------- */
   {
     id: 'badge-tensorflow',
     title: 'TensorFlow',
@@ -1162,7 +1162,7 @@ export const skillsItems: SVGItem[] = [
     category: 'skills'
   },
 
-  // ===== NOVOS BADGES (2025) =====
+/* -------------------------- substituir por titulo @oraculo-secao(NOVOS BADGES (2025)) -------------------------- */
   {
     id: 'badge-julia',
     title: 'Julia',

@@ -1,3 +1,6 @@
+> Proveniência e Autoria: Este documento integra o projeto Galeria Moralus OSS (licença MIT).
+> Última atualização: 2 de janeiro de 2026
+
 # 📝 Como Criar Posts para o Blog
 
 Este guia explica como criar e gerenciar posts no blog da Galeria Moralus OSS.

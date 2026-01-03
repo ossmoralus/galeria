@@ -83,9 +83,9 @@ Agora o SVG recalcula automaticamente a dimensão complementar mantendo a propor
 
 ## Testes Realizados
 
-✅ Build: Compilado com sucesso  
-✅ ESLint: Sem erros de linting  
-✅ TypeScript: Sem erros de tipo  
+✅ Build: Compilado com sucesso
+✅ ESLint: Sem erros de linting
+✅ TypeScript: Sem erros de tipo
 ✅ Cálculo de proporções: Testado com vários SVGs
 
 ## Impacto
@@ -101,5 +101,5 @@ Atualize a URL dos SVGs nos seus projetos conforme necessário. A documentação
 
 ---
 
-**Data:** 5 de dezembro de 2025  
+**Data:** 5 de dezembro de 2025
 **Status:** ✅ Pronto para produção

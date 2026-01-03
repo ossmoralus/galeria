@@ -1,3 +1,6 @@
+> Proveniência e Autoria: Este documento integra o projeto Galeria Moralus OSS (licença MIT).
+> Última atualização: 2 de janeiro de 2026
+
 # Auditoria de Licenças
 
 Este documento explica como o projeto audita as licenças de suas dependências para garantir compatibilidade com MIT.
@@ -247,7 +250,7 @@ Para questões sobre licenças:
 
 ---
 
-**Última auditoria:** 2 de dezembro de 2025  
-**Responsável:** Moralus OSS  
-**Ferramenta:** Script interno `scripts/license-audit.mjs`  
+**Última auditoria:** 2 de dezembro de 2025
+**Responsável:** Moralus OSS
+**Ferramenta:** Script interno `scripts/license-audit.mjs`
 **Status:** ✅ Todas as licenças compatíveis com MIT

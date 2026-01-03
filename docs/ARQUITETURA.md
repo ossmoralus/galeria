@@ -1,3 +1,6 @@
+> Proveniência e Autoria: Este documento integra o projeto Galeria Moralus OSS (licença MIT).
+> Última atualização: 2 de janeiro de 2026
+
 # Arquitetura do projeto
 
 Este documento descreve a arquitetura **atual** e o padrão recomendado para continuar escalando o projeto **sem mudar a nomenclatura existente**.

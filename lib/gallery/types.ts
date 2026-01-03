@@ -2,21 +2,10 @@
  * Tipos compartilhados para a galeria de SVGs
  */
 
-export type CategoryType = 'banner' | 'skills' | 'decorativos' | 'info';
+import type { CategoryType, SVGItem, CategoryInfo } from '@/app/types/galeria';
 
-export interface SVGItem {
-  id: string;
-  title: string;
-  filename: string;
-  alt: string;
-  category: CategoryType;
-}
-
-export interface CategoryInfo {
-  title: string;
-  icon: string;
-  description: string;
-}
+// Re-export para manter compatibilidade
+export type { CategoryType, SVGItem, CategoryInfo };
 
 export const categoryLabels: Record<CategoryType, CategoryInfo> = {
   banner: {

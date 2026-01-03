@@ -5,6 +5,7 @@
 import type { SVGItem } from './types';
 
 export const decorativosItems: SVGItem[] = [
+/* -------------------------- substituir por titulo @oraculo-secao(BADGES PRINCIPAIS) -------------------------- */
   {
     id: 'badge-entusiasta',
     title: 'Badge Entusiasta',
@@ -61,7 +62,7 @@ export const decorativosItems: SVGItem[] = [
     alt: 'Badge UI/UX Designer',
     category: 'decorativos'
   },
-  // ===== NOVOS BADGES DECORATIVOS =====
+/* -------------------------- substituir por titulo @oraculo-secao(NOVOS BADGES DECORATIVOS) -------------------------- */
   {
     id: 'badge-frontend',
     title: 'Badge Frontend Developer',

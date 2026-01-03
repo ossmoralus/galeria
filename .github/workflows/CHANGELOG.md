@@ -1,6 +1,6 @@
 # 🎯 Melhorias nos Workflows do GitHub Actions
 
-**Data:** 5 de dezembro de 2025  
+**Data:** 5 de dezembro de 2025
 **Branch:** developer
 
 ## 📋 Resumo das Alterações
@@ -252,6 +252,6 @@ Toda a documentação dos workflows está disponível em:
 
 ---
 
-**Status:** ✅ Todos os workflows funcionando perfeitamente!  
-**CI/CD:** 🚀 Pipeline otimizado e robusto  
+**Status:** ✅ Todos os workflows funcionando perfeitamente!
+**CI/CD:** 🚀 Pipeline otimizado e robusto
 **Documentação:** 📚 Completa e atualizada

@@ -5,15 +5,7 @@ import Card from '../../../components/ui/Card';
 import Button from '../../../components/ui/Button';
 import CodeModal from '../../../components/ui/CodeModal';
 import SVGGalleryNotification from '../../../components/ui/SVGGalleryNotification';
-
-interface VisitorVariant {
-  id: string;
-  title: string;
-  alt: string;
-  labelForMarkdown: string;
-  query: Record<string, string>;
-  previewQuery?: Record<string, string>;
-}
+import type { VisitorVariant } from '@/app/types/visitor';
 
 function toQueryString(params: Record<string, string> | undefined): string {
   if (params === undefined) return '';

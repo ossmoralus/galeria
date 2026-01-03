@@ -1,9 +1,9 @@
 /**
  * RESPONSIVE.CSS
- * 
+ *
  * Centralização de toda lógica de responsividade
  * e layout do projeto
- * 
+ *
  * Breakpoints:
  * - Mobile:  < 640px (padrão)
  * - Tablet:  640px - 1023px (sm:, md:)
@@ -59,7 +59,7 @@
 }
 
 @media (width >= 768px) {
-  /* Layouts de Grid */
+  /* Layouts de Grid - consolidando propriedades adicionais */
   .gridBlogPosts {
     gap: 1.5rem;
   }
@@ -68,7 +68,7 @@
     gap: 1.5rem;
   }
 
-  /* Galeria */
+  /* Galeria - consolidando propriedades adicionais */
   .galeriaGrid {
     grid-template-columns: repeat(2, 1fr);
     padding-left: 1.5rem;
@@ -277,7 +277,7 @@
 */
 
 @media (width >= 1024px) {
-  /* Layouts de Grid */
+  /* Layouts de Grid - consolidando com valores para desktop */
   .gridBlogPosts {
     gap: 2rem;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -316,7 +316,7 @@
     display: none;
   }
 
-  /* Galeria */
+  /* Galeria - consolidando propriedades para desktop */
   .galeriaContainer {
     padding-bottom: 1.5rem;
     padding-top: 1.5rem;

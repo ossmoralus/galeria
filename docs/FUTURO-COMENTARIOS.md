@@ -1,3 +1,6 @@
+> Proveniência e Autoria: Este documento integra o projeto Galeria Moralus OSS (licença MIT).
+> Última atualização: 2 de janeiro de 2026
+
 # Sistema de Comentários - Planejamento Futuro
 
 ## Contexto
@@ -277,6 +280,6 @@ model PostComment {
 
 ---
 
-**Última atualização:** 2 de dezembro de 2025  
-**Responsável:** Moralus OSS  
+**Última atualização:** 2 de dezembro de 2025
+**Responsável:** Moralus OSS
 **Status:** Planejamento - Não implementado

@@ -144,7 +144,7 @@ jobs:
 
             ### ✅ Verificações Aprovadas:
             - 🔍 ESLint
-            - 🎨 Stylelint  
+            - 🎨 Stylelint
             - 🔷 TypeScript
             - 🏗️ Build`;
 
@@ -155,8 +155,8 @@ jobs:
               issue_number: prNumber,
             });
 
-            const botComment = comments.find(comment => 
-              comment.user.type === 'Bot' && 
+            const botComment = comments.find(comment =>
+              comment.user.type === 'Bot' &&
               comment.body.includes('🚀 Deploy Preview Pronto!')
             );
 

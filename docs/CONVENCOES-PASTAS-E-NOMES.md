@@ -1,3 +1,6 @@
+> Proveniência e Autoria: Este documento integra o projeto Galeria Moralus OSS (licença MIT).
+> Última atualização: 2 de janeiro de 2026
+
 # Convenções de pastas e nomes (PT-BR)
 
 Este guia define um padrão de organização e nomeação em PT-BR para facilitar manutenção e escalabilidade.

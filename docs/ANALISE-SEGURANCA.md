@@ -1,7 +1,10 @@
+> Proveniência e Autoria: Este documento integra o projeto Galeria Moralus OSS (licença MIT).
+> Última atualização: 2 de janeiro de 2026
+
 # 🔒 Análise de Segurança - Galeria Moralus OSS
 
-**Data da Análise**: 20 de dezembro de 2025  
-**Versão do Projeto**: 1.0.0  
+**Data da Análise**: 20 de dezembro de 2025
+**Versão do Projeto**: 1.0.0
 **Status Geral**: ✅ **SEGURO**
 
 ---
@@ -320,7 +323,7 @@ O projeto **Galeria Moralus OSS** está **altamente seguro** e segue as melhores
 
 <div align="center">
 
-**🔒 Auditoria realizada em 20/12/2025**  
+**🔒 Auditoria realizada em 20/12/2025**
 Por: GitHub Copilot com metodologia OWASP
 
 </div>

@@ -8,15 +8,23 @@ export async function GET(
 ): Promise<Response> {
   const { username } = params;
   const { searchParams } = new URL(request.url);
+
+  // Query params para customização
   const theme = searchParams.get('theme') ?? 'dark';
+  const borderRadius = searchParams.get('border_radius') ?? searchParams.get('borderRadius');
+  const showBorder = searchParams.get('show_border') ?? searchParams.get('showBorder');
+  const borderWidth = searchParams.get('border_width') ?? searchParams.get('borderWidth');
 
   try {
     // Busca stats reais do GitHub
     const stats = await fetchGitHubStats(username);
 
-    // Gera SVG com os dados
+    // Gera SVG com os dados e customizações
     const svg = generateGitHubStatsSVG(stats, username, {
-      theme: theme as 'dark' | 'light' | 'neon' | 'sunset' | 'ocean' | 'forest'
+      theme: theme as 'dark' | 'light' | 'neon' | 'sunset' | 'ocean' | 'forest',
+      ...(borderRadius !== null && { borderRadius: parseInt(borderRadius) }),
+      ...(showBorder !== null && { showBorder: showBorder === 'true' }),
+      ...(borderWidth !== null && { borderWidth: parseInt(borderWidth) })
     });
 
     return new NextResponse(svg, {

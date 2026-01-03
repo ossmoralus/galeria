@@ -1,3 +1,6 @@
+> Proveniência e Autoria: Este documento integra o projeto Galeria Moralus OSS (licença MIT).
+> Última atualização: 2 de janeiro de 2026
+
 # 🖼️ Guia de Otimização de SVGs com SVGO
 
 Este documento explica como o projeto otimiza e valida SVGs usando **SVGO** (SVG Optimizer), garantindo performance e consistência.
@@ -97,6 +100,6 @@ O workflow de Integração Contínua (`.github/workflows/ci.yml`) inclui um pass
 
 ---
 
-**Última atualização:** 2 de dezembro de 2025  
-**Versão SVGO:** 3.x  
+**Última atualização:** 2 de dezembro de 2025
+**Versão SVGO:** 3.x
 **Status:** ✅ Operacional

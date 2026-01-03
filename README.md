@@ -1,3 +1,6 @@
+> Proveniência e Autoria: Este documento integra o projeto Galeria Moralus OSS (licença MIT).
+> Última atualização: 2 de janeiro de 2026
+
 git clone https://github.com/ossmoralus/galeria.git
 git commit -m "feat: adiciona nova feature"
 
@@ -5,13 +8,14 @@ git commit -m "feat: adiciona nova feature"
 
 # 🎨 Galeria Moralus OSS
 
+<!-- Status Panel - Variações disponíveis: ocean, sunset, forest, purple, dark, neon -->
+
+![Project Status](https://galeria-drab.vercel.app/api/status-badge?theme=ocean)
+
 [![CI](https://github.com/ossmoralus/galeria/actions/workflows/ci.yml/badge.svg)](https://github.com/ossmoralus/galeria/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/ossmoralus/galeria/actions/workflows/codeql.yml/badge.svg)](https://github.com/ossmoralus/galeria/actions/workflows/codeql.yml)
 [![Deploy Preview](https://github.com/ossmoralus/galeria/actions/workflows/deploy-preview.yml/badge.svg)](https://github.com/ossmoralus/galeria/actions/workflows/deploy-preview.yml)
 [![Status](https://github.com/ossmoralus/galeria/actions/workflows/status.yml/badge.svg)](https://github.com/ossmoralus/galeria/actions/workflows/status.yml)
-[![Deploy on Vercel](https://img.shields.io/badge/deploy-vercel-black?style=for-the-badge&logo=vercel)](https://galeria-drab.vercel.app)
-[![License MIT](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge)](./LICENSE)
-[![TypeScript Strict](https://img.shields.io/badge/typescript-strict-blue?style=for-the-badge)](https://www.typescriptlang.org)
 
 Plataforma para gerenciar **badges, SVGs e banners** para perfis do GitHub, com galeria interativa, API e blog educativo.
 

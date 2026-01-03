@@ -1,3 +1,6 @@
+> Proveniência e Autoria: Este documento integra o projeto Galeria Moralus OSS (licença MIT).
+> Última atualização: 2 de janeiro de 2026
+
 # 🎨 Galeria de SVGs - Catálogo Completo e Uso da API
 
 Galeria completa de badges e banners disponíveis para uso em perfis do GitHub e projetos open source.

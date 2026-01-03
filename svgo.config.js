@@ -1,7 +1,7 @@
 /**
  * SVGO Configuration
  * https://github.com/svg/svgo
- * 
+ *
  * Otimiza e padroniza SVGs mantendo qualidade e legibilidade
  */
 

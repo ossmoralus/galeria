@@ -5,6 +5,7 @@
 import type { SVGItem } from './types';
 
 export const infoItems: SVGItem[] = [
+/* -------------------------- substituir por titulo @oraculo-secao(BADGES PRINCIPAIS) -------------------------- */
   {
     id: 'badge-build',
     title: 'Build Passing',
@@ -40,7 +41,7 @@ export const infoItems: SVGItem[] = [
     alt: 'License MIT Badge',
     category: 'info'
   },
-  // ===== NOVOS BADGES INFO =====
+/* -------------------------- substituir por titulo @oraculo-secao(NOVOS BADGES INFO) -------------------------- */
   {
     id: 'badge-build-failing',
     title: 'Build Failing',
