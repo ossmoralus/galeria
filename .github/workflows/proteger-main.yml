@@ -1,4 +1,4 @@
-name: "🔒 Proteger branch main"
+name: '🔒 Proteger branch main'
 
 on:
   workflow_dispatch:
@@ -16,19 +16,19 @@ permissions:
 
 jobs:
   proteger-main:
-    name: "🛡️ Aplicar Branch Protection (main)"
+    name: '🛡️ Aplicar Branch Protection (main)'
     runs-on: ubuntu-latest
     env:
       BRANCH_PROTECTION_TOKEN: ${{ secrets.BRANCH_PROTECTION_TOKEN }}
     steps:
-      - name: "🔐 Validar token de proteção"
+      - name: '🔐 Validar token de proteção'
         if: env.BRANCH_PROTECTION_TOKEN == ''
         run: |
           echo "Secret BRANCH_PROTECTION_TOKEN não configurada."
           echo "Crie um token com permissão de administração do repositório e adicione em Settings > Secrets and variables > Actions."
           exit 1
 
-      - name: "🔧 Aplicar proteção via GitHub API"
+      - name: '🔧 Aplicar proteção via GitHub API'
         uses: actions/github-script@v7
         with:
           github-token: ${{ env.BRANCH_PROTECTION_TOKEN }}
