@@ -129,15 +129,24 @@ export async function fetchGitHubStats(username: string): Promise<GitHubStats> {
   }
 }
 
-export async function fetchGitHubTopLanguages(username: string): Promise<GitHubLanguageStat[]> {
+export async function fetchGitHubTopLanguages(
+  username: string,
+  token?: string
+): Promise<GitHubLanguageStat[]> {
   try {
+    const headers: HeadersInit = {
+      Accept: 'application/vnd.github.v3+json'
+    };
+
+    if (token !== undefined && token.trim() !== '') {
+      headers['Authorization'] = `Bearer ${token.trim()}`;
+    }
+
     // eslint-disable-next-line no-undef
     const reposResponse = await fetch(
       `https://api.github.com/users/${username}/repos?per_page=100&type=owner&sort=updated`,
       {
-        headers: {
-          Accept: 'application/vnd.github.v3+json'
-        },
+        headers,
         next: { revalidate: 3600 }
       }
     );
@@ -150,15 +159,34 @@ export async function fetchGitHubTopLanguages(username: string): Promise<GitHubL
 
     const languageTotals = new Map<string, number>();
 
-    for (const repo of repos.slice(0, 100)) {
-      const lang = repo.language as string | null;
-      if (lang === null || lang === undefined || lang === '') {
+    // Limita a 30 repositórios para reduzir chamadas à API de linguagens
+    const reposToProcess = (repos as Array<{ languages_url?: string }>).slice(0, 30);
+
+    for (const repo of reposToProcess) {
+      if (repo.languages_url === undefined) {
         continue;
       }
 
-      const size = Number.isFinite(repo.size) ? repo.size : 0;
-      const safeSize = Math.max(size, 1); // evita zerar percentuais
-      languageTotals.set(lang, (languageTotals.get(lang) ?? 0) + safeSize);
+      try {
+        // eslint-disable-next-line no-undef
+        const langResponse = await fetch(repo.languages_url, {
+          headers,
+          next: { revalidate: 3600 }
+        });
+
+        if (!langResponse.ok) {
+          continue;
+        }
+
+        const langData = (await langResponse.json()) as Record<string, number>;
+        for (const [lang, bytes] of Object.entries(langData)) {
+          const safeBytes = Number.isFinite(bytes) ? Math.max(bytes, 1) : 0;
+          if (safeBytes === 0) continue;
+          languageTotals.set(lang, (languageTotals.get(lang) ?? 0) + safeBytes);
+        }
+      } catch (langError) {
+        console.error('Erro ao buscar linguagens do repositório:', langError);
+      }
     }
 
     const total = Array.from(languageTotals.values()).reduce((acc, value) => acc + value, 0);

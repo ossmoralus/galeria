@@ -82,7 +82,7 @@ function renderBars(
   width: number
 ): string {
   const startX = 40;
-  const barAreaWidth = width - 220;
+  const barAreaWidth = Math.max(width - 220, 140);
   const startY = 100;
   const barHeight = 26;
   const gap = 12;
@@ -115,18 +115,24 @@ export function generateLanguagesSVG(
   const showBorder = config?.showBorder ?? true;
   const borderWidth = config?.borderWidth ?? 2;
 
-  const width = 600;
-  const height = 320;
-  const svgWidth =
-    Number.isFinite(config?.width) && (config?.width ?? 0) > 0 ? (config?.width ?? width) : width;
-  const svgHeight =
+  const baseWidth = 600;
+  const baseHeight = 320;
+
+  const layoutWidth =
+    Number.isFinite(config?.width) && (config?.width ?? 0) > 0
+      ? (config?.width as number)
+      : baseWidth;
+  const layoutHeight =
     Number.isFinite(config?.height) && (config?.height ?? 0) > 0
-      ? (config?.height ?? height)
-      : height;
+      ? (config?.height as number)
+      : baseHeight;
+
+  const width = Math.max(layoutWidth, 360);
+  const height = Math.max(layoutHeight, 240);
 
   const totalLabel = 'Top 5 linguagens';
 
-  return `<svg width="${svgWidth}" height="${svgHeight}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">
+  return `<svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="bgLangGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:${theme.bgGradient[0]};stop-opacity:1" />

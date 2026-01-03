@@ -42,9 +42,10 @@ export async function handleGitHubLangsRequest(
 ): Promise<Response> {
   const { username } = params;
   const { searchParams } = new URL(request.url);
+  const token = searchParams.get('token') ?? searchParams.get('github_token') ?? undefined;
 
   try {
-    const languages = await fetchGitHubTopLanguages(username);
+    const languages = await fetchGitHubTopLanguages(username, token ?? undefined);
     const config = parseCommonParams(searchParams);
 
     const svg = generateLanguagesSVG(languages, username, config);
