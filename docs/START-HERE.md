@@ -1,3 +1,6 @@
+> Proveniência e Autoria: Este documento integra o projeto Galeria Moralus OSS (licença MIT).
+> Última atualização: 3 de janeiro de 2026
+
 # 🎯 Comece Aqui: GitHub Stats Cards Funcionando
 
 Você quer colocar os cards de GitHub Stats em produção? **5 minutos de trabalho.**

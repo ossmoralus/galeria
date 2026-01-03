@@ -12,3 +12,7 @@ build/
 package-lock.json
 yarn.lock
 pnpm-lock.yaml
+
+# Diagnóstico (pode não ser JSON puro quando redirecionado via npm)
+diagnostico.json
+

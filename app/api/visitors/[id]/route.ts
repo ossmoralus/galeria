@@ -5,23 +5,35 @@ export const runtime = 'edge';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: { id: string } }
 ): Promise<NextResponse> {
-  const { id: rawId } = await params;
-  const id = normalizeVisitorId(rawId);
-  if (id === null) {
-    return NextResponse.json({ error: 'Invalid id' }, { status: 400 });
-  }
-
-  const { searchParams } = new URL(request.url);
-  const incrementParam = searchParams.get('increment');
-  const shouldIncrement = incrementParam === null ? true : incrementParam !== '0';
-
+  const rawId = params.id;
   try {
+    const id = normalizeVisitorId(rawId);
+    if (id === null) {
+      return NextResponse.json({ error: 'Invalid id' }, { status: 400 });
+    }
+
+    const { searchParams } = new URL(request.url);
+    const incrementParam = searchParams.get('increment');
+    const shouldIncrement = incrementParam === null ? true : incrementParam !== '0';
+
     const redis = getVisitorsRedis();
     const key = visitorKey(id);
 
-    const count = shouldIncrement ? await redis.incr(key) : ((await redis.get<number>(key)) ?? 0);
+    let count: number;
+    if (shouldIncrement) {
+      count = await redis.incr(key).catch((err) => {
+        console.error('Visitors counter incr error:', err);
+        return 0;
+      });
+    } else {
+      count =
+        (await redis.get<number>(key).catch((err) => {
+          console.error('Visitors counter get error:', err);
+          return null;
+        })) ?? 0;
+    }
 
     return NextResponse.json(
       {
@@ -42,6 +54,7 @@ export async function GET(
   } catch (error) {
     // Normalmente isso acontece quando as envs do Upstash não estão configuradas.
     console.error('Visitors counter error:', error);
+    const id = normalizeVisitorId(rawId) ?? rawId;
     return NextResponse.json(
       {
         id,

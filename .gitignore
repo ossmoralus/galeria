@@ -41,3 +41,7 @@ Thumbs.db
 # TypeScript
 *.tsbuildinfo
 next-env.d.ts
+
+# Arquivos gerados localmente
+diagnostico.json
+.oraculo/

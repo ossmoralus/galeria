@@ -10,7 +10,7 @@ export default function BlogPage(): React.ReactElement {
   return (
     <Container max="lg" className="prose prose-sm prose-invert px-0 py-10">
       <div className="mb-14 text-center">
-        <h1 className="mb-4 inline-flex items-center gap-4 bg-gradient-to-br from-[var(--accent-teal)] to-[var(--accent-cyan)] bg-clip-text text-5xl font-bold">
+        <h1 className="textGradientTealCyan mb-4 inline-flex items-center gap-4 text-5xl font-bold">
           <i className="fas fa-blog" /> Blog
         </h1>
         <p className="text-xl text-[var(--text-secondary)]">

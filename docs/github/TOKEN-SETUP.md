@@ -1,3 +1,6 @@
+> Proveniência e Autoria: Este documento integra o projeto Galeria Moralus OSS (licença MIT).
+> Última atualização: 3 de janeiro de 2026
+
 # 🔧 GitHub Token - Configuração Opcional
 
 ## 🎯 O Token é Opcional?

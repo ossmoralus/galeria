@@ -5,7 +5,7 @@
 import type { SVGItem } from './types';
 
 export const decorativosItems: SVGItem[] = [
-  /* -------------------------- BADGES PRINCIPAIS -------------------------- */
+/* -------------------------- BADGES PRINCIPAIS -------------------------- */
   {
     id: 'badge-entusiasta',
     title: 'Badge Entusiasta',
@@ -62,7 +62,7 @@ export const decorativosItems: SVGItem[] = [
     alt: 'Badge UI/UX Designer',
     category: 'decorativos'
   },
-  /* -------------------------- NOVOS BADGES DECORATIVOS -------------------------- */
+/* -------------------------- NOVOS BADGES DECORATIVOS -------------------------- */
   {
     id: 'badge-frontend',
     title: 'Badge Frontend Developer',

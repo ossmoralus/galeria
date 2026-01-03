@@ -1,6 +1,8 @@
-# 🚀 Migração para Consultas Reais das APIs do GitHub
+> Proveniência e Autoria: Este documento integra o projeto Galeria Moralus OSS (licença MIT).
+> Última atualização: 3 de janeiro de 2026
 
 # 🚀 Migração para Consultas Reais das APIs do GitHub
+
 
 ## Resumo das Mudanças
 

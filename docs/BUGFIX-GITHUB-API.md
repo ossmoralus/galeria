@@ -1,6 +1,9 @@
+> Proveniência e Autoria: Este documento integra o projeto Galeria Moralus OSS (licença MIT).
+> Última atualização: 3 de janeiro de 2026
+
 # 🐛 Correção: API GitHub não estava buscando dados reais
 
-**Data:** 3 de janeiro de 2026  
+**Data:** 3 de janeiro de 2026
 **Status:** ✅ RESOLVIDO
 
 ## Problema

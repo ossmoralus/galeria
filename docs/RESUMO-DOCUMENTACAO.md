@@ -1,3 +1,6 @@
+> Proveniência e Autoria: Este documento integra o projeto Galeria Moralus OSS (licença MIT).
+> Última atualização: 3 de janeiro de 2026
+
 # 📚 Resumo: Documentação Completa para GitHub Stats API
 
 Criado: 3 de janeiro de 2026
@@ -159,6 +162,6 @@ Dá erro? ❌ Vá para docs/DEBUG-429-PRODUCAO.md
 
 ---
 
-**Documento de referência criado em:** 3 de janeiro de 2026  
-**Status:** ✅ Completo e pronto para uso  
+**Documento de referência criado em:** 3 de janeiro de 2026
+**Status:** ✅ Completo e pronto para uso
 **Última atualização:** Confira no topo de cada documento

@@ -84,19 +84,24 @@ export async function handleGitHubStatsPreviewRequest(
   request: Request,
   { params }: { params: Promise<{ theme: string }> }
 ): Promise<Response> {
-  const { theme: themeParam } = await params;
-  const { searchParams } = new URL(request.url);
-  const config = parseCommonParams(searchParams);
-  const theme = parseTheme(themeParam);
+  try {
+    const { theme: themeParam } = await params;
+    const { searchParams } = new URL(request.url);
+    const config = parseCommonParams(searchParams);
+    const theme = parseTheme(themeParam);
 
-  const svg = generatePreviewSVG(theme, config);
+    const svg = generatePreviewSVG(theme, config);
 
-  return new NextResponse(svg, {
-    headers: {
-      'Content-Type': 'image/svg+xml; charset=utf-8',
-      'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
-      Pragma: 'no-cache',
-      Expires: '0'
-    }
-  });
+    return new NextResponse(svg, {
+      headers: {
+        'Content-Type': 'image/svg+xml; charset=utf-8',
+        'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
+        Pragma: 'no-cache',
+        Expires: '0'
+      }
+    });
+  } catch (error) {
+    console.error('Erro ao gerar preview do GitHub stats:', error);
+    return new NextResponse('Erro ao gerar preview', { status: 500 });
+  }
 }

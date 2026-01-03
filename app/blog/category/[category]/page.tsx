@@ -8,23 +8,25 @@ export function generateStaticParams(): Array<{ category: string }> {
   return categories.map((category) => ({ category }));
 }
 
+// eslint-disable-next-line require-await
 export async function generateMetadata({
   params
 }: BlogCategoryPageProps): Promise<{ title: string }> {
-  const { category } = await params;
+  const { category } = params;
   return { title: `${category} | Blog Moralus` };
 }
 
+// eslint-disable-next-line require-await
 export default async function CategoryPage({
   params
 }: BlogCategoryPageProps): Promise<React.ReactElement> {
-  const { category } = await params;
+  const { category } = params;
   const posts = getPostsByCategory(category);
 
   return (
     <Container max="lg" className="prose prose-sm prose-invert px-0 py-10">
       <div className="mb-14 text-center">
-        <h1 className="mb-4 inline-flex items-center gap-4 bg-gradient-to-br from-[var(--accent-teal)] to-[var(--accent-cyan)] bg-clip-text text-5xl font-bold text-transparent">
+        <h1 className="textGradientTealCyan mb-4 inline-flex items-center gap-4 text-5xl font-bold">
           <i className="fas fa-folder" /> {category}
         </h1>
         <p className="text-xl text-[var(--text-secondary)]">Posts da categoria selecionada</p>

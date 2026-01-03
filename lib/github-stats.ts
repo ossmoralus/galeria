@@ -89,12 +89,14 @@ interface GitHubGraphQLResponse {
  *
  * @example
  * ```ts
- * const stats = await fetchGitHubStats('octocat');
- * console.log(stats.followers); // 100
+ * fetchGitHubStats('octocat')
+ *   .then((stats) => {
+ *     console.log(stats.followers);
+ *   })
+ *   .catch(console.error);
  *
  * // Funciona sem token também:
- * const stats2 = await fetchGitHubStats('torvalds');
- * console.log(stats2.totalCommits); // dados reais
+ * void fetchGitHubStats('torvalds');
  * ```
  */
 export async function fetchGitHubStats(username: string): Promise<GitHubStats> {
@@ -155,32 +157,49 @@ export async function fetchGitHubStats(username: string): Promise<GitHubStats> {
       );
     }
 
-    // eslint-disable-next-line no-undef
-    const response = await fetch('https://api.github.com/graphql', {
-      method: 'POST',
-      headers,
-      body: JSON.stringify({ query }),
-      cache: 'no-store'
-    });
+    let response: Response | null = null;
+    try {
+      // eslint-disable-next-line no-undef
+      response = await fetch('https://api.github.com/graphql', {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({ query }),
+        cache: 'no-store'
+      });
+    } catch (error) {
+      console.error('❌ Erro ao chamar GitHub GraphQL API:', error);
+      response = null;
+    }
+
+    if (!response) {
+      return fetchGitHubStatsRest(username); // Fallback para REST
+    }
 
     if (!response.ok) {
       console.error(`❌ GitHub GraphQL API error: ${response.status}`);
-      return await fetchGitHubStatsRest(username); // Fallback para REST
+      return fetchGitHubStatsRest(username); // Fallback para REST
     }
 
-    const data = (await response.json()) as GitHubGraphQLResponse;
+    const data = (await response.json().catch((error) => {
+      console.error('❌ Erro ao fazer parse do JSON (GraphQL):', error);
+      return null;
+    })) as GitHubGraphQLResponse | null;
+
+    if (!data) {
+      return fetchGitHubStatsRest(username); // Fallback para REST
+    }
 
     // Verifica se houve erro na resposta GraphQL
     if (Array.isArray(data.errors) && data.errors.length > 0) {
       console.error('❌ GraphQL errors:', data.errors[0]?.message ?? 'Unknown error');
-      return await fetchGitHubStatsRest(username); // Fallback para REST
+      return fetchGitHubStatsRest(username); // Fallback para REST
     }
 
     const user = data.data?.user ?? null;
 
     if (user === null) {
       console.error(`❌ Usuário "${username}" não encontrado no GraphQL`);
-      return await fetchGitHubStatsRest(username); // Fallback para REST
+      return fetchGitHubStatsRest(username); // Fallback para REST
     }
 
     // Calcula total de commits
@@ -206,7 +225,6 @@ export async function fetchGitHubStats(username: string): Promise<GitHubStats> {
     return stats;
   } catch (error) {
     console.error(`❌ Erro ao buscar stats do GitHub (GraphQL):`, error);
-    // eslint-disable-next-line @typescript-eslint/return-await
     return fetchGitHubStatsRest(username); // Fallback para REST API
   }
 }
@@ -219,39 +237,53 @@ async function fetchGitHubStatsRest(username: string): Promise<GitHubStats> {
   try {
     console.error(`📡 Fetching GitHub stats via REST API for ${username}...`);
 
-    // eslint-disable-next-line no-undef
-    const userResponse = await fetch(`https://api.github.com/users/${username}`, {
-      headers: {
-        Accept: 'application/vnd.github.v3+json'
-      },
-      cache: 'no-store'
-    });
+    let userResponse: Response;
+    try {
+      // eslint-disable-next-line no-undef
+      userResponse = await fetch(`https://api.github.com/users/${username}`, {
+        headers: {
+          Accept: 'application/vnd.github.v3+json'
+        },
+        cache: 'no-store'
+      });
+    } catch (error) {
+      throw error;
+    }
 
     if (!userResponse.ok) {
       throw new Error(`HTTP ${userResponse.status}`);
     }
 
-    const userData = await userResponse.json();
+    const userData = await userResponse.json().catch((error) => {
+      throw error;
+    });
     console.error(
       `✓ User data retrieved: ${username} has ${userData.public_repos} public repos and ${userData.followers} followers`
     );
 
-    // eslint-disable-next-line no-undef
-    const reposResponse = await fetch(
-      `https://api.github.com/users/${username}/repos?per_page=100&type=owner&sort=updated`,
-      {
-        headers: {
-          Accept: 'application/vnd.github.v3+json'
-        },
-        cache: 'no-store'
-      }
-    );
+    let reposResponse: Response;
+    try {
+      // eslint-disable-next-line no-undef
+      reposResponse = await fetch(
+        `https://api.github.com/users/${username}/repos?per_page=100&type=owner&sort=updated`,
+        {
+          headers: {
+            Accept: 'application/vnd.github.v3+json'
+          },
+          cache: 'no-store'
+        }
+      );
+    } catch (error) {
+      throw error;
+    }
 
     if (!reposResponse.ok) {
       throw new Error(`HTTP ${reposResponse.status}`);
     }
 
-    const repos = await reposResponse.json();
+    const repos = await reposResponse.json().catch((error) => {
+      throw error;
+    });
     console.error(`✓ Found ${repos.length} repositories for ${username}`);
 
     // Estimativa de commits (menos precisa)
@@ -305,20 +337,27 @@ export async function fetchGitHubTopLanguages(
       console.error('⚠ No GitHub token available - using unauthenticated requests');
     }
 
-    // eslint-disable-next-line no-undef
-    const reposResponse = await fetch(
-      `https://api.github.com/users/${username}/repos?per_page=100&type=owner&sort=updated`,
-      {
-        headers,
-        cache: 'no-store'
-      }
-    );
+    let reposResponse: Response;
+    try {
+      // eslint-disable-next-line no-undef
+      reposResponse = await fetch(
+        `https://api.github.com/users/${username}/repos?per_page=100&type=owner&sort=updated`,
+        {
+          headers,
+          cache: 'no-store'
+        }
+      );
+    } catch (error) {
+      throw error;
+    }
 
     if (!reposResponse.ok) {
       throw new Error(`GitHub API error: ${reposResponse.status}`);
     }
 
-    const repos = await reposResponse.json();
+    const repos = await reposResponse.json().catch((error) => {
+      throw error;
+    });
     console.error(`✓ Found ${repos.length} repositories for ${username}`);
 
     const languageTotals = new Map<string, number>();
@@ -343,7 +382,7 @@ export async function fetchGitHubTopLanguages(
           continue;
         }
 
-        const langData = (await langResponse.json()) as Record<string, number>;
+        const langData = (await langResponse.json().catch(() => ({}))) as Record<string, number>;
         for (const [lang, bytes] of Object.entries(langData)) {
           const safeBytes = Number.isFinite(bytes) ? Math.max(bytes, 1) : 0;
           if (safeBytes === 0) continue;

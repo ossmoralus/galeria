@@ -1,5 +1,4 @@
 /** @type {import('next').NextConfig} **/
-const DNS_PREFETCH_CONTROL = `${process.env.NEXT_DNS_PREFETCH_CONTROL ?? 'on'}`;
 
 const nextConfig = {
     // Performance - Strict mode do React
@@ -54,11 +53,6 @@ const nextConfig = {
                         value: 'camera=(), microphone=(), geolocation=()'
                     },
                     // Performance
-                    // @oraculo-disable-next-line hardcoded-secrets
-                    {
-                        key: 'X-DNS-Prefetch-Control',
-                        value: DNS_PREFETCH_CONTROL
-                    }
                 ]
             },
             {
@@ -94,3 +88,4 @@ const nextConfig = {
 };
 
 export default nextConfig;
+

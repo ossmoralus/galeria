@@ -307,6 +307,20 @@ GRADIENTES DE TEXTO
   -webkit-text-fill-color: transparent;
 }
 
+.textGradientTertiaryLight {
+  background: linear-gradient(135deg, var(--accent-tertiary), var(--accent-light));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.notificationFixedTopRight {
+  position: fixed;
+  right: 1.25rem;
+  top: 1.25rem;
+  z-index: 2000;
+}
+
 /*
 ÍCONES COM ESTILO
 */

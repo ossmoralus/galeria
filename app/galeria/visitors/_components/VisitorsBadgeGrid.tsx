@@ -42,7 +42,7 @@ export default function VisitorsBadgeGrid(): React.ReactElement {
     setTimeout(() => setNotification(''), 3000);
   };
 
-  const visitorIdPlaceholder = 'SEU_ID';
+  const visitorIdPlaceholder = 'seu-usuario';
 
   const variants = useMemo<VisitorVariant[]>(
     () => [
@@ -176,8 +176,8 @@ export default function VisitorsBadgeGrid(): React.ReactElement {
           Visitors
         </h1>
         <p className="text-[var(--text-muted)]">
-          Exemplos visuais do badge de visitors. Copie o código e troque <code>SEU_ID</code> pelo
-          seu usuário.
+          Exemplos visuais do badge de visitors. Copie o código e troque <code>seu-usuario</code>{' '}
+          pelo seu usuário.
         </p>
         <p className="mt-2 text-sm text-[var(--text-muted)]">
           Observação: os previews usam <code>increment=0</code> para não inflar o contador.

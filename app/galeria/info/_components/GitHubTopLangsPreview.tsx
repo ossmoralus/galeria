@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState, type ChangeEvent, type ReactElement } from 'react';
+import { useState, type ChangeEvent, type ReactElement } from 'react';
 import { getBaseUrl } from '@/lib/getBaseUrl';
 
 const themes = [
@@ -21,22 +21,18 @@ export default function GitHubTopLangsPreview(): ReactElement {
 
   const baseUrl = getBaseUrl();
 
-  const sizeQuery = useMemo(() => {
-    const params = new URLSearchParams();
-    if (width.trim() !== '') {
-      params.set('width', width.trim());
-    }
-    if (height.trim() !== '') {
-      params.set('height', height.trim());
-    }
-    return params.toString();
-  }, [height, width]);
+  const sizeParams = new URLSearchParams();
+  if (width.trim() !== '') {
+    sizeParams.set('width', width.trim());
+  }
+  if (height.trim() !== '') {
+    sizeParams.set('height', height.trim());
+  }
+  const sizeQuery = sizeParams.toString();
 
-  const codeUrl = useMemo(() => {
-    const params = new URLSearchParams(sizeQuery);
-    params.set('theme', selectedTheme);
-    return `${baseUrl}/api/github-langs/${username}?${params.toString()}`;
-  }, [baseUrl, selectedTheme, sizeQuery, username]);
+  const codeParams = new URLSearchParams(sizeQuery);
+  codeParams.set('theme', selectedTheme);
+  const codeUrl = `${baseUrl}/api/github-langs/${username}?${codeParams.toString()}`;
 
   const previewUrl = codeUrl;
 

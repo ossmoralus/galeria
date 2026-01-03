@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import Link from 'next/link';
 import Logo from './Logo';
 import Container from './ui/Container';
@@ -8,15 +8,6 @@ import Container from './ui/Container';
 export default function Header(): React.ReactElement {
   const [open, setOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement | null>(null);
-
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent): void => {
-      if (e.key === 'Escape') setOpen(false);
-    };
-
-    document.addEventListener('keydown', onKey);
-    return () => document.removeEventListener('keydown', onKey);
-  }, []);
 
   return (
     <header className="headerContainer sticky top-0 z-[100] border-b border-[var(--vscode-border)] bg-[var(--vscode-editor)] p-4 backdrop-blur-md">
@@ -50,6 +41,9 @@ export default function Header(): React.ReactElement {
             aria-expanded={open}
             aria-label={open ? 'Fechar menu' : 'Abrir menu'}
             onClick={() => setOpen((s) => !s)}
+            onKeyDown={(e) => {
+              if (e.key === 'Escape') setOpen(false);
+            }}
             type="button"
             className="navGhost"
           >

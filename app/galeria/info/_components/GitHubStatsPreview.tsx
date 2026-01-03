@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState, type ChangeEvent, type ReactElement } from 'react';
+import { useState, type ChangeEvent, type ReactElement } from 'react';
 import { getBaseUrl } from '@/lib/getBaseUrl';
 
 const themes = [
@@ -21,27 +21,21 @@ export default function GitHubStatsPreview(): ReactElement {
 
   const baseUrl = getBaseUrl();
 
-  const sizeQuery = useMemo(() => {
-    const params = new URLSearchParams();
-    if (width.trim() !== '') {
-      params.set('width', width.trim());
-    }
-    if (height.trim() !== '') {
-      params.set('height', height.trim());
-    }
-    return params.toString();
-  }, [height, width]);
+  const sizeParams = new URLSearchParams();
+  if (width.trim() !== '') {
+    sizeParams.set('width', width.trim());
+  }
+  if (height.trim() !== '') {
+    sizeParams.set('height', height.trim());
+  }
+  const sizeQuery = sizeParams.toString();
 
-  const codeUrl = useMemo(() => {
-    const params = new URLSearchParams(sizeQuery);
-    params.set('theme', selectedTheme);
-    return `${baseUrl}/api/github-stats/${username}?${params.toString()}`;
-  }, [baseUrl, selectedTheme, sizeQuery, username]);
+  const codeParams = new URLSearchParams(sizeQuery);
+  codeParams.set('theme', selectedTheme);
+  const codeUrl = `${baseUrl}/api/github-stats/${username}?${codeParams.toString()}`;
 
-  const previewUrl = useMemo(() => {
-    const querySuffix = sizeQuery === '' ? '' : `?${sizeQuery}`;
-    return `${baseUrl}/api/github-stats/preview/${selectedTheme}${querySuffix}`;
-  }, [baseUrl, selectedTheme, sizeQuery]);
+  const querySuffix = sizeQuery === '' ? '' : `?${sizeQuery}`;
+  const previewUrl = `${baseUrl}/api/github-stats/preview/${selectedTheme}${querySuffix}`;
 
   const handleCopy = (): void => {
     const markdown = `![GitHub Stats](${codeUrl})`;

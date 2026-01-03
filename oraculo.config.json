@@ -1,0 +1,19 @@
+{
+  "conventions": {
+    "typesDirectory": "types"
+  },
+  "rules": {
+    "evidencia_contextual": {
+      "severity": "off"
+    },
+    "problemas-teste": {
+      "severity": "off"
+    }
+  },
+  "suppress": {
+    "rules": [
+      "evidencia_contextual",
+      "problemas-teste"
+    ]
+  }
+}

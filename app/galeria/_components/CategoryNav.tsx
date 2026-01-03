@@ -38,7 +38,7 @@ export default function CategoryNav(): React.ReactElement {
               no-underline transition-all duration-200
               ${
                 isActive(cat.slug)
-                  ? 'shadow-[var(--accent-teal)]/30 bg-[var(--accent-teal)] text-white shadow-lg'
+                  ? 'bg-[var(--accent-teal)] text-white shadow-lg'
                   : 'border border-[var(--vscode-border)] bg-[var(--vscode-editor)] text-[var(--text-muted)] hover:border-[var(--accent-cyan)] hover:text-[var(--accent-cyan)]'
               }
             `}

@@ -82,19 +82,24 @@ export async function handleGitHubLangsPreviewRequest(
   request: Request,
   { params }: { params: Promise<{ theme: string }> }
 ): Promise<Response> {
-  const { theme: themeParam } = await params;
-  const { searchParams } = new URL(request.url);
-  const config = parseCommonParams(searchParams);
-  const theme = parseTheme(themeParam ?? 'dark');
+  try {
+    const { theme: themeParam } = await params;
+    const { searchParams } = new URL(request.url);
+    const config = parseCommonParams(searchParams);
+    const theme = parseTheme(themeParam ?? 'dark');
 
-  const svg = generateLanguagesPreviewSVG(theme, config);
+    const svg = generateLanguagesPreviewSVG(theme, config);
 
-  return new NextResponse(svg, {
-    headers: {
-      'Content-Type': 'image/svg+xml; charset=utf-8',
-      'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
-      Pragma: 'no-cache',
-      Expires: '0'
-    }
-  });
+    return new NextResponse(svg, {
+      headers: {
+        'Content-Type': 'image/svg+xml; charset=utf-8',
+        'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
+        Pragma: 'no-cache',
+        Expires: '0'
+      }
+    });
+  } catch (error) {
+    console.error('Erro ao gerar preview de linguagens:', error);
+    return new NextResponse('Erro ao gerar preview', { status: 500 });
+  }
 }

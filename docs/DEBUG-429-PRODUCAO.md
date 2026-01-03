@@ -1,3 +1,6 @@
+> Proveniência e Autoria: Este documento integra o projeto Galeria Moralus OSS (licença MIT).
+> Última atualização: 3 de janeiro de 2026
+
 # 🔍 Debug: HTTP 429 em Produção
 
 Se seu card de GitHub Stats retorna HTTP 429 em produção, siga este guia.

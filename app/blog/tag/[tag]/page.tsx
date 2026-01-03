@@ -8,19 +8,21 @@ export function generateStaticParams(): Array<{ tag: string }> {
   return tags.map((tag) => ({ tag }));
 }
 
+// eslint-disable-next-line require-await
 export async function generateMetadata({ params }: BlogTagPageProps): Promise<{ title: string }> {
-  const { tag } = await params;
+  const { tag } = params;
   return { title: `#${tag} | Blog Moralus` };
 }
 
+// eslint-disable-next-line require-await
 export default async function TagPage({ params }: BlogTagPageProps): Promise<React.ReactElement> {
-  const { tag } = await params;
+  const { tag } = params;
   const posts = getPostsByTag(tag);
 
   return (
     <Container max="lg" className="prose prose-sm prose-invert px-0 py-10">
       <div className="mb-14 text-center">
-        <h1 className="mb-4 inline-flex items-center gap-4 bg-gradient-to-br from-[var(--accent-teal)] to-[var(--accent-cyan)] bg-clip-text text-5xl font-bold text-transparent">
+        <h1 className="textGradientTealCyan mb-4 inline-flex items-center gap-4 text-5xl font-bold">
           <i className="fas fa-tags" /> {tag}
         </h1>
         <p className="text-xl text-[var(--text-secondary)]">Posts com esta tag</p>

@@ -7,7 +7,7 @@ export default function NotFound(): React.ReactElement {
     <div className="flex min-h-screen items-center justify-center p-5">
       <Container max="sm">
         <Card className="shadowCardLg px-6 py-8 text-center">
-          <h1 className="mb-5 bg-gradient-to-br from-[var(--accent-tertiary)] to-[var(--accent-light)] bg-clip-text font-mono text-6xl font-bold text-transparent">
+          <h1 className="textGradientTertiaryLight mb-5 font-mono text-6xl font-bold">
             404
           </h1>
           <i className="fas fa-search text-[3rem] text-[var(--accent-tertiary)]" />

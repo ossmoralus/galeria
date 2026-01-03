@@ -1,6 +1,9 @@
+> Proveniência e Autoria: Este documento integra o projeto Galeria Moralus OSS (licença MIT).
+> Última atualização: 3 de janeiro de 2026
+
 # 📚 Documentação: Índice Completo de Setup
 
-**Criado:** 3 de janeiro de 2026  
+**Criado:** 3 de janeiro de 2026
 **Status:** ✅ Completo e organizado
 
 ---
@@ -189,10 +192,10 @@ Total: ~10 min
 
 Após seguir qualquer path acima, você terá:
 
-✅ Cards de GitHub Stats funcionando  
-✅ Sem HTTP 429 em produção  
-✅ Suportando centenas/milhares de visitors  
-✅ Dados reais do GitHub renderizando  
+✅ Cards de GitHub Stats funcionando
+✅ Sem HTTP 429 em produção
+✅ Suportando centenas/milhares de visitors
+✅ Dados reais do GitHub renderizando
 ✅ Ready para produção
 
 ---
@@ -217,5 +220,5 @@ Após seguir qualquer path acima, você terá:
 
 ---
 
-**Última atualização:** 3 de janeiro de 2026  
+**Última atualização:** 3 de janeiro de 2026
 **Status:** ✅ Documentação completa e operacional

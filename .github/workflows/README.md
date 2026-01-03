@@ -1,3 +1,6 @@
+> Proveniência e Autoria: Este documento integra o projeto Galeria Moralus OSS (licença MIT).
+> Última atualização: 3 de janeiro de 2026
+
 # 🤖 GitHub Actions Workflows
 
 Este diretório contém todos os workflows automatizados do projeto.

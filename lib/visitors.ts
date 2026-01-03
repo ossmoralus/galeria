@@ -23,7 +23,7 @@ function readEnv(...names: string[]): string | undefined {
  * @example
  * ```ts
  * const redis = getVisitorsRedis();
- * await redis.incr('visitor:count');
+ * void redis.incr('visitor:count');
  * ```
  */
 export function getVisitorsRedis(): Redis {

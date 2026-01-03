@@ -23,15 +23,15 @@ export interface Post extends PostMetadata {
 }
 
 export interface BlogSlugPageProps {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 }
 
 export interface BlogTagPageProps {
-  params: Promise<{ tag: string }>;
+  params: { tag: string };
 }
 
 export interface BlogCategoryPageProps {
-  params: Promise<{ category: string }>;
+  params: { category: string };
 }
 
 export interface BlogPostMetadata {

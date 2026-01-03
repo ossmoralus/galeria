@@ -50,8 +50,14 @@ export default function GalleryGrid({
 
   const copyCode = async (filename: string): Promise<void> => {
     const markdownCode = generateMarkdownCode(filename);
-    await navigator.clipboard.writeText(markdownCode);
-    showNotificationMessage('✓ Código copiado com sucesso!');
+
+    try {
+      await navigator.clipboard.writeText(markdownCode);
+      showNotificationMessage('✓ Código copiado com sucesso!');
+    } catch (error) {
+      console.error('Erro ao copiar código:', error);
+      showNotificationMessage('Não foi possível copiar o código.');
+    }
   };
 
   const downloadSVG = (filename: string): void => {
@@ -73,8 +79,13 @@ export default function GalleryGrid({
   };
 
   const copyModalCode = async (): Promise<void> => {
-    await navigator.clipboard.writeText(currentCode);
-    showNotificationMessage('✓ Código copiado!');
+    try {
+      await navigator.clipboard.writeText(currentCode);
+      showNotificationMessage('✓ Código copiado!');
+    } catch (error) {
+      console.error('Erro ao copiar código:', error);
+      showNotificationMessage('Não foi possível copiar o código.');
+    }
   };
 
   return (

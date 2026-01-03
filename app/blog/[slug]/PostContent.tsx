@@ -1,5 +1,4 @@
-﻿/* eslint-disable no-return-await */
-'use client';
+﻿'use client';
 
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
@@ -10,7 +9,7 @@ import Tag from '../../components/ui/Tag';
 import VideoEmbed from '@/app/components/VideoEmbed';
 import type { PostContentProps } from '@/types/blog';
 
-const ContentRenderer = dynamic(async () => await import('./MDXRenderer'), {
+const ContentRenderer = dynamic(() => import('./MDXRenderer'), {
   ssr: false,
   loading: () => (
     <div className="animate-pulse space-y-4">

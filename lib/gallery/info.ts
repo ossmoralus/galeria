@@ -5,7 +5,7 @@
 import type { SVGItem } from './types';
 
 export const infoItems: SVGItem[] = [
-  /* -------------------------- BADGES PRINCIPAIS -------------------------- */
+/* -------------------------- BADGES PRINCIPAIS -------------------------- */
   {
     id: 'badge-build',
     title: 'Build Passing',
@@ -41,7 +41,7 @@ export const infoItems: SVGItem[] = [
     alt: 'License MIT Badge',
     category: 'info'
   },
-  /* -------------------------- NOVOS BADGES INFO -------------------------- */
+/* -------------------------- NOVOS BADGES INFO -------------------------- */
   {
     id: 'badge-build-failing',
     title: 'Build Failing',

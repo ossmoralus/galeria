@@ -11,40 +11,54 @@ export function generateStaticParams(): Array<{ slug: string }> {
   }));
 }
 
+// eslint-disable-next-line require-await
 export async function generateMetadata({ params }: BlogSlugPageProps): Promise<BlogPostMetadata> {
-  const { slug } = await params;
-  const post = getPostContent(slug);
+  try {
+    const { slug } = params;
+    const post = getPostContent(slug);
 
-  if (post === null) {
+    if (post === null) {
+      return {
+        title: 'Post não encontrado'
+      };
+    }
+
     return {
-      title: 'Post não encontrado'
+      title: `${post.title} | Blog Moralus`,
+      description: post.description,
+      keywords: post.tags,
+      openGraph: {
+        title: post.title,
+        description: post.description,
+        type: 'article',
+        publishedTime: post.date,
+        authors: [post.author],
+        tags: post.tags
+      }
+    };
+  } catch (error) {
+    console.error('Erro ao gerar metadata do post:', error);
+    return {
+      title: 'Post'
     };
   }
-
-  return {
-    title: `${post.title} | Blog Moralus`,
-    description: post.description,
-    keywords: post.tags,
-    openGraph: {
-      title: post.title,
-      description: post.description,
-      type: 'article',
-      publishedTime: post.date,
-      authors: [post.author],
-      tags: post.tags
-    }
-  };
 }
 
 export default async function PostPage({ params }: BlogSlugPageProps): Promise<React.ReactElement> {
-  const { slug } = await params;
+  const { slug } = params;
   const post = getPostContent(slug);
 
   if (post === null) {
     notFound();
   }
 
-  const mdxContent = await serialize(post.content);
+  let mdxContent;
+  try {
+    mdxContent = await serialize(post.content);
+  } catch (error) {
+    console.error('Erro ao serializar MDX do post:', error);
+    notFound();
+  }
 
   return <PostContent post={post} mdxContent={mdxContent} />;
 }

@@ -33,38 +33,51 @@ export const runtime = 'edge';
 
 export async function GET(
   request: Request,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: { id: string } }
 ): Promise<NextResponse> {
-  const { id: rawId } = await params;
-  const id = normalizeVisitorId(rawId);
-  if (id === null) {
-    return new NextResponse('Invalid id', {
-      status: 400,
-      headers: { 'Cache-Control': 'no-store' }
-    });
-  }
-
-  const { searchParams } = new URL(request.url);
-  const label = searchParams.get('label') ?? 'visitors';
-  const incrementParam = searchParams.get('increment');
-  const shouldIncrement = incrementParam === null ? true : incrementParam !== '0';
-
-  const labelBg = normalizeHexColor(searchParams.get('labelColor'));
-  const valueBg = normalizeHexColor(searchParams.get('valueColor'));
-  const textColor = normalizeHexColor(searchParams.get('textColor'));
-  const shape = normalizeShape(searchParams.get('shape'));
-
-  const styleOptions = {
-    ...(labelBg !== undefined ? { labelBg } : {}),
-    ...(valueBg !== undefined ? { valueBg } : {}),
-    ...(textColor !== undefined ? { textColor } : {}),
-    ...(shape !== undefined ? { shape } : {})
-  };
-
   try {
+    const rawId = params.id;
+    const id = normalizeVisitorId(rawId);
+    if (id === null) {
+      return new NextResponse('Invalid id', {
+        status: 400,
+        headers: { 'Cache-Control': 'no-store' }
+      });
+    }
+
+    const { searchParams } = new URL(request.url);
+    const label = searchParams.get('label') ?? 'visitors';
+    const incrementParam = searchParams.get('increment');
+    const shouldIncrement = incrementParam === null ? true : incrementParam !== '0';
+
+    const labelBg = normalizeHexColor(searchParams.get('labelColor'));
+    const valueBg = normalizeHexColor(searchParams.get('valueColor'));
+    const textColor = normalizeHexColor(searchParams.get('textColor'));
+    const shape = normalizeShape(searchParams.get('shape'));
+
+    const styleOptions = {
+      ...(labelBg !== undefined ? { labelBg } : {}),
+      ...(valueBg !== undefined ? { valueBg } : {}),
+      ...(textColor !== undefined ? { textColor } : {}),
+      ...(shape !== undefined ? { shape } : {})
+    };
+
     const redis = getVisitorsRedis();
     const key = visitorKey(id);
-    const count = shouldIncrement ? await redis.incr(key) : ((await redis.get<number>(key)) ?? 0);
+
+    let count: number;
+    if (shouldIncrement) {
+      count = await redis.incr(key).catch((err) => {
+        console.error('Visitors badge incr error:', err);
+        return 0;
+      });
+    } else {
+      count =
+        (await redis.get<number>(key).catch((err) => {
+          console.error('Visitors badge get error:', err);
+          return null;
+        })) ?? 0;
+    }
 
     const svg = renderVisitorBadgeSvg(label, String(count), styleOptions);
     return new NextResponse(svg, {
@@ -77,6 +90,21 @@ export async function GET(
     });
   } catch (error) {
     console.error('Visitors badge error:', error);
+    const { searchParams } = new URL(request.url);
+    const label = searchParams.get('label') ?? 'visitors';
+
+    const labelBg = normalizeHexColor(searchParams.get('labelColor'));
+    const valueBg = normalizeHexColor(searchParams.get('valueColor'));
+    const textColor = normalizeHexColor(searchParams.get('textColor'));
+    const shape = normalizeShape(searchParams.get('shape'));
+
+    const styleOptions = {
+      ...(labelBg !== undefined ? { labelBg } : {}),
+      ...(valueBg !== undefined ? { valueBg } : {}),
+      ...(textColor !== undefined ? { textColor } : {}),
+      ...(shape !== undefined ? { shape } : {})
+    };
+
     const svg = renderVisitorBadgeSvg(label, 'n/a', styleOptions);
     return new NextResponse(svg, {
       headers: {
