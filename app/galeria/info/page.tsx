@@ -33,11 +33,15 @@ export default function InfoPage(): React.ReactElement {
 
       <CategoryNav />
 
-      {/* GitHub Stats Preview Section */}
-      <GitHubStatsPreview />
-
-      {/* GitHub Top Languages Preview Section */}
-      <GitHubTopLangsPreview />
+      {/* GitHub Stats and Top Languages Preview Sections */}
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+        <div className="flex flex-col">
+          <GitHubStatsPreview />
+        </div>
+        <div className="flex flex-col">
+          <GitHubTopLangsPreview />
+        </div>
+      </div>
 
       <GalleryGrid items={items} title={title} icon={icon} description={description} />
 

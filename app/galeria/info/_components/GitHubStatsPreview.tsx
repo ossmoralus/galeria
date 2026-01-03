@@ -52,7 +52,7 @@ export default function GitHubStatsPreview(): ReactElement {
   };
 
   return (
-    <div className="mb-12 rounded-xl border border-[var(--accent-teal)] bg-gradient-to-br from-[rgb(26_77_92_/_10%)] to-[rgb(15_23_42_/_10%)] p-8">
+    <div className="mb-0 flex h-full flex-col rounded-xl border border-[var(--accent-teal)] bg-gradient-to-br from-[rgb(26_77_92_/_10%)] to-[rgb(15_23_42_/_10%)] p-8">
       <div className="mb-6">
         <h2 className="mb-2 text-3xl font-bold text-[var(--text-bright)]">
           <i className="fas fa-chart-line mr-3" />

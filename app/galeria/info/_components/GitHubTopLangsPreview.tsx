@@ -49,7 +49,7 @@ export default function GitHubTopLangsPreview(): ReactElement {
   };
 
   return (
-    <div className="mb-12 rounded-xl border border-[var(--accent-teal)] bg-gradient-to-br from-[rgb(26_77_92_/_10%)] to-[rgb(15_23_42_/_10%)] p-8">
+    <div className="mb-0 flex h-full flex-col rounded-xl border border-[var(--accent-teal)] bg-gradient-to-br from-[rgb(26_77_92_/_10%)] to-[rgb(15_23_42_/_10%)] p-8">
       <div className="mb-6 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
         <div>
           <h2 className="mb-1 text-3xl font-bold text-[var(--text-bright)]">
