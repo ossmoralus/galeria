@@ -1,39 +1,90 @@
-name: Protect main branch
+name: "🔒 Proteger branch main"
+
 on:
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+# Observação importante:
+# - Normalmente o GITHUB_TOKEN não tem permissão para alterar Branch Protection.
+# - Crie um PAT (fine-grained ou classic) com permissão de administração do repositório
+#   e salve como secret BRANCH_PROTECTION_TOKEN.
 permissions:
-  administration: write
+  contents: read
 
 jobs:
-  protect:
-    name: Apply branch protection to main
+  proteger-main:
+    name: "🛡️ Aplicar Branch Protection (main)"
     runs-on: ubuntu-latest
+    env:
+      BRANCH_PROTECTION_TOKEN: ${{ secrets.BRANCH_PROTECTION_TOKEN }}
     steps:
-      - name: Apply protection via GitHub API
-        uses: actions/github-script@v6
+      - name: "🔐 Validar token de proteção"
+        if: env.BRANCH_PROTECTION_TOKEN == ''
+        run: |
+          echo "Secret BRANCH_PROTECTION_TOKEN não configurada."
+          echo "Crie um token com permissão de administração do repositório e adicione em Settings > Secrets and variables > Actions."
+          exit 1
+
+      - name: "🔧 Aplicar proteção via GitHub API"
+        uses: actions/github-script@v7
         with:
+          github-token: ${{ env.BRANCH_PROTECTION_TOKEN }}
           script: |
             const owner = context.repo.owner;
             const repo = context.repo.repo;
             const branch = 'main';
 
+            // Alinhar com os nomes reais dos checks do workflow ".github/workflows/ci.yml".
+            // Em GitHub Actions, o contexto costuma ser: "<nome do workflow> / <nome do job>".
+            const requiredContexts = [
+              '🔄 CI - Integração Contínua / 🔍 Qualidade do Código',
+              '🔄 CI - Integração Contínua / 📜 Auditoria de Licenças',
+              '🔄 CI - Integração Contínua / 🏗️ Build do Projeto',
+            ];
+
+            // Falha rápido se a branch não existir.
+            await github.request('GET /repos/{owner}/{repo}/branches/{branch}', {
+              owner,
+              repo,
+              branch,
+            });
+
             await github.request('PUT /repos/{owner}/{repo}/branches/{branch}/protection', {
               owner,
               repo,
               branch,
+
               required_status_checks: {
                 strict: true,
-                contexts: ['build', 'test', 'lint']
+                contexts: requiredContexts,
               },
+
               enforce_admins: true,
+
               required_pull_request_reviews: {
                 dismiss_stale_reviews: true,
                 require_code_owner_reviews: false,
-                required_approving_review_count: 1
+                required_approving_review_count: 1,
               },
+
               restrictions: null,
               allow_force_pushes: false,
               allow_deletions: false,
-              required_conversation_resolution: true
+              required_conversation_resolution: true,
             });
+
+            core.summary
+              .addHeading('🔒 Proteção aplicada')
+              .addList([
+                `Repo: ${owner}/${repo}`,
+                `Branch: ${branch}`,
+                `Checks obrigatórios: ${requiredContexts.join(' | ')}`,
+                'PR review: 1 aprovação (stale reviews dispensadas)',
+                'Force push: bloqueado',
+                'Deleção da branch: bloqueada',
+                'Resolução de conversas: obrigatória',
+              ])
+              .write();
