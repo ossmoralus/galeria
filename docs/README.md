@@ -61,16 +61,17 @@ docs/
 
 ## 🚀 Deploy & Produção
 
-**⚠️ LEIA PRIMEIRO:** [SETUP-PRODUCAO.md](./SETUP-PRODUCAO.md)
+**🎯 Começar rápido?** [START-HERE.md](./START-HERE.md) — 5 minutos ⚡
 
-Guia completo para colocar o projeto em produção, incluindo:
+**📖 Guia completo:** [SETUP-PRODUCAO.md](./SETUP-PRODUCAO.md)
 
+Inclui:
 - Variáveis de ambiente obrigatórias (`NEXT_PUBLIC_CANONICAL_URL`)
 - Configuração de GitHub Token (rate limits: 60 vs 5.000 req/hora)
 - Passo a passo para setup no Vercel
 - Troubleshooting de erros HTTP 429, undefined, etc.
 
-**Checklist rápido:** [CHECKLIST-PRODUCAO.md](./CHECKLIST-PRODUCAO.md) ✅
+**✅ Checklist rápido:** [CHECKLIST-PRODUCAO.md](./CHECKLIST-PRODUCAO.md) 
 
 ---
 

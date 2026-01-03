@@ -53,6 +53,10 @@ Plataforma para gerenciar **badges, SVGs e banners** para perfis do GitHub, com 
 
 **Solução rápida (5 min):**
 
+👉 **[Comece aqui: docs/START-HERE.md](./docs/START-HERE.md)**
+
+Ou para mais detalhes:
+
 ```bash
 # 1. Gere token em https://github.com/settings/tokens
 # - Crie novo token (classic)
