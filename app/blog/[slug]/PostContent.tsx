@@ -9,16 +9,22 @@ import Tag from '../../components/ui/Tag';
 import VideoEmbed from '@/app/components/VideoEmbed';
 import type { PostContentProps } from '@/types/blog';
 
-const ContentRenderer = dynamic(() => import('./MDXRenderer'), {
-  ssr: false,
-  loading: () => (
-    <div className="animate-pulse space-y-4">
-      <div className="h-4 w-3/4 rounded bg-[var(--vscode-border)]" />
-      <div className="h-4 w-full rounded bg-[var(--vscode-border)]" />
-      <div className="h-4 w-5/6 rounded bg-[var(--vscode-border)]" />
-    </div>
-  )
-});
+const ContentRenderer = dynamic(
+  async () => {
+    const module = await import('./MDXRenderer');
+    return module;
+  },
+  {
+    ssr: false,
+    loading: () => (
+      <div className="animate-pulse space-y-4">
+        <div className="h-4 w-3/4 rounded bg-[var(--vscode-border)]" />
+        <div className="h-4 w-full rounded bg-[var(--vscode-border)]" />
+        <div className="h-4 w-5/6 rounded bg-[var(--vscode-border)]" />
+      </div>
+    )
+  }
+);
 
 export default function PostContent({ post, mdxContent }: PostContentProps): React.ReactElement {
   return (

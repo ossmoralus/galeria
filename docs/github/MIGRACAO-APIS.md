@@ -3,7 +3,6 @@
 
 # 🚀 Migração para Consultas Reais das APIs do GitHub
 
-
 ## Resumo das Mudanças
 
 ### ✅ O que foi feito

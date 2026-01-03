@@ -5,9 +5,9 @@ export const runtime = 'edge';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ): Promise<NextResponse> {
-  const rawId = params.id;
+  const { id: rawId } = await params;
   try {
     const id = normalizeVisitorId(rawId);
     if (id === null) {

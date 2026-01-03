@@ -33,10 +33,10 @@ export const runtime = 'edge';
 
 export async function GET(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ): Promise<NextResponse> {
   try {
-    const rawId = params.id;
+    const { id: rawId } = await params;
     const id = normalizeVisitorId(rawId);
     if (id === null) {
       return new NextResponse('Invalid id', {

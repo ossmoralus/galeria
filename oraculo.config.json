@@ -11,9 +11,6 @@
     }
   },
   "suppress": {
-    "rules": [
-      "evidencia_contextual",
-      "problemas-teste"
-    ]
+    "rules": ["evidencia_contextual", "problemas-teste"]
   }
 }
