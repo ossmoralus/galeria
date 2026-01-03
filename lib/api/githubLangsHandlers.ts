@@ -36,6 +36,14 @@ function parseCommonParams(searchParams: URLSearchParams): GitHubCommonParams {
   };
 }
 
+function getDisplayName(searchParams: URLSearchParams, defaultUsername: string): string {
+  const name = searchParams.get('name');
+  if (name !== null && name.trim() !== '') {
+    return name.trim();
+  }
+  return `@${defaultUsername}`;
+}
+
 export async function handleGitHubLangsRequest(
   request: Request,
   { params }: { params: { username: string } }
@@ -47,8 +55,9 @@ export async function handleGitHubLangsRequest(
   try {
     const languages = await fetchGitHubTopLanguages(username, token ?? undefined);
     const config = parseCommonParams(searchParams);
+    const displayName = getDisplayName(searchParams, username);
 
-    const svg = generateLanguagesSVG(languages, username, config);
+    const svg = generateLanguagesSVG(languages, displayName, config);
 
     return new NextResponse(svg, {
       headers: {

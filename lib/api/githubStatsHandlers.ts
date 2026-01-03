@@ -36,6 +36,14 @@ function parseCommonParams(searchParams: URLSearchParams): GitHubCommonParams {
   } as const;
 }
 
+function getDisplayName(searchParams: URLSearchParams, defaultUsername: string): string {
+  const name = searchParams.get('name');
+  if (name !== null && name.trim() !== '') {
+    return name.trim();
+  }
+  return `@${defaultUsername}`;
+}
+
 export async function handleGitHubStatsRequest(
   request: Request,
   { params }: { params: { username: string } }
@@ -46,8 +54,9 @@ export async function handleGitHubStatsRequest(
   try {
     const stats = await fetchGitHubStats(username);
     const config = parseCommonParams(searchParams);
+    const displayName = getDisplayName(searchParams, username);
 
-    const svg = generateGitHubStatsSVG(stats, username, {
+    const svg = generateGitHubStatsSVG(stats, displayName, {
       ...config,
       theme: config.theme
     });

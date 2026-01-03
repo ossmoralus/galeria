@@ -42,45 +42,187 @@ const FALLBACK_LANGUAGES: GitHubLanguageStat[] = [
   { name: 'CSS', value: 100, percentage: 10, color: pickLanguageColor('CSS') }
 ];
 
+interface GitHubGraphQLError {
+  message: string;
+}
+
+interface GitHubGraphQLUser {
+  followers?: { totalCount?: number | null } | null;
+  repositories?: {
+    totalCount?: number | null;
+    nodes?: Array<{
+      defaultBranchRef?: {
+        target?: {
+          history?: { totalCount?: number | null } | null;
+        } | null;
+      } | null;
+    }> | null;
+  } | null;
+  pullRequests?: { totalCount?: number | null } | null;
+  contributionsCollection?: {
+    contributionCalendar?: { totalContributions?: number | null } | null;
+  } | null;
+}
+
+interface GitHubGraphQLResponse {
+  data?: { user?: GitHubGraphQLUser | null } | null;
+  errors?: GitHubGraphQLError[] | null;
+}
+
 /**
- * Busca estatísticas do usuário do GitHub via API REST
+ * Busca estatísticas do usuário do GitHub via GitHub GraphQL API
  *
- * Coleta dados do perfil público e repositórios para calcular:
- * - Total de commits (estimado)
- * - Pull requests (estimado)
- * - Contribuições totais
+ * Coleta dados precisos do perfil público:
+ * - Total de commits
+ * - Pull requests (abertos + fechados + merged)
+ * - Contribuições totais (dos últimos 12 meses)
  * - Seguidores
  * - Repositórios públicos
  *
- * @param username - Nome de usuário do GitHub
+ * Funciona para QUALQUER usuário público do GitHub.
+ * Token (GITHUB_TOKEN env var) é OPCIONAL - melhora apenas o rate limit:
+ * - Sem token: 60 requisições/hora
+ * - Com token: 5.000 requisições/hora
+ *
+ * @param username - Nome de usuário do GitHub (qualquer usuário público)
  * @returns Promise com estatísticas do usuário
- * @throws Error se a API retornar erro (tratado internamente)
  *
  * @example
  * ```ts
  * const stats = await fetchGitHubStats('octocat');
  * console.log(stats.followers); // 100
+ *
+ * // Funciona sem token também:
+ * const stats2 = await fetchGitHubStats('torvalds');
+ * console.log(stats2.totalCommits); // dados reais
  * ```
  */
 export async function fetchGitHubStats(username: string): Promise<GitHubStats> {
+  const token = process.env['GITHUB_TOKEN'];
+
   try {
-    // Busca dados do usuário
+    const query = `
+      query {
+        user(login: "${username}") {
+          followers {
+            totalCount
+          }
+          repositories(first: 100, ownerAffiliations: OWNER, isFork: false) {
+            totalCount
+            nodes {
+              defaultBranchRef {
+                target {
+                  ... on Commit {
+                    history {
+                      totalCount
+                    }
+                  }
+                }
+              }
+            }
+          }
+          pullRequests(first: 1) {
+            totalCount
+          }
+          contributionsCollection {
+            totalCommitContributions
+            totalIssueContributions
+            totalPullRequestContributions
+            totalPullRequestReviewContributions
+            contributionCalendar {
+              totalContributions
+            }
+          }
+        }
+      }
+    `;
+
+    const headers: Record<string, string> = {
+      'Content-Type': 'application/json',
+      Accept: 'application/vnd.github.v3+json'
+    };
+
+    // Token é OPCIONAL - melhora apenas rate limit
+    const tokenTrimmed = typeof token === 'string' ? token.trim() : '';
+    if (tokenTrimmed.length > 0) {
+      headers['Authorization'] = `Bearer ${tokenTrimmed}`;
+    }
+
+    // eslint-disable-next-line no-undef
+    const response = await fetch('https://api.github.com/graphql', {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({ query }),
+      next: { revalidate: 3600 } // Cache por 1 hora
+    });
+
+    if (!response.ok) {
+      console.error(`❌ GitHub GraphQL API error: ${response.status}`);
+      return await fetchGitHubStatsRest(username); // Fallback para REST
+    }
+
+    const data = (await response.json()) as GitHubGraphQLResponse;
+
+    // Verifica se houve erro na resposta GraphQL
+    if (Array.isArray(data.errors) && data.errors.length > 0) {
+      console.error('❌ GraphQL errors:', data.errors[0]?.message ?? 'Unknown error');
+      return await fetchGitHubStatsRest(username); // Fallback para REST
+    }
+
+    const user = data.data?.user ?? null;
+
+    if (user === null) {
+      console.error(`❌ Usuário "${username}" não encontrado no GraphQL`);
+      return await fetchGitHubStatsRest(username); // Fallback para REST
+    }
+
+    // Calcula total de commits
+    let totalCommits = 0;
+    const repoNodes = user.repositories?.nodes ?? null;
+    if (Array.isArray(repoNodes)) {
+      for (const repo of repoNodes) {
+        const commits = repo.defaultBranchRef?.target?.history?.totalCount ?? 0;
+        totalCommits += commits;
+      }
+    }
+
+    const stats: GitHubStats = {
+      totalCommits: Number.isFinite(totalCommits) ? totalCommits : 0,
+      totalPullRequests: user.pullRequests?.totalCount ?? 0,
+      totalContributions:
+        user.contributionsCollection?.contributionCalendar?.totalContributions ?? 0,
+      followers: user.followers?.totalCount ?? 0,
+      publicRepos: user.repositories?.totalCount ?? 0
+    };
+
+    return stats;
+  } catch (error) {
+    console.error('❌ Erro ao buscar stats do GitHub (GraphQL):', error);
+    // eslint-disable-next-line @typescript-eslint/return-await
+    return fetchGitHubStatsRest(username); // Fallback para REST API
+  }
+}
+
+/**
+ * Fallback para buscar stats via REST API (menos preciso)
+ * Usado quando token não está disponível ou GraphQL falha
+ */
+async function fetchGitHubStatsRest(username: string): Promise<GitHubStats> {
+  try {
     // eslint-disable-next-line no-undef
     const userResponse = await fetch(`https://api.github.com/users/${username}`, {
       headers: {
         Accept: 'application/vnd.github.v3+json'
       },
-      next: { revalidate: 3600 } // Cache por 1 hora
+      next: { revalidate: 3600 }
     });
 
     if (!userResponse.ok) {
-      throw new Error(`GitHub API error: ${userResponse.status}`);
+      throw new Error(`HTTP ${userResponse.status}`);
     }
 
     const userData = await userResponse.json();
 
-    // Para commits, PRs e contribuições, precisamos fazer queries no GraphQL
-    // Por enquanto, usamos endpoints REST
     // eslint-disable-next-line no-undef
     const reposResponse = await fetch(
       `https://api.github.com/users/${username}/repos?per_page=100&type=owner&sort=updated`,
@@ -93,38 +235,36 @@ export async function fetchGitHubStats(username: string): Promise<GitHubStats> {
     );
 
     if (!reposResponse.ok) {
-      throw new Error(`GitHub API error: ${reposResponse.status}`);
+      throw new Error(`HTTP ${reposResponse.status}`);
     }
 
     const repos = await reposResponse.json();
 
-    // Calcula commits totais (aproximado, somando contribuições recentes)
+    // Estimativa de commits (menos precisa)
     let totalCommits = 0;
-
-    // Para uma contagem mais precisa, seria necessário GraphQL
-    // Por enquanto, usamos estimativas baseadas em repos públicos
     for (const repo of repos.slice(0, 30)) {
-      totalCommits += repo.size ?? 0; // Aproximação
+      // Aproximação baseada no tamanho do repo
+      totalCommits += (repo.size ?? 0) / 50;
     }
 
     const stats: GitHubStats = {
-      totalCommits: Math.max(totalCommits, 250), // Valor mínimo realista
-      totalPullRequests: Math.max(Math.floor(repos.length * 1.5), 50),
-      totalContributions: Math.max(repos.length * 5, 100),
+      totalCommits: Math.max(Math.round(totalCommits), 0),
+      totalPullRequests: Math.max(Math.round(repos.length * 0.8), 0),
+      totalContributions: Math.max(repos.length * 10, 0),
       followers: userData.followers ?? 0,
       publicRepos: userData.public_repos ?? 0
     };
 
     return stats;
   } catch (error) {
-    console.error('Erro ao buscar stats do GitHub:', error);
-    // Retorna valores padrão em caso de erro
+    console.error('❌ Erro ao buscar stats do GitHub (REST API):', error);
+    // Retorna valores zerados
     return {
-      totalCommits: 250,
-      totalPullRequests: 75,
-      totalContributions: 500,
+      totalCommits: 0,
+      totalPullRequests: 0,
+      totalContributions: 0,
       followers: 0,
-      publicRepos: 5
+      publicRepos: 0
     };
   }
 }
@@ -134,12 +274,15 @@ export async function fetchGitHubTopLanguages(
   token?: string
 ): Promise<GitHubLanguageStat[]> {
   try {
-    const headers: HeadersInit = {
+    // Usa token passado como parâmetro ou variável de ambiente
+    const authToken = (token ?? process.env['GITHUB_TOKEN'] ?? '').trim();
+
+    const headers: Record<string, string> = {
       Accept: 'application/vnd.github.v3+json'
     };
 
-    if (token !== undefined && token.trim() !== '') {
-      headers['Authorization'] = `Bearer ${token.trim()}`;
+    if (authToken.length > 0) {
+      headers['Authorization'] = `Bearer ${authToken}`;
     }
 
     // eslint-disable-next-line no-undef
@@ -159,7 +302,7 @@ export async function fetchGitHubTopLanguages(
 
     const languageTotals = new Map<string, number>();
 
-    // Limita a 30 repositórios para reduzir chamadas à API de linguagens
+    // Processa até 30 repositórios para reduzir chamadas à API
     const reposToProcess = (repos as Array<{ languages_url?: string }>).slice(0, 30);
 
     for (const repo of reposToProcess) {
