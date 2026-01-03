@@ -211,7 +211,7 @@ export function generateGitHubStatsSVG(
   <text x="${padding + 20}" y="${padding + 28}"
         font-family="'Segoe UI', Ubuntu, Arial, sans-serif"
         font-size="22" font-weight="700" fill="${theme.primaryColor}">
-    @${username}
+    ${username}
   </text>
 
   <text x="${padding + 20}" y="${padding + 50}"

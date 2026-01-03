@@ -152,7 +152,7 @@ export function generateLanguagesSVG(
   }
 
   <text x="28" y="44" fill="url(#titleGrad)" font-size="22" font-weight="800">GitHub Top Languages</text>
-  <text x="28" y="70" fill="${theme.textColor}" font-size="14">@${username} · ${totalLabel}</text>
+  <text x="28" y="70" fill="${theme.textColor}" font-size="14">${username} · ${totalLabel}</text>
 
   ${renderBars(languages, theme, width)}
 

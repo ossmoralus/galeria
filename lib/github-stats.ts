@@ -101,6 +101,8 @@ export async function fetchGitHubStats(username: string): Promise<GitHubStats> {
   const token = process.env['GITHUB_TOKEN'];
 
   try {
+    console.error(`📡 Fetching GitHub stats for ${username}...`);
+
     const query = `
       query {
         user(login: "${username}") {
@@ -146,6 +148,11 @@ export async function fetchGitHubStats(username: string): Promise<GitHubStats> {
     const tokenTrimmed = typeof token === 'string' ? token.trim() : '';
     if (tokenTrimmed.length > 0) {
       headers['Authorization'] = `Bearer ${tokenTrimmed}`;
+      console.error('✓ Using GitHub token for authentication');
+    } else {
+      console.error(
+        '⚠ No GitHub token available - using unauthenticated requests (60 req/hour limit)'
+      );
     }
 
     // eslint-disable-next-line no-undef
@@ -195,9 +202,10 @@ export async function fetchGitHubStats(username: string): Promise<GitHubStats> {
       publicRepos: user.repositories?.totalCount ?? 0
     };
 
+    console.error(`✓ Stats retrieved via GraphQL:`, stats);
     return stats;
   } catch (error) {
-    console.error('❌ Erro ao buscar stats do GitHub (GraphQL):', error);
+    console.error(`❌ Erro ao buscar stats do GitHub (GraphQL):`, error);
     // eslint-disable-next-line @typescript-eslint/return-await
     return fetchGitHubStatsRest(username); // Fallback para REST API
   }
@@ -209,6 +217,8 @@ export async function fetchGitHubStats(username: string): Promise<GitHubStats> {
  */
 async function fetchGitHubStatsRest(username: string): Promise<GitHubStats> {
   try {
+    console.error(`📡 Fetching GitHub stats via REST API for ${username}...`);
+
     // eslint-disable-next-line no-undef
     const userResponse = await fetch(`https://api.github.com/users/${username}`, {
       headers: {
@@ -222,6 +232,9 @@ async function fetchGitHubStatsRest(username: string): Promise<GitHubStats> {
     }
 
     const userData = await userResponse.json();
+    console.error(
+      `✓ User data retrieved: ${username} has ${userData.public_repos} public repos and ${userData.followers} followers`
+    );
 
     // eslint-disable-next-line no-undef
     const reposResponse = await fetch(
@@ -239,6 +252,7 @@ async function fetchGitHubStatsRest(username: string): Promise<GitHubStats> {
     }
 
     const repos = await reposResponse.json();
+    console.error(`✓ Found ${repos.length} repositories for ${username}`);
 
     // Estimativa de commits (menos precisa)
     let totalCommits = 0;
@@ -255,9 +269,10 @@ async function fetchGitHubStatsRest(username: string): Promise<GitHubStats> {
       publicRepos: userData.public_repos ?? 0
     };
 
+    console.error(`✓ Stats calculated:`, stats);
     return stats;
   } catch (error) {
-    console.error('❌ Erro ao buscar stats do GitHub (REST API):', error);
+    console.error(`❌ Erro ao buscar stats do GitHub (REST API) para ${username}:`, error);
     // Retorna valores zerados
     return {
       totalCommits: 0,
@@ -274,6 +289,8 @@ export async function fetchGitHubTopLanguages(
   token?: string
 ): Promise<GitHubLanguageStat[]> {
   try {
+    console.error(`📡 Fetching top languages for ${username}...`);
+
     // Usa token passado como parâmetro ou variável de ambiente
     const authToken = (token ?? process.env['GITHUB_TOKEN'] ?? '').trim();
 
@@ -283,6 +300,9 @@ export async function fetchGitHubTopLanguages(
 
     if (authToken.length > 0) {
       headers['Authorization'] = `Bearer ${authToken}`;
+      console.error('✓ Using GitHub token for authentication');
+    } else {
+      console.error('⚠ No GitHub token available - using unauthenticated requests');
     }
 
     // eslint-disable-next-line no-undef
@@ -299,11 +319,13 @@ export async function fetchGitHubTopLanguages(
     }
 
     const repos = await reposResponse.json();
+    console.error(`✓ Found ${repos.length} repositories for ${username}`);
 
     const languageTotals = new Map<string, number>();
 
     // Processa até 30 repositórios para reduzir chamadas à API
     const reposToProcess = (repos as Array<{ languages_url?: string }>).slice(0, 30);
+    console.error(`📊 Processing ${reposToProcess.length} repositories for language analysis...`);
 
     for (const repo of reposToProcess) {
       if (repo.languages_url === undefined) {
@@ -335,6 +357,7 @@ export async function fetchGitHubTopLanguages(
     const total = Array.from(languageTotals.values()).reduce((acc, value) => acc + value, 0);
 
     if (total === 0) {
+      console.warn(`⚠ No languages found for ${username}, using fallback`);
       return FALLBACK_LANGUAGES;
     }
 
@@ -351,9 +374,13 @@ export async function fetchGitHubTopLanguages(
         } satisfies GitHubLanguageStat;
       });
 
+    console.error(
+      `✓ Top languages retrieved:`,
+      top.map((l) => `${l.name} (${l.percentage}%)`).join(', ')
+    );
     return top;
   } catch (error) {
-    console.error('Erro ao buscar linguagens do GitHub:', error);
+    console.error(`❌ Erro ao buscar linguagens do GitHub para ${username}:`, error);
     return FALLBACK_LANGUAGES;
   }
 }

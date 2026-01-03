@@ -46,9 +46,9 @@ function getDisplayName(searchParams: URLSearchParams, defaultUsername: string):
 
 export async function handleGitHubLangsRequest(
   request: Request,
-  { params }: { params: { username: string } }
+  { params }: { params: Promise<{ username: string }> }
 ): Promise<Response> {
-  const { username } = params;
+  const { username } = await params;
   const { searchParams } = new URL(request.url);
   const token = searchParams.get('token') ?? searchParams.get('github_token') ?? undefined;
 
@@ -71,13 +71,14 @@ export async function handleGitHubLangsRequest(
   }
 }
 
-export function handleGitHubLangsPreviewRequest(
+export async function handleGitHubLangsPreviewRequest(
   request: Request,
-  { params }: { params: { theme: string } }
-): Response {
+  { params }: { params: Promise<{ theme: string }> }
+): Promise<Response> {
+  const { theme: themeParam } = await params;
   const { searchParams } = new URL(request.url);
   const config = parseCommonParams(searchParams);
-  const theme = parseTheme(params.theme ?? 'dark');
+  const theme = parseTheme(themeParam ?? 'dark');
 
   const svg = generateLanguagesPreviewSVG(theme, config);
 
