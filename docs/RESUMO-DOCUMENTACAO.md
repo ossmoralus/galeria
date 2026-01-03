@@ -5,18 +5,20 @@ Criado: 3 de janeiro de 2026
 ## 📋 Documentos Criados/Atualizados
 
 ### 🚀 Setup & Deploy
-| Documento | Propósito | Para Quem |
-|-----------|----------|----------|
-| [docs/SETUP-PRODUCAO.md](./docs/SETUP-PRODUCAO.md) | **Guia completo de setup em produção** | Quem vai fazer deploy |
-| [docs/CHECKLIST-PRODUCAO.md](./docs/CHECKLIST-PRODUCAO.md) | **Checklist pré-deploy** | Verificação rápida antes de ir ao ar |
-| [docs/DEBUG-429-PRODUCAO.md](./docs/DEBUG-429-PRODUCAO.md) | **Guia de debug para HTTP 429** | Quem está vendo HTTP 429 em produção |
+
+| Documento                                                  | Propósito                              | Para Quem                            |
+| ---------------------------------------------------------- | -------------------------------------- | ------------------------------------ |
+| [docs/SETUP-PRODUCAO.md](./docs/SETUP-PRODUCAO.md)         | **Guia completo de setup em produção** | Quem vai fazer deploy                |
+| [docs/CHECKLIST-PRODUCAO.md](./docs/CHECKLIST-PRODUCAO.md) | **Checklist pré-deploy**               | Verificação rápida antes de ir ao ar |
+| [docs/DEBUG-429-PRODUCAO.md](./docs/DEBUG-429-PRODUCAO.md) | **Guia de debug para HTTP 429**        | Quem está vendo HTTP 429 em produção |
 
 ### 📖 Referências & Histórico
-| Documento | Propósito | Atualizado |
-|-----------|----------|-----------|
-| [docs/BUGFIX-GITHUB-API.md](./docs/BUGFIX-GITHUB-API.md) | Histórico de correções | ✅ Atualizado com info de produção |
-| [README.md](./README.md) | README principal | ✅ Adicionada seção Troubleshooting |
-| [docs/README.md](./docs/README.md) | Índice de documentação | ✅ Adicionada seção "Deploy & Produção" |
+
+| Documento                                                | Propósito              | Atualizado                              |
+| -------------------------------------------------------- | ---------------------- | --------------------------------------- |
+| [docs/BUGFIX-GITHUB-API.md](./docs/BUGFIX-GITHUB-API.md) | Histórico de correções | ✅ Atualizado com info de produção      |
+| [README.md](./README.md)                                 | README principal       | ✅ Adicionada seção Troubleshooting     |
+| [docs/README.md](./docs/README.md)                       | Índice de documentação | ✅ Adicionada seção "Deploy & Produção" |
 
 ---
 
@@ -74,12 +76,14 @@ Se está fazendo setup novo ou quer validar tudo:
 ## ✅ O Que Foi Corrigido
 
 ### Código (Local)
+
 - ✅ Fixed Promise handling em Next.js 16 (params)
 - ✅ Fixed double `@` no username
 - ✅ Fixed 14 ESLint warnings (console.log → console.error)
 - ✅ Adicionado logging abrangente para debug
 
 ### Documentação
+
 - ✅ Criado guia completo de setup para produção
 - ✅ Criado checklist pré-deploy
 - ✅ Criado guia de debug para HTTP 429
@@ -87,6 +91,7 @@ Se está fazendo setup novo ou quer validar tudo:
 - ✅ Atualizado índice de documentação
 
 ### Em Produção
+
 - 🔄 **Precisa de ação do usuário:** Configurar `GITHUB_TOKEN` no Vercel
 - ⚠️ **Sem token:** HTTP 429 quando tráfego > 60 req/hora
 - ✅ **Com token:** 5.000 req/hora, cards funcionam normalmente
@@ -95,10 +100,10 @@ Se está fazendo setup novo ou quer validar tudo:
 
 ## 📊 Rate Limits
 
-| Cenário | Limite | Status |
-|---------|--------|--------|
-| Sem token (unauthenticated) | 60 req/hora | ❌ Atingido rapidamente |
-| Com token (authenticated) | 5.000 req/hora | ✅ Recomendado |
+| Cenário                     | Limite         | Status                  |
+| --------------------------- | -------------- | ----------------------- |
+| Sem token (unauthenticated) | 60 req/hora    | ❌ Atingido rapidamente |
+| Com token (authenticated)   | 5.000 req/hora | ✅ Recomendado          |
 
 ---
 
@@ -127,16 +132,19 @@ Dá erro? ❌ Vá para docs/DEBUG-429-PRODUCAO.md
 ## 💾 Referências Rápidas
 
 ### Para Desenvolvedores
+
 - [docs/BUGFIX-GITHUB-API.md](./docs/BUGFIX-GITHUB-API.md) - O que foi corrigido no código
 - [lib/api/githubStatsHandlers.ts](../lib/api/githubStatsHandlers.ts) - Handlers atualizados
 - [lib/api/githubLangsHandlers.ts](../lib/api/githubLangsHandlers.ts) - Handlers atualizados
 
 ### Para DevOps/Deploy
+
 - [docs/SETUP-PRODUCAO.md](./docs/SETUP-PRODUCAO.md) - Setup completo
 - [docs/CHECKLIST-PRODUCAO.md](./docs/CHECKLIST-PRODUCAO.md) - Validação
 - Variáveis necessárias: `NEXT_PUBLIC_CANONICAL_URL`, `GITHUB_TOKEN`
 
 ### Para Usuários
+
 - [README.md](./README.md) - Troubleshooting no README
 - [docs/DEBUG-429-PRODUCAO.md](./docs/DEBUG-429-PRODUCAO.md) - Debug detalhado
 - [GitHub Docs](https://docs.github.com/en) - Rate limits do GitHub

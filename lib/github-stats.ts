@@ -160,7 +160,7 @@ export async function fetchGitHubStats(username: string): Promise<GitHubStats> {
       method: 'POST',
       headers,
       body: JSON.stringify({ query }),
-      next: { revalidate: 3600 } // Cache por 1 hora
+      cache: 'no-store'
     });
 
     if (!response.ok) {
@@ -224,7 +224,7 @@ async function fetchGitHubStatsRest(username: string): Promise<GitHubStats> {
       headers: {
         Accept: 'application/vnd.github.v3+json'
       },
-      next: { revalidate: 3600 }
+      cache: 'no-store'
     });
 
     if (!userResponse.ok) {
@@ -243,7 +243,7 @@ async function fetchGitHubStatsRest(username: string): Promise<GitHubStats> {
         headers: {
           Accept: 'application/vnd.github.v3+json'
         },
-        next: { revalidate: 3600 }
+        cache: 'no-store'
       }
     );
 
@@ -310,7 +310,7 @@ export async function fetchGitHubTopLanguages(
       `https://api.github.com/users/${username}/repos?per_page=100&type=owner&sort=updated`,
       {
         headers,
-        next: { revalidate: 3600 }
+        cache: 'no-store'
       }
     );
 
@@ -336,7 +336,7 @@ export async function fetchGitHubTopLanguages(
         // eslint-disable-next-line no-undef
         const langResponse = await fetch(repo.languages_url, {
           headers,
-          next: { revalidate: 3600 }
+          cache: 'no-store'
         });
 
         if (!langResponse.ok) {

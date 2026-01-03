@@ -15,6 +15,7 @@ NEXT_PUBLIC_CANONICAL_URL=https://galeria-drab.vercel.app
 **Uso:** Geração de URLs absolutas para badges, cards e snippets de código que serão compartilhados em READMEs do GitHub.
 
 **Onde configurar:**
+
 - **Vercel:** Settings → Environment Variables
 - **AWS/Self-hosted:** Arquivo `.env.production` ou variáveis de sistema
 
@@ -27,6 +28,7 @@ NEXT_PUBLIC_CANONICAL_URL=https://galeria-drab.vercel.app
 **Descrição:** Token de autenticação do GitHub para aumentar rate limits.
 
 **Por que usar:**
+
 - Sem token: **60 requisições/hora** ao GitHub (rate limit anônimo)
 - Com token: **5.000 requisições/hora** (rate limit autenticado)
 
@@ -111,6 +113,7 @@ curl -H "Authorization: Bearer seu-token-aqui" \
 **Causa:** Atingiu o limite de 60 requisições/hora sem token
 
 **Solução:**
+
 1. Gere um `GITHUB_TOKEN` seguindo os passos acima
 2. Configure a variável no Vercel/seu host
 3. Faça um novo deploy
@@ -121,6 +124,7 @@ curl -H "Authorization: Bearer seu-token-aqui" \
 **Causa:** `NEXT_PUBLIC_CANONICAL_URL` não está definida em produção
 
 **Solução:** Configure a variável com seu domínio:
+
 ```
 NEXT_PUBLIC_CANONICAL_URL=https://seu-dominio.com
 ```
@@ -130,6 +134,7 @@ NEXT_PUBLIC_CANONICAL_URL=https://seu-dominio.com
 **Causa:** Base URL incorreta ou não definida
 
 **Solução:** Verifique se:
+
 1. `NEXT_PUBLIC_CANONICAL_URL` está definida
 2. Não tem `/` no final (será removido automaticamente)
 3. Fez um novo deploy após a mudança

@@ -156,7 +156,7 @@ export function generateLanguagesSVG(
 
   ${renderBars(languages, theme, width)}
 
-  <text x="${width - 20}" y="${height - 18}" fill="${theme.textColor}" font-size="11" text-anchor="end" opacity="0.7">Atualizado a cada 1h</text>
+  <text x="${width - 20}" y="${height - 18}" fill="${theme.textColor}" font-size="11" text-anchor="end" opacity="0.7">Atualização em tempo real</text>
 </svg>`;
 }
 

@@ -92,7 +92,7 @@
 📊 Tráfego típico:
    • 100 visitors/dia = ~100-300 requisições de API
    • 1.000 visitors/dia = ~1k-3k requisições
-   
+
 ❌ Sem token: Atingirá limite depois de ~30-60 visitors
 ✅ Com token: Suporta milhares de visitors/dia
 ```

@@ -22,6 +22,9 @@ VOCÊ ESTÁ AQUI (lendo esta página)
 ├─ 🔧 "Estou vendo HTTP 429 em produção"
 │  └─ Leia: DEBUG-429-PRODUCAO.md
 │
+├─ ⚠️ "Commits mostrando 0, languages erradas"
+│  └─ Leia: TROUBLESHOOT-COMMITS-ZERO.md ← NOVO!
+│
 ├─ 📊 "Quero entender com diagramas"
 │  └─ Leia: VISUAL-GUIDE.md
 │
@@ -69,30 +72,32 @@ Se quer compreender completamente:
 
 ## 📋 Tabela de Documentos
 
-| Documento | Tempo | Propósito | Para Quem |
-|-----------|-------|----------|----------|
-| [START-HERE.md](./START-HERE.md) | 5 min ⚡ | Passo a passo visual de 5 minutos | Quem quer rápido |
-| [CHECKLIST-PRODUCAO.md](./CHECKLIST-PRODUCAO.md) | 10 min ✅ | Validação pré-deploy | Quem quer validar |
-| [DEBUG-429-PRODUCAO.md](./DEBUG-429-PRODUCAO.md) | 15 min 🔧 | Troubleshooting HTTP 429 | Quem tem erros |
-| [SETUP-PRODUCAO.md](./SETUP-PRODUCAO.md) | 30 min 📖 | Guia completo detalhado | Quem quer tudo |
-| [VISUAL-GUIDE.md](./VISUAL-GUIDE.md) | 15 min 📊 | Fluxogramas e diagramas | Quem aprende visualmente |
-| [RESUMO-DOCUMENTACAO.md](./RESUMO-DOCUMENTACAO.md) | 10 min 🗂️ | Índice de todos | Navegadores |
-| [BUGFIX-GITHUB-API.md](./BUGFIX-GITHUB-API.md) | 10 min 🐛 | Histórico de correções | Curiosos/devs |
+| Documento                                          | Tempo     | Propósito                         | Para Quem                |
+| -------------------------------------------------- | --------- | --------------------------------- | ------------------------ |
+| [START-HERE.md](./START-HERE.md)                   | 5 min ⚡  | Passo a passo visual de 5 minutos | Quem quer rápido         |
+| [CHECKLIST-PRODUCAO.md](./CHECKLIST-PRODUCAO.md)   | 10 min ✅ | Validação pré-deploy              | Quem quer validar        |
+| [DEBUG-429-PRODUCAO.md](./DEBUG-429-PRODUCAO.md)   | 15 min 🔧 | Troubleshooting HTTP 429          | Quem tem erros           |
+| [SETUP-PRODUCAO.md](./SETUP-PRODUCAO.md)           | 30 min 📖 | Guia completo detalhado           | Quem quer tudo           |
+| [VISUAL-GUIDE.md](./VISUAL-GUIDE.md)               | 15 min 📊 | Fluxogramas e diagramas           | Quem aprende visualmente |
+| [RESUMO-DOCUMENTACAO.md](./RESUMO-DOCUMENTACAO.md) | 10 min 🗂️ | Índice de todos                   | Navegadores              |
+| [BUGFIX-GITHUB-API.md](./BUGFIX-GITHUB-API.md)     | 10 min 🐛 | Histórico de correções            | Curiosos/devs            |
 
 ---
 
 ## 🚀 Quick Paths
 
 ### Path 1: Em 5 Minutos
+
 ```
 START-HERE.md
   └─ Token (2 min)
-  └─ Config Vercel (2 min)  
+  └─ Config Vercel (2 min)
   └─ Deploy (1 min)
   └─ ✅ Pronto!
 ```
 
 ### Path 2: Com Validação
+
 ```
 START-HERE.md (5 min)
   └─ CHECKLIST-PRODUCAO.md (5 min)
@@ -101,6 +106,7 @@ START-HERE.md (5 min)
 ```
 
 ### Path 3: Aprendizado Completo
+
 ```
 RESUMO-DOCUMENTACAO.md
   └─ SETUP-PRODUCAO.md
@@ -110,6 +116,7 @@ RESUMO-DOCUMENTACAO.md
 ```
 
 ### Path 4: Resolvendo Erros
+
 ```
 DEBUG-429-PRODUCAO.md
   └─ Identifica problema
@@ -123,18 +130,22 @@ DEBUG-429-PRODUCAO.md
 ## 🎓 Por Seção
 
 ### ⚙️ Configuração Básica
+
 - [START-HERE.md](./START-HERE.md) — 5 minutos
 - [SETUP-PRODUCAO.md](./SETUP-PRODUCAO.md) — Detalhado
 
 ### ✅ Validação
+
 - [CHECKLIST-PRODUCAO.md](./CHECKLIST-PRODUCAO.md) — Pré-deploy
 - [VISUAL-GUIDE.md](./VISUAL-GUIDE.md) — Fluxogramas
 
 ### 🔧 Troubleshooting
+
 - [DEBUG-429-PRODUCAO.md](./DEBUG-429-PRODUCAO.md) — HTTP 429
 - [VISUAL-GUIDE.md](./VISUAL-GUIDE.md) — Árvore de decisão
 
 ### 📚 Referência
+
 - [RESUMO-DOCUMENTACAO.md](./RESUMO-DOCUMENTACAO.md) — Índice completo
 - [BUGFIX-GITHUB-API.md](./BUGFIX-GITHUB-API.md) — Histórico
 
@@ -143,22 +154,26 @@ DEBUG-429-PRODUCAO.md
 ## 📌 Informações-Chave
 
 ### Rate Limits
+
 ```
 Sem token:    60 req/hora   ❌ Atingido rapidamente
 Com token:  5.000 req/hora  ✅ Recomendado
 ```
 
 ### Variáveis Obrigatórias
+
 ```
 NEXT_PUBLIC_CANONICAL_URL=https://seu-dominio.com
 ```
 
 ### Variáveis Recomendadas
+
 ```
 GITHUB_TOKEN=ghp_seu_token_aqui
 ```
 
 ### Tempo de Ação
+
 ```
 Token: 2 min
 Vercel config: 2 min
@@ -178,7 +193,7 @@ Após seguir qualquer path acima, você terá:
 ✅ Sem HTTP 429 em produção  
 ✅ Suportando centenas/milhares de visitors  
 ✅ Dados reais do GitHub renderizando  
-✅ Ready para produção  
+✅ Ready para produção
 
 ---
 

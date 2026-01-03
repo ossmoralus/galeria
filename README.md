@@ -178,12 +178,12 @@ Mostra as 5 linguagens mais usadas:
 
 **Parâmetros de customização:**
 
-| Parâmetro | Exemplo | Descrição |
-|-----------|---------|-----------|
-| theme | `dark`, `neon` | Tema visual do card |
-| width | `600` | Largura em px |
-| height | `320` | Altura em px (stats only) |
-| name | `João Silva` | Nome customizado (exibe junto ao @username) |
+| Parâmetro | Exemplo        | Descrição                                   |
+| --------- | -------------- | ------------------------------------------- |
+| theme     | `dark`, `neon` | Tema visual do card                         |
+| width     | `600`          | Largura em px                               |
+| height    | `320`          | Altura em px (stats only)                   |
+| name      | `João Silva`   | Nome customizado (exibe junto ao @username) |
 
 📖 Documentação completa: [docs/cards/CUSTOMIZACAO.md](./docs/cards/CUSTOMIZACAO.md)
 

@@ -5,16 +5,19 @@ Use este checklist antes de fazer deploy.
 ## 📋 Pré-Deploy (Obrigatório)
 
 - [ ] `NEXT_PUBLIC_CANONICAL_URL` está configurada com seu domínio?
+
   ```bash
   echo "export NEXT_PUBLIC_CANONICAL_URL=https://seu-dominio.com" >> .env.production
   ```
 
 - [ ] Build passa sem erros?
+
   ```bash
   npm run build
   ```
 
 - [ ] ESLint/Lint sem avisos?
+
   ```bash
   npm run lint
   ```
@@ -27,7 +30,6 @@ Use este checklist antes de fazer deploy.
 ## 🔑 GitHub Token (Fortemente Recomendado)
 
 - [ ] Token gerado em https://github.com/settings/tokens?
-
   - ✅ Token (classic)
   - ✅ Scope: `public_repo`
   - ✅ Expiration: No expiration (ou 90 dias)
@@ -73,6 +75,7 @@ Commit e veja se os cards carregam (aguarde ~30s).
 ### 3. Verificar Logs (Vercel)
 
 No [Vercel Dashboard](https://vercel.com/dashboard):
+
 - Clique no projeto
 - **Deployments** → últimas versão → **View Function Logs**
 - Procure por:
@@ -82,13 +85,13 @@ No [Vercel Dashboard](https://vercel.com/dashboard):
 
 ## 🐛 Troubleshooting Rápido
 
-| Erro | Causa | Solução |
-|------|-------|---------|
-| **HTTP 429** | Rate limit atingido | Adicione `GITHUB_TOKEN` no Vercel |
-| **HTTP 403** | GitHub rejeitou | Verifique se token expirou |
-| **undefined** | Base URL inválida | Configure `NEXT_PUBLIC_CANONICAL_URL` |
-| **HTTP 500** | Erro no servidor | Veja logs no Vercel |
-| **Dados zerados** | Usuário não existe | Verifique o username do GitHub |
+| Erro              | Causa               | Solução                               |
+| ----------------- | ------------------- | ------------------------------------- |
+| **HTTP 429**      | Rate limit atingido | Adicione `GITHUB_TOKEN` no Vercel     |
+| **HTTP 403**      | GitHub rejeitou     | Verifique se token expirou            |
+| **undefined**     | Base URL inválida   | Configure `NEXT_PUBLIC_CANONICAL_URL` |
+| **HTTP 500**      | Erro no servidor    | Veja logs no Vercel                   |
+| **Dados zerados** | Usuário não existe  | Verifique o username do GitHub        |
 
 ## 💾 Referências
 

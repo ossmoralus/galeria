@@ -3,6 +3,8 @@ import { fetchGitHubStats } from '@/lib/github-stats';
 import { generateGitHubStatsSVG, generatePreviewSVG } from '@/lib/github-stats-svg';
 import type { GitHubCardTheme, GitHubCommonParams } from '@/types/github';
 
+export const dynamic = 'force-dynamic';
+
 const THEMES = [
   'dark',
   'light',
@@ -14,7 +16,10 @@ const THEMES = [
 
 function parseTheme(value: string | null | undefined): GitHubCardTheme {
   if (value === null || value === undefined) return 'dark';
-  return (THEMES as readonly string[]).includes(value) ? (value as GitHubCardTheme) : 'dark';
+  const normalized = value.trim().toLowerCase();
+  return (THEMES as readonly string[]).includes(normalized)
+    ? (normalized as GitHubCardTheme)
+    : 'dark';
 }
 
 function parseCommonParams(searchParams: URLSearchParams): GitHubCommonParams {
@@ -63,8 +68,10 @@ export async function handleGitHubStatsRequest(
 
     return new NextResponse(svg, {
       headers: {
-        'Content-Type': 'image/svg+xml',
-        'Cache-Control': 'public, max-age=3600'
+        'Content-Type': 'image/svg+xml; charset=utf-8',
+        'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
+        Pragma: 'no-cache',
+        Expires: '0'
       }
     });
   } catch (error) {
@@ -86,8 +93,10 @@ export async function handleGitHubStatsPreviewRequest(
 
   return new NextResponse(svg, {
     headers: {
-      'Content-Type': 'image/svg+xml',
-      'Cache-Control': 'public, max-age=3600'
+      'Content-Type': 'image/svg+xml; charset=utf-8',
+      'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
+      Pragma: 'no-cache',
+      Expires: '0'
     }
   });
 }

@@ -93,17 +93,18 @@ No [Vercel Dashboard](https://vercel.com/dashboard):
 ```
 
 Se vir `403` → Seu token pode estar:
+
 - Inválido
 - Expirado
 - Com scope errado
 
 ## 📊 Rate Limit Comparison
 
-| Cenário | Limite | Requisições/dia |
-|---------|--------|-----------------|
-| **Sem token** | 60/hora | ~1.440/dia |
-| **Com token** | 5.000/hora | ~120k/dia |
-| Recomendado | Com token | ✅ Com token |
+| Cenário       | Limite     | Requisições/dia |
+| ------------- | ---------- | --------------- |
+| **Sem token** | 60/hora    | ~1.440/dia      |
+| **Com token** | 5.000/hora | ~120k/dia       |
+| Recomendado   | Com token  | ✅ Com token    |
 
 ## 🔧 Soluções por Erro
 
@@ -123,11 +124,12 @@ Solução: Adicione GITHUB_TOKEN válido no Vercel
    - [ ] Copie: `ghp_...`
 
 2. Configure no Vercel
+
    ```bash
    # Via Vercel CLI (fácil)
    vercel env add GITHUB_TOKEN
    # Cole o token quando solicitado
-   
+
    # Ou via web:
    # https://vercel.com/dashboard/seu-projeto/settings/environment-variables
    # Adicione: GITHUB_TOKEN = ghp_seu_token
@@ -135,6 +137,7 @@ Solução: Adicione GITHUB_TOKEN válido no Vercel
    ```
 
 3. Deploy
+
    ```bash
    git push origin main
    # ou
@@ -151,6 +154,7 @@ Solução: Regenere o token com scope correto
 ```
 
 Verifique em https://github.com/settings/tokens:
+
 - Token não expirou?
 - Scope `public_repo` está selecionado?
 - Token foi revogado? (gere novo)
@@ -163,6 +167,7 @@ Solução: Verificar logs do Vercel e console.error()
 ```
 
 No Vercel:
+
 1. Deployments → View Function Logs
 2. Procure por linhas com `ERROR` ou `error`
 3. Verifique a mensagem de erro

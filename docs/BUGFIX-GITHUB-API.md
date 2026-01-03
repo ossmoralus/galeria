@@ -135,9 +135,9 @@ Isso permite:
 - Sem HTTP 429 em produção
 
 **Rate Limits:**
-| Cenário | Limite | 
+| Cenário | Limite |
 |---------|--------|
-| Sem token (unauthenticated) | 60/hora | 
+| Sem token (unauthenticated) | 60/hora |
 | Com token (authenticated) | 5.000/hora |
 
 ## Arquivos Modificados

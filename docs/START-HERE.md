@@ -60,11 +60,11 @@ curl -I "https://seu-dominio.com/api/github-stats/torvalds?theme=dark"
 
 ## ❌ Deu erro?
 
-| Erro | Solução |
-|------|---------|
-| **HTTP 429** | Token não foi salvo no Vercel. Verifique se aparece em Environment Variables. |
-| **HTTP 403** | Token expirou ou scope errado. Gere novo token em github.com/settings/tokens. |
-| **undefined** | Falta `NEXT_PUBLIC_CANONICAL_URL`. Adicione no Vercel com seu domínio. |
+| Erro          | Solução                                                                       |
+| ------------- | ----------------------------------------------------------------------------- |
+| **HTTP 429**  | Token não foi salvo no Vercel. Verifique se aparece em Environment Variables. |
+| **HTTP 403**  | Token expirou ou scope errado. Gere novo token em github.com/settings/tokens. |
+| **undefined** | Falta `NEXT_PUBLIC_CANONICAL_URL`. Adicione no Vercel com seu domínio.        |
 
 **Guia completo:** 👉 [docs/DEBUG-429-PRODUCAO.md](./docs/DEBUG-429-PRODUCAO.md)
 
@@ -92,7 +92,7 @@ curl -I "https://seu-dominio.com/api/github-stats/torvalds?theme=dark"
 Sem token:
   GitHub limita a 60 requisições/hora por IP
   Com 100 visitors: Atingido em ~30-60 minutos
-  
+
 Com token:
   GitHub permite 5.000 requisições/hora
   Com 1.000 visitors: Sem problemas
