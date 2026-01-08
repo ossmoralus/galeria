@@ -141,7 +141,7 @@ body {
   width: 100%;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   html,
   body {
     overflow-x: hidden !important;
