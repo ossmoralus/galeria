@@ -1,6 +1,9 @@
 import type { FitMode } from '@/types/svg';
 
-export function isValidDimension(input: string | null): { ok: boolean; isPercent: boolean } {
+export function isValidDimension(input: string | null): {
+  ok: boolean;
+  isPercent: boolean;
+} {
   if (input === null) return { ok: false, isPercent: false };
   if (/^\d+%$/.test(input)) return { ok: true, isPercent: true };
   if (/^\d+$/.test(input)) return { ok: parseInt(input, 10) > 0, isPercent: false };

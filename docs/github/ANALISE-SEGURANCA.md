@@ -73,7 +73,10 @@ if (widthParam !== null && widthInfo.ok === false)
   return new NextResponse('Invalid width parameter', { status: 400 });
 
 // ✅ Regex de validação segura
-export function isValidDimension(input: string | null): { ok: boolean; isPercent: boolean } {
+export function isValidDimension(input: string | null): {
+  ok: boolean;
+  isPercent: boolean;
+} {
   if (input === null) return { ok: false, isPercent: false };
   if (/^\d+%$/.test(input)) return { ok: true, isPercent: true };
   if (/^\d+$/.test(input)) return { ok: parseInt(input, 10) > 0, isPercent: false };

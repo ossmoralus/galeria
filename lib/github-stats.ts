@@ -35,9 +35,24 @@ function pickLanguageColor(name: string): string {
 }
 
 const FALLBACK_LANGUAGES: GitHubLanguageStat[] = [
-  { name: 'TypeScript', value: 320, percentage: 32, color: pickLanguageColor('TypeScript') },
-  { name: 'JavaScript', value: 260, percentage: 26, color: pickLanguageColor('JavaScript') },
-  { name: 'Python', value: 180, percentage: 18, color: pickLanguageColor('Python') },
+  {
+    name: 'TypeScript',
+    value: 320,
+    percentage: 32,
+    color: pickLanguageColor('TypeScript')
+  },
+  {
+    name: 'JavaScript',
+    value: 260,
+    percentage: 26,
+    color: pickLanguageColor('JavaScript')
+  },
+  {
+    name: 'Python',
+    value: 180,
+    percentage: 18,
+    color: pickLanguageColor('Python')
+  },
   { name: 'Go', value: 140, percentage: 14, color: pickLanguageColor('Go') },
   { name: 'CSS', value: 100, percentage: 10, color: pickLanguageColor('CSS') }
 ];
