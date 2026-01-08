@@ -93,12 +93,7 @@ function renderBars(
       const barWidth = Math.max((lang.percentage / 100) * barAreaWidth, 6);
       const { color } = lang;
       return `
-        <g>
-          <rect x="${startX}" y="${y}" width="${barAreaWidth}" height="${barHeight}" rx="8" fill="${theme.cardBg}" />
-          <rect x="${startX}" y="${y}" width="${barWidth}" height="${barHeight}" rx="8" fill="${color}" />
-          <text x="${startX + 12}" y="${y + 18}" fill="${theme.textColor}" font-size="13" font-weight="600">${lang.name}</text>
-          <text x="${width - 120}" y="${y + 18}" fill="${theme.textColor}" font-size="13" text-anchor="end" font-weight="700">${formatPercent(lang.percentage)}</text>
-        </g>`;
+        <g><rect x="${startX}" y="${y}" width="${barAreaWidth}" height="${barHeight}" rx="8" fill="${theme.cardBg}" /><rect x="${startX}" y="${y}" width="${barWidth}" height="${barHeight}" rx="8" fill="${color}" /><text x="${startX + 12}" y="${y + 18}" fill="${theme.textColor}" font-size="13" font-weight="600">${lang.name}</text><text x="${width - 120}" y="${y + 18}" fill="${theme.textColor}" font-size="13" text-anchor="end" font-weight="700">${formatPercent(lang.percentage)}</text></g>`;
     })
     .join('');
 }
@@ -132,32 +127,18 @@ export function generateLanguagesSVG(
 
   const totalLabel = 'Top 5 linguagens';
 
-  return `<svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="bgLangGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:${theme.bgGradient[0]};stop-opacity:1" />
-      <stop offset="100%" style="stop-color:${theme.bgGradient[1]};stop-opacity:1" />
-    </linearGradient>
-    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:${theme.accentGradient[0]};stop-opacity:1" />
-      <stop offset="100%" style="stop-color:${theme.accentGradient[1]};stop-opacity:1" />
-    </linearGradient>
-  </defs>
-
-  <rect width="${width}" height="${height}" rx="${borderRadius}" fill="url(#bgLangGrad)" />
+  return `<svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="bgLangGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:${theme.bgGradient[0]};stop-opacity:1" /><stop offset="100%" style="stop-color:${theme.bgGradient[1]};stop-opacity:1" /></linearGradient><linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:${theme.accentGradient[0]};stop-opacity:1" /><stop offset="100%" style="stop-color:${theme.accentGradient[1]};stop-opacity:1" /></linearGradient></defs><rect width="${width}" height="${height}" rx="${borderRadius}" fill="url(#bgLangGrad)" />
   ${
     showBorder
       ? `<rect x="${borderWidth / 2}" y="${borderWidth / 2}" width="${width - borderWidth}" height="${height - borderWidth}" rx="${borderRadius - 1}" fill="none" stroke="${theme.borderColor}" stroke-width="${borderWidth}" />`
       : ''
   }
 
-  <text x="28" y="44" fill="url(#titleGrad)" font-size="22" font-weight="800">GitHub Top Languages</text>
-  <text x="28" y="70" fill="${theme.textColor}" font-size="14">${username} · ${totalLabel}</text>
+  <text x="28" y="44" fill="url(#titleGrad)" font-size="22" font-weight="800">GitHub Top Languages</text><text x="28" y="70" fill="${theme.textColor}" font-size="14">${username} · ${totalLabel}</text>
 
   ${renderBars(languages, theme, width)}
 
-  <text x="${width - 20}" y="${height - 18}" fill="${theme.textColor}" font-size="11" text-anchor="end" opacity="0.7">Atualização em tempo real</text>
-</svg>`;
+  <text x="${width - 20}" y="${height - 18}" fill="${theme.textColor}" font-size="11" text-anchor="end" opacity="0.7">Atualização em tempo real</text></svg>`;
 }
 
 export function generateLanguagesPreviewSVG(

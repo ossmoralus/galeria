@@ -74,7 +74,9 @@ export async function handleGitHubLangsRequest(
     });
   } catch (error) {
     console.error('Erro ao gerar SVG de linguagens:', error);
-    return new NextResponse('Erro ao buscar linguagens do GitHub', { status: 500 });
+    return new NextResponse('Erro ao buscar linguagens do GitHub', {
+      status: 500
+    });
   }
 }
 

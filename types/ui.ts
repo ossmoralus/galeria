@@ -44,8 +44,12 @@ export interface SVGGalleryNotificationProps {
 }
 
 export type TagProps =
-  | ({ href: string } & React.AnchorHTMLAttributes<HTMLAnchorElement> & { label: string })
-  | ({ href?: undefined } & React.HTMLAttributes<HTMLSpanElement> & { label: string });
+  | ({ href: string } & React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+        label: string;
+      })
+  | ({ href?: undefined } & React.HTMLAttributes<HTMLSpanElement> & {
+        label: string;
+      });
 
 export type Variant = 'primary' | 'secondary' | 'ghost';
 export type Size = 'sm' | 'md' | 'lg';

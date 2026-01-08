@@ -152,46 +152,12 @@ export function generateGitHubStatsSVG(
     }
   ];
 
-  return `<svg width="${svgWidth}" height="${svgHeight}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:${theme.bgGradient[0]};stop-opacity:1" />
-      <stop offset="100%" style="stop-color:${theme.bgGradient[1]};stop-opacity:1" />
-    </linearGradient>
-
-    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:${theme.accentGradient[0]};stop-opacity:1" />
-      <stop offset="100%" style="stop-color:${theme.accentGradient[1]};stop-opacity:1" />
-    </linearGradient>
-
-    <linearGradient id="shimmer" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:${theme.primaryColor};stop-opacity:0.3">
-        <animate attributeName="offset" values="0;1;0" dur="3s" repeatCount="indefinite"/>
-      </stop>
-      <stop offset="50%" style="stop-color:${theme.secondaryColor};stop-opacity:0.5">
-        <animate attributeName="offset" values="0.5;1;0.5" dur="3s" repeatCount="indefinite"/>
-      </stop>
-      <stop offset="100%" style="stop-color:${theme.primaryColor};stop-opacity:0.3">
-        <animate attributeName="offset" values="1;0;1" dur="3s" repeatCount="indefinite"/>
-      </stop>
-    </linearGradient>
-
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-      <feMerge>
-        <feMergeNode in="coloredBlur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-  </defs>
-
-  <!-- Background -->
-  <rect width="${width}" height="${height}" rx="${borderRadius}" fill="url(#bgGrad)"/>
+  return `<svg width="${svgWidth}" height="${svgHeight}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:${theme.bgGradient[0]};stop-opacity:1" /><stop offset="100%" style="stop-color:${theme.bgGradient[1]};stop-opacity:1" /></linearGradient><linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:${theme.accentGradient[0]};stop-opacity:1" /><stop offset="100%" style="stop-color:${theme.accentGradient[1]};stop-opacity:1" /></linearGradient><linearGradient id="shimmer" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:${theme.primaryColor};stop-opacity:0.3"><animate attributeName="offset" values="0;1;0" dur="3s" repeatCount="indefinite"/></stop><stop offset="50%" style="stop-color:${theme.secondaryColor};stop-opacity:0.5"><animate attributeName="offset" values="0.5;1;0.5" dur="3s" repeatCount="indefinite"/></stop><stop offset="100%" style="stop-color:${theme.primaryColor};stop-opacity:0.3"><animate attributeName="offset" values="1;0;1" dur="3s" repeatCount="indefinite"/></stop></linearGradient><filter id="glow"><feGaussianBlur stdDeviation="2" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><rect width="${width}" height="${height}" rx="${borderRadius}" fill="url(#bgGrad)"/>
 
   ${
     showBorder
       ? `
-  <!-- Border glow -->
+  
   <rect x="${borderWidth / 2}" y="${borderWidth / 2}" width="${width - borderWidth}" height="${height - borderWidth}"
         rx="${borderRadius - 1}" fill="none" stroke="${theme.borderColor}"
         stroke-width="${borderWidth}" filter="url(#glow)"/>
@@ -199,33 +165,19 @@ export function generateGitHubStatsSVG(
       : ''
   }
 
-  <!-- Shimmer effect -->
-  <rect x="0" y="0" width="${width}" height="4" fill="url(#shimmer)" rx="${borderRadius}" />
-
-  <!-- Header -->
-  <rect x="${padding}" y="${padding}" width="${width - padding * 2}" height="60"
-        rx="8" fill="${theme.cardBg}" opacity="0.6"/>
-
-  <rect x="${padding}" y="${padding}" width="6" height="60" rx="3" fill="url(#accentGrad)"/>
-
-  <text x="${padding + 20}" y="${padding + 28}"
+  
+  <rect x="0" y="0" width="${width}" height="4" fill="url(#shimmer)" rx="${borderRadius}" /><rect x="${padding}" y="${padding}" width="${width - padding * 2}" height="60"
+        rx="8" fill="${theme.cardBg}" opacity="0.6"/><rect x="${padding}" y="${padding}" width="6" height="60" rx="3" fill="url(#accentGrad)"/><text x="${padding + 20}" y="${padding + 28}"
         font-family="'Segoe UI', Ubuntu, Arial, sans-serif"
         font-size="22" font-weight="700" fill="${theme.primaryColor}">
     ${username}
-  </text>
-
-  <text x="${padding + 20}" y="${padding + 50}"
+  </text><text x="${padding + 20}" y="${padding + 50}"
         font-family="'Segoe UI', Ubuntu, Arial, sans-serif"
         font-size="13" fill="${theme.textColor}" opacity="0.7">
     GitHub Statistics
-  </text>
+  </text><circle cx="${width - padding - 25}" cy="${padding + 30}" r="6" fill="${theme.accentGradient[0]}"><animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite"/></circle>
 
-  <!-- Status indicator -->
-  <circle cx="${width - padding - 25}" cy="${padding + 30}" r="6" fill="${theme.accentGradient[0]}">
-    <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite"/>
-  </circle>
-
-  <!-- Stats Cards -->
+  
   ${statsData
     .map((stat, idx) => {
       const row = Math.floor(idx / 2);
@@ -236,47 +188,29 @@ export function generateGitHubStatsSVG(
       const y = 100 + row * (cardHeight + 10);
 
       return `
-  <g>
-    <!-- Card background -->
-    <rect x="${x}" y="${y}" width="${cardWidth}" height="${cardHeight}"
+  <g><rect x="${x}" y="${y}" width="${cardWidth}" height="${cardHeight}"
           rx="10" fill="${theme.cardBg}" stroke="${theme.borderColor}"
-          stroke-width="1.5"/>
-
-    <!-- Icon -->
-    <svg x="${x + cardPadding}" y="${y + cardPadding}" width="24" height="24" viewBox="0 0 24 24">
-      <g style="color: ${stat.color}">
+          stroke-width="1.5"/><svg x="${x + cardPadding}" y="${y + cardPadding}" width="24" height="24" viewBox="0 0 24 24"><g style="color: ${stat.color}">
         ${icons[stat.icon as keyof typeof icons]}
-      </g>
-    </svg>
-
-    <!-- Value -->
-    <text x="${x + cardPadding}" y="${y + cardHeight - 30}"
+      </g></svg><text x="${x + cardPadding}" y="${y + cardHeight - 30}"
           font-family="'Segoe UI', Ubuntu, Arial, sans-serif"
           font-size="28" font-weight="700" fill="${stat.color}">
       ${stat.value}
-    </text>
-
-    <!-- Label -->
-    <text x="${x + cardPadding}" y="${y + cardHeight - 12}"
+    </text><text x="${x + cardPadding}" y="${y + cardHeight - 12}"
           font-family="'Segoe UI', Ubuntu, Arial, sans-serif"
           font-size="12" fill="${theme.textColor}" opacity="0.7">
       ${stat.label}
-    </text>
-
-    <!-- Accent bar -->
-    <rect x="${x}" y="${y}" width="4" height="${cardHeight}"
-          rx="10" fill="${stat.color}" opacity="0.6"/>
-  </g>`;
+    </text><rect x="${x}" y="${y}" width="4" height="${cardHeight}"
+          rx="10" fill="${stat.color}" opacity="0.6"/></g>`;
     })
     .join('')}
 
-  <!-- Footer -->
+  
   <text x="${width / 2}" y="${height - 12}" text-anchor="middle"
         font-family="'Segoe UI', Ubuntu, Arial, sans-serif"
         font-size="10" fill="${theme.textColor}" opacity="0.4">
     Galeria Moralus OSS • github-stats
-  </text>
-</svg>`;
+  </text></svg>`;
 }
 
 /**

@@ -194,7 +194,11 @@ export default function VisitorsBadgeGrid(): React.ReactElement {
             <Card
               key={variant.id}
               className="svgCard cardSvg animateFadeInUp"
-              style={{ '--animation-delay': `${index * 0.1}s` } as React.CSSProperties}
+              style={
+                {
+                  '--animation-delay': `${index * 0.1}s`
+                } as React.CSSProperties
+              }
             >
               <div className="svgCardTitle text3xl mb-4 font-mono font-semibold text-[var(--text-bright)]">
                 {variant.title}
