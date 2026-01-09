@@ -10,7 +10,7 @@ export default function Header(): React.ReactElement {
   const toggleRef = useRef<HTMLButtonElement | null>(null);
 
   return (
-    <header className="headerContainer sticky top-0 z-[100] border-b border-[var(--vscode-border)] bg-[var(--vscode-editor)] p-4 backdrop-blur-md">
+    <header className="headerContainer z-[100] border-b border-[var(--vscode-border)] bg-[var(--vscode-editor)] p-4 backdrop-blur-md">
       <Container max="xl" className="flex items-center justify-between gap-3">
         <div className="flex items-center gap-3">
           <Link href="/">

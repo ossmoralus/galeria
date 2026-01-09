@@ -3,7 +3,7 @@ THIRD-PARTY SOFTWARE NOTICES AND INFORMATION
 ================================================================================
 
 Galeria Moralus OSS
-Gerado em: 2025-12-30
+Gerado em: 2026-01-09
 
 Este arquivo contém informações sobre as licenças de software de terceiros
 utilizados neste projeto.

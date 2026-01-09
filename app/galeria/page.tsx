@@ -37,11 +37,7 @@ export default function GaleriaPage(): React.ReactElement {
       </div>
 
       <div className="mx-auto mb-8 max-w-xl">
-        <SearchInput
-          value={search}
-          onChange={setSearch}
-          placeholder="Buscar por nome, tecnologia, etc..."
-        />
+        <SearchInput value={search} onChange={setSearch} />
       </div>
 
       <CategoryNav />

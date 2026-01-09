@@ -6,6 +6,77 @@ import type { SVGItem } from './types';
 
 export const skillsItems: SVGItem[] = [
   /* -------------------------- LINGUAGENS -------------------------- */
+  // NOVOS BADGES AUTOMATICAMENTE ADICIONADOS EM 2026-01-09
+  {
+    id: 'badge-astrobuild',
+    title: 'Astro Build',
+    filename: 'badges/skills/tecnologias/badge-astrobuild.svg',
+    alt: 'Badge Astro Build',
+    category: 'skills'
+  },
+  {
+    id: 'badge-blitzjs',
+    title: 'Blitz.js',
+    filename: 'badges/skills/tecnologias/badge-blitzjs.svg',
+    alt: 'Badge Blitz.js',
+    category: 'skills'
+  },
+  {
+    id: 'badge-bunrest',
+    title: 'Bun Rest',
+    filename: 'badges/skills/tecnologias/badge-bunrest.svg',
+    alt: 'Badge Bun Rest',
+    category: 'skills'
+  },
+  {
+    id: 'badge-elysia',
+    title: 'Elysia',
+    filename: 'badges/skills/tecnologias/badge-elysia.svg',
+    alt: 'Badge Elysia',
+    category: 'skills'
+  },
+  {
+    id: 'badge-nhost',
+    title: 'Nhost',
+    filename: 'badges/skills/tecnologias/badge-nhost.svg',
+    alt: 'Badge Nhost',
+    category: 'skills'
+  },
+  {
+    id: 'badge-qwikcity',
+    title: 'Qwik City',
+    filename: 'badges/skills/tecnologias/badge-qwikcity.svg',
+    alt: 'Badge Qwik City',
+    category: 'skills'
+  },
+  {
+    id: 'badge-remult',
+    title: 'Remult',
+    filename: 'badges/skills/tecnologias/badge-remult.svg',
+    alt: 'Badge Remult',
+    category: 'skills'
+  },
+  {
+    id: 'badge-solidstart',
+    title: 'SolidStart',
+    filename: 'badges/skills/tecnologias/badge-solidstart.svg',
+    alt: 'Badge SolidStart',
+    category: 'skills'
+  },
+  {
+    id: 'badge-turso',
+    title: 'Turso',
+    filename: 'badges/skills/tecnologias/badge-turso.svg',
+    alt: 'Badge Turso',
+    category: 'skills'
+  },
+  {
+    id: 'badge-umijs',
+    title: 'UmiJS',
+    filename: 'badges/skills/tecnologias/badge-umijs.svg',
+    alt: 'Badge UmiJS',
+    category: 'skills'
+  },
   {
     id: 'badge-javascript',
     title: 'JavaScript',

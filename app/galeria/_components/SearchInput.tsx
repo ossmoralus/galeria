@@ -1,24 +1,24 @@
+import React from 'react';
+
 interface SearchInputProps {
   value: string;
   onChange: (value: string) => void;
-  placeholder?: string;
 }
 
-import React from 'react';
-
-export default function SearchInput({
-  value,
-  onChange,
-  placeholder
-}: SearchInputProps): React.ReactElement {
+export default function SearchInput({ value, onChange }: SearchInputProps): React.ReactElement {
   return (
-    <input
-      type="text"
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      placeholder={placeholder ?? 'Buscar...'}
-      className="w-full rounded-lg border-2 border-green-900 bg-transparent text-lg font-bold text-white placeholder:text-green-200 focus:outline-none focus:ring-2 focus:ring-green-700"
-      aria-label="Buscar na galeria"
-    />
+    <div className="w-full">
+      <input
+        id="search-input-real"
+        type="text"
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder="Procurar"
+        className="box-border h-[30px] w-full rounded-[15px] border-2 border-white bg-transparent px-3 text-center text-sm font-bold leading-none text-white placeholder-white/70 outline-none"
+        tabIndex={0}
+        aria-label="Procurar"
+        autoComplete="off"
+      />
+    </div>
   );
 }
