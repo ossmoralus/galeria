@@ -12,6 +12,8 @@ export const identify: Identify<StatsigUser> = async (): Promise<StatsigUser> =>
 export const createFeatureFlag = (key: string): (() => Promise<boolean | undefined>) =>
   flag<boolean, StatsigUser>({
     key,
-    adapter: statsigAdapter.featureGate((gate) => gate.value, { exposureLogging: true }),
+    adapter: statsigAdapter.featureGate((gate) => gate.value, {
+      exposureLogging: true
+    }),
     identify
   });
