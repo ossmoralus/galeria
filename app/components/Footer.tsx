@@ -50,6 +50,16 @@ export default function Footer(): React.ReactElement {
           >
             <i className="fab fa-whatsapp" /> WhatsApp
           </Button>
+
+          <Button
+            href="mailto:ossmoralus@proton.me"
+            aria-label="Enviar email"
+            variant="secondary"
+            size="sm"
+            className="inline-flex items-center gap-1.5"
+          >
+            <i className="fas fa-envelope" /> Email
+          </Button>
         </div>
 
         {/* Mobile: collapsible extras */}

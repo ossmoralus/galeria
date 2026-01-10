@@ -1345,5 +1345,237 @@ export const skillsItems: SVGItem[] = [
     filename: 'badges/skills/ferramentas/badge-airflow.svg',
     alt: 'Badge Airflow',
     category: 'skills'
+  },
+  // Inseridos automaticamente: badges detectados em public/svg que não estavam listados
+  {
+    id: 'badge-ansible',
+    title: 'Ansible',
+    filename: 'badges/skills/ferramentas/badge-ansible.svg',
+    alt: 'Badge Ansible',
+    category: 'skills'
+  },
+  {
+    id: 'badge-bitbucket',
+    title: 'Bitbucket',
+    filename: 'badges/skills/ferramentas/badge-bitbucket.svg',
+    alt: 'Badge Bitbucket',
+    category: 'skills'
+  },
+  {
+    id: 'badge-bun',
+    title: 'Bun',
+    filename: 'badges/skills/ferramentas/badge-bun.svg',
+    alt: 'Badge Bun',
+    category: 'skills'
+  },
+  {
+    id: 'badge-circleci',
+    title: 'Circleci',
+    filename: 'badges/skills/ferramentas/badge-circleci.svg',
+    alt: 'Badge Circleci',
+    category: 'skills'
+  },
+  {
+    id: 'badge-cypress',
+    title: 'Cypress',
+    filename: 'badges/skills/ferramentas/badge-cypress.svg',
+    alt: 'Badge Cypress',
+    category: 'skills'
+  },
+  {
+    id: 'badge-deno',
+    title: 'Deno',
+    filename: 'badges/skills/ferramentas/badge-deno.svg',
+    alt: 'Badge Deno',
+    category: 'skills'
+  },
+  {
+    id: 'badge-discord',
+    title: 'Discord',
+    filename: 'badges/skills/ferramentas/badge-discord.svg',
+    alt: 'Badge Discord',
+    category: 'skills'
+  },
+  {
+    id: 'badge-docker',
+    title: 'Docker',
+    filename: 'badges/skills/ferramentas/badge-docker.svg',
+    alt: 'Badge Docker',
+    category: 'skills'
+  },
+  {
+    id: 'badge-esbuild',
+    title: 'Esbuild',
+    filename: 'badges/skills/ferramentas/badge-esbuild.svg',
+    alt: 'Badge Esbuild',
+    category: 'skills'
+  },
+  {
+    id: 'badge-eslint',
+    title: 'Eslint',
+    filename: 'badges/skills/ferramentas/badge-eslint.svg',
+    alt: 'Badge Eslint',
+    category: 'skills'
+  },
+  {
+    id: 'badge-figma',
+    title: 'Figma',
+    filename: 'badges/skills/ferramentas/badge-figma.svg',
+    alt: 'Badge Figma',
+    category: 'skills'
+  },
+  {
+    id: 'badge-git',
+    title: 'Git',
+    filename: 'badges/skills/ferramentas/badge-git.svg',
+    alt: 'Badge Git',
+    category: 'skills'
+  },
+  {
+    id: 'badge-github-actions',
+    title: 'Github Actions',
+    filename: 'badges/skills/ferramentas/badge-github-actions.svg',
+    alt: 'Badge Github Actions',
+    category: 'skills'
+  },
+  {
+    id: 'badge-github',
+    title: 'Github',
+    filename: 'badges/skills/ferramentas/badge-github.svg',
+    alt: 'Badge Github',
+    category: 'skills'
+  },
+  {
+    id: 'badge-gitlab',
+    title: 'Gitlab',
+    filename: 'badges/skills/ferramentas/badge-gitlab.svg',
+    alt: 'Badge Gitlab',
+    category: 'skills'
+  },
+  {
+    id: 'badge-insomnia',
+    title: 'Insomnia',
+    filename: 'badges/skills/ferramentas/badge-insomnia.svg',
+    alt: 'Badge Insomnia',
+    category: 'skills'
+  },
+  {
+    id: 'badge-intellij',
+    title: 'Intellij',
+    filename: 'badges/skills/ferramentas/badge-intellij.svg',
+    alt: 'Badge Intellij',
+    category: 'skills'
+  },
+  {
+    id: 'badge-jenkins',
+    title: 'Jenkins',
+    filename: 'badges/skills/ferramentas/badge-jenkins.svg',
+    alt: 'Badge Jenkins',
+    category: 'skills'
+  },
+  {
+    id: 'badge-jest',
+    title: 'Jest',
+    filename: 'badges/skills/ferramentas/badge-jest.svg',
+    alt: 'Badge Jest',
+    category: 'skills'
+  },
+  {
+    id: 'badge-jira',
+    title: 'Jira',
+    filename: 'badges/skills/ferramentas/badge-jira.svg',
+    alt: 'Badge Jira',
+    category: 'skills'
+  },
+  {
+    id: 'badge-jupyter',
+    title: 'Jupyter',
+    filename: 'badges/skills/ferramentas/badge-jupyter.svg',
+    alt: 'Badge Jupyter',
+    category: 'skills'
+  },
+  {
+    id: 'badge-kubernetes',
+    title: 'Kubernetes',
+    filename: 'badges/skills/ferramentas/badge-kubernetes.svg',
+    alt: 'Badge Kubernetes',
+    category: 'skills'
+  },
+  {
+    id: 'badge-lerna',
+    title: 'Lerna',
+    filename: 'badges/skills/ferramentas/badge-lerna.svg',
+    alt: 'Badge Lerna',
+    category: 'skills'
+  },
+  {
+    id: 'badge-mocha',
+    title: 'Mocha',
+    filename: 'badges/skills/ferramentas/badge-mocha.svg',
+    alt: 'Badge Mocha',
+    category: 'skills'
+  },
+  {
+    id: 'badge-neovim',
+    title: 'Neovim',
+    filename: 'badges/skills/ferramentas/badge-neovim.svg',
+    alt: 'Badge Neovim',
+    category: 'skills'
+  },
+  {
+    id: 'badge-notion',
+    title: 'Notion',
+    filename: 'badges/skills/ferramentas/badge-notion.svg',
+    alt: 'Badge Notion',
+    category: 'skills'
+  },
+  {
+    id: 'badge-npm',
+    title: 'Npm',
+    filename: 'badges/skills/ferramentas/badge-npm.svg',
+    alt: 'Badge Npm',
+    category: 'skills'
+  },
+  {
+    id: 'badge-nx',
+    title: 'Nx',
+    filename: 'badges/skills/ferramentas/badge-nx.svg',
+    alt: 'Badge Nx',
+    category: 'skills'
+  },
+  {
+    id: 'badge-playwright',
+    title: 'Playwright',
+    filename: 'badges/skills/ferramentas/badge-playwright.svg',
+    alt: 'Badge Playwright',
+    category: 'skills'
+  },
+  {
+    id: 'badge-pnpm',
+    title: 'Pnpm',
+    filename: 'badges/skills/ferramentas/badge-pnpm.svg',
+    alt: 'Badge Pnpm',
+    category: 'skills'
+  },
+  {
+    id: 'badge-postman',
+    title: 'Postman',
+    filename: 'badges/skills/ferramentas/badge-postman.svg',
+    alt: 'Badge Postman',
+    category: 'skills'
+  },
+  {
+    id: 'badge-prettier',
+    title: 'Prettier',
+    filename: 'badges/skills/ferramentas/badge-prettier.svg',
+    alt: 'Badge Prettier',
+    category: 'skills'
+  },
+  {
+    id: 'badge-rollup',
+    title: 'Rollup',
+    filename: 'badges/skills/ferramentas/badge-rollup.svg',
+    alt: 'Badge Rollup',
+    category: 'skills'
   }
 ];
