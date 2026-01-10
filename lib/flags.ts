@@ -1,6 +1,6 @@
 import { statsigAdapter, type StatsigUser } from '@flags-sdk/statsig';
 import { flag } from 'flags/next';
-import type { Identify, Flag } from 'flags';
+import type { Identify } from 'flags';
 
 export const identify: Identify<StatsigUser> = async () => {
   await Promise.resolve();
@@ -9,7 +9,7 @@ export const identify: Identify<StatsigUser> = async () => {
   };
 };
 
-export const createFeatureFlag = (key: string): Flag<boolean, StatsigUser> =>
+export const createFeatureFlag = (key: string) =>
   flag<boolean, StatsigUser>({
     key,
     adapter: statsigAdapter.featureGate((gate) => gate.value, { exposureLogging: true }),
