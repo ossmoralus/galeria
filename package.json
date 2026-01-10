@@ -32,7 +32,7 @@
     "sep:utils": "echo '--- Utils / Oraculo ---'",
     "oraculo": "oraculo",
     "diagnosticar": "oraculo diagnosticar",
-    "formatar": "oraculo formatar",
+    "formatar": "oraculo formatar --write",
     "fix-types": "oraculo fix-types",
     "otimizar": "oraculo otimizar-svg",
     "reestruturar": "oraculo reestruturar",
