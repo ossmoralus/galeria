@@ -57,7 +57,7 @@ export default function SVGGalleryInstructions(): React.ReactElement {
         <i className="fas fa-info-circle mr-2 text-[var(--accent-blue)]" />
         <strong>Parâmetros disponíveis:</strong>
       </div>
-      <div className="mt-2.5 flex flex-col items-start justify-center rounded border border-[var(--vscode-border)] bg-[var(--vscode-bg)] p-5 text-center">
+      <div className="mt-2.5 overflow-x-auto flex flex-col items-start justify-center rounded border border-[var(--vscode-border)] bg-[var(--vscode-bg)] p-5 text-center">
         <code className="mb-1.5">?width=500 ou ?w=500 - Define largura em pixels</code>
         <code className="mb-1.5">?width=100% - Largura 100% (responsivo)</code>
         <code className="mb-1.5">?height=200 ou ?h=200 - Define altura</code>
@@ -81,7 +81,7 @@ export default function SVGGalleryInstructions(): React.ReactElement {
         </code>
       </Panel>
 
-      <div className="mt-2.5 flex flex-col items-start justify-center rounded border border-[var(--vscode-border)] bg-[var(--vscode-bg)] p-5 text-left">
+      <div className="mt-2.5 overflow-x-auto flex flex-col items-start justify-center rounded border border-[var(--vscode-border)] bg-[var(--vscode-bg)] p-5 text-left">
         <div className="mb-2 text-sm text-[var(--text-muted)]">
           Dicas rápidas (substitua <code>seu-usuario</code> pelo seu username do GitHub, por exemplo
           <code>lopos</code>):
@@ -96,7 +96,7 @@ export default function SVGGalleryInstructions(): React.ReactElement {
         <code>{`![Sem incrementar](${baseUrl}/api/visitors/seu-usuario/badge.svg?label=visitas&increment=0)`}</code>
       </div>
 
-      <div className="mt-2.5 flex flex-col items-start justify-center rounded border border-[var(--vscode-border)] bg-[var(--vscode-bg)] p-5 text-left">
+      <div className="mt-2.5 overflow-x-auto flex flex-col items-start justify-center rounded border border-[var(--vscode-border)] bg-[var(--vscode-bg)] p-5 text-left">
         <div className="mb-2 text-sm text-[var(--text-muted)]">
           Cores e formatos (hex com 3 ou 6 dígitos; com ou sem <code>#</code>):
         </div>
