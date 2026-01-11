@@ -27,7 +27,7 @@
     "fix:all": "npm run format && npm run format:yaml && npm run lint:fix && npm run lint:css:fix",
     "oraculo": "oraculo",
     "diagnosticar": "oraculo diagnosticar",
-    "formatar": "oraculo formatar",
+    "formatar": "oraculo formatar --write",
     "fix-types": "oraculo fix-types",
     "otimizar": "oraculo otimizar-svg",
     "reestruturar": "oraculo reestruturar",
