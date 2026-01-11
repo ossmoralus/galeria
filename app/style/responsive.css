@@ -20,7 +20,7 @@
    TABLET: 640px - 1023px (sm: e md:)
 */
 
-@media (width >= 640px) {
+@media (width >=640px) {
   /* Layouts de Grid Responsivos */
   .gridBlogPosts {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -58,7 +58,7 @@
   }
 }
 
-@media (width >= 768px) {
+@media (width >=768px) {
   /* Layouts de Grid - consolidando propriedades adicionais */
   .gridBlogPosts {
     gap: 1.5rem;
@@ -276,7 +276,7 @@
    DESKTOP: >= 1024px (lg:)
 */
 
-@media (width >= 1024px) {
+@media (width >=1024px) {
   /* Layouts de Grid - consolidando com valores para desktop */
   .gridBlogPosts {
     gap: 2rem;
@@ -351,7 +351,7 @@
    DESKTOP EXTRA LARGE: >= 1280px (xl:)
 */
 
-@media (width >= 1280px) {
+@media (width >=1280px) {
   /* Container max-widths já definidos em Container.tsx */
 
   /* Ajustes adicionais se necessário */
@@ -361,7 +361,7 @@
    DESKTOP 2XL: >= 1536px (2xl:)
 */
 
-@media (width >= 1536px) {
+@media (width >=1536px) {
   /* Ajustes para telas muito grandes se necessário */
 }
 
@@ -370,13 +370,13 @@
 */
 
 /* Hidden/Show em diferentes breakpoints */
-@media (width <= 639px) {
+@media (width <=639px) {
   .hiddenMobile {
     display: none;
   }
 }
 
-@media (width >= 640px) {
+@media (width >=640px) {
   .showTabletUp {
     display: block;
   }
@@ -386,12 +386,38 @@
   }
 }
 
-@media (width >= 1024px) {
+@media (width >=1024px) {
   .showDesktop {
     display: block;
   }
 
   .hiddenDesktop {
     display: none;
+  }
+}
+
+/*
+   SCROLL TO TOP - RESPONSIVO
+*/
+
+/* Mobile: botão menor e mais próximo da borda */
+@media (width <=639px) {
+  .scrollToTop {
+    border-width: 2px;
+    bottom: 1rem;
+    font-size: 1.25rem;
+    height: 3.25rem;
+    right: 1rem;
+    width: 3.25rem;
+  }
+}
+
+/* Tablet */
+@media (width >=640px) and (width < 1024px) {
+  .scrollToTop {
+    bottom: 1.5rem;
+    height: 3.5rem;
+    right: 1.5rem;
+    width: 3.5rem;
   }
 }

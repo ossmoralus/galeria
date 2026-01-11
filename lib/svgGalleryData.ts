@@ -24,7 +24,7 @@ export type { CategoryType, SVGItem };
 export { categoryLabels };
 // Combina todos os items em um único array
 // Combina todos os items em um único array e remove duplicatas por `id`, mantendo a primeira ocorrência.
-const _combinedItems: SVGItem[] = [
+const combinedItems: SVGItem[] = [
   ...bannerItems,
   ...decorativosItems,
   ...infoItems,
@@ -32,7 +32,7 @@ const _combinedItems: SVGItem[] = [
 ];
 
 export const svgItems: SVGItem[] = Array.from(
-  new Map(_combinedItems.map((item) => [item.id, item])).values()
+  new Map(combinedItems.map((item) => [item.id, item])).values()
 );
 
 // Funções auxiliares para filtrar por categoria
