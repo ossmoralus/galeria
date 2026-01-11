@@ -564,3 +564,47 @@ ANIMAÇÕES COM DELAY DINÂMICO
   animation: slideInDown 0.4s ease-out backwards;
   animation-delay: var(--animation-delay, 0s);
 }
+
+/*
+SCROLL TO TOP BUTTON
+*/
+
+.scrollToTop {
+  align-items: center;
+  animation: fadeInUp 0.4s ease-out;
+  background: linear-gradient(135deg, #2d7d6e, #1f5f5a);
+  border: 3px solid #1a4d5c;
+  border-radius: 50%;
+  bottom: 2rem;
+  box-shadow:
+    0 6px 16px rgb(45 125 110 / 40%),
+    0 0 30px rgb(26 77 92 / 20%);
+  color: #e5e5e5;
+  cursor: pointer;
+  display: flex;
+  font-size: 1.5rem;
+  height: 4rem;
+  justify-content: center;
+  position: fixed;
+  right: 2rem;
+  transition: all 0.3s ease;
+  width: 4rem;
+  z-index: 999;
+}
+
+.scrollToTop:hover {
+  background: linear-gradient(135deg, #3a8a7f, #2d7d6e);
+  border-color: #2d7d6e;
+  box-shadow:
+    0 8px 24px rgb(45 125 110 / 50%),
+    0 0 40px rgb(78 168 154 / 30%);
+  transform: translateY(-6px) scale(1.05);
+}
+
+.scrollToTop:active {
+  transform: translateY(-3px) scale(1.02);
+}
+
+.scrollToTop i {
+  pointer-events: none;
+}
