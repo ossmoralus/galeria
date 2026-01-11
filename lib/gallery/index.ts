@@ -7,4 +7,5 @@ export * from './types';
 export * from './banners';
 export * from './decorativos';
 export * from './info';
+export * from './social';
 export * from './skills';

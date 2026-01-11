@@ -8,6 +8,7 @@ const categories: GalleryCategory[] = [
   { slug: '', label: 'Todos', icon: 'fas fa-th-large' },
   { slug: 'banners', label: 'Banners', icon: 'fas fa-image' },
   { slug: 'skills', label: 'Skills', icon: 'fas fa-code' },
+  { slug: 'social', label: 'Social', icon: 'fas fa-share-alt' },
   { slug: 'langs', label: 'Langs', icon: 'fas fa-language' },
   {
     slug: 'ferramentas',

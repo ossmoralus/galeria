@@ -28,6 +28,11 @@ export const categoryLabels: Record<CategoryType, CategoryInfo> = {
     icon: 'fas fa-info-circle',
     description: 'Badges de status do projeto, versão, licença, etc.'
   },
+  social: {
+    title: 'Social & Contato',
+    icon: 'fas fa-share-alt',
+    description: 'Badges de redes sociais, mensagens e contato'
+  },
   langs: {
     title: 'Langs',
     icon: 'fas fa-language',

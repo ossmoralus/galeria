@@ -14,6 +14,7 @@
 import { bannerItems } from './gallery/banners';
 import { decorativosItems } from './gallery/decorativos';
 import { infoItems } from './gallery/info';
+import { socialItems } from './gallery/social';
 import { skillsItems } from './gallery/skills';
 import { categoryLabels, type CategoryType, type SVGItem } from './gallery/types';
 
@@ -28,6 +29,7 @@ const combinedItems: SVGItem[] = [
   ...bannerItems,
   ...decorativosItems,
   ...infoItems,
+  ...socialItems,
   ...skillsItems
 ];
 
@@ -159,6 +161,8 @@ export const getSkillsTecnologiasItems = (): SVGItem[] =>
 export const getDecorativosItems = (): SVGItem[] => decorativosItems;
 
 export const getInfoItems = (): SVGItem[] => infoItems;
+
+export const getSocialItems = (): SVGItem[] => socialItems;
 
 export const getItemsByCategory = (category: CategoryType): SVGItem[] =>
   svgItems.filter((item) => item.category === category);
